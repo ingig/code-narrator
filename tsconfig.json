@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2021",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": "./",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "typeRoots": ["node_modules/@types", "types"],
+    "paths": {
+      "*" : ["@types/*"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "./src/index.ts"
+  ],
+  "compileOnSave": true
+}
