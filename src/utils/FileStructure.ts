@@ -1,4 +1,5 @@
 import path, {resolve} from "path";
+import fs from "fs";
 
 export default class FileStructure {
     name = '';
@@ -13,5 +14,10 @@ export default class FileStructure {
 
     public static isCodeFile(fileName: string) {
         return path.extname(fileName).indexOf('.ts') != -1;
+    }
+
+
+    static getContent(path: string) {
+        return fs.readFileSync(path);
     }
 }

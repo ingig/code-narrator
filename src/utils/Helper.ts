@@ -1,53 +1,20 @@
+const extract = require('extract-json-from-string');
+
 export default class Helper {
 
-    public static tryParse(content : string | undefined, question : string) {
-        if (!content) return '';
+    public static removeExtension(fileName : string) {
+        if (fileName.lastIndexOf(".") == -1) return fileName;
 
-        content = content.trim();
-
-        //sometime OpenAI gives period at start of json response
-        if (content.indexOf('.') == 0) {
-            content = content.substring(1).trim();
-        }
-        if (this.shouldBeJsonResponse(question)) {
-            content = this.tryToFindJson(content)
-        }
-        if (!this.isJson(content)) return content;
-
-        let jsonContent = content
-            .replaceAll('\n', ' ')
-            .replaceAll('\r', '')
-            .replaceAll('\t', '');
-        try {
-
-            return JSON.parse(jsonContent)
-        } catch (e : any) {
-            try {
-                return JSON.parse('[' + jsonContent + ']')
-            } catch (e1 : any) {
-                console.error('Could not JSON parse content:', content)
-            }
-            return;
-        }
-
+        let name = fileName.substring(0, fileName.lastIndexOf("."));
+        if (name == '') return fileName;
+        return name;
     }
 
-    private static isJson(content: string) {
-        if (content.indexOf('{') == 0) return true;
-        if (content.indexOf('[') == 0) return true;
-        return false;
+    static upperFirstLetter(name: string) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
     }
 
-    private static tryToFindJson(content: string) {
-        let idx = (content.indexOf('[') < content.indexOf('{')) ? content.indexOf('[') : content.indexOf('{');
-        return content.substring(idx);
-    }
-
-    private static shouldBeJsonResponse(question: string) {
-        question = question.toLowerCase();
-        if(question.indexOf('generate') != -1 && question.indexOf('json') != -1) return true;
-        if(question.indexOf('valid json format') != -1) return true;
-        if(question.indexOf('json response') != -1) return true;
-        return false;
+    static getJsons(content : string) : any[] {
+        return extract(content)
     }
 }

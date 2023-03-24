@@ -9,7 +9,7 @@ export default class ProjectLogic {
 
     public async getStructure() {
         let projectPath = await ConfigHelper.get('project_path')!;
-        console.log('ppath', projectPath);
+        console.log('path', projectPath);
         let folderStructure = new FolderStructure(projectPath);
 
         return folderStructure;
