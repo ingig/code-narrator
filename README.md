@@ -38,6 +38,7 @@ export default {
 Make sure to commit the `.code-narrator/cache.json` file into git.
 :::
 
+
 ## Running the Project
 
 To run the project, execute:
