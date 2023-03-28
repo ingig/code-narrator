@@ -1,5 +1,6 @@
 import path, {resolve} from "path";
 import fs from "fs";
+import ConfigHelper from "./ConfigHelper";
 
 export default class FileStructure {
     name = '';
@@ -8,7 +9,8 @@ export default class FileStructure {
 
     constructor(dir : string, entry : any) {
         this.name = entry.name;
-        this.path = resolve(dir, entry.name);
+        let project_path = ConfigHelper.get('project_path');
+        this.path = path.relative(project_path, resolve(dir, entry.name));
         this.entry = entry;
     }
 
@@ -17,7 +19,9 @@ export default class FileStructure {
     }
 
 
-    static getContent(path: string) {
-        return fs.readFileSync(path);
+    static getContent(path: string) : string {
+        if (!fs.existsSync(path)) return '';
+
+        return fs.readFileSync(path).toString();
     }
 }

@@ -2,7 +2,8 @@ import fs, {existsSync, readdirSync} from "fs";
 import FileStructure from "./FileStructure";
 import ConfigHelper from "./ConfigHelper";
 import path, {resolve} from "path";
-
+import Ignore from 'ignore';
+import App from "../App";
 export default class FolderStructure {
 
     name = '';
@@ -11,21 +12,21 @@ export default class FolderStructure {
     files : FileStructure[];
     folders : FolderStructure[];
 
-    constructor(path : string) {
-        let projectPath = ConfigHelper.get('project_path')!;
-        let folderPath = path.replace(projectPath, '');
-        this.name = folderPath.substring(folderPath.lastIndexOf('\\') + 1);
-        this.path = path;
+    constructor(folderPath : string) {
+        let project_path = ConfigHelper.get('project_path');
+        this.path = path.relative(project_path, folderPath);
 
-        this.files = this.getFiles(path);
-        this.folders = this.getStructure(path);
+        this.name = path.basename(this.path);
+
+        this.files = this.getFiles(folderPath);
+        this.folders = this.getStructure(folderPath);
     }
 
     public static getFiles(dir : string) {
         const entries = readdirSync(dir, {withFileTypes: true});
         let files :FileStructure[] = [];
         for (const entry of entries) {
-            if (!entry.isDirectory() && !FolderStructure.isInIgnoreList(entry.name, dir)) {
+            if (!entry.isDirectory() && !FolderStructure.isInIgnoreList(entry.name)) {
                 files.push(new FileStructure(dir, entry))
             }
         }
@@ -44,7 +45,7 @@ export default class FolderStructure {
         const entries = readdirSync(path, {withFileTypes: true});
         for (const entry of entries) {
             const res = resolve(path, entry.name);
-            if (entry.isDirectory() && !FolderStructure.isInIgnoreList(entry.name, path)) {
+            if (entry.isDirectory() && !FolderStructure.isInIgnoreList(res)) {
                 folders.push(new FolderStructure(res));
             }
         }
@@ -53,16 +54,14 @@ export default class FolderStructure {
 
 
 
-    public static isInIgnoreList(fileName: string, path: string): boolean {
-        let ignoreList: string[] = ['node_modules', 'docs', '.env', '.idea', '.git', 'classic', '.codenarrator', 'build', 'package-lock.json'];
-        if (ignoreList.indexOf(fileName) != -1) return true;
-        let isIgnore = false
-        ignoreList.forEach((value, idx) => {
-            if (!isIgnore) {
-                isIgnore = (path.indexOf(value) != -1)
-            }
-        })
-        return isIgnore;
+    public static isInIgnoreList(fileOrFolderPath : string): boolean {
+        let relativePath = path.relative(App.Project.project_path, fileOrFolderPath)
+        if (relativePath == '') return false;
+
+        const ignore = Ignore();
+        const excludedPatterns = ConfigHelper.get('exclude') as string[];
+        ignore.add(excludedPatterns);
+        return ignore.ignores(relativePath);
     }
 
     public static searchForStringInFiles(root: string, search: string): string {

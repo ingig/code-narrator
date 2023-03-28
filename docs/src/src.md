@@ -1,42 +1,56 @@
-# API
+---
+sidebar_position: 30
+sidebar_label: Code
+---
+
+# Code
+
+This documentation provides an in-depth overview of the contents of the folder and their respective roles in the system. The folder is divided into sections with clear headings and subheadings.
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Files](#files)
-  - [App.ts](#appts)
-3. [Sub-folders](#subfolders)
-  - [Documentation](#documentation)
-  - [Logic](#logic)
-  - [Repositories](#repositories)
-  - [Utils](#utils)
 
-<a name="introduction"></a>
-
-## Introduction
-This document provides an in-depth overview of the source folder for the code-narrator application, its files and sub-folders, and their key features. The source folder contains the main entry point of the application, the `App` class, and four sub-folders: `documentation`, `logic`, `repositories`, and `utils`.
-
-## Files
+- [App.ts](#appts)
+- [cli.ts](#clits)
+- [Documentation](#documentation)
+- [Repositories](#repositories)
+- [Utils](#utils)
 
 ### App.ts
-The `App.ts` file contains the `App` class, which is the main entry point of the code-narrator application. The `App` class is responsible for:
 
-1. Loading the configuration and cached documentation
-2. Parsing the project code
-3. Generating documentation using GPT
-4. Writing the generated documentation to the cache
-5. Creating the complete documentation from the cache
+This file contains the main class `App` and its implementation for the code-narrator application. The code-narrator application is used to generate documentation for a project by analyzing its code and folder structure, and then using GPT to generate documentation in markdown format.
 
-The `App.ts` file can be found in the original [source on GitHub](https://github.com/repository/path/src/App.ts).
+[App.ts Documentation](App.ts)
 
-## Sub-folders
+### cli.ts
+
+This file contains the command line interface for the code-narrator application. It is responsible for parsing command line arguments and executing the appropriate actions based on the user's input.
+
+[cli.ts Documentation](cli.ts)
+
 ### Documentation
-The `documentation` folder contains the `Document` class, which is a utility class that represents a document with its metadata and content. It provides methods to manage the document's plugins and their data. The `Document` class can be used to create, read, and update documents and their associated plugins. For more information, refer to the [`documentation`](documentation.md) documentation.
 
-### Logic
-The `logic` folder contains the core logic for generating documentation for a given project. It consists of four main files: `DocumentationBuilder`, `DocumentationCache`, `DocumentationGenerator`, and `ProjectLogic`. Each file serves a specific purpose in the documentation generation process. For more information, refer to the [`logic`](logic.md) documentation.
+This folder contains the necessary files and classes to generate documentation for a project by analyzing its code and folder structure, and then using GPT to generate documentation in markdown format.
+
+[Documentation Folder Documentation](documentation)
 
 ### Repositories
-The `repositories` folder contains files responsible for managing data storage and retrieval for the code-narrator application. For more information, refer to the [`repositories`](repositories.md) documentation.
+
+This folder contains the necessary files and classes to interact with various APIs and services. The main purpose of this folder is to provide a centralized location for managing data access and communication with external services.
+
+[Repositories Folder Documentation](repositories)
 
 ### Utils
-The `utils` folder contains utility files that provide various functionalities to manage configuration settings, file and folder structures, and string manipulation. The utility files include [ConfigHelper](#confighelper), [FileStructure](#filestructure), [FolderStructure](#folderstructure), and [Helper](#helper). For more information, refer to the [`utils`](utils.md) documentation.
+
+The `utils` folder is responsible for providing various utility functions and classes that can be used throughout the system. This folder contains the following files:
+
+- [ConfigHelper.ts](#confighelperts)
+- [FileStructure.ts](#filestructurets)
+- [FolderStructure.ts](#folderstructurets)
+- [Helper.ts](#helperts)
+- [ProjectStructure.ts](#projectstructurets)
+
+[Utils Folder Documentation](utils)
+
+## Repository Link
+
+[Code Narrator Repository](https://github.com/ingig/code-narrator/src)

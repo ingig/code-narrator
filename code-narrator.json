@@ -1,8 +1,0 @@
-{
-  "project_file": "package.json",
-  "start_file": "./src/App.ts",
-  "project_path": "./",
-  "source_path": "./src",
-  "documentation_path": "./docs",
-  "test_path" : "./test"
-}

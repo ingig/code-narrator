@@ -1,66 +1,75 @@
 ---
-id: ReadMe
-sidebar_label: Read me
 sidebar_position: 1
+sidebar_label: Read Me
 ---
-# Code Narrator - Get Started Guide
 
-Code Narrator is a self-documenting tool that uses OpenAI to generate documentation on code and tests. It is designed to be a friend to the lazy developer, providing an easy way to create and validate documentation, similar to a compiler compiling itself. To configure the project, use the `code-narrator.json` file to set the project, documentation, and test paths.
+# code-narrator
+
+code-narrator is a self-documenting tool that uses OpenAI to generate documentation on code and tests. It is a friend to the lazy developer and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.
 
 ## Installation
 
-To install the project, follow these steps:
-
-1. Clone the repository:
+To install the project, run:
 
 ```
-git clone https://github.com/ingig/code-narrator.git
-```
-
-2. Change to the project directory:
-
-```
-cd code-narrator
-```
-
-3. Install the dependencies:
-
-```
-npm install
+npm i code-narrator
 ```
 
 ## Configuration
 
-To configure the project, edit the `code-narrator.json` file and set the project, documentation, and test paths. For example:
+Configure the project using the `code-narrator.config.ts` file. Here's an example configuration:
 
-```json
-{
-  "projectPath": "./src",
-  "documentationPath": "./docs",
-  "testPath": "./tests"
-}
+```typescript
+export default {
+    projects : [{
+        // ...
+    }],
+    builderPlugins : [
+        // ...
+    ],
+    generatorPlugin : [
+        // ...
+    ],
+    systemCommands : [
+        // ...
+    ],
+    documentation_type: 'md',
+    document_file_extension: ".md",
+    cache_file : '.code-narrator/cache.json'
+};
 ```
+
+:::danger
+Make sure to commit the `.code-narrator/cache.json` file into git.
+:::
 
 ## Running the Project
 
-To run the project, use the following command:
+To run the project, execute:
 
 ```
 npm run start
 ```
 
+or use the CLI:
+
+```
+code-narrator-cli
+```
+
 ## Running Tests
 
-To run tests for the project, use the following command:
+To run tests for the project, execute:
 
 ```
 npm test
 ```
 
-## Support and Contributions
+## Support and Repository
 
-- For reporting bugs, please use the [GitHub Issues](https://github.com/ingig/code-narrator/issues) page.
-- The homepage of the project is available at [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator).
+- Post bugs and issues on the [GitHub Issues page](https://github.com/ingig/code-narrator/issues).
+- Visit the [project homepage](https://github.com/ingig/code-narrator) for more information.
+- Access the [repository](https://github.com/ingig/code-narrator).
 
 ## Dependencies
 
@@ -72,9 +81,15 @@ npm test
 - extract-json-from-string: ^1.0.1
 - follow-redirects: ^1.15.2
 - form-data: ^4.0.0
+- liquidjs: ^10.7.0
 - mime-db: ^1.52.0
 - mime-types: ^2.1.35
 - openai: ^3.1.0
-
-##### This overview
-is for the folder C:\Users\ingig\source\repos\CodeNarrator
+- @babel/preset-typescript: ^7.21.0
+- @jest/globals: ^29.5.0
+- @types/jest: ^29.4.0
+- @types/node: ^18.11.19
+- jest: ^29.4.2
+- ts-jest: ^29.0.5
+- ts-node: ^10.9.1
+- typescript: ^4.9.5

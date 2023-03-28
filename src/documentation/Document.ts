@@ -1,6 +1,7 @@
-import PluginDto from "./plugins/PluginDto";
 import fs from "fs";
 import Helper from "../utils/Helper";
+import ConfigHelper from "../utils/ConfigHelper";
+import * as path from 'path';
 
 export default class Document {
 
@@ -9,54 +10,38 @@ export default class Document {
     path = '';
     folderPath = '';
     fileContent = '';
-    pluginDtos: PluginDto[] = []
+    documentation = '';
     isFolder = false;
     updated : Date = new Date();
     sidebar_position? : number = undefined;
     sidebar_label? : string = undefined;
     init = false;
     postInit = false;
+    generator: string = '';
+    saveToPath = '';
+    data : any;
+    documentation_type = 'md'
+    question = '';
 
-    constructor(name: string, path: string, folderPath : string, updated : Date, sidebar_position? : number, sidebar_label? : string) {
+    constructor(name: string, filePath: string, folderPath : string, updated : Date, sidebar_position? : number, sidebar_label? : string) {
         this.name = name;
-        this.path = path;
-        this.id = Document.getId(name, path);
+        let project_path = ConfigHelper.get('project_path')
+        this.path = path.relative(project_path, filePath);
+        this.saveToPath = this.path;
+        this.id = (this.path) ? Document.getId(this.path) : Document.getId(name);
         this.folderPath = folderPath;
-        this.isFolder = (path == folderPath);
+        this.isFolder = (filePath == folderPath);
         this.updated = updated;
         this.sidebar_position = sidebar_position;
-        this.sidebar_label = sidebar_label ??Helper.upperFirstLetter(name);
-        console.log('path:"' + path + '"')
+        this.sidebar_label = sidebar_label ?? Helper.upperFirstLetter(name);
         if (!this.isFolder) {
-            this.fileContent = fs.readFileSync(path).toString();
+            this.fileContent = fs.readFileSync(filePath).toString();
         }
     }
 
-    public static getId(name : string, path : string) {
-        return path + '_' + name;
+    public static getId(path: string) {
+        return path;
     }
 
 
-    getPluginDto(type: string) {
-        for (let i = 0; i < this.pluginDtos.length; i++) {
-            if (this.pluginDtos[i].type == type) return this.pluginDtos[i];
-        }
-        return new PluginDto(type);
-    }
-
-    getPluginIdx(type: string) {
-        for (let i = 0; i < this.pluginDtos.length; i++) {
-            if (this.pluginDtos[i].type == type) return i;
-        }
-        return -1;
-    }
-
-    public upsertPlugin(plugin : PluginDto) {
-        let idx = this.getPluginIdx(plugin.type)
-        if (idx == -1) {
-            this.pluginDtos.push(plugin)
-        } else {
-            this.pluginDtos[idx] = plugin;
-        }
-    }
 }

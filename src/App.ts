@@ -1,13 +1,12 @@
-import ProjectLogic from "./logic/ProjectLogic";
 import ConfigHelper from "./utils/ConfigHelper";
-import DocumentationBuilder from "./logic/DocumentationBuilder";
-import DocumentationCache from "./logic/DocumentationCache";
-import DocumentationGenerator from "./logic/DocumentationGenerator";
-import Document from "./documentation/Document";
+import DocumentationBuilder from "./documentation/DocumentationBuilder";
+import DocumentationCache from "./documentation/DocumentationCache";
+import DocumentationGenerator from "./documentation/DocumentationGenerator";
+import config from '../code-narrator.config';
 
 /*
 About code-narrator
-This application is runnned either by npm run start or by using cli.
+This application is installed with "npm i code-narrator", and executed either by npm run start or by using cli.
 When starting it will load up the configuration and cached documentation.
 Then it will go through the project code, reading the file & folder structure
 if the file or folder does not exist in the cache or the file has changed since last cached
@@ -22,20 +21,25 @@ There are few rules to follow
  */
 export default class App {
     static repositoryUrl = ''
+    static Project : any;
     static StartFile= '';
     public async run() {
-        await ConfigHelper.load();
-        DocumentationCache.load();
+        let projects = config.projects;
 
-        let builder = new DocumentationBuilder();
+        for (let i=0;i<projects.length;i++) {
+            App.Project = projects[i];
 
-        await builder.createGetStarted();
-        await builder.createBehaviour();
-        await builder.createConfig();
-        await builder.createApi();
+            await ConfigHelper.load(config, projects[i]);
+            DocumentationCache.load();
+
+            let builder = new DocumentationBuilder();
+            await builder.build(projects[i]);
+        }
 
         let generator = new DocumentationGenerator();
         generator.make();
+
+        console.log('Done generating documents')
 
     }
 }

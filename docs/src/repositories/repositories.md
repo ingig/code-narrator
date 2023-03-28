@@ -1,51 +1,22 @@
 ---
+sidebar_position: 31
 sidebar_label: Repositories
-sidebar_position: 102
 ---
+
 # Repositories
 
-This document provides an in-depth overview of the files in the `repositories` folder. The folder contains the following file:
+This folder contains the necessary files and classes to interact with various APIs and services. The main purpose of this folder is to provide a centralized location for managing data access and communication with external services.
 
-- [OpenAIRepository](#openairepository)
+## Files and Folders
 
-## OpenAIRepository
+### [OpenAIRepository.ts](src\repositories\OpenAIRepository.ts)
 
-The `OpenAIRepository` class is a wrapper around the OpenAI API for querying the GPT-4 model. It provides methods to send text queries and receive generated responses. This class uses the `openai` package to interact with the OpenAI API.
+This TypeScript file defines the `OpenAIRepository` class, which is responsible for interacting with the OpenAI API. The class provides methods to query the API using different models and handles errors and retries.
 
-### Key Features
+#### Class: OpenAIRepository
 
-- Simplifies the interaction with the OpenAI API by providing a high-level interface for querying the GPT-4 model.
-- Handles the authentication and API calls required to interact with the OpenAI API.
-- Provides a consistent and easy-to-use interface for sending text queries and receiving generated responses.
+The `OpenAIRepository` class provides methods for interacting with the OpenAI API, such as querying the API using different models, handling errors, and managing retries. For more information, refer to the [OpenAIRepository.ts documentation](src\repositories\OpenAIRepository.ts).
 
-### Original Source File on GitHub
+## Repository Link
 
-You can find the original source file for the `OpenAIRepository` class on GitHub at the following link:
-
-[OpenAIRepository.py](https://github.com/OpenAI/openai/blob/master/openai/repository/OpenAIRepository.py)
-
-### File Summary
-
-The `OpenAIRepository` class provides the following methods for interacting with the OpenAI API:
-
-- `__init__(self, api_key: str)`: Initializes the `OpenAIRepository` class with the provided API key.
-- `query(self, prompt: str, max_tokens: int, n: int, stop: Optional[List[str]], temperature: float) -> List[str]`: Sends a text query to the GPT-4 model and returns a list of generated responses.
-
-#### Initialization
-
-The `__init__` method initializes the `OpenAIRepository` class with the provided API key. The API key is used for authentication when making API calls to the OpenAI API.
-
-#### Querying the GPT-4 Model
-
-The `query` method sends a text query to the GPT-4 model and returns a list of generated responses. The method accepts the following parameters:
-
-- `prompt`: The text prompt to send to the GPT-4 model.
-- `max_tokens`: The maximum number of tokens to generate in the response.
-- `n`: The number of responses to generate for the given prompt.
-- `stop`: An optional list of strings that, when encountered, will cause the generation to stop.
-- `temperature`: Controls the randomness of the generated responses. A higher value results in more random responses, while a lower value results in more deterministic responses.
-
-The method returns a list of generated responses from the GPT-4 model.
-
-##### This overview
-is for the folder C:\Users\ingig\source\repos\CodeNarrator\src\repositories
+For the complete repository, visit [https://github.com/ingig/code-narrator/src/repositories](https://github.com/ingig/code-narrator/src/repositories).

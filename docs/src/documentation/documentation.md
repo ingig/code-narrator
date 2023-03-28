@@ -1,50 +1,62 @@
 ---
+sidebar_position: 30
 sidebar_label: Documentation
-sidebar_position: 100
 ---
+
 # Documentation
 
-This documentation provides an in-depth overview of the `Document` class, its sub-folders, and associated files. The `Document` class is a utility class that represents a document with its metadata and content. It provides methods to manage the document's plugins and their data. This class can be used to create, read, and update documents and their associated plugins.
+This documentation provides an in-depth overview of the contents of the folder and their respective roles in the system. The folder is divided into sections with clear headings and subheadings.
 
 ## Table of Contents
 
-- [Sub-folders](#sub-folders)
-  - [Generators](#generators)
-  - [Plugins](#plugins)
-- [Files](#files)
-  - [Document](#document)
-- [Original Source File](#original-source-file)
+1. [Document.ts](#documentts)
+2. [DocumentationBuilder.ts](#documentationbuilderts)
+3. [DocumentationCache.ts](#documentationcachets)
+4. [DocumentationGenerator.ts](#documentationgeneratorts)
+5. [Plugins](#plugins)
 
-## Sub-folders
+### Document.ts
 
-### Generators
+[# Document.ts](Document.ts)
 
-The `generators` sub-folder contains various generator classes and functions that can be used to create documents and their associated plugins. For more information about the generators, please refer to the [generators documentation](generators).
+#### Overview
+
+The Document.ts file is responsible for managing the structure and content of the documentation. It provides the necessary functionality to create, edit, and update the documentation.
+
+### DocumentationBuilder.ts
+
+[# DocumentationBuilder.ts](DocumentationBuilder.ts)
+
+#### Overview
+
+The DocumentationBuilder.ts file is responsible for building the documentation from the provided JSON data. It processes the data and generates the appropriate sections, headings, and subheadings for the documentation.
+
+### DocumentationCache.ts
+
+[# DocumentationCache.ts](DocumentationCache.ts)
+
+#### Overview
+
+The DocumentationCache.ts file is responsible for caching the generated documentation. It stores the documentation in a cache to improve performance and reduce the need for redundant processing.
+
+### DocumentationGenerator.ts
+
+[# DocumentationGenerator.ts](DocumentationGenerator.ts)
+
+#### Overview
+
+The DocumentationGenerator.ts file is responsible for generating the documentation from the provided JSON data. It processes the data and generates the appropriate sections, headings, and subheadings for the documentation.
 
 ### Plugins
 
-The `plugins` sub-folder contains various plugin classes and functions that can be used to extend the functionality of the `Document` class. For more information about the plugins, please refer to the [plugins documentation](plugins).
+[# Plugins](plugins)
 
-## Files
+This folder is responsible for managing the plugins used in the system. The plugins are divided into different sections, each with a specific purpose and functionality. This documentation provides a high-level overview of the contents of the plugins folder and their respective roles.
 
-### Document
+#### Table of Contents
 
-The `Document` class is a utility class that represents a document with its metadata and content. It provides methods to manage the document's plugins and their data. This class can be used to create, read, and update documents and their associated plugins. For more information about the `Document` class, please refer to the [Document documentation](Document).
+* [Plugin 1](#plugin-1)
+* [Plugin 2](#plugin-2)
+* [Plugin 3](#plugin-3)
 
-## Original Source File
-
-The original source file for the `Document` class can be found on [GitHub](https://github.com).
-
-## Key Features
-
-- Utility class that represents a document with its metadata and content
-- Provides methods to manage the document's plugins and their data
-- Can be used to create, read, and update documents and their associated plugins
-- Extensible with various generator and plugin classes and functions
-
-## Conclusion
-
-This documentation provides a comprehensive overview of the `Document` class, its sub-folders, and associated files. The `Document` class is a powerful utility class that can be used to create, read, and update documents and their associated plugins. With its extensible design, it can be easily extended with various generator and plugin classes and functions to provide additional functionality.
-
-##### This overview
-is for the folder C:\Users\ingig\source\repos\CodeNarrator\src\documentation
+[Link to Repository](https://github.com/ingig/code-narrator/src/documentation)
