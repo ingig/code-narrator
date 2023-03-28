@@ -5,13 +5,11 @@ sidebar_label: DocumentationGenerator.ts
 
 # DocumentationGenerator.ts
 
-## Overview
-
-The `DocumentationGenerator.ts` file is a TypeScript module that exports a `DocumentationGenerator` class. This class is responsible for generating documentation files based on the configuration and the cached documents. It uses the `ConfigHelper`, `DocumentationCache`, and generator plugins to create the documentation files in the specified format and location.
+This is a TypeScript code file that defines a class called `DocumentationGenerator`. The purpose of this class is to generate documentation files based on the contents of a cache and a configuration file. The generated documentation files are saved to a specified path.
 
 ## Usage
 
-To use the `DocumentationGenerator` class, you need to import it and create an instance of the class. Then, call the `make()` method to generate the documentation files.
+To use the `DocumentationGenerator` class, you need to create an instance of the class and call the `make()` method.
 
 ```typescript
 import DocumentationGenerator from './DocumentationGenerator';
@@ -24,49 +22,42 @@ generator.make();
 
 ### Method: make()
 
-The `make()` method is the main method of the `DocumentationGenerator` class. It generates the documentation files based on the cached documents and the configuration.
+This method generates documentation files based on the contents of the `DocumentationCache` and the configuration file `code-narrator.config`. It saves the generated documentation files to the specified path in the configuration file.
 
-#### Process
+#### Parameters
 
-1. Retrieve the cached documents from `DocumentationCache.Documents`.
-2. Get the `documentation_path` and `project_path` from the `ConfigHelper`.
-3. Iterate through the configured projects and generate the `ReadMe.md` file if the `readmeRoot` option is set.
-4. Iterate through the cached documents and generate the documentation files for each document.
-5. For each document, create the folder structure in the `documentation_path` if it doesn't exist.
-6. Process the document using the configured generator plugins.
-7. Write the generated documentation to the file system.
+None.
 
-## Configuration
-
-The `DocumentationGenerator` class relies on the following configuration options:
-
-- `documentation_path`: The path where the generated documentation files will be saved.
-- `project_path`: The path of the project for which the documentation is being generated.
-- `generatorPlugin`: An array of generator plugins to be used for processing the documents.
-
-## Generator Plugins
-
-The `DocumentationGenerator` class supports the use of generator plugins to process the documents before writing them to the file system. These plugins should extend the `BaseGenerator` class and implement the `process()` method.
-
-Example of a generator plugin:
+#### Example
 
 ```typescript
-import BaseGenerator from './plugins/generators/BaseGenerator';
-
-class CustomGenerator extends BaseGenerator {
-  process(document: Document) {
-    // Process the document
-  }
-}
+const generator = new DocumentationGenerator();
+generator.make();
 ```
 
-To use a custom generator plugin, add it to the `generatorPlugin` configuration option:
+## Technical Concepts
 
-```typescript
-import CustomGenerator from './CustomGenerator';
+### ConfigHelper
 
-const config = {
-  // ...
-  generatorPlugin: [CustomGenerator],
-};
-```
+`ConfigHelper` is a utility class that helps in fetching configuration values from the `code-narrator.config` file.
+
+### DocumentationCache
+
+`DocumentationCache` is a class that stores the documentation data in a cache. It provides methods to get and set documentation data.
+
+### BaseGenerator
+
+`BaseGenerator` is a base class for generator plugins. Generator plugins are used to process the documentation data before saving it to a file.
+
+## File Structure
+
+The file imports the following modules and classes:
+
+- `fs` from the `fs` module
+- `ConfigHelper` from `../utils/ConfigHelper`
+- `DocumentationCache` from `./DocumentationCache`
+- `path` from the `path` module
+- `config` from `../../code-narrator.config`
+- `BaseGenerator` from `./plugins/generators/BaseGenerator`
+
+The `DocumentationGenerator` class has a single method called `make()`. This method iterates through the projects and documentation data, processes the data using generator plugins, and saves the generated documentation files to the specified path.

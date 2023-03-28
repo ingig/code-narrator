@@ -5,9 +5,9 @@ sidebar_label: gpt_question.liquid
 
 # gpt_question.liquid
 
-This is a template file that generates a "ReadMe" guide for a given project. The template uses variables to customize the content based on the project's details.
+This is a template file used to generate a "ReadMe" guide for a project. The template file uses variables to customize the content based on the specific project details.
 
-## Variables used in the template
+## Variables used in the template file
 
 - `projectName`: The name of the project.
 - `repositoryUrl`: The URL of the project's repository.
@@ -18,9 +18,9 @@ This is a template file that generates a "ReadMe" guide for a given project. The
 ## Template file content
 
 ```
-###
 Create a "ReadMe" guide for the project, named "{{ projectName }}".
 From the description of the project file describe the purpose of the project and the idea of it.
+Show current version.
 Show how to install the project.
 Show how to configure the project from the config file, if there is any configuration
 Show how to run the project.
@@ -42,17 +42,18 @@ This is the project file:
 ###
 {{ projectFile }}
 ###
-###
 ```
 
-The template file generates a "ReadMe" guide with the following sections:
+The template file will generate a "ReadMe" guide for the project with the following sections:
 
-1. Introduction: Describes the purpose and idea of the project based on the project file description.
-2. Installation: Provides instructions on how to install the project.
-3. Configuration: Explains how to configure the project using the config file, if applicable.
-4. Running the project: Describes how to run the project.
-5. Running tests: Explains how to run tests for the project.
-6. Support: Provides information on where to post bugs, the project's homepage, and a link to the repository (if available).
-7. Dependencies: Lists the project's dependencies at the end of the file.
-
-Additionally, the template includes the content of the entry file, config file, and project file as separate sections.
+1. Project name and description
+2. Current version
+3. Installation instructions
+4. Configuration instructions (if applicable)
+5. Running the project
+6. Running tests
+7. Bug reporting, project homepage, and repository URL
+8. Dependencies
+9. Entry file content
+10. Configuration file content
+11. Project file content
