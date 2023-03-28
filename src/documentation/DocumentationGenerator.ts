@@ -18,7 +18,7 @@ export default class DocumentationGenerator {
             if (config.projects[i].readmeRoot) {
                 let document = DocumentationCache.get('ReadMe');
                 if (document) {
-                    fs.writeFileSync(path.join(config.projects[i].project_path, 'ReadMe.md'), document.documentation);
+                    fs.writeFileSync(path.join(config.projects[i].project_path, 'README.md'), document.documentation);
                 }
             }
         }

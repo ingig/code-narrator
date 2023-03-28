@@ -3,65 +3,56 @@ sidebar_position: 1
 sidebar_label: Package.json
 ---
 
-This is a configuration file for the `code-narrator` project. The `code-narrator` is a self-documenting tool that uses OpenAI to generate documentation on code and tests, acting as a friend to the lazy developer. The configuration file contains various settings and dependencies for the project.
+This is a configuration file for the `code-narrator` package, a self-documenting tool that uses OpenAI to generate documentation on code and tests. It is intended for developers working with the package.
 
-```markdown
-### Configuration File Overview
+:::info
+**Package Information:**
+- Name: code-narrator
+- Version: 1.0.1
+- Description: Uses OpenAI to generate documentation on code and tests. Configure your project using the `code-narrator.config.ts` file, setting project path, doc, documentation type, and more. Install the package using `npm i code-narrator -D`.
+- Keywords: documentation, openai, autodoc
+- Homepage: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
+- Bugs: [https://github.com/ingig/code-narrator/issues](https://github.com/ingig/code-narrator/issues)
+- Engines: Node >18
+- Repository: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
+:::
 
-- **name**: The name of the project, "code-narrator".
-- **version**: The current version of the project, "1.0.0".
-- **description**: A brief description of the project and its purpose.
-- **keywords**: An array of keywords related to the project.
-- **homepage**: The project's homepage on GitHub.
-- **bugs**: An object containing the URL for reporting issues on GitHub.
-- **engines**: Specifies the minimum required version of Node.js.
-- **packageManager**: The package manager used for the project (left empty).
-- **repository**: An object containing the URL of the project's repository on GitHub.
-- **bin**: An object defining the command-line interface for the project.
-- **readme**: The path to the project's README file.
-- **scripts**: An object containing scripts for running the project.
-- **author**: The author of the project, Ingi Gauti Ragnarsson.
-- **license**: The project's license, "ISC".
-- **main**: The main entry point for the project.
-- **dependencies**: An object listing the project's dependencies and their versions.
-- **devDependencies**: An object listing the project's development dependencies and their versions.
+:::note
+**Scripts:**
+- Start: `npx ts-node .\src\App.ts`
+:::
 
-### Usage
+:::tip
+**Author:** Ingi Gauti Ragnarsson @ingig
+**License:** ISC
+**Main:** ./src/App.ts
+:::
 
-To use `code-narrator` in your project, create a `code-narrator.config.ts` file to set the configuration, such as project path, doc, documentation type, and more. Install the package using the following command:
+:::caution
+**Dependencies:**
+- asynckit: ^0.4.0
+- axios: ^0.26.1
+- combined-stream: ^1.0.8
+- delayed-stream: ^1.0.0
+- dotenv: ^16.0.3
+- extract-json-from-string: ^1.0.1
+- follow-redirects: ^1.15.2
+- form-data: ^4.0.0
+- ignore: ^5.2.4
+- liquidjs: ^10.7.0
+- mime-db: ^1.52.0
+- mime-types: ^2.1.35
+- openai: ^3.1.0
+:::
 
-```bash
-npm i code-narrator -D
-```
-
-### Dependencies
-
-The project has several dependencies, including:
-
-- **asynckit**: A library for asynchronous operations.
-- **axios**: A promise-based HTTP client for Node.js and the browser.
-- **combined-stream**: A library for working with multiple streams.
-- **delayed-stream**: A library for delaying the emitting of events from a stream.
-- **dotenv**: A module for loading environment variables from a .env file.
-- **extract-json-from-string**: A utility for extracting JSON objects from strings.
-- **follow-redirects**: A module for following HTTP redirects.
-- **form-data**: A library for creating and parsing multipart/form-data payloads.
-- **ignore**: A utility for working with .gitignore-style patterns.
-- **liquidjs**: A powerful, simple, and safe template engine.
-- **mime-db**: A comprehensive database of MIME types.
-- **mime-types**: A library for working with MIME types.
-- **openai**: The official OpenAI API client for JavaScript.
-
-### Development Dependencies
-
-The project also has several development dependencies, including:
-
-- **@babel/preset-typescript**: A Babel preset for TypeScript.
-- **@jest/globals**: Jest global variables and functions.
-- **@types/jest**: TypeScript definitions for Jest.
-- **@types/node**: TypeScript definitions for Node.js.
-- **jest**: A JavaScript testing framework.
-- **ts-jest**: A TypeScript preprocessor for Jest.
-- **ts-node**: A TypeScript execution environment for Node.js.
-- **typescript**: The TypeScript language and compiler.
-```
+:::danger
+**Dev Dependencies:**
+- @babel/preset-typescript: ^7.21.0
+- @jest/globals: ^29.5.0
+- @types/jest: ^29.4.0
+- @types/node: ^18.11.19
+- jest: ^29.4.2
+- ts-jest: ^29.0.5
+- ts-node: ^10.9.1
+- typescript: ^4.9.5
+:::
