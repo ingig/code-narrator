@@ -5,59 +5,48 @@ sidebar_label: DocumentationGenerator.ts
 
 # DocumentationGenerator.ts
 
-This is a TypeScript code file that defines a class called `DocumentationGenerator`. The purpose of this class is to generate documentation files based on the contents of a cache and a configuration file. The generated documentation files are saved to a specified path.
+This is a TypeScript code file that defines a class named `DocumentationGenerator`. The purpose of this class is to generate documentation files based on the contents of a `DocumentationCache`. It supports the use of generator plugins to process the documentation before writing it to the file system.
 
-## Usage
+## Table of Contents
 
-To use the `DocumentationGenerator` class, you need to create an instance of the class and call the `make()` method.
+- [Class Description](#class-description)
+- [Usage Examples](#usage-examples)
+- [Methods](#methods)
+  - [make](#make)
+- [Parameters](#parameters)
+
+## Class Description
+
+The `DocumentationGenerator` class is responsible for generating documentation files based on the contents of a `DocumentationCache`. It uses the configuration provided by `ConfigHelper` to determine the output paths for the generated documentation files. The class also supports the use of generator plugins to process the documentation before writing it to the file system.
+
+## Usage Examples
+
+To use the `DocumentationGenerator` class, you can create an instance of the class and call the `make` method:
 
 ```typescript
-import DocumentationGenerator from './DocumentationGenerator';
+import DocumentationGenerator from "./DocumentationGenerator";
 
 const generator = new DocumentationGenerator();
 generator.make();
 ```
 
-## Class: DocumentationGenerator
+## Methods
 
-### Method: make()
+### make
 
-This method generates documentation files based on the contents of the `DocumentationCache` and the configuration file `code-narrator.config`. It saves the generated documentation files to the specified path in the configuration file.
-
-#### Parameters
-
-None.
-
-#### Example
+The `make` method is responsible for generating the documentation files. It first retrieves the documents from the `DocumentationCache`. If there are no documents, the method returns immediately. The method then iterates through the documents and processes them using the configured generator plugins. Finally, it writes the processed documentation to the file system.
 
 ```typescript
-const generator = new DocumentationGenerator();
-generator.make();
+public make(): void;
 ```
 
-## Technical Concepts
+## Parameters
 
-### ConfigHelper
+The `make` method does not have any parameters.
 
-`ConfigHelper` is a utility class that helps in fetching configuration values from the `code-narrator.config` file.
+### Technical Concepts
 
-### DocumentationCache
-
-`DocumentationCache` is a class that stores the documentation data in a cache. It provides methods to get and set documentation data.
-
-### BaseGenerator
-
-`BaseGenerator` is a base class for generator plugins. Generator plugins are used to process the documentation data before saving it to a file.
-
-## File Structure
-
-The file imports the following modules and classes:
-
-- `fs` from the `fs` module
-- `ConfigHelper` from `../utils/ConfigHelper`
-- `DocumentationCache` from `./DocumentationCache`
-- `path` from the `path` module
-- `config` from `../../code-narrator.config`
-- `BaseGenerator` from `./plugins/generators/BaseGenerator`
-
-The `DocumentationGenerator` class has a single method called `make()`. This method iterates through the projects and documentation data, processes the data using generator plugins, and saves the generated documentation files to the specified path.
+- **DocumentationCache**: A cache that stores the documentation data to be processed by the `DocumentationGenerator`.
+- **BaseGenerator**: A base class for generator plugins that can be used to process the documentation before writing it to the file system.
+- **ConfigHelper**: A helper class that provides access to the configuration settings for the documentation generation process.
+- **App**: A class representing the main application, which is used to determine the start time of the application for cache management purposes.

@@ -1,19 +1,20 @@
 import OpenAIRepository from "../repositories/OpenAIRepository";
-import ConfigHelper from "../utils/ConfigHelper";
 import BaseBuilder from "./plugins/builders/BaseBuilder";
+import App from "../App";
+import ConfigHelper from "../config/ConfigHelper";
 
 export default class DocumentationBuilder {
     openAIRepository: OpenAIRepository;
     projectPath : string;
     constructor() {
         this.openAIRepository = new OpenAIRepository();
-        this.projectPath = ConfigHelper.get('project_path');
+        this.projectPath = __dirname;
     }
 
-    public async build(project : any) {
+    public async build() {
         let plugins = ConfigHelper.BuilderPlugins;
         for (let i=0;i<plugins.length;i++) {
-            let generator = new plugins[i](project) as BaseBuilder;
+            let generator = new plugins[i]() as BaseBuilder;
             await generator.generate();
         }
     }

@@ -5,75 +5,69 @@ sidebar_label: FileStructure.ts
 
 # FileStructure.ts
 
-## Overview
+This is a TypeScript code file that defines a `FileStructure` class. The class is used to represent and manipulate file structures in a project. It provides methods to check if a file is a code file and to get the content of a file.
 
-The `FileStructure.ts` file is a TypeScript module that provides a class named `FileStructure`. This class is responsible for managing file structures, specifically for code files with the `.ts` (TypeScript) extension. It provides methods for creating a new instance of the class, checking if a file is a code file, and retrieving the content of a file.
+## Table of Contents
 
-## Usage
+- [Class Definition](#class-definition)
+- [Examples](#examples)
+- [Methods](#methods)
+  - [constructor](#constructor)
+  - [isCodeFile](#iscodefile)
+  - [getContent](#getcontent)
 
-To use the `FileStructure` class, you need to import it into your TypeScript code:
+## Class Definition
 
-```typescript
-import FileStructure from "./FileStructure";
-```
+The `FileStructure` class has the following properties:
 
-### Creating a new instance
+- `name`: The name of the file or directory.
+- `path`: The relative path of the file or directory from the project root.
+- `entry`: An object representing the file or directory entry.
+- `depth`: The depth of the file or directory in the file structure.
 
-To create a new instance of the `FileStructure` class, you need to provide a directory path and an entry object:
+## Examples
 
-```typescript
-const dir = "/path/to/directory";
-const entry = { name: "example.ts" };
-const fileStructure = new FileStructure(dir, entry);
-```
-
-### Checking if a file is a code file
-
-To check if a file is a code file (TypeScript), you can use the `isCodeFile` static method:
+Here are some examples of how to use the `FileStructure` class:
 
 ```typescript
-const fileName = "example.ts";
-const isCodeFile = FileStructure.isCodeFile(fileName);
-console.log(isCodeFile); // true
+// Create a new FileStructure instance
+const fileStructure = new FileStructure('src', { name: 'example.ts' }, 1);
+
+// Check if a file is a code file
+const isCodeFile = FileStructure.isCodeFile('example.ts'); // true
+
+// Get the content of a file
+const content = FileStructure.getContent('src/example.ts');
 ```
 
-### Retrieving the content of a file
+## Methods
 
-To get the content of a file, you can use the `getContent` static method:
+### constructor
 
-```typescript
-const filePath = "/path/to/file/example.ts";
-const content = FileStructure.getContent(filePath);
-console.log(content); // Content of the file
-```
+The constructor initializes a new `FileStructure` instance with the given `dir`, `entry`, and `depth`.
 
-## Class Methods
+**Parameters:**
 
-### constructor(dir: string, entry: any)
+- `dir`: A string representing the directory path.
+- `entry`: An object representing the file or directory entry.
+- `depth`: A number representing the depth of the file or directory in the file structure.
 
-The constructor method initializes a new instance of the `FileStructure` class. It takes two parameters:
+### isCodeFile
 
-- `dir` (string): The directory path where the file is located.
-- `entry` (any): An object containing the file's name.
+This static method checks if the given `fileName` is a TypeScript code file by checking its file extension.
 
-### isCodeFile(fileName: string): boolean
+**Parameters:**
 
-This static method checks if a given file is a TypeScript code file. It takes one parameter:
+- `fileName`: A string representing the name of the file.
 
-- `fileName` (string): The name of the file to check.
+**Returns:** A boolean value indicating whether the file is a TypeScript code file.
 
-It returns a boolean value indicating whether the file is a TypeScript code file or not.
+### getContent
 
-### getContent(path: string): string
+This static method returns the content of the file at the given `path`. If the file does not exist, it returns an empty string.
 
-This static method retrieves the content of a file. It takes one parameter:
+**Parameters:**
 
-- `path` (string): The path to the file.
+- `path`: A string representing the path of the file.
 
-It returns a string containing the content of the file. If the file does not exist, it returns an empty string.
-
-## Technical Concepts
-
-### ConfigHelper
-
-The `ConfigHelper` class is imported from the `./ConfigHelper` module. It is used to get the project path from the configuration. This is not a standard concept, but it is used in the `FileStructure` class to resolve the relative path of the file.
+**Returns:** A string containing the content of the file.

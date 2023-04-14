@@ -7,97 +7,99 @@ sidebar_label: GenerateOptions.ts
 
 ## Overview
 
-The `GenerateOptions.ts` file defines an interface called `GenerateOptions`. This interface is used to specify the options for generating content, such as files or templates, in a TypeScript project. The interface includes various properties that can be used to customize the generation process, such as the ID, arguments, template, name, path, and more.
+This TypeScript file defines an interface called `GenerateOptions`. The interface is used to specify the options for generating content based on a template. It includes various properties that can be used to customize the generation process, such as the template to use, the name of the generated content, the path to the file, and more.
 
-## Usage
+## Interface: GenerateOptions
 
-To use the `GenerateOptions` interface in your TypeScript project, you can import it and then create an object that implements the interface. Here are some examples of how to use the `GenerateOptions` interface:
+The `GenerateOptions` interface contains the following properties:
 
-### Example 1: Basic Usage
-
-```typescript
-import { GenerateOptions } from './GenerateOptions';
-
-const options: GenerateOptions = {
-  name: 'example',
-  pathToFile: './examples/example.txt',
-  folderPath: './examples',
-};
-```
-
-### Example 2: With Optional Properties
-
-```typescript
-import { GenerateOptions } from './GenerateOptions';
-
-const options: GenerateOptions = {
-  id: 'example-1',
-  args: { key: 'value' },
-  template: 'template-name',
-  name: 'example',
-  pathToFile: './examples/example.txt',
-  folderPath: './examples',
-  sidebarPosition: 1,
-  sidebarLabel: 'Example',
-  saveToPath: './output',
-  data: { dataKey: 'dataValue' },
-};
-```
-
-## Properties
-
-The `GenerateOptions` interface includes the following properties:
-
-### id (optional)
-
-- Type: `string`
-- Description: A unique identifier for the generated content.
-
-### args (optional)
+### args
 
 - Type: `any`
-- Description: Additional arguments that can be passed to the generation process.
+- Optional
 
-### template (optional)
+This property represents any additional arguments that may be required during the generation process.
+
+### template
 
 - Type: `string`
-- Description: The name of the template to be used for generating the content.
+- Optional
+
+This property specifies the template to be used for generating the content. The template should be a string containing placeholders for the data to be inserted.
 
 ### name
 
 - Type: `string`
-- Description: The name of the generated content.
+
+This property represents the name of the generated content.
 
 ### pathToFile
 
 - Type: `string`
-- Description: The path to the file that will be generated.
+
+This property specifies the path to the file where the generated content will be saved.
 
 ### folderPath
 
 - Type: `string`
-- Description: The path to the folder where the generated file will be saved.
 
-### sidebarPosition (optional)
+This property represents the path to the folder where the generated content will be stored.
+
+### sidebarPosition
 
 - Type: `number`
-- Description: The position of the generated content in the sidebar (if applicable).
+- Optional
 
-### sidebarLabel (optional)
+This property specifies the position of the generated content in the sidebar, if applicable.
 
-- Type: `string`
-- Description: The label for the generated content in the sidebar (if applicable).
-
-### saveToPath (optional)
+### sidebarLabel
 
 - Type: `string`
-- Description: The path where the generated content will be saved. If not provided, the content will be saved in the `folderPath`.
+- Optional
 
-### data (optional)
+This property represents the label to be displayed for the generated content in the sidebar, if applicable.
+
+### saveToPath
+
+- Type: `string`
+- Optional
+
+This property specifies the path where the generated content will be saved. If not provided, the content will be saved to the `pathToFile` property.
+
+### data
 
 - Type: `any`
-- Description: Additional data that can be used during the generation process.
+- Optional
 
-## Conclusion
+This property represents the data to be used for generating the content. The data should be in a format that can be inserted into the template placeholders.
 
-The `GenerateOptions.ts` file provides a flexible and customizable way to define options for generating content in a TypeScript project. By using the `GenerateOptions` interface, developers can easily specify various properties to control the generation process and create content that meets their specific requirements.
+### assistantMessages
+
+- Type: `string[]`
+- Optional
+
+This property is an array of strings containing messages from the assistant during the generation process.
+
+## Usage
+
+To use the `GenerateOptions` interface, you can create an object that implements the interface and pass it to a function that generates content based on the provided options. Here's an example:
+
+```typescript
+import { GenerateOptions } from './GenerateOptions';
+
+const options: GenerateOptions = {
+  template: 'Hello, {{name}}!',
+  name: 'greeting',
+  pathToFile: './greetings.txt',
+  folderPath: './greetings',
+  data: { name: 'John Doe' },
+};
+
+function generateContent(options: GenerateOptions) {
+  // Implementation for generating content based on the provided options
+}
+
+generateContent(options);
+```
+
+In this example, the `generateContent` function would use the provided `options` object to generate a greeting message based on the specified template and save it to the specified file and folder.

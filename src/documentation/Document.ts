@@ -1,6 +1,5 @@
 import fs from "fs";
 import Helper from "../utils/Helper";
-import ConfigHelper from "../utils/ConfigHelper";
 import * as path from 'path';
 
 export default class Document {
@@ -22,10 +21,12 @@ export default class Document {
     data : any;
     documentation_type = 'md'
     question = '';
+    requestMessages : any[] = [];
+    lastTouch : Date;
 
     constructor(name: string, filePath: string, folderPath : string, updated : Date, sidebar_position? : number, sidebar_label? : string) {
         this.name = name;
-        let project_path = ConfigHelper.get('project_path')
+        let project_path = process.cwd()
         this.path = path.relative(project_path, filePath);
         this.saveToPath = this.path;
         this.id = (this.path) ? Document.getId(this.path) : Document.getId(name);
@@ -34,9 +35,10 @@ export default class Document {
         this.updated = updated;
         this.sidebar_position = sidebar_position;
         this.sidebar_label = sidebar_label ?? Helper.upperFirstLetter(name);
-        if (!this.isFolder) {
+        if (!this.isFolder && fs.existsSync(filePath)) {
             this.fileContent = fs.readFileSync(filePath).toString();
         }
+        this.lastTouch = new Date();
     }
 
     public static getId(path: string) {

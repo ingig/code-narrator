@@ -1,8 +1,6 @@
 import OpenAIRepository from "../../src/repositories/OpenAIRepository";
-import {CreateCompletionResponse, OpenAIApi} from "openai";
-import {AxiosResponse} from "axios";
-import {describe, expect, test} from '@jest/globals';
-import ConfigHelper from "../../src/utils/ConfigHelper";
+import {OpenAIApi} from "openai";
+import {describe, expect} from '@jest/globals';
 
 describe('Test OpenAIRepository', () => {
 

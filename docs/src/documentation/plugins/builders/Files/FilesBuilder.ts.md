@@ -5,59 +5,87 @@ sidebar_label: FilesBuilder.ts
 
 # FilesBuilder.ts
 
-## Overview
+The `FilesBuilder.ts` file is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating and rendering documentation for files in a project structure. It also handles querying folders, cleaning deleted files from the cache, and determining if a file should be documented.
 
-The `FilesBuilder.ts` file is a TypeScript code file that defines a `FilesBuilder` class, which extends the `BaseBuilder` class. This class is responsible for generating and rendering documentation for files in a project structure, as well as managing the documentation cache for these files.
+## Table of Contents
+
+- [Class Definition](#class-definition)
+- [Methods](#methods)
+  - [generate](#generate)
+  - [render](#render)
+  - [queryForFolder](#queryforfolder)
+  - [cleanDeletedFilesFromCache](#cleandeletedfilesfromcache)
+  - [shouldDocument](#shoulddocument)
+
+## Class Definition
+
+```typescript
+export default class FilesBuilder extends BaseBuilder {
+    ...
+}
+```
+
+## Methods
+
+### generate
+
+```typescript
+public async generate()
+```
+
+This method generates the documentation for the files in the project structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then queries the folder for documentation.
+
+### render
+
+```typescript
+public async render(document: Document)
+```
+
+This method renders the documentation for a given `Document` instance. It returns the documentation as a string.
+
+### queryForFolder
+
+```typescript
+public async queryForFolder(folder: FolderStructure)
+```
+
+This method recursively queries a given folder and its subfolders for documentation. It cleans deleted files from the cache, iterates through the files in the folder, and generates documentation for each file if it should be documented.
+
+### cleanDeletedFilesFromCache
+
+```typescript
+private cleanDeletedFilesFromCache(folder: FolderStructure): void
+```
+
+This method cleans deleted files from the `DocumentationCache` by checking if the cached files still exist in the folder structure. If a file does not exist, it is removed from the cache.
+
+### shouldDocument
+
+```typescript
+private shouldDocument(file: FileStructure): boolean
+```
+
+This method determines if a given file should be documented based on the `include` configuration. If the `include` configuration is not set, all files are considered for documentation. If the `include` configuration is set, the method checks if the file path is ignored by the include patterns. If the file path is ignored, the file should be documented.
 
 ## Usage
 
-To use the `FilesBuilder` class, you need to import it and create a new instance by passing a `project` object to the constructor. Then, you can call the `generate()` method to generate the documentation for the files in the project structure.
+To use the `FilesBuilder` class, you can create a new instance and call the `generate` method to generate documentation for the files in the project structure.
 
 ```typescript
-import FilesBuilder from "./path/to/FilesBuilder";
-
-const project = { /* project object */ };
-const filesBuilder = new FilesBuilder(project);
-
+const filesBuilder = new FilesBuilder();
 await filesBuilder.generate();
 ```
 
-## Class Methods
+To render the documentation for a specific `Document` instance, you can call the `render` method.
 
-### constructor(project: any)
+```typescript
+const document = new Document(...);
+const documentation = await filesBuilder.render(document);
+```
 
-The constructor initializes a new instance of the `FilesBuilder` class with the given `project` object.
+To query a specific folder for documentation, you can call the `queryForFolder` method.
 
-### async generate()
-
-This method generates the documentation for the files in the project structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then calls the `queryForFolder()` method for the root folder.
-
-### async render(document: Document)
-
-This method renders the documentation for a given `document` object. It returns the `documentation` property of the `document` object.
-
-### async queryForFolder(folder: FolderStructure)
-
-This method recursively queries the given `folder` and its subfolders for files, generating and caching the documentation for each file. It also cleans up the documentation cache for deleted files by calling the `cleanDeletedFilesFromCache()` method.
-
-### private cleanDeletedFilesFromCache(folder: FolderStructure)
-
-This private method cleans up the documentation cache for deleted files in the given `folder`. It checks if each cached file still exists in the folder, and if not, removes it from the cache.
-
-## Technical Concepts
-
-### ProjectStructure
-
-The `ProjectStructure` class is a utility class that represents the structure of a project, including its folders and files.
-
-### FolderStructure
-
-The `FolderStructure` class is a utility class that represents the structure of a folder, including its subfolders and files.
-
-### FileStructure
-
-The `FileStructure` class is a utility class that represents the structure of a file, including its content and metadata.
-
-### DocumentationCache
-
-The `DocumentationCache` class is a utility class that manages the caching of documentation for files and folders in a project structure.
+```typescript
+const folder = new FolderStructure(...);
+await filesBuilder.queryForFolder(folder);
+```

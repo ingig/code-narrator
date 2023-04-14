@@ -1,6 +1,5 @@
 
 export interface GenerateOptions {
-    id? : string;
     args?: any
     template?: string;
     name: string;
@@ -10,4 +9,5 @@ export interface GenerateOptions {
     sidebarLabel?: string
     saveToPath?: string;
     data?: any;
+    assistantMessages? : string[]
 }

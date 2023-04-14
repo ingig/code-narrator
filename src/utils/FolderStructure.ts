@@ -1,9 +1,9 @@
 import fs, {existsSync, readdirSync} from "fs";
 import FileStructure from "./FileStructure";
-import ConfigHelper from "./ConfigHelper";
 import path, {resolve} from "path";
-import Ignore from 'ignore';
-import App from "../App";
+import ConfigHelper from "../config/ConfigHelper";
+import * as fg from 'fast-glob';
+
 export default class FolderStructure {
 
     name = '';
@@ -11,23 +11,35 @@ export default class FolderStructure {
     entry : any;
     files : FileStructure[];
     folders : FolderStructure[];
-
-    constructor(folderPath : string) {
-        let project_path = ConfigHelper.get('project_path');
+    depth : number;
+    constructor(folderPath : string, depth = 0) {
+        let project_path = process.cwd();
         this.path = path.relative(project_path, folderPath);
 
         this.name = path.basename(this.path);
 
-        this.files = this.getFiles(folderPath);
-        this.folders = this.getStructure(folderPath);
+        this.files = this.getFiles(folderPath, depth);
+        this.folders = this.getStructure(folderPath, ++depth);
+        this.depth = depth
     }
 
-    public static getFiles(dir : string) {
+    public getHierarchicalTree() {
+        let str = ' '.repeat(this.depth) + '+' + this.path + '\n';
+        for (let i=0;i<this.folders.length;i++) {
+            str += this.folders[i].getHierarchicalTree() + '\n';
+        }
+        for (let i=0;i<this.files.length;i++) {
+            str += ' '.repeat(this.depth) + '-' + this.files[i].name + '\n';
+        }
+        return str;
+    }
+
+    public static getFiles(dir : string, depth : number) {
         const entries = readdirSync(dir, {withFileTypes: true});
         let files :FileStructure[] = [];
         for (const entry of entries) {
-            if (!entry.isDirectory() && !FolderStructure.isInIgnoreList(entry.name)) {
-                files.push(new FileStructure(dir, entry))
+            if (!entry.isDirectory() && FolderStructure.shouldDocument(path.join(dir, entry.name), entry.isDirectory())) {
+                files.push(new FileStructure(dir, entry, depth))
             }
         }
         return files;
@@ -36,32 +48,58 @@ export default class FolderStructure {
     public static exists(dir : string) : boolean {
         return existsSync(dir);
     }
-    public getFiles(dir: string): FileStructure[] {
-        return FolderStructure.getFiles(dir);
+    public getFiles(dir: string, depth : number): FileStructure[] {
+        return FolderStructure.getFiles(dir, depth);
     }
 
-    private getStructure(path: string) : FolderStructure[] {
+    private getStructure(folderPath: string,depth : number) : FolderStructure[] {
         let folders : FolderStructure[] = [];
-        const entries = readdirSync(path, {withFileTypes: true});
+        const entries = readdirSync(folderPath, {withFileTypes: true});
         for (const entry of entries) {
-            const res = resolve(path, entry.name);
-            if (entry.isDirectory() && !FolderStructure.isInIgnoreList(res)) {
-                folders.push(new FolderStructure(res));
+            const res = resolve(folderPath, entry.name);
+            if (entry.isDirectory() && FolderStructure.shouldDocument(path.join(folderPath, entry.name), entry.isDirectory())) {
+                folders.push(new FolderStructure(res, depth));
             }
         }
         return folders;
     }
 
 
+    public static shouldDocument(fileOrFolderPath: string, isDirectory: boolean): boolean {
+        let include = ConfigHelper.config.include ?? ['*/**']
 
-    public static isInIgnoreList(fileOrFolderPath : string): boolean {
-        let relativePath = path.relative(App.Project.project_path, fileOrFolderPath)
-        if (relativePath == '') return false;
+        // Concatenate exclude patterns with a '!' prefix to indicate exclusion
+        const patterns = [
+            ...include,
+            ...ConfigHelper.config.exclude.map((pattern) => `!${pattern}`)
+        ];
 
-        const ignore = Ignore();
-        const excludedPatterns = ConfigHelper.get('exclude') as string[];
-        ignore.add(excludedPatterns);
-        return ignore.ignores(relativePath);
+        // If the path is absolute, make it relative to the current working directory
+        const relativePath = path.isAbsolute(fileOrFolderPath)
+            ? path.relative(process.cwd(), fileOrFolderPath)
+            : fileOrFolderPath;
+
+        // Find all matching paths for the patterns
+        const allMatches = fg.sync(patterns, { onlyFiles: false });
+
+        // Filter the matches to only include paths that match the input fileOrFolderPath
+        const matches = allMatches.filter((match) => {
+            if (isDirectory) {
+                return path.dirname(match) === relativePath.replaceAll('\\', '/')
+            }
+            return path.normalize(match) === path.normalize(relativePath)
+        });
+        let isIncluded = matches.length > 0;
+
+        return isIncluded;
+    }
+    public static isAncestorOrParentPath(parentPath : string, childPath: string) {
+        const relativePath = path.relative(parentPath, childPath);
+        return (
+            relativePath &&
+            !relativePath.startsWith('..') &&
+            !path.isAbsolute(relativePath)
+        );
     }
 
     public static searchForStringInFiles(root: string, search: string): string {
@@ -84,5 +122,9 @@ export default class FolderStructure {
             }
         }
         return '';
+    }
+
+    static getFoldersAndFiles(path: string) {
+        return fs.readdirSync(path)
     }
 }

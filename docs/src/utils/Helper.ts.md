@@ -5,58 +5,51 @@ sidebar_label: Helper.ts
 
 # Helper.ts
 
-This is a TypeScript code file that contains a utility class called `Helper`. The `Helper` class provides various utility methods that can be used throughout your application. These methods include removing file extensions, capitalizing the first letter of a string, and extracting JSON objects from a string.
+The `Helper.ts` file is a TypeScript code file that contains a class named `Helper`. This class provides utility methods to perform common operations such as removing file extensions, capitalizing the first letter of a string, and extracting JSON objects from a string.
 
-## Usage
+## Usage Examples
 
-To use the `Helper` class, simply import it into your TypeScript file and call the desired static methods.
+Here are some examples of how to use the `Helper` class:
 
 ```typescript
-import Helper from './Helper';
+import Helper from './Helper.ts';
 
+// Remove file extension
 const fileName = 'example.txt';
-const noExtension = Helper.removeExtension(fileName);
-console.log(noExtension); // Output: example
+const nameWithoutExtension = Helper.removeExtension(fileName);
+console.log(nameWithoutExtension); // Output: example
 
-const name = 'john';
-const capitalized = Helper.upperFirstLetter(name);
+// Capitalize the first letter of a string
+const lowerCaseName = 'john';
+const capitalized = Helper.upperFirstLetter(lowerCaseName);
 console.log(capitalized); // Output: John
 
-const jsonString = '{"key": "value"}';
+// Extract JSON objects from a string
+const jsonString = '{"key1": "value1"}{"key2": "value2"}';
 const jsonObjects = Helper.getJsons(jsonString);
-console.log(jsonObjects); // Output: [{ key: 'value' }]
+console.log(jsonObjects); // Output: [{ key1: 'value1' }, { key2: 'value2' }]
 ```
 
 ## Methods
 
 ### removeExtension(fileName: string)
 
-This method takes a `fileName` string as a parameter and returns the file name without its extension.
+This method takes a `fileName` as a parameter and returns the file name without its extension.
 
-#### Parameters
-
-- `fileName` (string): The file name with its extension.
+- `fileName`: A string representing the file name with its extension.
 
 ### upperFirstLetter(name: string)
 
-This method takes a `name` string as a parameter and returns the same string with the first letter capitalized.
+This method takes a `name` as a parameter and returns the same string with the first letter capitalized.
 
-#### Parameters
-
-- `name` (string): The string to capitalize the first letter of.
+- `name`: A string representing the name to be capitalized.
 
 ### getJsons(content: string)
 
-This method takes a `content` string as a parameter and returns an array of JSON objects extracted from the string.
+This method takes a `content` string as a parameter and returns an array of JSON objects extracted from the input string.
 
-#### Parameters
-
-- `content` (string): The string containing JSON objects.
+- `content`: A string containing JSON objects.
 
 ## Technical Concepts
 
-- **TypeScript**: TypeScript is a superset of JavaScript that adds optional static types to the language. It is designed to make it easier to write and maintain large-scale JavaScript applications.
-
-- **Static methods**: Static methods are methods that belong to a class rather than an instance of the class. They can be called directly on the class itself, without needing to create an instance of the class.
-
-- **JSON**: JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. JSON is a text format that is completely language-independent but uses conventions that are familiar to programmers of the C family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
+The `Helper` class uses the `extract-json-from-string` library to extract JSON objects from a string. This library is not a standard JavaScript or TypeScript library, but it is used in the `getJsons` method to provide the functionality of extracting JSON objects from a string.

@@ -5,63 +5,93 @@ sidebar_label: ProjectStructure.ts
 
 # ProjectStructure.ts
 
-## Overview
+This is a code file that defines a class called `ProjectStructure`. The class is responsible for managing the structure of a project, including its folders and files. It provides methods to retrieve the folder structure and all the files within the project.
 
-The `ProjectStructure.ts` file is a TypeScript module that exports a `ProjectStructure` class. This class is responsible for managing the structure of a project, including its folder hierarchy and configuration settings. It utilizes the `ConfigHelper` and `FolderStructure` utility classes to achieve this.
+## Table of Contents
 
-## Usage
+- [Class Description](#class-description)
+- [Examples](#examples)
+- [Methods](#methods)
+  - [constructor](#constructor)
+  - [getStructure](#getstructure)
+  - [getAllFiles](#getallfiles)
+  - [getSubfiles](#getsubfiles)
 
-To use the `ProjectStructure` class, you first need to import it:
+## Class Description
 
-```typescript
+The `ProjectStructure` class has the following properties:
+
+- `folderStructure`: An instance of the `FolderStructure` class representing the project's folder structure.
+
+The class has the following methods:
+
+- `constructor`: Initializes a new instance of the `ProjectStructure` class.
+- `getStructure`: Returns the folder structure of the project.
+- `getAllFiles`: Returns an array of all the files in the project.
+- `getSubfiles`: A private method that returns an array of all the files in a given folder.
+
+## Examples
+
+```javascript
 import ProjectStructure from "./ProjectStructure";
-```
 
-Then, create a new instance of the class and call its methods as needed:
-
-```typescript
+// Create a new instance of the ProjectStructure class
 const projectStructure = new ProjectStructure();
-const structure = await projectStructure.getStructure();
+
+// Get the folder structure of the project
+const folderStructure = await projectStructure.getStructure();
+
+// Get all the files in the project
+const allFiles = projectStructure.getAllFiles();
 ```
 
-## Class: ProjectStructure
+## Methods
 
-### Method: getStructure()
+### constructor
 
-This method retrieves the folder structure of the project, based on the project path specified in the configuration.
+The `constructor` method initializes a new instance of the `ProjectStructure` class. It sets the `folderStructure` property to a new instance of the `FolderStructure` class, using the current working directory as the project path.
 
-#### Parameters
-
-There are no parameters for this method.
-
-#### Returns
-
-This method returns an instance of the `FolderStructure` class, which represents the folder hierarchy of the project.
-
-#### Example
-
-```typescript
-const projectStructure = new ProjectStructure();
-const structure = await projectStructure.getStructure();
-console.log(structure);
+```javascript
+constructor() {
+    let projectPath = process.cwd();
+    this.folderStructure = new FolderStructure(projectPath);
+}
 ```
 
-## Utility Classes
+### getStructure
 
-### ConfigHelper
+The `getStructure` method is an asynchronous method that returns the folder structure of the project.
 
-The `ConfigHelper` utility class is used to manage the configuration settings of the project. It provides methods to get and set configuration values, such as the project path.
+```javascript
+public async getStructure() {
+    return this.folderStructure;
+}
+```
 
-### FolderStructure
+### getAllFiles
 
-The `FolderStructure` utility class is used to represent and manipulate the folder hierarchy of the project. It provides methods to traverse the folder structure, create new folders, and delete existing ones.
+The `getAllFiles` method returns an array of all the files in the project. It iterates through the folders in the folder structure and calls the private `getSubfiles` method to get all the files in each folder.
 
-## Technical Concepts
+```javascript
+public getAllFiles() {
+    let files : FileStructure[] = this.folderStructure.files;
+    for (let i=0;i<this.folderStructure.folders.length;i++) {
+        files.push(...this.getSubfiles(this.folderStructure.folders[i]))
+    }
+    return files;
+}
+```
 
-### TypeScript
+### getSubfiles
 
-TypeScript is a superset of JavaScript that adds optional static typing to the language. It is designed to make it easier to write and maintain large-scale JavaScript applications. TypeScript code is transpiled to JavaScript before being executed in the browser or on the server.
+The `getSubfiles` method is a private method that takes a `FolderStructure` object as a parameter and returns an array of all the files in the given folder. It recursively calls itself for each subfolder in the folder structure.
 
-### JSON
-
-JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is a text format that is completely language-independent but uses conventions that are familiar to programmers of the C family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
+```javascript
+private getSubfiles(folder : FolderStructure) {
+    let files : FileStructure[] = folder.files;
+    for (let i=0;i<folder.folders.length;i++) {
+        files.push(...this.getSubfiles(folder.folders[i]))
+    }
+    return files;
+}
+```

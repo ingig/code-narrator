@@ -1,17 +1,16 @@
 import Document from "../../../Document";
 import DocumentationCache from "../../../DocumentationCache";
 import FolderStructure from "../../../../utils/FolderStructure";
-import App from "../../../../App";
 import FileStructure from "../../../../utils/FileStructure";
 import BaseBuilder from "../Base/../BaseBuilder";
 import ProjectStructure from "../../../../utils/ProjectStructure";
-import path from "path";
+import ConfigHelper from "../../../../config/ConfigHelper";
 
 
 export default class FoldersBuilder extends BaseBuilder {
 
-    constructor(project : any) {
-        super('Folders', project);
+    constructor() {
+        super('Folders');
     }
 
     public async generate() {
@@ -26,8 +25,8 @@ export default class FoldersBuilder extends BaseBuilder {
             await this.queryForFolder(folder.folders[i], i+30);
         }
         let folderName =folder.name;
-        if (folder.name = '') {
-            folderName = 'Project folder'
+        if (folder.name == '') {
+            return;
         }
 
         let document = DocumentationCache.get(folder.path);
@@ -50,24 +49,20 @@ export default class FoldersBuilder extends BaseBuilder {
                 })
             })
 
-            let mdFileName = folderName;
-            if (mdFileName == 'src') {
-                mdFileName = "Code";
-            }
             let args = {
-                mdFileName,
-                repositoryUrl: App.repositoryUrl,
+                folderName,
+                repositoryUrl: ConfigHelper.config.repository_url,
                 path: folder.path.replaceAll('\\', '/'),
                 fileAndFolderInfo: JSON.stringify(fileAndFolderInfo)
             }
             await super.generateDocumentationAndCache({
                     args: args,
-                    name: folder.name,
+                    name: "README",
                     pathToFile: folder.path,
                     folderPath: folder.path,
                     saveToPath : folder.path,
                     sidebarPosition: position,
-                    sidebarLabel : mdFileName
+                    sidebarLabel : folderName
                 }
             )
         }
@@ -111,5 +106,7 @@ export default class FoldersBuilder extends BaseBuilder {
         }
         return '';
     }
+
+
 
 }

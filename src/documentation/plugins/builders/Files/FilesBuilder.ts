@@ -4,13 +4,15 @@ import FolderStructure from "../../../../utils/FolderStructure";
 import BaseBuilder from "../BaseBuilder";
 import DocumentationCache from "../../../DocumentationCache";
 import ProjectStructure from "../../../../utils/ProjectStructure";
+import ConfigHelper from "../../../../config/ConfigHelper";
+import Ignore from "ignore";
 
 
 export default class FilesBuilder extends BaseBuilder {
 
 
-    constructor(project : any) {
-        super('Files', project);
+    constructor() {
+        super('Files');
     }
 
 
@@ -28,11 +30,13 @@ export default class FilesBuilder extends BaseBuilder {
     public async queryForFolder(folder: FolderStructure) {
         this.cleanDeletedFilesFromCache(folder);
 
-
         let files = folder.files;
 
         for (let i = 0; i < files.length; i++) {
             let file = files[i];
+            if (!this.shouldDocument(file)) {
+                continue;
+            }
 
             let document = DocumentationCache.get(file.path)
             if (document && document.generator != "Files") continue;
@@ -41,6 +45,22 @@ export default class FilesBuilder extends BaseBuilder {
             }
             let fileName = file.name;
             let fileContent = FileStructure.getContent(file.path);
+
+            let assistantMessages = [];
+            let regex = /ref:\s*([A-Z0-9a-z\.\/]*)/gm;
+            let match;
+            while ((match = regex.exec(fileContent)) !== null) {
+                let content = FileStructure.getContent(match[1]);
+                let assistantFiles = 'These files might help with documentation.'
+                if (content != '') {
+                    assistantFiles += `
+                    ## ${match[1]} start ##
+                    ${content}
+                    ## ${match[1]} ends ##`
+                }
+                assistantMessages.push(assistantFiles)
+            }
+
             let args = {fileName, fileContent}
 
             await super.generateDocumentationAndCache({
@@ -49,7 +69,8 @@ export default class FilesBuilder extends BaseBuilder {
                 pathToFile: file.path,
                 folderPath: folder.path,
                 sidebarPosition: i,
-                sidebarLabel: fileName
+                sidebarLabel: fileName,
+                assistantMessages:assistantMessages
             })
         }
 
@@ -74,10 +95,19 @@ export default class FilesBuilder extends BaseBuilder {
             }
             if (!fileExists) {
                 console.warn(`Remove file ${cachedFiles[i].path} from cache`)
-                DocumentationCache.remove(cachedFiles[i]);
+                //DocumentationCache.remove(cachedFiles[i]);
             }
 
         }
 
+    }
+
+    private shouldDocument(file: FileStructure) {
+        if (!this.config.include) return true;
+
+        const ignore = Ignore();
+        const includePatterns = ConfigHelper.config.include
+        ignore.add(includePatterns);
+        return ignore.ignores(file.path);
     }
 }

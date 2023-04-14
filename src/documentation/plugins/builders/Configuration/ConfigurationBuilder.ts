@@ -1,11 +1,11 @@
 import Document from "../../../Document";
 import FolderStructure from "../../../../utils/FolderStructure";
-import ConfigHelper from "../../../../utils/ConfigHelper";
 import Helper from "../../../../utils/Helper";
 import FileStructure from "../../../../utils/FileStructure";
 import DocumentationCache from "../../../DocumentationCache";
 import BaseBuilder from "../BaseBuilder";
 import path from "path";
+import ConfigHelper from "../../../../config/ConfigHelper";
 
 export default class ConfigurationBuilder extends BaseBuilder {
 
@@ -13,12 +13,14 @@ export default class ConfigurationBuilder extends BaseBuilder {
     appSpecificConfigFiles: string[] = []
     updateSummary = false;
 
-    constructor(project : any) {
-        super('Configuration', project);
+    constructor() {
+        super('Configuration');
     }
 
 
     public async generate() {
+        if (ConfigHelper.config.config_files.length == 0) return;
+
         await this.prepareSummary();
         await this.generateAppConfigFiles();
         await this.generateGeneralConfigFiles();
@@ -28,7 +30,8 @@ export default class ConfigurationBuilder extends BaseBuilder {
     private async prepareSummary() {
         let document = DocumentationCache.get('Configuration');
         if (document) {
-            if (document.data) {
+
+            if (document.data && this.appSpecificConfigAndCacheSameSize(document)) {
                 if (document.data.appSpecificConfigFiles) this.appSpecificConfigFiles = document.data.appSpecificConfigFiles;
                 if (document.data.configFiles) this.configFiles = document.data.configFiles;
             }
@@ -38,14 +41,15 @@ export default class ConfigurationBuilder extends BaseBuilder {
             return;
         }
         this.updateSummary = true;
-        let appName = ConfigHelper.get('name');
+        let config = ConfigHelper.config;
+        let appName = config.project_name;
         let listOfFilesAndFolders = '';
+        let project_path = process.cwd();
+        let files = FolderStructure.getFiles(project_path, 0);
 
-        let files = FolderStructure.getFiles(ConfigHelper.get('project_path'));
-
-        let configPath = path.join(ConfigHelper.get('project_path'), 'config');
+        let configPath = path.join(project_path, 'config');
         if (FolderStructure.exists(configPath)) {
-            let configFiles = FolderStructure.getFiles(configPath);
+            let configFiles = FolderStructure.getFiles(configPath, 0);
             configFiles.forEach(configFile => {
                 files.push(configFile);
             })
@@ -58,8 +62,8 @@ export default class ConfigurationBuilder extends BaseBuilder {
             }
         })
 
-        let [answer, question] = await super.getAnswer('Configuration', {appName, listOfFilesAndFolders}, 'what_are_config_files');
-        let jsons = Helper.getJsons(answer)
+        let response = await super.getAnswer('Configuration', {appName, listOfFilesAndFolders}, 'what_are_config_files');
+        let jsons = Helper.getJsons(response.answer)
         if (jsons.length > 0) {
             let fileResults = jsons[0];
             this.appSpecificConfigFiles = [];
@@ -106,6 +110,8 @@ export default class ConfigurationBuilder extends BaseBuilder {
 
     private haveConfigFilesChanged() {
         let needsUpdate = false;
+        if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;
+
         for (let i=0;i<this.appSpecificConfigFiles.length;i++) {
             let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);
             if (this.hasChanged(configDoc)) {
@@ -172,5 +178,8 @@ export default class ConfigurationBuilder extends BaseBuilder {
     }
 
 
-
+    private appSpecificConfigAndCacheSameSize(document: Document) {
+        if (!document.data) return false;
+        return (document.data.appSpecificConfigFiles?.length == ConfigHelper.config.config_files.length)
+    }
 }

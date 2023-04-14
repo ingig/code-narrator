@@ -1,8 +1,9 @@
-import ConfigHelper from "./utils/ConfigHelper";
 import DocumentationBuilder from "./documentation/DocumentationBuilder";
 import DocumentationCache from "./documentation/DocumentationCache";
 import DocumentationGenerator from "./documentation/DocumentationGenerator";
-import config from '../code-narrator.config';
+import IProjectDocumentedSettings from "./model/IProjectDocumentedSettings";
+import ConfigHelper from "./config/ConfigHelper";
+import ICodeNarratorConfig from "./config/ICodeNarratorConfig";
 
 /*
 About code-narrator
@@ -20,29 +21,18 @@ There are few rules to follow
 - You can use :::tip or :::danger in you comments in your code files.
  */
 export default class App {
-    static repositoryUrl = ''
-    static Project : any;
-    static StartFile= '';
-    public async run() {
-        let projects = config.projects;
+    static StartTime = new Date();
+    public async run(config? : Partial<ICodeNarratorConfig>) {
+        await ConfigHelper.load(config);
+        DocumentationCache.load();
 
-        for (let i=0;i<projects.length;i++) {
-            App.Project = projects[i];
+        let builder = new DocumentationBuilder();
+        await builder.build();
 
-            await ConfigHelper.load(config, projects[i]);
-            DocumentationCache.load();
-
-            let builder = new DocumentationBuilder();
-            await builder.build(projects[i]);
-        }
 
         let generator = new DocumentationGenerator();
         generator.make();
 
         console.log('Done generating documents')
-
     }
 }
-
-let app = new App();
-app.run();

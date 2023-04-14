@@ -5,83 +5,125 @@ sidebar_label: BaseBuilder.ts
 
 # BaseBuilder.ts
 
-BaseBuilder.ts is a TypeScript file that defines an abstract class `BaseBuilder` for creating Builder plugins. These plugins are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.
+The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract class `BaseBuilder`. This class serves as the base class for Builder plugins, which are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.
 
-## Class: BaseBuilder
+## Table of Contents
 
-The `BaseBuilder` class is an abstract class that provides a base structure for creating Builder plugins. It has the following properties and methods:
+- [Description](#description)
+- [Usage](#usage)
+- [Methods](#methods)
+  - [generate](#generate)
+  - [render](#render)
+  - [getAnswer](#getanswer)
+  - [generateDocumentation](#generatedocumentation)
+  - [generateDocumentationAndCache](#generatedocumentationandcache)
+  - [hasChanged](#haschanged)
 
-### Properties
+## Description
 
-- `openAIRepository`: An instance of the `OpenAIRepository` class.
-- `generator`: A string representing the generator used for the Builder plugin.
-- `project`: An object representing the project.
+The `BaseBuilder` class provides a foundation for creating Builder plugins that interact with GPT and manage the generation and caching of documentation. It includes methods for generating questions, rendering documents, and managing the cache.
 
-### Constructor
+## Usage
 
-The constructor takes two parameters:
-
-- `generator` (string): The generator used for the Builder plugin.
-- `project` (any): The project object.
-
-### Methods
-
-#### generate()
-
-An abstract method that should be implemented by the derived class.
-
-#### render(document: Document)
-
-An abstract method that should be implemented by the derived class. It takes a `Document` object as a parameter and returns a Promise that resolves to a string.
-
-#### getAnswer(name: string, args: any, template = 'template'): Promise<[string, string]>
-
-This method takes three parameters:
-
-- `name` (string): The name of the file.
-- `args` (any): The arguments for the question.
-- `template` (string, optional, default: 'template'): The template to use for generating the question.
-
-It returns a Promise that resolves to a tuple containing the answer and the question.
-
-#### generateDocumentation(options: GenerateOptions)
-
-This method takes an object of type `GenerateOptions` as a parameter and returns a `Document` object. It generates the documentation by asking GPT a question and creating a new `Document` object with the answer.
-
-#### generateDocumentationAndCache(options: GenerateOptions)
-
-This method takes an object of type `GenerateOptions` as a parameter and generates the documentation using the `generateDocumentation` method. It then stores the generated `Document` object in the cache using the `DocumentationCache.set()` method.
-
-#### hasChanged(document?: Document): boolean
-
-This method takes an optional `Document` object as a parameter and returns a boolean value. It checks if the document has changed by comparing the file modification time with the document's updated time. If the document has changed, it returns `true`, otherwise, it returns `false`.
-
-## Example Usage
-
-To create a custom Builder plugin, you can extend the `BaseBuilder` class and implement the `generate()` and `render()` methods. Here's an example:
+To use the `BaseBuilder` class, you need to create a new class that extends it and implement the abstract methods `generate()` and `render(document: Document)`.
 
 ```typescript
 import BaseBuilder from "./BaseBuilder";
 import Document from "../../Document";
 
 class CustomBuilder extends BaseBuilder {
-  constructor(generator: string, project: any) {
-    super(generator, project);
+  constructor() {
+    super("CustomGenerator");
   }
 
   generate() {
-    // Implement the generate method
+    // Your custom implementation here
   }
 
   async render(document: Document) {
-    // Implement the render method
+    // Your custom implementation here
   }
 }
 ```
 
-Then, you can use the `CustomBuilder` class to generate and cache documentation:
+## Methods
+
+### generate
+
+This abstract method should be implemented in the derived class to generate the required data.
 
 ```typescript
-const customBuilder = new CustomBuilder("customGenerator", project);
-customBuilder.generateDocumentationAndCache(options);
+abstract generate(): any;
+```
+
+### render
+
+This abstract method should be implemented in the derived class to render the given `Document` object.
+
+```typescript
+abstract render(document: Document);
+```
+
+### getAnswer
+
+This method retrieves an answer from GPT using the provided name, arguments, and template.
+
+```typescript
+public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]);
+```
+
+### generateDocumentation
+
+This method generates a `Document` object with the provided options.
+
+```typescript
+public async generateDocumentation(options: GenerateOptions);
+```
+
+### generateDocumentationAndCache
+
+This method generates a `Document` object with the provided options and caches it.
+
+```typescript
+public async generateDocumentationAndCache(options: GenerateOptions);
+```
+
+### hasChanged
+
+This method checks if the given `Document` object has changed since it was last updated.
+
+```typescript
+public hasChanged(document?: Document): boolean;
+```
+
+## Example
+
+```typescript
+import BaseBuilder from "./BaseBuilder";
+import Document from "../../Document";
+
+class CustomBuilder extends BaseBuilder {
+  constructor() {
+    super("CustomGenerator");
+  }
+
+  generate() {
+    // Your custom implementation here
+  }
+
+  async render(document: Document) {
+    // Your custom implementation here
+  }
+}
+
+const customBuilder = new CustomBuilder();
+const generatedDocument = await customBuilder.generateDocumentation({
+  name: "example",
+  pathToFile: "path/to/file",
+  folderPath: "path/to/folder",
+  sidebarPosition: 1,
+  sidebarLabel: "Example",
+});
+
+console.log(generatedDocument);
 ```

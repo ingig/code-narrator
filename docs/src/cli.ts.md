@@ -5,66 +5,67 @@ sidebar_label: cli.ts
 
 # cli.ts
 
-## Overview
+`cli.ts` is a command-line interface (CLI) script that serves as the entry point for the Code Narrator application. It handles the parsing of command-line arguments, loading of user configurations, and the execution of the main application logic.
 
-The `cli.ts` file is an entry point for a command-line interface (CLI) application built using the `App` class. This file initializes the `App` class and runs the application.
+## Table of Contents
+
+- [Usage](#usage)
+- [Methods](#methods)
+  - [getArgv](#getargv)
+  - [getConfig](#getconfig)
+- [Code Example](#code-example)
 
 ## Usage
 
-To use the `cli.ts` file, you can run it directly from the command line using the following command:
+To use the CLI, run the following command in your terminal:
 
 ```bash
-$ ./cli.ts
+$ code-narrator [options]
 ```
-
-Alternatively, you can use Node.js to execute the file:
-
-```bash
-$ node cli.ts
-```
-
-## App Class
-
-The `App` class is imported from the `App.ts` file and is responsible for managing the application's functionality. The `App` class should contain methods and properties that define the behavior of the CLI application.
-
-### Initialization
-
-The `App` class is initialized using the following code:
-
-```typescript
-let app = new App();
-```
-
-This creates a new instance of the `App` class and assigns it to the `app` variable.
-
-### Running the Application
-
-To run the application, call the `run` method on the `app` instance:
-
-```typescript
-app.run();
-```
-
-This method should contain the main logic of the CLI application, such as parsing command-line arguments, executing commands, and displaying output.
 
 ## Methods
 
-### run()
+### getArgv
 
-The `run` method is responsible for executing the main logic of the CLI application. This method should be implemented in the `App` class to handle command-line arguments, execute commands, and display output.
+This method is responsible for parsing command-line arguments using the `yargs` library. It returns an object containing the parsed arguments.
 
-## Technical Concepts
+### getConfig
 
-### Shebang
+This method takes the parsed command-line arguments as input and returns a user configuration object. It reads the configuration file specified by the user, validates it, and merges it with the default configuration.
 
-The first line of the `cli.ts` file is a shebang:
+#### Parameters
 
-```bash
+- `argv`: An object containing the parsed command-line arguments.
+
+## Code Example
+
+Below is the content of the `cli.ts` file:
+
+```javascript
 #!/usr/bin/env node
+
+import App from "./App";
+import ICodeNarratorConfig from "./config/ICodeNarratorConfig";
+import fs from "fs";
+import yargs from "yargs";
+import path from "path";
+import * as process from "process";
+import CliHelper from "./utils/CliHelper";
+
+(async () => {
+
+    let cliHelper = new CliHelper()
+    const argv = await cliHelper.getArgv();
+    let userConfig = await cliHelper.getConfig(argv);
+
+    console.log('Starting code-narrator')
+
+    let app = new App();
+    await app.run(userConfig);
+
+})().catch((e: any) => {
+    console.error(e);
+});
 ```
 
-This line tells the operating system to use the Node.js interpreter to execute the script. This allows the script to be run directly from the command line, as mentioned in the Usage section.
-
-## Conclusion
-
-The `cli.ts` file serves as the entry point for a CLI application built using the `App` class. It initializes the `App` class, runs the application, and handles command-line arguments and output.
+In this file, an instance of `CliHelper` is created, and its `getArgv` and `getConfig` methods are used to obtain the command-line arguments and user configuration, respectively. The main `App` class is then instantiated and executed with the user configuration.

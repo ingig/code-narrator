@@ -5,11 +5,11 @@ sidebar_label: DocusaurusGenerator.ts
 
 # DocusaurusGenerator.ts
 
-DocusaurusGenerator.ts is a TypeScript file that extends the BaseGenerator class and provides a specific implementation for generating documentation compatible with Docusaurus, a popular static site generator for documentation websites.
+The `DocusaurusGenerator.ts` file is a TypeScript code file that defines a class named `DocusaurusGenerator`. This class extends the `BaseGenerator` class and is responsible for processing a `Document` object to generate documentation compatible with Docusaurus.
 
 ## Usage
 
-To use the DocusaurusGenerator class, you need to import it and create an instance. Then, you can call the `process` method on the instance, passing a Document object as a parameter.
+To use the `DocusaurusGenerator` class, you need to import it and create an instance of the class. Then, call the `process()` method with a `Document` object as its argument.
 
 ```typescript
 import DocusaurusGenerator from './DocusaurusGenerator';
@@ -21,28 +21,29 @@ const document = new Document(/* ... */);
 const processedDocument = generator.process(document);
 ```
 
-## Class: DocusaurusGenerator
+## Class Description
 
-### Method: process(document: Document)
+### DocusaurusGenerator
 
-This method takes a Document object as input and processes it to make it compatible with Docusaurus. It returns the processed Document object.
+The `DocusaurusGenerator` class extends the `BaseGenerator` class and overrides the `process()` method to process a `Document` object and generate documentation compatible with Docusaurus.
 
-#### Parameters
+#### Methods
 
-- `document: Document` - The Document object to be processed.
+##### process(document: Document): Document
 
-#### Description
+The `process()` method takes a `Document` object as its argument and processes it to generate documentation compatible with Docusaurus. It returns the processed `Document` object.
 
-The `process` method performs the following operations on the input Document object:
+###### Parameters
 
-1. Removes any occurrences of `: Promise<[a-zA-Z]*>` from the documentation, as Docusaurus does not support Promise types in headers.
-2. Sets the `sidebar_label` property of the document to either the provided `sidebar_label` or the document's name if no `sidebar_label` is provided.
-3. Sets the `sidebar_position` property of the document to the provided `sidebar_position` or 1 if no `sidebar_position` is provided.
-4. Prepends the Docusaurus-specific frontmatter (sidebar_position and sidebar_label) to the documentation.
+- `document: Document`: The `Document` object to be processed.
 
-After processing, the method returns the modified Document object.
+###### Technical Concepts
+
+- Docusaurus: Docusaurus is a static site generator that makes it easy to build and maintain open-source documentation websites. It supports Markdown and allows you to create custom pages with React components.
 
 ## Example
+
+Here's an example of how to use the `DocusaurusGenerator` class:
 
 ```typescript
 import DocusaurusGenerator from './DocusaurusGenerator';
@@ -51,16 +52,16 @@ import Document from '../../../Document';
 const generator = new DocusaurusGenerator();
 const document = new Document({
   name: 'Example',
-  documentation: 'This is an example document.',
   sidebar_label: 'Example Label',
   sidebar_position: 2,
+  documentation: 'This is an example documentation.',
 });
 
 const processedDocument = generator.process(document);
 console.log(processedDocument.documentation);
 ```
 
-Output:
+This will output the following processed documentation:
 
 ```
 ---
@@ -68,5 +69,5 @@ sidebar_position: 2
 sidebar_label: Example Label
 ---
 
-This is an example document.
+This is an example documentation.
 ```

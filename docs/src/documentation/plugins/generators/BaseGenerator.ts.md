@@ -5,7 +5,7 @@ sidebar_label: BaseGenerator.ts
 
 # BaseGenerator.ts
 
-`BaseGenerator.ts` is a TypeScript code file that defines the base class for Generator plugins. Generator plugins are used to parse the documentation and modify it for the build tool you are using to build the documentation.
+The `BaseGenerator.ts` file is a TypeScript code file that defines the base class for Generator plugins. Generator plugins are used to parse the documentation and modify it for the build tool you are using to build the documentation.
 
 The default plugin with code-narrator is Docusaurus since it fails to build when a function contains a `Promise<>` in return. This plugin clears that Promise from the function name so it can build. It also creates sidebar information.
 
@@ -28,11 +28,11 @@ class CustomGenerator extends BaseGenerator {
 
 ### process(document: Document): Document
 
-This abstract method should be implemented by the derived class. It takes a `Document` object as input and returns a modified `Document` object.
+This is an abstract method that should be implemented by the derived class. It takes a `Document` object as input and returns a modified `Document` object.
 
 #### Parameters
 
-- `document` (Document): The input `Document` object that needs to be processed by the generator plugin.
+- `document` (Document): The input `Document` object that needs to be processed.
 
 #### Returns
 
@@ -40,10 +40,10 @@ This abstract method should be implemented by the derived class. It takes a `Doc
 
 ## Technical Concepts
 
-### Generator Plugins
+### Document
 
-Generator plugins are used to parse and modify the documentation for the build tool you are using to build the documentation. They can be used to customize the output of the documentation, such as modifying the function names, creating sidebar information, or adding additional metadata.
+The `Document` class is a custom class that represents the documentation structure. It contains information about the documentation, such as the content, metadata, and other relevant details.
 
 ### Promise
 
-A `Promise` is a standard JavaScript object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. In the context of this file, the `Promise<>` type is used to indicate that a function returns a promise that resolves to a specific type. However, Docusaurus fails to build when a function contains a `Promise<>` in return, so the generator plugin clears that Promise from the function name to allow the build to proceed.
+A `Promise` is a standard JavaScript concept that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. In this context, the `BaseGenerator` class is designed to handle cases where a function contains a `Promise<>` in its return type, which can cause issues with some build tools like Docusaurus.

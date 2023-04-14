@@ -1,8 +1,8 @@
 import fs from "fs";
-import ConfigHelper from "../utils/ConfigHelper";
 import Document from "../documentation/Document";
 import path from "path";
 import App from "../App";
+import ConfigHelper from "../config/ConfigHelper";
 
 /*
 :::danger Make sure to add the cache file (default is .codenarrator\cache.json) to git, so you don't have to query GPT on each run.
@@ -10,15 +10,15 @@ import App from "../App";
 export default class DocumentationCache {
 
     static Documents : Document[] | null = null;
-    static cacheFilePath = '';
+
     private constructor() {
-        let project_path = ConfigHelper.get('project_path');
-        let cache_file = ConfigHelper.CacheFilePath;
-        DocumentationCache.cacheFilePath = path.join(project_path, cache_file);
-        if (fs.existsSync(DocumentationCache.cacheFilePath)) {
-            let str = fs.readFileSync(DocumentationCache.cacheFilePath).toString();
+        if (fs.existsSync(ConfigHelper.CacheFilePath)) {
+            let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();
             DocumentationCache.Documents = JSON.parse(str) as Document[];
         } else {
+            console.log(`dirname:${path.dirname(ConfigHelper.CacheFilePath)}`)
+            fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})
+            fs.writeFileSync(ConfigHelper.CacheFilePath, "[]");
             DocumentationCache.Documents = [];
         }
     }
@@ -38,14 +38,18 @@ export default class DocumentationCache {
         let id = Document.getId(path);
         let idx = this.getIndex(id);
         if (!DocumentationCache.Documents || idx == -1) return;
-        return DocumentationCache.Documents[idx];
+
+        let doc = DocumentationCache.Documents[idx];
+        doc.lastTouch = App.StartTime;
+        DocumentationCache.set(doc);
+        return doc;
     }
     static remove(document : Document) {
         let idx = DocumentationCache.getIndex(Document.getId(document.path))
         if (idx != -1 && DocumentationCache.Documents) {
             delete DocumentationCache.Documents[idx];
         }
-        let docPath = App.Project.documentation_path;
+        let docPath = ConfigHelper.config.documentation_path;
         let filePath = path.join(docPath, document.path);
         if (fs.existsSync(filePath)) {
             fs.rmSync(filePath)
@@ -61,7 +65,8 @@ export default class DocumentationCache {
             DocumentationCache.Documents![idx] = document;
         }
         let content = JSON.stringify(DocumentationCache.Documents, null,'\t');
-        fs.writeFileSync(this.cacheFilePath, content);
+
+        fs.writeFileSync(ConfigHelper.CacheFilePath, content);
     }
 
     static getByFolderPath(path: string) {
@@ -72,5 +77,9 @@ export default class DocumentationCache {
             }
         }
         return suggestions;
+    }
+
+    static getProjectInfo() {
+
     }
 }

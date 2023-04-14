@@ -5,75 +5,62 @@ sidebar_label: DocumentationBuilder.ts
 
 # DocumentationBuilder.ts
 
-## Overview
+This is a TypeScript code file that defines a class called `DocumentationBuilder`. The purpose of this class is to generate documentation for a project using various builder plugins. The class imports necessary dependencies and manages the process of building documentation using the specified plugins.
 
-The `DocumentationBuilder.ts` file is a TypeScript module that provides a class called `DocumentationBuilder`. This class is responsible for generating documentation for a given project using a set of plugins. The class interacts with the OpenAIRepository and utilizes the ConfigHelper utility to manage configurations.
+## Table of Contents
 
-## Usage
+- [Class Description](#class-description)
+- [Examples](#examples)
+- [Methods](#methods)
+  - [constructor](#constructor)
+  - [build](#build)
+- [Parameters](#parameters)
 
-To use the `DocumentationBuilder` class, you need to import it and create a new instance. Then, you can call the `build` method with a project object to generate the documentation.
+## Class Description
+
+The `DocumentationBuilder` class is responsible for generating documentation for a project. It uses the `OpenAIRepository` to interact with the OpenAI API and fetch relevant information. The class also imports `BaseBuilder` as a base class for the builder plugins and uses `ConfigHelper` to access the configuration settings.
+
+## Examples
+
+To use the `DocumentationBuilder` class, you can create an instance and call the `build` method:
 
 ```typescript
-import DocumentationBuilder from './DocumentationBuilder';
+import DocumentationBuilder from "./DocumentationBuilder";
 
 const docBuilder = new DocumentationBuilder();
-docBuilder.build(project);
+docBuilder.build();
 ```
 
-## Class: DocumentationBuilder
+## Methods
 
-### Properties
+### constructor
 
-- `openAIRepository: OpenAIRepository`: An instance of the `OpenAIRepository` class, which is used to interact with the OpenAI API.
-- `projectPath: string`: A string representing the path to the project for which the documentation is being generated. This value is retrieved from the configuration file using the `ConfigHelper` utility.
-
-### Constructor
-
-The constructor initializes the `openAIRepository` and `projectPath` properties.
+The `constructor` method initializes the `DocumentationBuilder` instance. It sets up the `openAIRepository` and `projectPath` properties.
 
 ```typescript
 constructor() {
     this.openAIRepository = new OpenAIRepository();
-    this.projectPath = ConfigHelper.get('project_path');
+    this.projectPath = __dirname;
 }
 ```
 
-### Method: build(project: any)
+### build
 
-This method generates the documentation for the given project using the configured plugins.
-
-- `project: any`: The project object for which the documentation is being generated.
-
-#### Example
+The `build` method is an asynchronous method that iterates through the configured builder plugins and generates documentation using each plugin. It creates an instance of each plugin and calls the `generate` method on it.
 
 ```typescript
-const docBuilder = new DocumentationBuilder();
-docBuilder.build(project);
+public async build() {
+    let plugins = ConfigHelper.BuilderPlugins;
+    for (let i=0;i<plugins.length;i++) {
+        let generator = new plugins[i]() as BaseBuilder;
+        await generator.generate();
+    }
+}
 ```
 
-## Technical Concepts
+## Parameters
 
-### ConfigHelper
+There are no parameters in the methods of the `DocumentationBuilder` class. However, the class has two properties:
 
-The `ConfigHelper` utility is used to manage configurations in the application. It provides methods to get and set configuration values.
-
-### OpenAIRepository
-
-The `OpenAIRepository` class is responsible for interacting with the OpenAI API. It provides methods to fetch data from the API and process it.
-
-### BaseBuilder
-
-The `BaseBuilder` class is an abstract class that serves as a base for all builder plugins. Each plugin should extend this class and implement the `generate` method to generate documentation for a specific part of the project.
-
-## Sections
-
-- Overview
-- Usage
-- Class: DocumentationBuilder
-  - Properties
-  - Constructor
-  - Method: build(project: any)
-- Technical Concepts
-  - ConfigHelper
-  - OpenAIRepository
-  - BaseBuilder
+- `openAIRepository`: An instance of the `OpenAIRepository` class, which is used to interact with the OpenAI API.
+- `projectPath`: A string representing the path of the project directory.

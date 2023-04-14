@@ -5,57 +5,76 @@ sidebar_label: OpenAIRepositoryTest.ts
 
 # OpenAIRepositoryTest.ts
 
-This documentation provides an in-depth explanation of the `OpenAIRepositoryTest.ts` file, which contains tests for the `OpenAIRepository` class. The `OpenAIRepository` class is responsible for interacting with the OpenAI API to query questions and receive answers. This file uses Jest, a JavaScript testing framework, to test the functionality of the `OpenAIRepository` class.
+The `OpenAIRepositoryTest.ts` file is a code file that contains test cases for the `OpenAIRepository` class. This class is responsible for interacting with the OpenAI API to query questions and receive answers. The test cases in this file ensure that the `OpenAIRepository` class is functioning correctly.
 
 ## Table of Contents
 
-- [Test Suite: OpenAIRepository](#test-suite-openairepository)
-  - [Test: queryQuestions](#test-queryquestions)
-    - [Mocking OpenAIApi](#mocking-openaiapi)
-    - [Testing the Functionality](#testing-the-functionality)
+- [Examples](#examples)
+- [Methods](#methods)
+  - [queryQuestions](#queryquestions)
+- [Technical Concepts](#technical-concepts)
 
-## Test Suite: OpenAIRepository
+## Examples
 
-The test suite for the `OpenAIRepository` class is defined using the `describe` function from Jest. This function groups the tests related to the `OpenAIRepository` class.
+Here are some examples of how to use the `OpenAIRepository` class:
 
 ```javascript
+import OpenAIRepository from "../../src/repositories/OpenAIRepository";
+
+const openAIRepository = new OpenAIRepository();
+const questions = ['How are you?', 'What are you doing?'];
+const answers = await openAIRepository.queryQuestions(questions);
+console.log(answers);
+```
+
+## Methods
+
+### queryQuestions
+
+The `queryQuestions` method is responsible for sending an array of questions to the OpenAI API and returning an array of answers.
+
+#### Parameters
+
+- `questions`: An array of strings containing the questions to be sent to the OpenAI API.
+
+#### Returns
+
+- An array of strings containing the answers received from the OpenAI API.
+
+## Technical Concepts
+
+### Jest
+
+Jest is a JavaScript testing framework that is used in this file to create test cases for the `OpenAIRepository` class. It provides functions such as `describe`, `it`, and `expect` to create test suites, test cases, and assertions.
+
+### Mocking
+
+In this file, the `OpenAIApi` class is mocked using Jest's `spyOn` function. This allows the test cases to simulate the behavior of the OpenAI API without actually making API calls. The `mockImplementation` function is used to define the behavior of the mocked method.
+
+## File Content
+
+```javascript
+import OpenAIRepository from "../../src/repositories/OpenAIRepository";
+import {OpenAIApi} from "openai";
+import {describe, expect} from '@jest/globals';
+
 describe('Test OpenAIRepository', () => {
-  // Test cases go here
-});
+
+    it('should test queryQuestions', async () => {
+        let questions = ['How are you?', 'What are you doing?']
+
+        let spyOpenAIApi = jest.spyOn(OpenAIApi.prototype, 'createCompletion')
+            .mockImplementation(() => {
+                return {data : {
+                    choices : ['hello man', 'yes man']
+                    }} as any
+            })
+
+        let openAIRepository = new OpenAIRepository();
+        let answers = await openAIRepository.queryQuestions(questions)
+
+        expect(spyOpenAIApi).toBeCalledTimes(1);
+    })
+
+})
 ```
-
-### Test: queryQuestions
-
-This test case checks the functionality of the `queryQuestions` method in the `OpenAIRepository` class. The `queryQuestions` method takes an array of questions as input and returns an array of answers from the OpenAI API.
-
-```javascript
-it('should test queryQuestions', async () => {
-  // Test implementation goes here
-});
-```
-
-#### Mocking OpenAIApi
-
-To test the `queryQuestions` method, we need to mock the `createCompletion` method of the `OpenAIApi` class. This is done using Jest's `spyOn` function, which allows us to replace the original implementation with a custom one. In this case, we return a mock response containing an array of choices.
-
-```javascript
-let spyOpenAIApi = jest.spyOn(OpenAIApi.prototype, 'createCompletion')
-  .mockImplementation(() => {
-    return {data : {
-      choices : ['hello man', 'yes man']
-      }} as any
-  });
-```
-
-#### Testing the Functionality
-
-After mocking the `createCompletion` method, we can create a new instance of the `OpenAIRepository` class and call the `queryQuestions` method with a sample array of questions. We then check if the `createCompletion` method was called once and if the returned answers match the expected output.
-
-```javascript
-let openAIRepository = new OpenAIRepository();
-let answers = await openAIRepository.queryQuestions(questions);
-
-expect(spyOpenAIApi).toBeCalledTimes(1);
-```
-
-In this test case, we verify that the `queryQuestions` method in the `OpenAIRepository` class works as expected by interacting with the mocked OpenAI API and returning the correct answers.

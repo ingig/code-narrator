@@ -5,38 +5,36 @@ sidebar_label: SuggestionBuilderTest.ts
 
 # SuggestionBuilderTest.ts
 
-This file contains test cases for the `SuggestionBuilder` class, which is responsible for generating documentation based on the project's `package.json` file. The test cases ensure that the class can create a `cn.md` file with the correct project description, installation, and usage instructions.
+SuggestionBuilderTest.ts is a test file for the `DocumentationBuilder` class, which is responsible for generating a Markdown (.md) file containing the project description, installation instructions, and usage information. The test ensures that the `DocumentationBuilder` class functions as expected.
 
 ## Table of Contents
 
+- [Description](#description)
 - [Examples](#examples)
 - [Methods](#methods)
-  - [createGetStarted](#creategetstarted)
+  - [build()](#build)
 - [Technical Concepts](#technical-concepts)
+
+## Description
+
+The `SuggestionBuilderTest.ts` file contains a single test suite, which tests the `DocumentationBuilder` class. The test suite has one test case, which checks if the `DocumentationBuilder` can successfully create a Markdown file with the project description, installation instructions, and usage information.
 
 ## Examples
 
-Here are some examples of how to use the `SuggestionBuilder` class:
+To use the `DocumentationBuilder` class, you can follow the example provided in the test case:
 
 ```typescript
-import DocumentationBuilder from "../../src/logic/DocumentationBuilder";
+import DocumentationBuilder from "../../src/documentation/DocumentationBuilder";
 
-// Create a new instance of the DocumentationBuilder class
 let builder = new DocumentationBuilder();
-
-// Generate the cn.md file with the project description, installation, and usage instructions
-builder.createGetStarted();
+await builder.build();
 ```
 
 ## Methods
 
-### createGetStarted
+### build()
 
-```typescript
-createGetStarted(): void
-```
-
-This method generates a `cn.md` file with the project description, installation, and usage instructions. It uses the `package.json` file to get the project name, installation, and usage instructions.
+The `build()` method is an asynchronous method that creates a Markdown file with the project description, installation instructions, and usage information. It uses the `package.json` file to get the project name, installation instructions, and module usage information.
 
 #### Parameters
 
@@ -44,6 +42,6 @@ This method does not have any parameters.
 
 ## Technical Concepts
 
-### JSON
-
-JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. JSON is a text format that is completely language-independent but uses conventions that are familiar to programmers of the C family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others. In this file, JSON is used to read the `package.json` file and extract the necessary information for generating the documentation.
+- **describe**: In the test file, `describe` is a function provided by the testing framework (Jest) to group related test cases. It takes two arguments: a string describing the test suite and a callback function containing the test cases.
+- **it**: `it` is another function provided by Jest to define individual test cases. It also takes two arguments: a string describing the test case and a callback function containing the test logic.
+- **async/await**: The `async/await` syntax is used to work with promises in a more readable and concise way. In this test file, the `build()` method returns a promise, so the `await` keyword is used to wait for the promise to resolve before continuing with the test execution.

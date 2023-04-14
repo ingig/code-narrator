@@ -5,71 +5,66 @@ sidebar_label: FoldersBuilder.ts
 
 # FoldersBuilder.ts
 
-This TypeScript file defines a `FoldersBuilder` class that extends the `BaseBuilder` class. The main purpose of this class is to generate documentation for a given project structure, including folders and files. It also provides methods to query for folder information, render the documentation, and retrieve summaries for files and folders.
+This is a TypeScript code file that defines a `FoldersBuilder` class, which is responsible for generating documentation for a folder structure in a project. The class extends the `BaseBuilder` class and provides methods to generate, query, and render documentation for folders and files within the project.
 
-## Usage
+## Table of Contents
 
-To use the `FoldersBuilder` class, you need to import it and create a new instance by passing a `project` object to the constructor. Then, you can call the `generate()` method to generate the documentation.
+- [Class Definition](#class-definition)
+- [Methods](#methods)
+  - [generate](#generate)
+  - [queryForFolder](#queryForFolder)
+  - [render](#render)
+  - [getFileSummary](#getFileSummary)
+  - [getFolderSummary](#getFolderSummary)
+
+## Class Definition
 
 ```typescript
-import FoldersBuilder from "./path/to/FoldersBuilder";
-
-const project = { /* project data */ };
-const foldersBuilder = new FoldersBuilder(project);
-await foldersBuilder.generate();
+export default class FoldersBuilder extends BaseBuilder {
+    ...
+}
 ```
+
+The `FoldersBuilder` class extends the `BaseBuilder` class and provides additional methods for generating and rendering documentation for a folder structure.
 
 ## Methods
 
-### constructor(project: any)
+### generate
 
-The constructor initializes a new instance of the `FoldersBuilder` class with the given `project` object.
+```typescript
+public async generate()
+```
 
-- `project`: The project data for which the documentation will be generated.
+This method generates the documentation for the project's folder structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then queries for each folder in the structure.
 
-### async generate()
+### queryForFolder
 
-This method generates the documentation for the project structure by calling the `queryForFolder()` method.
+```typescript
+public async queryForFolder(folder: FolderStructure, position: number)
+```
 
-### async queryForFolder(folder: FolderStructure, position: number)
+This method takes a `FolderStructure` object and a `position` number as parameters. It recursively queries for each subfolder in the given folder and generates documentation for the files and folders within it. The documentation is then cached using the `DocumentationCache` class.
 
-This method recursively queries for folder information and generates documentation for each folder and its contents.
+### render
 
-- `folder`: A `FolderStructure` object representing the folder to be queried.
-- `position`: The position of the folder in the project structure.
+```typescript
+public async render(document: Document)
+```
 
-### async render(document: Document)
+This method takes a `Document` object as a parameter and returns the documentation as a string.
 
-This method renders the documentation for a given `Document` object and returns it as a string.
+### getFileSummary
 
-- `document`: A `Document` object containing the documentation to be rendered.
+```typescript
+private getFileSummary(file: FileStructure): string
+```
 
-### private getFileSummary(file: FileStructure)
+This method takes a `FileStructure` object as a parameter and returns a summary of the file's documentation. It retrieves the cached documentation for the file and extracts a summary using a regular expression.
 
-This method retrieves the summary of a given `FileStructure` object.
+### getFolderSummary
 
-- `file`: A `FileStructure` object representing the file for which the summary will be retrieved.
+```typescript
+private getFolderSummary(folder: FolderStructure): string
+```
 
-### private getFolderSummary(folder: FolderStructure)
-
-This method retrieves the summary of a given `FolderStructure` object.
-
-- `folder`: A `FolderStructure` object representing the folder for which the summary will be retrieved.
-
-## Technical Concepts
-
-### FolderStructure and FileStructure
-
-These are custom classes used to represent the structure of folders and files in the project. They contain properties such as `name`, `path`, and `folders` (for `FolderStructure`) or `files` (for `FileStructure`).
-
-### DocumentationCache
-
-This is a custom class that manages the caching of documentation data. It provides methods to get and set documentation data in the cache.
-
-### ProjectStructure
-
-This is a custom class that represents the structure of a project. It provides methods to retrieve the project structure and manipulate it.
-
-### BaseBuilder
-
-This is the base class for all builder classes, including `FoldersBuilder`. It provides common methods and properties for generating documentation.
+This method takes a `FolderStructure` object as a parameter and returns a summary of the folder's documentation. It retrieves the cached documentation for the folder and extracts a summary using a regular expression.
