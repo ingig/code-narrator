@@ -33,7 +33,7 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: latest
       - name: Cache Ruby gems
         uses: actions/cache@v2
         with:
