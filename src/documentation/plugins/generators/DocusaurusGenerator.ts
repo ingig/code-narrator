@@ -1,5 +1,5 @@
-import BaseGenerator from "../BaseGenerator";
-import Document from '../../../Document'
+import BaseGenerator from "./BaseGenerator";
+import Document from '../../Document'
 export default class DocusaurusGenerator extends BaseGenerator {
 
     public process(document : Document) {

@@ -1,7 +1,8 @@
 ---
 nav_order: 31
 title: __tests__
-parent: __tests__
+
+has_children:true
 ---
 
 # Documentation

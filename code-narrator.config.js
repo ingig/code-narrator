@@ -1,4 +1,4 @@
-const JenkyllGenerator = require("./src/documentation/plugins/generators/Docusaurus/JenkyllGenerator");
+const JenkyllGenerator = require("./src/documentation/plugins/generators/JekyllGenerator");
 
 /**
  * @type {ICodeNarratorConfig}
@@ -10,7 +10,7 @@ const config = {
     config_files: [
         "code-narrator.config.js"
     ],
-    readmeRoot:true,
+    readmeRoot: true,
     repository_url: "https://github.com/ingig/code-narrator",
     project_file: "package.json",
     source_path: "src",
@@ -25,6 +25,7 @@ const config = {
         {
             name: "Prerequisites",
             template: `prerequisites`,
+            sidebarPosition: 2,
             args: {
                 entryFileContent: 'content(./dist/src/cli.js)',
                 configFile: 'content(code-narrator.config.js)'
@@ -43,15 +44,16 @@ const config = {
         },
         {
             type: "README",
-            template:"README",
+            sidebarPosition: 1,
+            template: "README",
             name: "ReadMe",
-            args : {
-                entryFileContent:"content(./src/cli.ts)"
+            args: {
+                entryFileContent: "content(./src/cli.ts)"
             },
-            files : [
+            files: [
                 {
-                    path:"package.json",
-                    JSONPath:[
+                    path: "package.json",
+                    JSONPath: [
                         "$.name",
                         "$.description",
                         "$.version",
@@ -65,66 +67,70 @@ const config = {
 
         },
         {
-            type: "howto",
-            template: "howto_create_howto",
-            name: "How to create HowTo",
-            files: [
-                {
-                    path: "code-narrator.config.js"
-                }
-            ]
-        },
-        {
-            type: "howto",
-            template: "howto_use_cli",
-            name: "Use CLI",
-            files: [
-                {
-                    path: "src/cli.ts"
-                },
-                {
-                    path:"package.json",
-                    JSONPath: ["$.repository"]
-                }
-            ]
-        },
-        {
-            type: "howto",
-            template: "howto_content_to_long",
-            name: "Content to long",
-        },
-        {
-            type: "howto",
-            template: "howto_create_custom_builder",
-            name: "Create your own custom builder",
-            files : [
-                {
-                    path: 'code-narrator.config.js',
-                    extract : 'builders' //You can use natural language to extract, e.g. "first 20 lines", "first paragraph"
-                },
-                {
-                    path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',
-                    extract: 'how code parses content(...) and extract()'
-                }
-            ]
-        },
-        {
-            type:"README",
-            template:"overview_readme",
-            name:"README",
-            path:"howto",
-            files : [{
+            type: "README",
+            template: "overview_readme",
+            name: "How To",
+            path: "howto",
+            files: [{
                 path: "howto/*.md"
             }
+            ],
+            pages: [
+                {
+                    type: "howto",
+                    template: "howto_create_howto",
+                    name: "How to create HowTo",
+                    files: [
+                        {
+                            path: "code-narrator.config.js"
+                        }
+                    ]
+                },
+                {
+                    type: "howto",
+                    template: "howto_use_cli",
+                    name: "Use CLI",
+                    files: [
+                        {
+                            path: "src/cli.ts"
+                        },
+                        {
+                            path: "package.json",
+                            JSONPath: ["$.repository"]
+                        }
+                    ]
+                },
+                {
+                    type: "howto",
+                    template: "howto_content_to_long",
+                    name: "Content to long",
+                },
+                {
+                    type: "howto",
+                    template: "howto_create_custom_builder",
+                    name: "Create your own custom builder",
+                    files: [
+                        {
+                            path: 'code-narrator.config.js',
+                            extract: 'builders' //You can use natural language to extract, e.g. "first 20 lines", "first paragraph"
+                        },
+                        {
+                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',
+                            extract: 'how code parses content(...) and extract:'
+                        }
+                    ]
+                }
             ]
         }
+
+
     ],
-    generatorPlugin : [
+    generatorPlugin: [
         JenkyllGenerator
     ],
-    sitemap : {
-        enable : true,
-        url : 'https://ingig.github.io/code-narrator/'
+    sitemap: {
+        enable: true,
+        url: 'https://ingig.github.io/code-narrator/'
     },
     rootFileName: 'index.html'
 

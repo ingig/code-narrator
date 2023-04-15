@@ -1,7 +1,8 @@
 ---
 nav_order: 0
 title: DocusaurusGenerator.ts
-parent: Docusaurus
+parent: src\documentation\plugins\generators\Docusaurus
+
 ---
 
 # DocusaurusGenerator.ts

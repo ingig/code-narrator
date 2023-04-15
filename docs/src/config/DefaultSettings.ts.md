@@ -2,6 +2,7 @@
 nav_order: 2
 title: DefaultSettings.ts
 parent: config
+
 ---
 
 # DefaultSettings.ts

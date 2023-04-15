@@ -1,7 +1,8 @@
 ---
 nav_order: 1
 title: UserDefinedBuilderHelper.ts
-parent: UserDefined
+parent: src\documentation\plugins\builders\UserDefined
+
 ---
 
 # UserDefinedBuilderHelper.ts

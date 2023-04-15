@@ -1,7 +1,8 @@
 ---
 nav_order: 34
 title: UserDefined
-parent: UserDefined
+
+has_children:true
 ---
 
 # User-Defined Documentation Builder

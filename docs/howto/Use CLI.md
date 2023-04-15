@@ -1,7 +1,8 @@
 ---
 nav_order: 13
 title: Use CLI
-parent: howto
+
+
 ---
 
 # How to Use Code-Narrator CLI

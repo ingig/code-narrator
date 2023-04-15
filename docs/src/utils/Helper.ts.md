@@ -1,7 +1,8 @@
 ---
 nav_order: 3
 title: Helper.ts
-parent: utils
+parent: src\utils
+
 ---
 
 # Helper.ts

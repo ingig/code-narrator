@@ -70,7 +70,9 @@ export default class FilesBuilder extends BaseBuilder {
                 folderPath: folder.path,
                 sidebarPosition: i,
                 sidebarLabel: fileName,
-                assistantMessages:assistantMessages
+                assistantMessages:assistantMessages,
+                data : {parent:folder.name},
+                prevDocument : document
             })
         }
 

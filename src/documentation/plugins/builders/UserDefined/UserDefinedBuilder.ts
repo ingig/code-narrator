@@ -8,6 +8,7 @@ import fs from "fs";
 import jsonpath from "jsonpath";
 import Helper from "../../../../utils/Helper";
 import UserDefinedBuilderHelper from "./UserDefinedBuilderHelper";
+import IBuilder from "../../../../config/IBuilder";
 
 export default class UserDefinedBuilder extends BaseBuilder {
     constructor() {
@@ -22,50 +23,56 @@ export default class UserDefinedBuilder extends BaseBuilder {
     }
 
     public async generate() {
-        let project_path = process.cwd();
+
         for (let i = 0; this.config.builders && i < this.config.builders.length; i++) {
-            let build = this.config.builders[i];
-
-            let templatePath = build.template;
-            templatePath = `.code-narrator/gpt_questions/${templatePath}`;
-
-            if (!fs.existsSync(path.join(process.cwd(), `${templatePath}.liquid`))) {
-                console.log(path.join(process.cwd(), templatePath))
-                throw new Error(`Could not find ${build.template}.liquid template. You can create it at ${templatePath}.liquid`)
-
-            }
-            let saveToPath = build.path ?? '';
-            if (saveToPath == '' && build.type == 'howto') {
+            let builder = this.config.builders[i];
+            let saveToPath = builder.path ?? '';
+            if (saveToPath == '' && builder.type == 'howto') {
                 saveToPath = 'howto'
             }
 
-
-            let docId = path.join(saveToPath, build.template);
-            let document = DocumentationCache.get(docId)
-            if (!document) {
-                docId = docId + ConfigHelper.config.document_file_extension
-                document = DocumentationCache.get(docId)
+            for (let b=0;builder.pages && b<builder.pages.length;b++) {
+                await this.generateFromBuilder(builder.pages[b], saveToPath, (b+2), {parent:builder.name})
             }
-            if (!this.hasTemplateChanged(document, templatePath)) continue;
-
-            let helper = new UserDefinedBuilderHelper();
-            helper.loadArgs(build, project_path)
-            let assistantMessages = await helper.getAssistantMessages(build);
-
-
-            await super.generateDocumentationAndCache({
-                args: build.args ?? {},
-                name: build.name,
-                template: templatePath,
-                pathToFile: path.join(saveToPath, build.template + ConfigHelper.config.document_file_extension),
-                folderPath: saveToPath,
-                saveToPath: saveToPath,
-                sidebarPosition: build.sidebarPosition ?? (i + 10),
-                sidebarLabel: build.sidebarLabel ?? build.name,
-                assistantMessages: assistantMessages
-            })
-
+            await this.generateFromBuilder(builder, saveToPath, 1, {has_children:true});
         }
+    }
+
+    public async generateFromBuilder(builder : IBuilder, saveToPath : string, position : number, data : any) {
+        let project_path = process.cwd();
+        let templatePath = builder.template;
+        templatePath = `.code-narrator/gpt_questions/${templatePath}`;
+
+        if (!fs.existsSync(path.join(process.cwd(), `${templatePath}.liquid`))) {
+            console.log(path.join(process.cwd(), templatePath))
+            throw new Error(`Could not find ${builder.template}.liquid template. You can create it at ${templatePath}.liquid`)
+        }
+
+        let docId = path.join(saveToPath, builder.template);
+        let document = DocumentationCache.get(docId)
+        if (!document) {
+            docId = docId + ConfigHelper.config.document_file_extension
+            document = DocumentationCache.get(docId)
+        }
+        if (!this.hasTemplateChanged(document, templatePath)) return;
+
+        let helper = new UserDefinedBuilderHelper();
+        helper.loadArgs(builder, project_path)
+        let assistantMessages = await helper.getAssistantMessages(builder);
+
+        await super.generateDocumentationAndCache({
+            args: builder.args ?? {},
+            name: builder.name,
+            template: templatePath,
+            pathToFile: path.join(saveToPath, builder.template + ConfigHelper.config.document_file_extension),
+            folderPath: saveToPath,
+            saveToPath: saveToPath,
+            sidebarPosition: builder.sidebarPosition ?? (position + 10),
+            sidebarLabel: builder.sidebarLabel ?? builder.name,
+            assistantMessages: assistantMessages,
+            data : data,
+            prevDocument : document
+        })
     }
 
     public async render(document: Document) {

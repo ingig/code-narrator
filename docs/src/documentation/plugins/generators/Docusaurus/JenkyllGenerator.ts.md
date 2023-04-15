@@ -1,7 +1,8 @@
 ---
 nav_order: 1
 title: JenkyllGenerator.ts
-parent: Docusaurus
+parent: src\documentation\plugins\generators\Docusaurus
+
 ---
 
 # JenkyllGenerator.ts

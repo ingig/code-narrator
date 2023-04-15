@@ -1,7 +1,8 @@
 ---
 nav_order: 16
 title: README
-parent: howto
+
+has_children:true
 ---
 
 # Overview of Files in the Directory

@@ -1,3 +1,4 @@
+import Document from "../Document";
 
 export interface GenerateOptions {
     args?: any
@@ -10,4 +11,5 @@ export interface GenerateOptions {
     saveToPath?: string;
     data?: any;
     assistantMessages? : string[]
+    prevDocument? : Document;
 }

@@ -1,7 +1,8 @@
 ---
 nav_order: 33
 title: repositories
-parent: repositories
+
+has_children:true
 ---
 
 # OpenAI Repository Documentation

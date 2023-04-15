@@ -90,18 +90,24 @@ export default abstract class BaseBuilder {
                                                    sidebarLabel,
                                                    saveToPath,
                                                    assistantMessages,
-                                                   data
+                                                   data, prevDocument
                                                }: GenerateOptions) {
-        let document = await this.generateDocumentation({
-            args,
-            template,
-            name,
-            pathToFile,
-            folderPath,
-            sidebarPosition,
-            assistantMessages,
-            sidebarLabel, saveToPath, data
-        })
+        let document : Document;
+        if (!prevDocument) {
+            document = await this.generateDocumentation({
+                args,
+                template,
+                name,
+                pathToFile,
+                folderPath,
+                sidebarPosition,
+                assistantMessages,
+                sidebarLabel, saveToPath, data
+            })
+        } else {
+            document= prevDocument;
+            document.data = data;
+        }
         DocumentationCache.set(document);
     }
 

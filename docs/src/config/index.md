@@ -1,7 +1,8 @@
 ---
 nav_order: 30
 title: config
-parent: config
+
+has_children:true
 ---
 
 # Code Narrator Documentation

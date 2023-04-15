@@ -1,7 +1,8 @@
 ---
 nav_order: 0
 title: SuggestionBuilderTest.ts
-parent: logic
+parent: __tests__\logic
+
 ---
 
 # SuggestionBuilderTest.ts

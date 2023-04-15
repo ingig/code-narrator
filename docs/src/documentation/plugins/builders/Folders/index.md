@@ -1,7 +1,8 @@
 ---
 nav_order: 32
 title: Folders
-parent: Folders
+
+has_children:true
 ---
 
 # Documentation: FoldersBuilder

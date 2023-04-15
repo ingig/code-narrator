@@ -1,7 +1,8 @@
 ---
 nav_order: 11
 title: ReadMe
-parent: 
+
+
 ---
 
 # Code Narrator

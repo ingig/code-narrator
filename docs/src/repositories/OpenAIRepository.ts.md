@@ -1,7 +1,8 @@
 ---
 nav_order: 0
 title: OpenAIRepository.ts
-parent: repositories
+parent: src\repositories
+
 ---
 
 # OpenAIRepository.ts

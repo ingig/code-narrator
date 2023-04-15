@@ -79,6 +79,17 @@ export default class DocumentationCache {
         return suggestions;
     }
 
+    static getFolderByFolderPath(path: string) {
+
+        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {
+            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].generator == 'Folders'
+                    && DocumentationCache.Documents[i].folderPath == path) {
+                return DocumentationCache.Documents[i]
+            }
+        }
+
+    }
+
     static getProjectInfo() {
 
     }

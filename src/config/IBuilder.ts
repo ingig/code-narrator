@@ -8,6 +8,7 @@ export default interface IBuilder {
     path : string;
     sidebarPosition: number;
     sidebarLabel: string;
+    pages : IBuilder[];
 }
 type BuilderType = 'howto' | 'README' | 'custom';
 

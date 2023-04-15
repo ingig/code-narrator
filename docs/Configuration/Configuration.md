@@ -1,14 +1,15 @@
 ---
 nav_order: 3
 title: Configuration
-parent: Configuration
+
+has_children:true
 ---
 
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, source paths, documentation paths, and more. This file also includes configurations for builders and generator plugins, which are responsible for generating documentation based on the provided settings.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, documentation paths, and more. This file helps customize the behavior of the application according to the user's preferences.
 
-Here is an example of usage for the app-specific configs:
+Here's an example of usage for the app-specific configs:
 
-```javascript
+```js
 const config = {
     entry_file: "./dist/src/App.js",
     cli_file: "./dist/src/cli.js",
@@ -18,12 +19,10 @@ const config = {
     ],
     // ... other configurations
 };
+
+module.exports = config;
 ```
 
-In this example, the `config` object contains various settings for the Code Narrator application, such as the entry file, CLI file, project name, and the list of configuration files.
-
-:::note
-The provided code snippet is an example of how the app-specific configuration file is structured and used in the Code Narrator application.
-:::
+In this example, the `config` object contains various properties such as `entry_file`, `cli_file`, `project_name`, and `config_files`. These properties are used to define the entry point of the application, the CLI file, the project name, and the list of configuration files, respectively.
 
 As for the other configuration files, without more information, it is not possible to provide a detailed description of their purpose in the application.

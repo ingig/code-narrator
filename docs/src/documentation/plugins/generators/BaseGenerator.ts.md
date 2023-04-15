@@ -1,7 +1,8 @@
 ---
 nav_order: 0
 title: BaseGenerator.ts
-parent: generators
+parent: src\documentation\plugins\generators
+
 ---
 
 # BaseGenerator.ts

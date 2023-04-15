@@ -62,7 +62,10 @@ export default class ConfigurationBuilder extends BaseBuilder {
             }
         })
 
-        let response = await super.getAnswer('Configuration', {appName, listOfFilesAndFolders}, 'what_are_config_files');
+        let response = await super.getAnswer('Configuration', {
+            appName,
+            listOfFilesAndFolders
+        }, 'what_are_config_files');
         let jsons = Helper.getJsons(response.answer)
         if (jsons.length > 0) {
             let fileResults = jsons[0];
@@ -78,6 +81,7 @@ export default class ConfigurationBuilder extends BaseBuilder {
             })
         }
     }
+
     private async generateSummary() {
         if (!this.updateSummary) {
             return;
@@ -85,7 +89,8 @@ export default class ConfigurationBuilder extends BaseBuilder {
 
         let data: any = {
             appSpecificConfigFiles: this.appSpecificConfigFiles,
-            configFiles: this.configFiles
+            configFiles: this.configFiles,
+            has_children : true
         }
 
         let appSpecificConfigContent = '';
@@ -102,9 +107,10 @@ export default class ConfigurationBuilder extends BaseBuilder {
             configFiles: this.configFiles.join('\n')
         }
         await super.generateDocumentationAndCache({
-                args: args, name: 'Configuration', saveToPath:'./Configuration', pathToFile: './Configuration', folderPath: './Configuration', sidebarPosition: 3, data: data
+                args: args, name: 'Configuration', saveToPath: './Configuration',
+                pathToFile: './Configuration', folderPath: './Configuration',
+                sidebarPosition: 3, data: data
             }
-
         )
     }
 
@@ -112,7 +118,7 @@ export default class ConfigurationBuilder extends BaseBuilder {
         let needsUpdate = false;
         if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;
 
-        for (let i=0;i<this.appSpecificConfigFiles.length;i++) {
+        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {
             let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);
             if (this.hasChanged(configDoc)) {
                 needsUpdate = true;
@@ -120,7 +126,7 @@ export default class ConfigurationBuilder extends BaseBuilder {
             }
         }
 
-        for (let i=0;!needsUpdate && i<this.configFiles.length;i++) {
+        for (let i = 0; !needsUpdate && i < this.configFiles.length; i++) {
             let configDoc = DocumentationCache.get(this.configFiles[i]);
             if (this.hasChanged(configDoc)) {
                 needsUpdate = true;
@@ -140,7 +146,10 @@ export default class ConfigurationBuilder extends BaseBuilder {
             let content = FileStructure.getContent(this.appSpecificConfigFiles[i])
             if (content == '') continue;
 
-            let args = {configFile: content, fileName : this.appSpecificConfigFiles[i]}
+            let data : any = {
+                parent : 'Configuration'
+            }
+            let args = {configFile: content, fileName: this.appSpecificConfigFiles[i]}
             await super.generateDocumentationAndCache({
                     args: args,
                     template: 'app_config',
@@ -148,7 +157,9 @@ export default class ConfigurationBuilder extends BaseBuilder {
                     pathToFile: './' + this.appSpecificConfigFiles[i],
                     folderPath: './',
                     sidebarPosition: i,
-                    saveToPath: './Configuration/'
+                    saveToPath: './Configuration/',
+                    data : data,
+                prevDocument : document
                 }
             )
         }

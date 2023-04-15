@@ -1,7 +1,8 @@
 ---
 nav_order: 30
 title: Docusaurus
-parent: Docusaurus
+
+has_children:true
 ---
 
 # Docusaurus Generator Documentation

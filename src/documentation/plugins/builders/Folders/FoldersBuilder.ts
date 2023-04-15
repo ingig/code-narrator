@@ -22,9 +22,9 @@ export default class FoldersBuilder extends BaseBuilder {
     public async queryForFolder(folder: FolderStructure, position: number) {
         //start on the last folder, so we can later build summary of each folder
         for (let i = 0; i < folder.folders.length; i++) {
-            await this.queryForFolder(folder.folders[i], i+30);
+            await this.queryForFolder(folder.folders[i], i + 30);
         }
-        let folderName =folder.name;
+        let folderName = folder.name;
         if (folder.name == '') {
             return;
         }
@@ -55,14 +55,18 @@ export default class FoldersBuilder extends BaseBuilder {
                 path: folder.path.replaceAll('\\', '/'),
                 fileAndFolderInfo: JSON.stringify(fileAndFolderInfo)
             }
+
             await super.generateDocumentationAndCache({
                     args: args,
                     name: "README",
                     pathToFile: folder.path,
                     folderPath: folder.path,
-                    saveToPath : folder.path,
+                    saveToPath: folder.path,
                     sidebarPosition: position,
-                    sidebarLabel : folderName
+                    sidebarLabel: folderName,
+                    data: {has_children: true},
+                    prevDocument: document
+
                 }
             )
         }
@@ -85,7 +89,7 @@ export default class FoldersBuilder extends BaseBuilder {
         if (match && match[0]) {
             return match[0].trim();
         }
-        if (cache.documentation.length> 350) {
+        if (cache.documentation.length > 350) {
             return cache.documentation.substring(0, 350) + '...';
         }
 
@@ -106,7 +110,6 @@ export default class FoldersBuilder extends BaseBuilder {
         }
         return '';
     }
-
 
 
 }

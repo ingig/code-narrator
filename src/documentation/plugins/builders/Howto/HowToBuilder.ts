@@ -60,7 +60,8 @@ export default class HowToBuilder extends BaseBuilder {
             pathToFile: `howto/${name}`,
             folderPath: `howto`,
             saveToPath: `howto/`,
-            assistantMessages : assistantMessages
+            assistantMessages : assistantMessages,
+            prevDocument : document
         })
     }
 }

@@ -1,7 +1,8 @@
 ---
 nav_order: 0
 title: Code-narrator.config.js
-parent: .
+parent: Configuration
+
 ---
 
 Here's a detailed description of the `code-narrator.config.js` file and its purpose in the application:

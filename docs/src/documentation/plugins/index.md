@@ -1,7 +1,8 @@
 ---
 nav_order: 30
 title: plugins
-parent: plugins
+
+has_children:true
 ---
 
 # Documentation: Content of the Folder

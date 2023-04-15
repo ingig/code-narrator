@@ -1,7 +1,8 @@
 ---
 nav_order: 31
 title: Files
-parent: Files
+
+has_children:true
 ---
 
 # Files and Folders Documentation

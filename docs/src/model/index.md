@@ -1,7 +1,8 @@
 ---
 nav_order: 32
 title: model
-parent: model
+
+has_children:true
 ---
 
 # Documentation: Content of the Folder

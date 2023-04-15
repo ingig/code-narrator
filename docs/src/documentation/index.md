@@ -1,7 +1,8 @@
 ---
 nav_order: 31
 title: documentation
-parent: documentation
+
+has_children:true
 ---
 
 # Documentation: Content of the Folder

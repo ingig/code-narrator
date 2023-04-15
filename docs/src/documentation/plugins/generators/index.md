@@ -1,7 +1,8 @@
 ---
 nav_order: 31
 title: generators
-parent: generators
+
+has_children:true
 ---
 
 # Documentation: Content of the Folder

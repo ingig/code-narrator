@@ -1,7 +1,8 @@
 ---
 nav_order: 4
 title: ProjectStructure.ts
-parent: utils
+parent: src\utils
+
 ---
 
 # ProjectStructure.ts

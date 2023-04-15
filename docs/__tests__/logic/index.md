@@ -1,7 +1,8 @@
 ---
 nav_order: 30
 title: logic
-parent: logic
+
+has_children:true
 ---
 
 # Documentation

@@ -2,7 +2,6 @@ import ConfigurationBuilder from "../documentation/plugins/builders/Configuratio
 import FilesBuilder from "../documentation/plugins/builders/Files/FilesBuilder";
 import FoldersBuilder from "../documentation/plugins/builders/Folders/FoldersBuilder";
 import UserDefinedBuilder from "../documentation/plugins/builders/UserDefined/UserDefinedBuilder";
-import DocusaurusGenerator from "../documentation/plugins/generators/Docusaurus/DocusaurusGenerator";
 import ICodeNarratorConfig from "./ICodeNarratorConfig";
 import FileStructure from "../utils/FileStructure";
 import path from "path";

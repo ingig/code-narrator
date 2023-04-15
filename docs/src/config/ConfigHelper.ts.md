@@ -1,7 +1,8 @@
 ---
 nav_order: 1
 title: ConfigHelper.ts
-parent: config
+parent: src\config
+
 ---
 
 # ConfigHelper.ts
