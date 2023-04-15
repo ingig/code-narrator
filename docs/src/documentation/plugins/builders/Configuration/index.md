@@ -2,7 +2,7 @@
 nav_order: 30
 title: Configuration
 
-has_children:true
+has_children: true
 ---
 
 # Configuration Folder Documentation

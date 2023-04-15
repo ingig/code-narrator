@@ -1,7 +1,8 @@
 ---
 nav_order: 30
 title: src
-has_children:true
+
+has_children: true
 ---
 
 # Code Narrator Documentation

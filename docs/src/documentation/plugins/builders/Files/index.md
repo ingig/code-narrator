@@ -2,7 +2,7 @@
 nav_order: 31
 title: Files
 
-has_children:true
+has_children: true
 ---
 
 # Files and Folders Documentation

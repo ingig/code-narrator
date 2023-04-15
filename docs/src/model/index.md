@@ -2,7 +2,7 @@
 nav_order: 32
 title: model
 
-has_children:true
+has_children: true
 ---
 
 # Documentation: Content of the Folder

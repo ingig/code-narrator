@@ -2,7 +2,7 @@
 nav_order: 33
 title: Howto
 
-has_children:true
+has_children: true
 ---
 
 # HowToBuilder Documentation

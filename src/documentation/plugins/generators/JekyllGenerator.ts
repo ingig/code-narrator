@@ -26,11 +26,11 @@ export default class JekyllGenerator extends BaseGenerator {
                 parent = `parent: ${parentName}`
             }
         } else if (document.name == 'README' && document.path != '.') {
-            has_children = 'has_children:true'
+            has_children = 'has_children: true'
         }
 
         if (document.data && document.data.has_children) {
-            has_children = 'has_children:true';
+            has_children = 'has_children: true';
         }
         document.documentation = `---
 nav_order: ${position}

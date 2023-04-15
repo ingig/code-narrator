@@ -1,6 +1,8 @@
 ---
 nav_order: 10
 title: Prerequisites
+
+has_children: true
 ---
 
 Prerequisites for the code-narrator project:

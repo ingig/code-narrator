@@ -2,7 +2,7 @@
 nav_order: 30
 title: logic
 
-has_children:true
+has_children: true
 ---
 
 # Documentation

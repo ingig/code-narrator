@@ -2,7 +2,7 @@
 nav_order: 31
 title: generators
 
-has_children:true
+has_children: true
 ---
 
 # Documentation: Content of the Folder

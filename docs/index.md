@@ -1,6 +1,8 @@
 ---
 nav_order: 11
 title: ReadMe
+
+has_children: true
 ---
 
 # Code Narrator
