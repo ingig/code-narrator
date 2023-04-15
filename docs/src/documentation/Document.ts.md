@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: Document.ts
-parent: src\documentation
+parent: documentation
 
 ---
 

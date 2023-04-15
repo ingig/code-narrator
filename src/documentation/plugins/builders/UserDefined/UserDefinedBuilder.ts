@@ -54,7 +54,7 @@ export default class UserDefinedBuilder extends BaseBuilder {
             docId = docId + ConfigHelper.config.document_file_extension
             document = DocumentationCache.get(docId)
         }
-        if (!this.hasTemplateChanged(document, templatePath)) return;
+        //if (!this.hasTemplateChanged(document, templatePath)) return;
 
         let helper = new UserDefinedBuilderHelper();
         helper.loadArgs(builder, project_path)

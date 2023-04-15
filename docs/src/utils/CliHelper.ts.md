@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: CliHelper.ts
-parent: src\utils
+parent: utils
 
 ---
 

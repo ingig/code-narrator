@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: FolderStructureTest.ts
-parent: __tests__\utils
+parent: utils
 
 ---
 

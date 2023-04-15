@@ -1,7 +1,7 @@
 ---
 nav_order: 1
 title: DocumentationBuilder.ts
-parent: src\documentation
+parent: documentation
 
 ---
 

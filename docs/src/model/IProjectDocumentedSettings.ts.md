@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: IProjectDocumentedSettings.ts
-parent: src\model
+parent: model
 
 ---
 

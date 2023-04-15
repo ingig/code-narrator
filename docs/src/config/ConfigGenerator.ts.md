@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: ConfigGenerator.ts
-parent: src\config
+parent: config
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 nav_order: 1
 title: FileStructure.ts
-parent: src\utils
+parent: utils
 
 ---
 

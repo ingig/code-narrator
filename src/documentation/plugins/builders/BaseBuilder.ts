@@ -112,6 +112,8 @@ export default abstract class BaseBuilder {
     }
 
     public hasChanged(document?: Document) {
+        return true;
+        /*
         if (!document) return true;
 
         let project_path = process.cwd();
@@ -124,5 +126,7 @@ export default abstract class BaseBuilder {
 
         let stats = fs.statSync(filePath);
         return (stats.mtime.getTime() >= new Date(document.updated.toString()).getTime());
+
+         */
     }
 }

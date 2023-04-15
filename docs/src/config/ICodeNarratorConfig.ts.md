@@ -1,7 +1,7 @@
 ---
 nav_order: 4
 title: ICodeNarratorConfig.ts
-parent: src\config
+parent: config
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 nav_order: 1
 title: OpenAIResponse.ts
-parent: src\model
+parent: model
 
 ---
 

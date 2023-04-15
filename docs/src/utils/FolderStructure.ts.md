@@ -1,7 +1,7 @@
 ---
 nav_order: 2
 title: FolderStructure.ts
-parent: src\utils
+parent: utils
 
 ---
 

@@ -38,7 +38,7 @@
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -48,9 +48,9 @@
 		"path": "Configuration",
 		"folderPath": "./Configuration",
 		"fileContent": "",
-		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, documentation paths, and more. This file helps customize the behavior of the application according to the user's preferences.\n\nHere's an example of usage for the app-specific configs:\n\n```js\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // ... other configurations\n};\n\nmodule.exports = config;\n```\n\nIn this example, the `config` object contains various properties such as `entry_file`, `cli_file`, `project_name`, and `config_files`. These properties are used to define the entry point of the application, the CLI file, the project name, and the list of configuration files, respectively.\n\nAs for the other configuration files, without more information, it is not possible to provide a detailed description of their purpose in the application.",
+		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, documentation paths, and more. This file helps in customizing the behavior of the application according to the user's requirements.\n\nHere's an example of usage for the app-specific configs:\n\n```js\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // ... other configurations\n};\n\nmodule.exports = config;\n```\n\nIn this example, the `config` object contains various properties such as `entry_file`, `cli_file`, `project_name`, and `config_files`. These properties are used to configure the application's behavior, such as specifying the entry file, the CLI file, the project name, and the configuration files.\n\nAs for the other configuration files, there is not enough information provided to give a detailed description of each of them.",
 		"isFolder": true,
-		"updated": "2023-04-15T18:13:30.231Z",
+		"updated": "2023-04-15T18:27:13.930Z",
 		"sidebar_position": 3,
 		"sidebar_label": "Configuration",
 		"init": false,
@@ -82,7 +82,7 @@
 			}
 		],
 		"id": "Configuration",
-		"lastTouch": "2023-04-15T18:13:30.231Z",
+		"lastTouch": "2023-04-15T18:27:13.931Z",
 		"data": {
 			"appSpecificConfigFiles": [
 				"code-narrator.config.js"
@@ -126,7 +126,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "src"
 		}
@@ -166,7 +166,10 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "src"
+		}
 	},
 	{
 		"name": "ConfigGenerator.ts",
@@ -203,7 +206,10 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "config"
+		}
 	},
 	{
 		"name": "ConfigHelper.ts",
@@ -244,7 +250,10 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "config"
+		}
 	},
 	{
 		"name": "DefaultSettings.ts",
@@ -285,7 +294,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "config"
 		}
@@ -329,7 +338,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "config"
 		}
@@ -373,7 +382,10 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "config"
+		}
 	},
 	{
 		"name": "Document.ts",
@@ -410,7 +422,10 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "documentation"
+		}
 	},
 	{
 		"name": "DocumentationBuilder.ts",
@@ -447,7 +462,10 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "documentation"
+		}
 	},
 	{
 		"name": "DocumentationCache.ts",
@@ -484,7 +502,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -528,7 +546,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -568,7 +586,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -608,7 +626,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -648,7 +666,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -692,7 +710,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -732,7 +750,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -776,7 +794,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -816,7 +834,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -856,7 +874,10 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "UserDefined"
+		}
 	},
 	{
 		"name": "BaseGenerator.ts",
@@ -893,7 +914,10 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "generators"
+		}
 	},
 	{
 		"name": "DocusaurusGenerator.ts",
@@ -967,7 +991,10 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "model"
+		}
 	},
 	{
 		"name": "OpenAIResponse.ts",
@@ -1004,7 +1031,10 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "model"
+		}
 	},
 	{
 		"name": "OpenAIRepository.ts",
@@ -1041,7 +1071,10 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "repositories"
+		}
 	},
 	{
 		"name": "CliHelper.ts",
@@ -1078,7 +1111,10 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "FileStructure.ts",
@@ -1115,7 +1151,10 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "FolderStructure.ts",
@@ -1152,7 +1191,10 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "Helper.ts",
@@ -1189,7 +1231,10 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "ProjectStructure.ts",
@@ -1226,7 +1271,10 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "SuggestionBuilderTest.ts",
@@ -1263,7 +1311,10 @@
 			}
 		],
 		"id": "__tests__\\logic\\SuggestionBuilderTest.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "logic"
+		}
 	},
 	{
 		"name": "OpenAIRepositoryTest.ts",
@@ -1300,7 +1351,10 @@
 			}
 		],
 		"id": "__tests__\\repositories\\OpenAIRepositoryTest.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "repositories"
+		}
 	},
 	{
 		"name": "FolderStructureTest.ts",
@@ -1337,7 +1391,10 @@
 			}
 		],
 		"id": "__tests__\\utils\\FolderStructureTest.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "utils"
+		}
 	},
 	{
 		"name": "README",
@@ -1374,7 +1431,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1411,7 +1468,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1448,7 +1505,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1485,7 +1542,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1522,7 +1579,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1559,7 +1616,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1596,7 +1653,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1670,7 +1727,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1707,7 +1764,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1744,7 +1801,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1781,7 +1838,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1818,7 +1875,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1855,7 +1912,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1892,7 +1949,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1929,7 +1986,7 @@
 			}
 		],
 		"id": "__tests__\\logic",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -1966,7 +2023,7 @@
 			}
 		],
 		"id": "__tests__\\repositories",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -2003,7 +2060,7 @@
 			}
 		],
 		"id": "__tests__\\utils",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "README",
@@ -2040,7 +2097,7 @@
 			}
 		],
 		"id": "__tests__",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -2081,7 +2138,10 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"has_children": true
+		}
 	},
 	{
 		"name": "ReadMe",
@@ -2122,7 +2182,10 @@
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"has_children": true
+		}
 	},
 	{
 		"name": "How to create HowTo",
@@ -2167,7 +2230,10 @@
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "How To"
+		}
 	},
 	{
 		"name": "Use CLI",
@@ -2216,7 +2282,10 @@
 			}
 		],
 		"id": "howto\\howto_use_cli.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "How To"
+		}
 	},
 	{
 		"name": "Content to long",
@@ -2257,7 +2326,10 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "How To"
+		}
 	},
 	{
 		"name": "Create your own custom builder",
@@ -2302,7 +2374,10 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"parent": "How To"
+		}
 	},
 	{
 		"name": "README",
@@ -2343,7 +2418,10 @@
 			}
 		],
 		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-15T18:12:47.793Z"
+		"lastTouch": "2023-04-15T18:26:27.414Z",
+		"data": {
+			"has_children": true
+		}
 	},
 	{
 		"name": "JenkyllGenerator.ts",
@@ -2425,7 +2503,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2469,7 +2547,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-15T18:12:47.793Z",
+		"lastTouch": "2023-04-15T18:26:27.414Z",
 		"data": {
 			"parent": "generators"
 		}

@@ -1,7 +1,7 @@
 ---
 nav_order: 0
 title: OpenAIRepositoryTest.ts
-parent: __tests__\repositories
+parent: repositories
 
 ---
 
