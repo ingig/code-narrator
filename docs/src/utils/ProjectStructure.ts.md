@@ -1,8 +1,3 @@
----
-sidebar_position: 4
-sidebar_label: ProjectStructure.ts
----
-
 # ProjectStructure.ts
 
 This is a code file that defines a class called `ProjectStructure`. The class is responsible for managing the structure of a project, including its folders and files. It provides methods to retrieve the folder structure and all the files within the project.

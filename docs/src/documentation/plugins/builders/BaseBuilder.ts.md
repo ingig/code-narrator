@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: BaseBuilder.ts
----
-
 # BaseBuilder.ts
 
 The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract class `BaseBuilder`. This class serves as the base class for Builder plugins, which are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.
@@ -40,7 +35,7 @@ class CustomBuilder extends BaseBuilder {
     // Your custom implementation here
   }
 
-  async render(document: Document) {
+  async render(document: Document): Promise<string> {
     // Your custom implementation here
   }
 }
@@ -61,7 +56,7 @@ abstract generate(): any;
 This abstract method should be implemented in the derived class to render the given `Document` object.
 
 ```typescript
-abstract render(document: Document);
+abstract render(document: Document): Promise<string>;
 ```
 
 ### getAnswer
@@ -69,7 +64,7 @@ abstract render(document: Document);
 This method retrieves an answer from GPT using the provided name, arguments, and template.
 
 ```typescript
-public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]);
+public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse>;
 ```
 
 ### generateDocumentation
@@ -77,7 +72,7 @@ public async getAnswer(name: string, args: any = {}, template = 'template', assi
 This method generates a `Document` object with the provided options.
 
 ```typescript
-public async generateDocumentation(options: GenerateOptions);
+public async generateDocumentation(options: GenerateOptions): Promise<Document>;
 ```
 
 ### generateDocumentationAndCache
@@ -85,7 +80,7 @@ public async generateDocumentation(options: GenerateOptions);
 This method generates a `Document` object with the provided options and caches it.
 
 ```typescript
-public async generateDocumentationAndCache(options: GenerateOptions);
+public async generateDocumentationAndCache(options: GenerateOptions): Promise<void>;
 ```
 
 ### hasChanged
@@ -111,7 +106,7 @@ class CustomBuilder extends BaseBuilder {
     // Your custom implementation here
   }
 
-  async render(document: Document) {
+  async render(document: Document): Promise<string> {
     // Your custom implementation here
   }
 }

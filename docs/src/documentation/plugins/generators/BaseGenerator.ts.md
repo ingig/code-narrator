@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: BaseGenerator.ts
----
-
 # BaseGenerator.ts
 
 The `BaseGenerator.ts` file is a TypeScript code file that defines the base class for Generator plugins. Generator plugins are used to parse the documentation and modify it for the build tool you are using to build the documentation.

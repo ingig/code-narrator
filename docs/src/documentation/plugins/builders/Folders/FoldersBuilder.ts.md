@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: FoldersBuilder.ts
----
-
 # FoldersBuilder.ts
 
 This is a TypeScript code file that defines a `FoldersBuilder` class, which is responsible for generating documentation for a folder structure in a project. The class extends the `BaseBuilder` class and provides methods to generate, query, and render documentation for folders and files within the project.
@@ -32,7 +27,7 @@ The `FoldersBuilder` class extends the `BaseBuilder` class and provides addition
 ### generate
 
 ```typescript
-public async generate()
+public async generate(): Promise<void>
 ```
 
 This method generates the documentation for the project's folder structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then queries for each folder in the structure.
@@ -40,7 +35,7 @@ This method generates the documentation for the project's folder structure. It c
 ### queryForFolder
 
 ```typescript
-public async queryForFolder(folder: FolderStructure, position: number)
+public async queryForFolder(folder: FolderStructure, position: number): Promise<void>
 ```
 
 This method takes a `FolderStructure` object and a `position` number as parameters. It recursively queries for each subfolder in the given folder and generates documentation for the files and folders within it. The documentation is then cached using the `DocumentationCache` class.
@@ -48,7 +43,7 @@ This method takes a `FolderStructure` object and a `position` number as paramete
 ### render
 
 ```typescript
-public async render(document: Document)
+public async render(document: Document): Promise<string>
 ```
 
 This method takes a `Document` object as a parameter and returns the documentation as a string.

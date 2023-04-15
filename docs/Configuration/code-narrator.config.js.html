@@ -1,0 +1,78 @@
+---
+nav_order: 0
+title: Code-narrator.config.js
+parent: .
+---
+
+Here is a detailed description of the `code-narrator.config.js` file and its purpose in the application:
+
+The `code-narrator.config.js` file is a configuration file for the Code Narrator application. It contains various settings and options that determine how the application generates documentation for your project. The configuration file is divided into several sections, each with its own purpose and settings.
+
+Below is a breakdown of the different sections and their purposes:
+
+1. **General settings**: These settings define basic information about your project, such as the entry file, CLI file, project name, and repository URL.
+
+   ```md
+   entry_file: "./dist/src/App.js",
+   cli_file: "./dist/src/cli.js",
+   project_name: "code-narrator",
+   repository_url: "https://github.com/ingig/code-narrator",
+   ```
+
+2. **Paths and files**: These settings specify the paths and files used by the application, such as the source code, documentation, and test paths.
+
+   ```md
+   config_files: ["code-narrator.config.js"],
+   readmeRoot: true,
+   project_file: "package.json",
+   source_path: "src",
+   documentation_path: "docs",
+   test_path: "__tests__",
+   include: [
+       "code-narrator.config.js",
+       "__tests__/**/**",
+       "src/**/*.ts"
+   ],
+   ```
+
+3. **Builders**: This section defines the builders used to generate the documentation. Each builder has a type, template, name, and other settings specific to the builder.
+
+   ```md
+   builders: [
+       {
+           // Builder settings
+       },
+       // More builders
+   ],
+   ```
+
+4. **Generator plugins**: This section specifies the generator plugins used by the application, such as the JenkyllGenerator.
+
+   ```md
+   generatorPlugin: [
+       JenkyllGenerator
+   ],
+   ```
+
+5. **Sitemap**: This section contains settings related to the sitemap generation, such as enabling the sitemap and specifying the URL.
+
+   ```md
+   sitemap: {
+       enable: true,
+       url: 'https://ingig.github.io/code-narrator/'
+   },
+   ```
+
+6. **Root file name**: This setting specifies the name of the root file for the generated documentation.
+
+   ```md
+   rootFileName: 'index.html'
+   ```
+
+To retrieve a value from the config file, you can use the `require` function to import the config object and then access the desired property. For example, to get the `entry_file` value, you can do the following:
+
+```javascript
+const config = require("./code-narrator.config.js");
+const entryFile = config.entry_file;
+console.log(entryFile); // Output: "./dist/src/App.js"
+```

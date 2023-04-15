@@ -1,27 +1,10 @@
----
-sidebar_position: 3
-sidebar_label: DocumentationGenerator.ts
----
-
 # DocumentationGenerator.ts
 
-This is a TypeScript code file that defines a class named `DocumentationGenerator`. The purpose of this class is to generate documentation files based on the contents of a `DocumentationCache`. It supports the use of generator plugins to process the documentation before writing it to the file system.
+This is a TypeScript code file that contains the `DocumentationGenerator` class. This class is responsible for generating documentation files based on the documents stored in the `DocumentationCache`. It also supports generating a sitemap for the documentation.
 
-## Table of Contents
+## Usage
 
-- [Class Description](#class-description)
-- [Usage Examples](#usage-examples)
-- [Methods](#methods)
-  - [make](#make)
-- [Parameters](#parameters)
-
-## Class Description
-
-The `DocumentationGenerator` class is responsible for generating documentation files based on the contents of a `DocumentationCache`. It uses the configuration provided by `ConfigHelper` to determine the output paths for the generated documentation files. The class also supports the use of generator plugins to process the documentation before writing it to the file system.
-
-## Usage Examples
-
-To use the `DocumentationGenerator` class, you can create an instance of the class and call the `make` method:
+To use the `DocumentationGenerator` class, you need to import it and create a new instance. Then, call the `make()` method to generate the documentation files.
 
 ```typescript
 import DocumentationGenerator from "./DocumentationGenerator";
@@ -30,23 +13,51 @@ const generator = new DocumentationGenerator();
 generator.make();
 ```
 
-## Methods
+## Class: DocumentationGenerator
 
-### make
+### Method: make()
 
-The `make` method is responsible for generating the documentation files. It first retrieves the documents from the `DocumentationCache`. If there are no documents, the method returns immediately. The method then iterates through the documents and processes them using the configured generator plugins. Finally, it writes the processed documentation to the file system.
+This method generates the documentation files based on the documents stored in the `DocumentationCache`. It also supports generating a sitemap for the documentation.
+
+#### Parameters
+
+None.
+
+#### Example
 
 ```typescript
-public make(): void;
+const generator = new DocumentationGenerator();
+generator.make();
 ```
 
-## Parameters
+## Technical Concepts
 
-The `make` method does not have any parameters.
+### DocumentationCache
 
-### Technical Concepts
+`DocumentationCache` is a class that stores the documents that need to be generated. It provides methods to add, get, and remove documents from the cache.
 
-- **DocumentationCache**: A cache that stores the documentation data to be processed by the `DocumentationGenerator`.
-- **BaseGenerator**: A base class for generator plugins that can be used to process the documentation before writing it to the file system.
-- **ConfigHelper**: A helper class that provides access to the configuration settings for the documentation generation process.
-- **App**: A class representing the main application, which is used to determine the start time of the application for cache management purposes.
+### BaseGenerator
+
+`BaseGenerator` is an abstract class that defines the interface for generator plugins. Generator plugins are responsible for processing the documents and generating the output files.
+
+### ConfigHelper
+
+`ConfigHelper` is a class that provides access to the configuration settings for the application. It reads the configuration from a JSON file and provides methods to access the values.
+
+### App
+
+`App` is the main class of the application. It initializes the `DocumentationGenerator` and other components and starts the generation process.
+
+## File Structure
+
+The generated documentation files are saved in the `documentation_path` specified in the configuration. The file structure is as follows:
+
+- `README.md`: The main documentation file, generated if `readmeRoot` is set to `true` in the configuration.
+- `documentation_path`:
+  - `documents[i].saveToPath`: The folder path for each document.
+    - `fileName + ConfigHelper.config.document_file_extension`: The file name for each document, with the appropriate file extension.
+  - `sitemap.xml`: The sitemap file, generated if `ConfigHelper.config.sitemap.enable` is set to `true`.
+
+## Sitemap Generation
+
+If the `ConfigHelper.config.sitemap.enable` is set to `true`, the `make()` method will generate a sitemap file named `sitemap.xml` in the `documentation_path`. The sitemap file will contain the URLs for all the generated documentation files.

@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: HowToBuilder.ts
----
-
 # HowToBuilder.ts
 
 `HowToBuilder.ts` is a TypeScript code file that provides a class `HowToBuilder` for generating and rendering documentation for "how-to" guides. The class extends the `BaseBuilder` class and is responsible for extracting and formatting "how-to" content from the given files.
@@ -36,7 +31,7 @@ public async generate() {
 The `render` method is an asynchronous method that takes a `Document` object as a parameter and returns the documentation content as a string.
 
 ```typescript
-public async render(document: Document) {
+public async render(document: Document): Promise<string> {
     return document.documentation;
 }
 ```

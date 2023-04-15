@@ -1,3 +1,5 @@
+const JenkyllGenerator = require("./src/documentation/plugins/generators/Docusaurus/JenkyllGenerator");
+
 /**
  * @type {ICodeNarratorConfig}
  */
@@ -55,6 +57,7 @@ const config = {
                         "$.version",
                         "$.homepage",
                         "$.bugs",
+                        "$.author",
                         "$.repository", "$.license"
                     ]
                 }
@@ -115,7 +118,16 @@ const config = {
             }
             ]
         }
-    ]
+    ],
+    generatorPlugin : [
+        JenkyllGenerator
+    ],
+    sitemap : {
+        enable : true,
+        url : 'https://ingig.github.io/code-narrator/'
+    },
+    rootFileName: 'index.html'
+
 };
 
 module.exports = config;

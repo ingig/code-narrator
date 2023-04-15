@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: CliHelper.ts
----
-
 # CliHelper.ts
 
 This is a TypeScript code file that contains a class named `CliHelper`. The class is responsible for handling command line arguments and configuration for a tool called Code Narrator. The class has two main methods: `getArgv()` and `getConfig()`.

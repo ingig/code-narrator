@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: ConfigurationBuilder.ts
----
-
 # ConfigurationBuilder.ts
 
 The `ConfigurationBuilder.ts` file is a TypeScript code file that defines a class named `ConfigurationBuilder`. This class is responsible for generating and managing configuration files for an application. It extends the `BaseBuilder` class and provides methods for generating, updating, and rendering configuration files.

@@ -1,8 +1,3 @@
----
-sidebar_position: 14
-sidebar_label: Content to long
----
-
 # How to Edit Long Content in Code Narrator
 
 ## Introduction

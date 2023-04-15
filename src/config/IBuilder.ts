@@ -16,3 +16,8 @@ export interface IFile {
     JSONPath: string[];
     extract : string[];
 }
+
+export interface ISitemap {
+    enable : boolean;
+    url : string;
+}

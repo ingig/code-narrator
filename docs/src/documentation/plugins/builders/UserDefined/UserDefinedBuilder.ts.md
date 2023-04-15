@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: UserDefinedBuilder.ts
----
-
 # UserDefinedBuilder.ts
 
 This is a TypeScript code file that defines a class named `UserDefinedBuilder` which extends the `BaseBuilder` class. The purpose of this class is to generate and render user-defined documentation based on templates and configurations.
@@ -32,11 +27,11 @@ This method takes an input string and extracts the content path using a regular 
 
 - `input`: A string containing the content path.
 
-### generate()
+### generate(): Promise<void>
 
 This asynchronous method generates the user-defined documentation based on the provided configuration and templates. It iterates through the builders in the configuration, checks if the template has changed, and generates the documentation using the `UserDefinedBuilderHelper` class.
 
-### render(document: Document)
+### render(document: Document): Promise<string>
 
 This asynchronous method takes a `Document` object and returns its documentation as a string.
 

@@ -1,8 +1,3 @@
----
-sidebar_position: 12
-sidebar_label: How to create HowTo
----
-
 # How to Create a How-To Guide for the CLI
 
 ## Introduction

@@ -1,42 +1,45 @@
----
-sidebar_position: 4
-sidebar_label: Prerequisites
----
+Prerequisites for the code-narrator project:
 
-Prerequisites for the "code-narrator" project:
-
-:::info
-- Knowledge of JavaScript and TypeScript
-- Familiarity with Node.js and npm
-:::
+1. Knowledge of JavaScript and TypeScript.
+2. Familiarity with Node.js and npm (Node Package Manager).
+3. Basic understanding of OpenAI API.
 
 Required software and tools:
 
-1. Node.js (version >18)
-2. npm (for package management)
+1. Node.js (version 14 or higher) - Download and install from [Node.js official website](https://nodejs.org/).
+2. npm (version 6 or higher) - It comes bundled with Node.js.
 
-Required dependencies:
+To work with or understand the project, you should have the following dependencies installed:
 
-1. asynckit (version ^0.4.0)
-2. axios (version ^0.26.1)
-3. combined-stream (version ^1.0.8)
-4. delayed-stream (version ^1.0.0)
-5. dotenv (version ^16.0.3)
-6. extract-json-from-string (version ^1.0.1)
-7. follow-redirects (version ^1.15.2)
-8. form-data (version ^4.0.0)
-9. liquidjs (version ^10.7.0)
-10. mime-db (version ^1.52.0)
-11. mime-types (version ^2.1.35)
-12. openai (version ^3.1.0)
+1. Install the code-narrator package using `npm i code-narrator -D`.
+2. Install other required dependencies by running `npm install` in the project directory.
 
-Required devDependencies:
+The project uses the following main dependencies:
 
-1. @babel/preset-typescript (version ^7.21.0)
-2. @jest/globals (version ^29.5.0)
-3. @types/jest (version ^29.4.0)
-4. @types/node (version ^18.11.19)
-5. jest (version ^29.4.2)
-6. ts-jest (version ^29.0.5)
-7. ts-node (version ^10.9.1)
-8. typescript (version ^4.9.5)
+- axios: ^0.26.1
+- dotenv: ^16.0.3
+- fast-glob: ^3.2.12
+- form-data: ^4.0.0
+- fs-extra: ^11.1.1
+- jsonpath: ^1.1.1
+- liquidjs: ^10.7.0
+- openai: ^3.1.0
+- yargs: ^17.7.1
+
+And the following development dependencies:
+
+- @babel/preset-typescript: ^7.21.0
+- @jest/globals: ^29.5.0
+- @types/jest: ^29.4.0
+- @types/node: ^18.11.19
+- gulp: ^4.0.2
+- gulp-copy: ^4.0.1
+- gulp-typescript: ^6.0.0-alpha.1
+- jest: ^29.4.2
+- ts-jest: ^29.0.5
+- ts-node: ^10.9.1
+- typescript: ^4.9.5
+
+:::note
+Make sure to have a valid OpenAI API key and set it in the `.env` file as `OPENAI_API_KEY=your_api_key`. Replace `your_api_key` with your actual API key.
+:::

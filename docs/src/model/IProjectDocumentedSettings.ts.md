@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: IProjectDocumentedSettings.ts
----
-
 # IProjectDocumentedSettings.ts
 
 This is a TypeScript interface file that defines the structure of the `IProjectDocumentedSettings` interface. The interface is used to represent the settings of a project that needs to be documented.

@@ -1,8 +1,3 @@
----
-sidebar_position: 15
-sidebar_label: Create your own custom builder
----
-
 # How to Create a Custom Builder Using the Config File
 
 ## Introduction

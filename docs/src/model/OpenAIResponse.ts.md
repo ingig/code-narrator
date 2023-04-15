@@ -1,8 +1,3 @@
----
-sidebar_position: 1
-sidebar_label: OpenAIResponse.ts
----
-
 # OpenAIResponse.ts
 
 ## Overview

@@ -1,8 +1,3 @@
----
-sidebar_position: 2
-sidebar_label: FolderStructure.ts
----
-
 # FolderStructure.ts
 
 This TypeScript file defines a `FolderStructure` class that represents a folder structure in a file system. The class provides methods to retrieve information about the folder structure, such as its hierarchical tree, files, and folders. It also includes utility methods to check if a folder exists, search for a string in files, and determine if a path is an ancestor or parent of another path.

@@ -1,8 +1,3 @@
----
-sidebar_position: 13
-sidebar_label: Use CLI
----
-
 # How to Use Code-Narrator CLI
 
 ## Introduction

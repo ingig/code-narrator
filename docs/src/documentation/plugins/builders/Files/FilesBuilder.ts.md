@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: FilesBuilder.ts
----
-
 # FilesBuilder.ts
 
 The `FilesBuilder.ts` file is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating and rendering documentation for files in a project structure. It also handles querying folders, cleaning deleted files from the cache, and determining if a file should be documented.
@@ -30,7 +25,7 @@ export default class FilesBuilder extends BaseBuilder {
 ### generate
 
 ```typescript
-public async generate()
+public async generate(): Promise<void>
 ```
 
 This method generates the documentation for the files in the project structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then queries the folder for documentation.
@@ -38,7 +33,7 @@ This method generates the documentation for the files in the project structure. 
 ### render
 
 ```typescript
-public async render(document: Document)
+public async render(document: Document): Promise<string>
 ```
 
 This method renders the documentation for a given `Document` instance. It returns the documentation as a string.
@@ -46,7 +41,7 @@ This method renders the documentation for a given `Document` instance. It return
 ### queryForFolder
 
 ```typescript
-public async queryForFolder(folder: FolderStructure)
+public async queryForFolder(folder: FolderStructure): Promise<void>
 ```
 
 This method recursively queries a given folder and its subfolders for documentation. It cleans deleted files from the cache, iterates through the files in the folder, and generates documentation for each file if it should be documented.

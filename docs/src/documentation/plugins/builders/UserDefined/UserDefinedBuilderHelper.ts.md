@@ -1,8 +1,3 @@
----
-sidebar_position: 1
-sidebar_label: UserDefinedBuilderHelper.ts
----
-
 # UserDefinedBuilderHelper.ts
 
 The `UserDefinedBuilderHelper.ts` file is a TypeScript code file that exports a class named `UserDefinedBuilderHelper`. This class provides various utility methods to help with building user-defined content, such as extracting paths, loading arguments, and getting assistant messages.

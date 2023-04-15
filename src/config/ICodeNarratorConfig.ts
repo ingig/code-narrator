@@ -1,4 +1,4 @@
-import IBuilder from "./IBuilder";
+import IBuilder, {ISitemap} from "./IBuilder";
 
 export default interface ICodeNarratorConfig {
     project_name : string;
@@ -18,8 +18,10 @@ export default interface ICodeNarratorConfig {
     gptSystemCommands: string[]
     documentation_type: string
     document_file_extension: string
+    rootFileName : string;
     cache_file: string;
     gptModel : string;
     builders : IBuilder[]
     include : string[];
+    sitemap : ISitemap;
 }

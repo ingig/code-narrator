@@ -1,8 +1,3 @@
----
-sidebar_position: 1
-sidebar_label: cli.ts
----
-
 # cli.ts
 
 `cli.ts` is a command-line interface (CLI) script that serves as the entry point for the Code Narrator application. It handles the parsing of command-line arguments, loading of user configurations, and the execution of the main application logic.

@@ -30,16 +30,15 @@ export default class DefaultSettings {
                 ConfigurationBuilder, FilesBuilder, FoldersBuilder, UserDefinedBuilder,
                 HowToBuilder
             ],
-            generatorPlugin: [
-                DocusaurusGenerator
-            ],
             gptSystemCommands: [
+                'Act as a documentation expert for software',
                 'If there is :::note, :::info, :::caution, :::tip, :::danger in the text, extract that from its location and format it correctly',
                 `Return your answer in {DocumentationType} format`,
                 `If you notice any secret information, replace it with ***** in your response`
             ],
             documentation_type: 'md', //What format should be generated, e.g. md, sphinx
             document_file_extension: ".md",
+            rootFileName : 'README.md',
             cache_file: '.code-narrator/cache.json', //location of the cache file. :::warning '.code-narrator/cache.json' should be committed into git.
             gptModel : 'gpt-4'
         } as ICodeNarratorConfig

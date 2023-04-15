@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: OpenAIRepository.ts
----
-
 # OpenAIRepository.ts
 
 This TypeScript file defines a class called `OpenAIRepository` that provides methods to interact with the OpenAI API. The class is responsible for querying the OpenAI API and handling the responses.
@@ -15,7 +10,7 @@ The constructor initializes the `OpenAIApi` instance with the API key from the `
 
 ### Methods
 
-#### query(text: string)
+#### query(text: string): Promise<OpenAIResponse>
 
 This method takes a single question as a string and returns a Promise that resolves to an `OpenAIResponse` object. It internally calls the `queryQuestions` method with the single question.
 
@@ -28,7 +23,7 @@ openAIRepo.query("What is the capital of France?").then((response) => {
 });
 ```
 
-#### queryQuestions(questions: string[], errorCount = 0, model?: string, assistantMessages?: string[])
+#### queryQuestions(questions: string[], errorCount = 0, model?: string, assistantMessages?: string[]): Promise<OpenAIResponse>
 
 This method takes an array of questions, an optional error count, an optional model, and an optional array of assistant messages. It returns a Promise that resolves to an `OpenAIResponse` object.
 

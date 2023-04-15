@@ -1,8 +1,3 @@
----
-sidebar_position: 0
-sidebar_label: SuggestionBuilderTest.ts
----
-
 # SuggestionBuilderTest.ts
 
 SuggestionBuilderTest.ts is a test file for the `DocumentationBuilder` class, which is responsible for generating a Markdown (.md) file containing the project description, installation instructions, and usage information. The test ensures that the `DocumentationBuilder` class functions as expected.
