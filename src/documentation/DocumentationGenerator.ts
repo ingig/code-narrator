@@ -61,7 +61,7 @@ export default class DocumentationGenerator {
                 path += ConfigHelper.config.document_file_extension;
                 sitemap += `<url>
       <loc>${url}${path}</loc>
-      <lastmod>${document.updated}</lastmod>
+      <lastmod>${document.updated.toISOString().split('T')[0]}</lastmod>
    </url>`
             }
             sitemap += `</urlset>`;
