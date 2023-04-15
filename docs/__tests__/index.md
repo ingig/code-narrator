@@ -3,6 +3,7 @@ nav_order: 31
 title: __tests__
 
 has_children: true
+permalink: __tests__
 ---
 
 # Documentation

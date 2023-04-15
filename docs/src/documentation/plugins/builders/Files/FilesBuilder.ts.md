@@ -3,6 +3,7 @@ nav_order: 0
 title: FilesBuilder.ts
 parent: Files
 
+permalink: src\documentation\plugins\builders\Files\FilesBuilder.ts
 ---
 
 # FilesBuilder.ts

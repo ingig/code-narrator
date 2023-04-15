@@ -3,6 +3,7 @@ nav_order: 3
 title: IBuilder.ts
 parent: config
 
+permalink: src\config\IBuilder.ts
 ---
 
 # IBuilder.ts

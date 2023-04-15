@@ -3,6 +3,7 @@ nav_order: 30
 title: logic
 
 has_children: true
+permalink: __tests__\logic
 ---
 
 # Documentation

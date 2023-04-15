@@ -3,6 +3,7 @@ nav_order: 30
 title: plugins
 
 has_children: true
+permalink: src\documentation\plugins
 ---
 
 # Documentation: Content of the Folder

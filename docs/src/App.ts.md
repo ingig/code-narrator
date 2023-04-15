@@ -3,6 +3,7 @@ nav_order: 0
 title: App.ts
 parent: src
 
+permalink: src\App.ts
 ---
 
 # App.ts

@@ -3,6 +3,7 @@ nav_order: 3
 title: Helper.ts
 parent: utils
 
+permalink: src\utils\Helper.ts
 ---
 
 # Helper.ts

@@ -3,6 +3,7 @@ nav_order: 31
 title: repositories
 
 has_children: true
+permalink: __tests__\repositories
 ---
 
 # Documentation: Content of the Folder

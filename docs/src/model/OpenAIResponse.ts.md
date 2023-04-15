@@ -3,6 +3,7 @@ nav_order: 1
 title: OpenAIResponse.ts
 parent: model
 
+permalink: src\model\OpenAIResponse.ts
 ---
 
 # OpenAIResponse.ts

@@ -3,6 +3,7 @@ nav_order: 0
 title: Code-narrator.config.js
 parent: Configuration
 
+permalink: code-narrator.config.js
 ---
 
 Here's a detailed description of the `code-narrator.config.js` file and its purpose in the application:

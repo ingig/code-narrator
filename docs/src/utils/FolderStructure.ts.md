@@ -3,6 +3,7 @@ nav_order: 2
 title: FolderStructure.ts
 parent: utils
 
+permalink: src\utils\FolderStructure.ts
 ---
 
 # FolderStructure.ts

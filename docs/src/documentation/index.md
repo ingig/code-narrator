@@ -3,6 +3,7 @@ nav_order: 31
 title: documentation
 
 has_children: true
+permalink: src\documentation
 ---
 
 # Documentation: Content of the Folder

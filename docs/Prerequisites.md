@@ -3,6 +3,7 @@ nav_order: 10
 title: Prerequisites
 
 has_children: true
+permalink: prerequisites.md
 ---
 
 Prerequisites for the code-narrator project:

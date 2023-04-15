@@ -3,6 +3,7 @@ nav_order: 11
 title: ReadMe
 
 has_children: true
+permalink: README.md
 ---
 
 # Code Narrator

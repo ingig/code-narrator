@@ -3,6 +3,7 @@ nav_order: 4
 title: ProjectStructure.ts
 parent: utils
 
+permalink: src\utils\ProjectStructure.ts
 ---
 
 # ProjectStructure.ts

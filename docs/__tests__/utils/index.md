@@ -3,6 +3,7 @@ nav_order: 32
 title: utils
 
 has_children: true
+permalink: __tests__\utils
 ---
 
 # Documentation: Content of the Folder

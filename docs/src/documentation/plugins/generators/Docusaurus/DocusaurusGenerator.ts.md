@@ -3,6 +3,7 @@ nav_order: 0
 title: DocusaurusGenerator.ts
 parent: src\documentation\plugins\generators\Docusaurus
 
+permalink: src\documentation\plugins\generators\Docusaurus\DocusaurusGenerator.ts
 ---
 
 # DocusaurusGenerator.ts

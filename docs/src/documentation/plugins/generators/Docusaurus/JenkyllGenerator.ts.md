@@ -3,6 +3,7 @@ nav_order: 1
 title: JenkyllGenerator.ts
 parent: src\documentation\plugins\generators\Docusaurus
 
+permalink: src\documentation\plugins\generators\Docusaurus\JenkyllGenerator.ts
 ---
 
 # JenkyllGenerator.ts

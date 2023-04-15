@@ -3,6 +3,7 @@ nav_order: 2
 title: DefaultSettings.ts
 parent: config
 
+permalink: src\config\DefaultSettings.ts
 ---
 
 # DefaultSettings.ts

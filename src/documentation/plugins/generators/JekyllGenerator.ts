@@ -37,6 +37,7 @@ nav_order: ${position}
 title: ${sidebar_label}
 ${parent}
 ${has_children}
+permalink: ${document.path}
 ---
 
 ` + document.documentation;

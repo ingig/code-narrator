@@ -3,6 +3,7 @@ nav_order: 0
 title: FolderStructureTest.ts
 parent: utils
 
+permalink: __tests__\utils\FolderStructureTest.ts
 ---
 
 # FolderStructureTest.ts

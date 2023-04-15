@@ -3,6 +3,7 @@ nav_order: 12
 title: How to create HowTo
 parent: How To
 
+permalink: howto\howto_create_howto.md
 ---
 
 # How to Create a How-To Guide for the CLI
