@@ -3,7 +3,7 @@ nav_order: 0
 title: OpenAIRepository.ts
 parent: repositories
 
-permalink: src\repositories\OpenAIRepository.ts
+permalink: src\repositories\OpenAIRepository.ts.md
 ---
 
 # OpenAIRepository.ts

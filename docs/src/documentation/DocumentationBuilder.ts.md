@@ -3,7 +3,7 @@ nav_order: 1
 title: DocumentationBuilder.ts
 parent: documentation
 
-permalink: src\documentation\DocumentationBuilder.ts
+permalink: src\documentation\DocumentationBuilder.ts.md
 ---
 
 # DocumentationBuilder.ts

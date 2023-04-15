@@ -3,7 +3,7 @@ nav_order: 2
 title: DocumentationCache.ts
 parent: documentation
 
-permalink: src\documentation\DocumentationCache.ts
+permalink: src\documentation\DocumentationCache.ts.md
 ---
 
 # DocumentationCache.ts

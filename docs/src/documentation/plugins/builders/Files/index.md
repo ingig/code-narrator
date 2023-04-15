@@ -3,7 +3,7 @@ nav_order: 31
 title: Files
 
 has_children: true
-permalink: src\documentation\plugins\builders\Files
+permalink: src\documentation\plugins\builders\Files.md
 ---
 
 # Files and Folders Documentation

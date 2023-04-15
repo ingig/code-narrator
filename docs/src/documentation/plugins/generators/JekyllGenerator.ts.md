@@ -3,7 +3,7 @@ nav_order: 2
 title: JekyllGenerator.ts
 parent: generators
 
-permalink: src\documentation\plugins\generators\JekyllGenerator.ts
+permalink: src\documentation\plugins\generators\JekyllGenerator.ts.md
 ---
 
 # JekyllGenerator.ts

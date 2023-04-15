@@ -3,7 +3,7 @@ nav_order: 0
 title: ConfigurationBuilder.ts
 parent: Configuration
 
-permalink: src\documentation\plugins\builders\Configuration\ConfigurationBuilder.ts
+permalink: src\documentation\plugins\builders\Configuration\ConfigurationBuilder.ts.md
 ---
 
 # ConfigurationBuilder.ts

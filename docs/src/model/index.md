@@ -3,7 +3,7 @@ nav_order: 32
 title: model
 
 has_children: true
-permalink: src\model
+permalink: src\model.md
 ---
 
 # Documentation: Content of the Folder

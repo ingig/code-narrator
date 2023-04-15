@@ -3,7 +3,7 @@ nav_order: 3
 title: Configuration
 
 has_children: true
-permalink: Configuration
+permalink: Configuration.md
 ---
 
 The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It contains various settings and configurations that determine how the application behaves and generates documentation.

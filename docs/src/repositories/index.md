@@ -3,7 +3,7 @@ nav_order: 33
 title: repositories
 
 has_children: true
-permalink: src\repositories
+permalink: src\repositories.md
 ---
 
 # OpenAI Repository Documentation

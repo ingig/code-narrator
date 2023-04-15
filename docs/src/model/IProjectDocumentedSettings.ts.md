@@ -3,7 +3,7 @@ nav_order: 0
 title: IProjectDocumentedSettings.ts
 parent: model
 
-permalink: src\model\IProjectDocumentedSettings.ts
+permalink: src\model\IProjectDocumentedSettings.ts.md
 ---
 
 # IProjectDocumentedSettings.ts

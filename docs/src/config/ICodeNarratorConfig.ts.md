@@ -3,7 +3,7 @@ nav_order: 4
 title: ICodeNarratorConfig.ts
 parent: config
 
-permalink: src\config\ICodeNarratorConfig.ts
+permalink: src\config\ICodeNarratorConfig.ts.md
 ---
 
 # ICodeNarratorConfig.ts

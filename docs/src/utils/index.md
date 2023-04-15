@@ -3,7 +3,7 @@ nav_order: 34
 title: utils
 
 has_children: true
-permalink: src\utils
+permalink: src\utils.md
 ---
 
 # Documentation

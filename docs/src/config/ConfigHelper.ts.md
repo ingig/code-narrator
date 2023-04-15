@@ -3,7 +3,7 @@ nav_order: 1
 title: ConfigHelper.ts
 parent: config
 
-permalink: src\config\ConfigHelper.ts
+permalink: src\config\ConfigHelper.ts.md
 ---
 
 # ConfigHelper.ts

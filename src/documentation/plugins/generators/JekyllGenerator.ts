@@ -37,7 +37,7 @@ nav_order: ${position}
 title: ${sidebar_label}
 ${parent}
 ${has_children}
-permalink: ${document.path}
+permalink: ${document.path}${ConfigHelper.config.document_file_extension}
 ---
 
 ` + document.documentation;

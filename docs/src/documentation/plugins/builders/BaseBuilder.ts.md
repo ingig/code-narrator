@@ -3,7 +3,7 @@ nav_order: 0
 title: BaseBuilder.ts
 parent: builders
 
-permalink: src\documentation\plugins\builders\BaseBuilder.ts
+permalink: src\documentation\plugins\builders\BaseBuilder.ts.md
 ---
 
 # BaseBuilder.ts

@@ -3,7 +3,7 @@ nav_order: 1
 title: UserDefinedBuilderHelper.ts
 parent: UserDefined
 
-permalink: src\documentation\plugins\builders\UserDefined\UserDefinedBuilderHelper.ts
+permalink: src\documentation\plugins\builders\UserDefined\UserDefinedBuilderHelper.ts.md
 ---
 
 # UserDefinedBuilderHelper.ts
