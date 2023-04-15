@@ -3,7 +3,7 @@ nav_order: 1
 title: FileStructure.ts
 parent: utils
 
-permalink: src\utils\FileStructure.ts.md
+permalink: docs/src/utils/FileStructure.ts.md
 ---
 
 # FileStructure.ts

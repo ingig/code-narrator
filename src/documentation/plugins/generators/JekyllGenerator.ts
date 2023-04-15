@@ -32,12 +32,18 @@ export default class JekyllGenerator extends BaseGenerator {
         if (document.data && document.data.has_children) {
             has_children = 'has_children: true';
         }
+        let permalink = '';
+        if (document.isFolder && document.path != '.') {
+           permalink = `permalink: docs/${document.folderPath.replaceAll('\\', '/')}/index${ConfigHelper.config.document_file_extension}`
+        } else if (document.path != '.') {
+            permalink = `permalink: docs/${document.path.replaceAll('\\', '/')}${ConfigHelper.config.document_file_extension}`
+        }
         document.documentation = `---
 nav_order: ${position}
 title: ${sidebar_label}
 ${parent}
 ${has_children}
-permalink: ${document.path}${ConfigHelper.config.document_file_extension}
+${permalink}
 ---
 
 ` + document.documentation;

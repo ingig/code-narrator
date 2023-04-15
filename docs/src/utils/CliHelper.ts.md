@@ -3,7 +3,7 @@ nav_order: 0
 title: CliHelper.ts
 parent: utils
 
-permalink: src\utils\CliHelper.ts.md
+permalink: docs/src/utils/CliHelper.ts.md
 ---
 
 # CliHelper.ts

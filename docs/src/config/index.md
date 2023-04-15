@@ -3,7 +3,7 @@ nav_order: 30
 title: config
 
 has_children: true
-permalink: src\config.md
+permalink: docs/src/config/index.md
 ---
 
 # Code Narrator Documentation

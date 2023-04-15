@@ -3,7 +3,7 @@ nav_order: 0
 title: FoldersBuilder.ts
 parent: Folders
 
-permalink: src\documentation\plugins\builders\Folders\FoldersBuilder.ts.md
+permalink: docs/src/documentation/plugins/builders/Folders/FoldersBuilder.ts.md
 ---
 
 # FoldersBuilder.ts

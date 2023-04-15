@@ -3,7 +3,7 @@ nav_order: 34
 title: UserDefined
 
 has_children: true
-permalink: src\documentation\plugins\builders\UserDefined.md
+permalink: docs/src/documentation/plugins/builders/UserDefined/index.md
 ---
 
 # User-Defined Documentation Builder

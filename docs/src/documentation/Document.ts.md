@@ -3,7 +3,7 @@ nav_order: 0
 title: Document.ts
 parent: documentation
 
-permalink: src\documentation\Document.ts.md
+permalink: docs/src/documentation/Document.ts.md
 ---
 
 # Document.ts

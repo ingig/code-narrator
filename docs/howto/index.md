@@ -3,7 +3,7 @@ nav_order: 16
 title: README
 
 has_children: true
-permalink: howto\overview_readme.md.md
+permalink: docs/howto/overview_readme.md.md
 ---
 
 # Overview of Files in the Directory

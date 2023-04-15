@@ -3,7 +3,7 @@ nav_order: 31
 title: repositories
 
 has_children: true
-permalink: __tests__\repositories.md
+permalink: docs/__tests__/repositories/index.md
 ---
 
 # Documentation: Content of the Folder

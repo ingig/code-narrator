@@ -3,7 +3,7 @@ nav_order: 30
 title: builders
 
 has_children: true
-permalink: src\documentation\plugins\builders.md
+permalink: docs/src/documentation/plugins/builders/index.md
 ---
 
 ```

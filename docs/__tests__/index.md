@@ -3,7 +3,7 @@ nav_order: 31
 title: __tests__
 
 has_children: true
-permalink: __tests__.md
+permalink: docs/__tests__/index.md
 ---
 
 # Documentation

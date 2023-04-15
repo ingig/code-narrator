@@ -3,7 +3,7 @@ nav_order: 32
 title: utils
 
 has_children: true
-permalink: __tests__\utils.md
+permalink: docs/__tests__/utils/index.md
 ---
 
 # Documentation: Content of the Folder

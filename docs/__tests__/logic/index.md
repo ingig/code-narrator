@@ -3,7 +3,7 @@ nav_order: 30
 title: logic
 
 has_children: true
-permalink: __tests__\logic.md
+permalink: docs/__tests__/logic/index.md
 ---
 
 # Documentation

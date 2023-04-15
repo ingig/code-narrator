@@ -3,7 +3,7 @@ nav_order: 33
 title: Howto
 
 has_children: true
-permalink: src\documentation\plugins\builders\Howto.md
+permalink: docs/src/documentation/plugins/builders/Howto/index.md
 ---
 
 # HowToBuilder Documentation
