@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: UserDefinedBuilder.ts
+parent: UserDefined
+---
+
 # UserDefinedBuilder.ts
 
 This is a TypeScript code file that defines a class named `UserDefinedBuilder` which extends the `BaseBuilder` class. The purpose of this class is to generate and render user-defined documentation based on templates and configurations.

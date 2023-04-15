@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: FolderStructureTest.ts
+parent: utils
+---
+
 # FolderStructureTest.ts
 
 The file `FolderStructureTest.ts` is a code file containing test cases for the `FolderStructure` class. This documentation provides a detailed description of the code, examples of how to use the class, descriptions of each method, parameters in methods, and explanations of non-standard technical concepts.

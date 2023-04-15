@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: App.ts
+parent: src
+---
+
 # App.ts
 
 The `App.ts` file is a part of the code-narrator application, which is responsible for generating documentation for a project using GPT. This file contains the main class `App` that orchestrates the process of loading configuration, caching documentation, building documentation, and generating the final documentation output.

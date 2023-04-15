@@ -1,3 +1,9 @@
+---
+nav_order: 12
+title: How to create HowTo
+parent: howto
+---
+
 # How to Create a How-To Guide for the CLI
 
 ## Introduction

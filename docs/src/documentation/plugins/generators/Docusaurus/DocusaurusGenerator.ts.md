@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: DocusaurusGenerator.ts
+parent: Docusaurus
+---
+
 # DocusaurusGenerator.ts
 
 The `DocusaurusGenerator.ts` file is a TypeScript code file that defines a class named `DocusaurusGenerator`. This class extends the `BaseGenerator` class and is responsible for processing a `Document` object to generate documentation compatible with Docusaurus.

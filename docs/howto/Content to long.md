@@ -1,3 +1,9 @@
+---
+nav_order: 14
+title: Content to long
+parent: howto
+---
+
 # How to Edit Long Content in Code Narrator
 
 ## Introduction

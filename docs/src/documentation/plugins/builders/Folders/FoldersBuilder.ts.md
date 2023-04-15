@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: FoldersBuilder.ts
+parent: Folders
+---
+
 # FoldersBuilder.ts
 
 This is a TypeScript code file that defines a `FoldersBuilder` class, which is responsible for generating documentation for a folder structure in a project. The class extends the `BaseBuilder` class and provides methods to generate, query, and render documentation for folders and files within the project.

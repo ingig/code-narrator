@@ -1,3 +1,9 @@
+---
+nav_order: 15
+title: Create your own custom builder
+parent: howto
+---
+
 # How to Create a Custom Builder Using the Config File
 
 ## Introduction

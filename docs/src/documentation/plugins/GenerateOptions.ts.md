@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: GenerateOptions.ts
+parent: plugins
+---
+
 # GenerateOptions.ts
 
 ## Overview

@@ -1,3 +1,9 @@
+---
+nav_order: 1
+title: DocumentationBuilder.ts
+parent: documentation
+---
+
 # DocumentationBuilder.ts
 
 This is a TypeScript code file that defines a class called `DocumentationBuilder`. The purpose of this class is to generate documentation for a project using various builder plugins. The class imports necessary dependencies and manages the process of building documentation using the specified plugins.

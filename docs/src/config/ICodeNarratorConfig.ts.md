@@ -1,3 +1,9 @@
+---
+nav_order: 4
+title: ICodeNarratorConfig.ts
+parent: config
+---
+
 # ICodeNarratorConfig.ts
 
 This TypeScript file defines the `ICodeNarratorConfig` interface, which is used to configure the Code Narrator application. The interface contains various properties that are essential for setting up and customizing the behavior of the application.

@@ -1,3 +1,9 @@
+---
+nav_order: 1
+title: FileStructure.ts
+parent: utils
+---
+
 # FileStructure.ts
 
 This is a TypeScript code file that defines a `FileStructure` class. The class is used to represent and manipulate file structures in a project. It provides methods to check if a file is a code file and to get the content of a file.

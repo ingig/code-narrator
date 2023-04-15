@@ -1,22 +1,23 @@
+---
+nav_order: 1
+title: JenkyllGenerator.ts
+parent: Docusaurus
+---
+
 # JenkyllGenerator.ts
 
-The `JenkyllGenerator.ts` file is a TypeScript code file that defines a class named `JenkyllGenerator`. This class extends the `BaseGenerator` class and is responsible for processing a given `Document` object to generate a Jekyll-compatible output.
+The `JenkyllGenerator.ts` file is a TypeScript code file that defines a class named `JenkyllGenerator`. This class extends the `BaseGenerator` class and is responsible for processing a given `Document` object to generate a Jekyll-compatible documentation file.
 
 ## Table of Contents
 
-- [Overview](#overview)
 - [Usage](#usage)
 - [Methods](#methods)
   - [process](#process)
 - [Technical Concepts](#technical-concepts)
 
-## Overview
-
-The `JenkyllGenerator` class is a part of a larger system that processes documentation files. It is specifically designed to work with Jekyll, a popular static site generator. The class takes a `Document` object as input and modifies its `documentation` property to include Jekyll-specific front matter.
-
 ## Usage
 
-To use the `JenkyllGenerator` class, you need to import it and create an instance of the class. Then, you can call the `process` method with a `Document` object as a parameter.
+To use the `JenkyllGenerator` class, you need to import it and create an instance of the class. Then, you can call the `process` method with a `Document` object as its argument.
 
 ```typescript
 import JenkyllGenerator from "./JenkyllGenerator";
@@ -32,36 +33,20 @@ const processedDocument = generator.process(document);
 
 ### process
 
-The `process` method is the main method of the `JenkyllGenerator` class. It takes a `Document` object as a parameter and modifies its `documentation` property to include Jekyll-specific front matter.
+The `process` method takes a `Document` object as its input and processes it to generate a Jekyll-compatible documentation file. It returns the processed `Document` object.
 
 ```typescript
 public process(document: Document): Document
 ```
 
-**Parameters:**
+#### Parameters
 
 - `document` (Document): The `Document` object to be processed.
 
-**Returns:**
-
-- `Document`: The processed `Document` object with Jekyll-specific front matter added.
-
 ## Technical Concepts
 
-### Jekyll Front Matter
+- **Jekyll**: Jekyll is a static site generator that takes Markdown files and other content, and transforms them into a complete static website. It is widely used for creating documentation websites and blogs.
 
-Jekyll uses a concept called "front matter" to store metadata about a page or post. Front matter is written in YAML and is placed at the beginning of a file, enclosed by triple-dashed lines (`---`). In the `JenkyllGenerator` class, the front matter is generated and added to the `documentation` property of the `Document` object. The generated front matter includes the following properties:
+- **Front Matter**: In Jekyll, the front matter is a block of YAML code at the beginning of a file that contains metadata about the file. The front matter is used to configure how Jekyll processes the file and generates the static site. In the `JenkyllGenerator` class, the front matter is generated and added to the `Document` object's `documentation` property.
 
-- `nav_order`: The position of the document in the navigation menu.
-- `title`: The title of the document, which is displayed in the navigation menu.
-- `parent`: The parent folder of the document, used for organizing the navigation menu.
-
-For example, the generated front matter might look like this:
-
-```
----
-nav_order: 1
-title: Introduction
-parent: Getting Started
----
-```
+- **ConfigHelper**: The `ConfigHelper` class is used to manage the configuration settings for the application. In the `JenkyllGenerator` class, the `ConfigHelper` is used to set the `rootFileName` property to `'index'`.

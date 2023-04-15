@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
       <loc>https://ingig.github.io/code-narrator/code-narrator.config.js.md</loc>
-      <lastmod>Sat Apr 15 2023 09:39:48 GMT+0000 (Greenwich-staðaltími)</lastmod>
+      <lastmod>Sat Apr 15 2023 09:49:17 GMT+0000 (Greenwich-staðaltími)</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/Configuration/index.html.md</loc>
-      <lastmod>Sat Apr 15 2023 09:40:20 GMT+0000 (Greenwich-staðaltími)</lastmod>
+      <loc>https://ingig.github.io/code-narrator/Configuration/index.md</loc>
+      <lastmod>Sat Apr 15 2023 09:49:54 GMT+0000 (Greenwich-staðaltími)</lastmod>
    </url><url>
       <loc>https://ingig.github.io/code-narrator/src/App.ts.md</loc>
       <lastmod>2023-04-14T14:55:29.466Z</lastmod>
@@ -103,61 +103,61 @@
       <loc>https://ingig.github.io/code-narrator/__tests__/utils/FolderStructureTest.ts.md</loc>
       <lastmod>2023-04-14T15:45:49.887Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/config/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/config/index.md</loc>
       <lastmod>2023-04-14T15:47:30.368Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Configuration/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Configuration/index.md</loc>
       <lastmod>2023-04-14T15:48:05.848Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Files/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Files/index.md</loc>
       <lastmod>2023-04-14T15:48:44.812Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Folders/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Folders/index.md</loc>
       <lastmod>2023-04-14T15:49:35.603Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Howto/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/Howto/index.md</loc>
       <lastmod>2023-04-14T15:50:21.966Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/UserDefined/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/UserDefined/index.md</loc>
       <lastmod>2023-04-14T15:51:14.269Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/builders/index.md</loc>
       <lastmod>2023-04-14T15:52:39.906Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/generators/Docusaurus/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/generators/Docusaurus/index.md</loc>
       <lastmod>2023-04-14T15:53:13.043Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/generators/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/generators/index.md</loc>
       <lastmod>2023-04-14T15:54:05.711Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/index.md</loc>
       <lastmod>2023-04-14T15:55:19.749Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/documentation/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/documentation/index.md</loc>
       <lastmod>2023-04-14T15:56:40.249Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/model/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/model/index.md</loc>
       <lastmod>2023-04-14T15:57:22.054Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/repositories/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/repositories/index.md</loc>
       <lastmod>2023-04-14T15:58:06.557Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/utils/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/utils/index.md</loc>
       <lastmod>2023-04-14T15:59:30.470Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/src/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/src/index.md</loc>
       <lastmod>2023-04-14T16:00:55.941Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/__tests__/logic/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/__tests__/logic/index.md</loc>
       <lastmod>2023-04-14T16:01:28.645Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/__tests__/repositories/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/__tests__/repositories/index.md</loc>
       <lastmod>2023-04-14T16:01:59.453Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/__tests__/utils/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/__tests__/utils/index.md</loc>
       <lastmod>2023-04-14T16:02:29.942Z</lastmod>
    </url><url>
-      <loc>https://ingig.github.io/code-narrator/__tests__/index.html.md</loc>
+      <loc>https://ingig.github.io/code-narrator/__tests__/index.md</loc>
       <lastmod>2023-04-14T16:03:17.758Z</lastmod>
    </url><url>
       <loc>https://ingig.github.io/code-narrator/prerequisites.md.md</loc>
@@ -182,5 +182,5 @@
       <lastmod>2023-04-14T16:14:00.522Z</lastmod>
    </url><url>
       <loc>https://ingig.github.io/code-narrator/src/documentation/plugins/generators/Docusaurus/JenkyllGenerator.ts.md</loc>
-      <lastmod>2023-04-15T09:35:50.165Z</lastmod>
+      <lastmod>Sat Apr 15 2023 09:50:57 GMT+0000 (Greenwich-staðaltími)</lastmod>
    </url></urlset>

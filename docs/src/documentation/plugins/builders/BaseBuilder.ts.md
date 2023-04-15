@@ -1,3 +1,9 @@
+---
+nav_order: 0
+title: BaseBuilder.ts
+parent: builders
+---
+
 # BaseBuilder.ts
 
 The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract class `BaseBuilder`. This class serves as the base class for Builder plugins, which are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.

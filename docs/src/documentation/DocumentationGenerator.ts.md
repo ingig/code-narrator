@@ -1,3 +1,9 @@
+---
+nav_order: 3
+title: DocumentationGenerator.ts
+parent: documentation
+---
+
 # DocumentationGenerator.ts
 
 This is a TypeScript code file that contains the `DocumentationGenerator` class. This class is responsible for generating documentation files based on the documents stored in the `DocumentationCache`. It also supports generating a sitemap for the documentation.
