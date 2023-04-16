@@ -1,45 +1,35 @@
-Prerequisites for the code-narrator project:
+# Prerequisites for Code-Narrator
 
-1. Knowledge of JavaScript and TypeScript.
-2. Familiarity with Node.js and npm (Node Package Manager).
-3. Basic understanding of OpenAI API.
+Before you start working with the Code-Narrator project, make sure you have the following prerequisites:
 
-Required software and tools:
+## Required Software and Tools
 
-1. Node.js (version 14 or higher) - Download and install from [Node.js official website](https://nodejs.org/).
-2. npm (version 6 or higher) - It comes bundled with Node.js.
+1. Node.js (version 14 or higher)
+2. npm (version 6 or higher)
+3. TypeScript (version 4.9.5 or higher)
+4. Gulp (version 4.0.2 or higher)
+5. Jest (version 29.4.2 or higher)
 
-To work with or understand the project, you should have the following dependencies installed:
+## Required Knowledge
 
-1. Install the code-narrator package using `npm i code-narrator -D`.
-2. Install other required dependencies by running `npm install` in the project directory.
+1. Familiarity with JavaScript and TypeScript
+2. Basic understanding of OpenAI API
+3. Experience with command-line interfaces
 
-The project uses the following main dependencies:
+## Setup
 
-- axios: ^0.26.1
-- dotenv: ^16.0.3
-- fast-glob: ^3.2.12
-- form-data: ^4.0.0
-- fs-extra: ^11.1.1
-- jsonpath: ^1.1.1
-- liquidjs: ^10.7.0
-- openai: ^3.1.0
-- yargs: ^17.7.1
+1. Clone the Code-Narrator repository from [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator).
+2. Install the required dependencies by running `npm install` in the project directory.
+3. Create a `.env` file in the project root directory and set the `OPEN_AI` key:
 
-And the following development dependencies:
+   ```
+   OPEN_AI=your_openai_api_key
+   ```
 
-- @babel/preset-typescript: ^7.21.0
-- @jest/globals: ^29.5.0
-- @types/jest: ^29.4.0
-- @types/node: ^18.11.19
-- gulp: ^4.0.2
-- gulp-copy: ^4.0.1
-- gulp-typescript: ^6.0.0-alpha.1
-- jest: ^29.4.2
-- ts-jest: ^29.0.5
-- ts-node: ^10.9.1
-- typescript: ^4.9.5
+   :::danger
+   Replace `your_openai_api_key` with your actual OpenAI API key. Do not share your API key with others.
+   :::
 
-:::note
-Make sure to have a valid OpenAI API key and set it in the `.env` file as `OPENAI_API_KEY=your_api_key`. Replace `your_api_key` with your actual API key.
-:::
+4. Configure the `code-narrator.config.ts` file according to your project requirements.
+
+Now you are ready to work with the Code-Narrator project.

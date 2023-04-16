@@ -1,86 +1,98 @@
 # FilesBuilder.ts
 
-The `FilesBuilder.ts` file is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating and rendering documentation for files in a project structure. It also handles querying folders, cleaning deleted files from the cache, and determining if a file should be documented.
+The `FilesBuilder.ts` file is a TypeScript module that provides a class for generating and managing documentation for files in a project. It extends the `BaseBuilder` class and is responsible for traversing the project structure, rendering documentation, and caching the generated documentation.
 
 ## Table of Contents
 
-- [Class Definition](#class-definition)
-- [Methods](#methods)
-  - [generate](#generate)
-  - [render](#render)
-  - [queryForFolder](#queryforfolder)
-  - [cleanDeletedFilesFromCache](#cleandeletedfilesfromcache)
-  - [shouldDocument](#shoulddocument)
+- [Class: FilesBuilder](#class-filesbuilder)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+    - [generate](#generate)
+    - [render](#render)
+    - [queryForFolder](#queryforfolder)
+    - [cleanDeletedFilesFromCache](#cleandeletedfilesfromcache)
+    - [shouldDocument](#shoulddocument)
 
-## Class Definition
+## Class: FilesBuilder
+
+The `FilesBuilder` class extends the `BaseBuilder` class and provides methods for generating and managing documentation for files in a project.
+
+### Constructor
+
+The constructor initializes the `FilesBuilder` instance with the name 'Files'.
 
 ```typescript
-export default class FilesBuilder extends BaseBuilder {
-    ...
+constructor() {
+    super('Files');
 }
 ```
 
-## Methods
+### Methods
 
-### generate
+#### generate
 
-```typescript
-public async generate(): Promise<void>
-```
-
-This method generates the documentation for the files in the project structure. It creates a new `ProjectStructure` instance, retrieves the folder structure, and then queries the folder for documentation.
-
-### render
+The `generate` method is an asynchronous method that initializes a new `ProjectStructure` instance, retrieves the project's folder structure, and calls the `queryForFolder` method with the retrieved folder structure.
 
 ```typescript
-public async render(document: Document): Promise<string>
+public async generate() {
+    let structure = new ProjectStructure();
+    let folder = await structure.getStructure();
+    await this.queryForFolder(folder);
+}
 ```
 
-This method renders the documentation for a given `Document` instance. It returns the documentation as a string.
+#### render
 
-### queryForFolder
+The `render` method takes a `Document` instance as a parameter and returns the documentation content of the document.
 
 ```typescript
-public async queryForFolder(folder: FolderStructure): Promise<void>
+public async render(document: Document) {
+    return document.documentation;
+}
 ```
 
-This method recursively queries a given folder and its subfolders for documentation. It cleans deleted files from the cache, iterates through the files in the folder, and generates documentation for each file if it should be documented.
+#### queryForFolder
 
-### cleanDeletedFilesFromCache
+The `queryForFolder` method is an asynchronous method that takes a `FolderStructure` instance as a parameter. It cleans the deleted files from the cache, iterates through the files in the folder, and generates documentation for each file if it should be documented. It also recursively calls itself for each subfolder in the folder.
 
 ```typescript
-private cleanDeletedFilesFromCache(folder: FolderStructure): void
+public async queryForFolder(folder: FolderStructure) {
+    // ...
+}
 ```
 
-This method cleans deleted files from the `DocumentationCache` by checking if the cached files still exist in the folder structure. If a file does not exist, it is removed from the cache.
+#### cleanDeletedFilesFromCache
 
-### shouldDocument
+The `cleanDeletedFilesFromCache` method is a private method that takes a `FolderStructure` instance as a parameter. It removes the deleted files from the documentation cache.
 
 ```typescript
-private shouldDocument(file: FileStructure): boolean
+private cleanDeletedFilesFromCache(folder: FolderStructure) {
+    // ...
+}
 ```
 
-This method determines if a given file should be documented based on the `include` configuration. If the `include` configuration is not set, all files are considered for documentation. If the `include` configuration is set, the method checks if the file path is ignored by the include patterns. If the file path is ignored, the file should be documented.
+#### shouldDocument
+
+The `shouldDocument` method is a private method that takes a `FileStructure` instance as a parameter. It checks if the file should be documented based on the configuration's include patterns and returns a boolean value.
+
+```typescript
+private shouldDocument(file: FileStructure) {
+    // ...
+}
+```
 
 ## Usage
 
-To use the `FilesBuilder` class, you can create a new instance and call the `generate` method to generate documentation for the files in the project structure.
+To use the `FilesBuilder` class, you can create a new instance and call its `generate` method to generate documentation for the files in the project.
 
 ```typescript
 const filesBuilder = new FilesBuilder();
 await filesBuilder.generate();
 ```
 
-To render the documentation for a specific `Document` instance, you can call the `render` method.
+You can also use the `render` method to get the documentation content of a specific document.
 
 ```typescript
-const document = new Document(...);
-const documentation = await filesBuilder.render(document);
-```
-
-To query a specific folder for documentation, you can call the `queryForFolder` method.
-
-```typescript
-const folder = new FolderStructure(...);
-await filesBuilder.queryForFolder(folder);
+const document = new Document(/* ... */);
+const documentationContent = await filesBuilder.render(document);
 ```

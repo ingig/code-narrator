@@ -1,5 +1,3 @@
-const JenkyllGenerator = require("./src/documentation/plugins/generators/JekyllGenerator");
-
 /**
  * @type {ICodeNarratorConfig}
  */

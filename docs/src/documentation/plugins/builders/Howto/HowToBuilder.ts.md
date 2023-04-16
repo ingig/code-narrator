@@ -1,10 +1,20 @@
 # HowToBuilder.ts
 
-`HowToBuilder.ts` is a TypeScript code file that provides a class `HowToBuilder` for generating and rendering documentation for "how-to" guides. The class extends the `BaseBuilder` class and is responsible for extracting and formatting "how-to" content from the given files.
+`HowToBuilder.ts` is a TypeScript file that extends the `BaseBuilder` class to generate and render documentation for "How To" guides. It searches for files containing the `:::howto` tag and creates a corresponding documentation file.
+
+## Table of Contents
+
+- [Class: HowToBuilder](#class-howtobuilder)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+    - [generate](#generate)
+    - [render](#render)
+    - [makeHowTo](#makehowto)
+- [Imports](#imports)
 
 ## Class: HowToBuilder
 
-The `HowToBuilder` class is responsible for generating and rendering documentation for "how-to" guides.
+The `HowToBuilder` class extends the `BaseBuilder` class and is responsible for generating and rendering "How To" documentation.
 
 ### Constructor
 
@@ -16,9 +26,11 @@ constructor() {
 }
 ```
 
-### Method: generate
+### Methods
 
-The `generate` method is an asynchronous method that iterates through all the files in the project structure, reads their content, and checks for the presence of a "how-to" guide using a regular expression. If a match is found, it calls the `makeHowTo` method to create the documentation for that guide.
+#### generate
+
+The `generate` method is an asynchronous method that searches for files containing the `:::howto` tag and calls the `makeHowTo` method for each matched file.
 
 ```typescript
 public async generate() {
@@ -26,7 +38,7 @@ public async generate() {
 }
 ```
 
-### Method: render
+#### render
 
 The `render` method is an asynchronous method that takes a `Document` object as a parameter and returns the documentation content as a string.
 
@@ -36,9 +48,9 @@ public async render(document: Document): Promise<string> {
 }
 ```
 
-### Method: makeHowTo
+#### makeHowTo
 
-The `makeHowTo` method is a private asynchronous method that takes a `FileStructure` object, the content of the file, and the name of the "how-to" guide as parameters. It checks if the documentation for the guide already exists in the cache, and if not, it extracts the referenced documents using a regular expression and generates the documentation using the `generateDocumentationAndCache` method from the `BaseBuilder` class.
+The `makeHowTo` method is a private asynchronous method that takes a `FileStructure`, `content`, and `name` as parameters. It generates the documentation for the "How To" guide and caches it.
 
 ```typescript
 private async makeHowTo(fileStructure: FileStructure, content: string, name : string) {
@@ -46,19 +58,14 @@ private async makeHowTo(fileStructure: FileStructure, content: string, name : st
 }
 ```
 
-## Usage
+## Imports
 
-To use the `HowToBuilder` class, you need to import it and create an instance of the class. Then, you can call the `generate` method to generate the documentation for the "how-to" guides in your project.
+The following modules are imported in the `HowToBuilder.ts` file:
 
-```typescript
-import HowToBuilder from "./HowToBuilder";
-
-const howToBuilder = new HowToBuilder();
-await howToBuilder.generate();
-```
-
-## Technical Concepts
-
-- **Regular Expressions**: Regular expressions are used in this code to match and extract specific patterns in the file content, such as the "how-to" guide and referenced documents.
-- **FileStructure**: The `FileStructure` class is used to represent the structure of a file in the project. It provides methods for getting the content of a file and other file-related operations.
-- **DocumentationCache**: The `DocumentationCache` class is used to cache the generated documentation for faster access and to avoid unnecessary regeneration of the documentation.
+- `Document` from "../../../Document"
+- `FileStructure` from "../../../../utils/FileStructure"
+- `BaseBuilder` from "../BaseBuilder"
+- `ProjectStructure` from "../../../../utils/ProjectStructure"
+- `fs` from "fs"
+- `DocumentationCache` from "../../../DocumentationCache"
+- `path` from "path"

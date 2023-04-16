@@ -86,7 +86,7 @@ export default class FilesBuilder extends BaseBuilder {
     private cleanDeletedFilesFromCache(folder: FolderStructure) {
         let cachedFiles = DocumentationCache.getByFolderPath(folder.path);
         for (let i=0;i<cachedFiles.length;i++) {
-            if (cachedFiles[i].isFolder) continue;
+            if (cachedFiles[i].isFolder && cachedFiles[i].generator != "Files") continue;
 
             let fileExists = false;
             for (let b=0;b<folder.files.length;b++) {

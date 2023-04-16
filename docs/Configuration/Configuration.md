@@ -1,8 +1,6 @@
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It contains various settings and configurations that determine how the application behaves and generates documentation.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, documentation paths, and builders for generating documentation.
 
-The purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs. It includes settings for entry files, CLI files, project names, repository URLs, source paths, documentation paths, test paths, and more.
-
-Here's an example of usage for the app-specific configs:
+Here is an example of usage for the app-specific configs:
 
 ```javascript
 const config = {
@@ -18,6 +16,10 @@ const config = {
 module.exports = config;
 ```
 
-In this example, the `config` object contains various settings for the Code Narrator application, such as the entry file, CLI file, project name, and a list of configuration files. The `config` object is then exported as a module, making it available for use in other parts of the application.
+In this example, the `entry_file` and `cli_file` properties define the entry points for the application and the CLI, respectively. The `project_name` property specifies the name of the project, and the `config_files` array lists the configuration files used by the application.
 
-As for the other configuration files, I do not recognize them, so I cannot provide any information about them.
+The configuration file also includes other properties such as `readmeRoot`, `repository_url`, `project_file`, `source_path`, `documentation_path`, `test_path`, and `include`. These properties define various aspects of the project, such as the location of the README file, the repository URL, the project file (e.g., `package.json`), the source code path, the documentation path, the test path, and the files to be included in the documentation.
+
+The `builders` property is an array of objects that define how the documentation should be generated. Each builder object has properties like `name`, `template`, `sidebarPosition`, `args`, `files`, and `type` that determine the structure and content of the generated documentation.
+
+There are no other configuration files mentioned in the provided text.

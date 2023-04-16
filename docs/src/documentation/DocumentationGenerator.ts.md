@@ -1,10 +1,10 @@
 # DocumentationGenerator.ts
 
-This is a TypeScript code file that contains the `DocumentationGenerator` class. This class is responsible for generating documentation files based on the documents stored in the `DocumentationCache`. It also supports generating a sitemap for the documentation.
+This is a TypeScript code file that defines the `DocumentationGenerator` class. The class is responsible for generating documentation files based on the content of the `DocumentationCache`. It also supports the use of generator plugins to further process the documentation.
 
 ## Usage
 
-To use the `DocumentationGenerator` class, you need to import it and create a new instance. Then, call the `make()` method to generate the documentation files.
+To use the `DocumentationGenerator` class, you need to import it and create an instance of the class. Then, call the `make()` method to generate the documentation files.
 
 ```typescript
 import DocumentationGenerator from "./DocumentationGenerator";
@@ -17,7 +17,7 @@ generator.make();
 
 ### Method: make()
 
-This method generates the documentation files based on the documents stored in the `DocumentationCache`. It also supports generating a sitemap for the documentation.
+This method generates the documentation files based on the content of the `DocumentationCache`. It also processes the documentation using the generator plugins specified in the configuration.
 
 #### Parameters
 
@@ -34,30 +34,24 @@ generator.make();
 
 ### DocumentationCache
 
-`DocumentationCache` is a class that stores the documents that need to be generated. It provides methods to add, get, and remove documents from the cache.
+`DocumentationCache` is a class that stores the documentation content in memory. It provides methods to access and manipulate the documentation content.
 
 ### BaseGenerator
 
-`BaseGenerator` is an abstract class that defines the interface for generator plugins. Generator plugins are responsible for processing the documents and generating the output files.
+`BaseGenerator` is an abstract class that defines the interface for generator plugins. Generator plugins are used to process the documentation content before it is written to the file system.
 
 ### ConfigHelper
 
-`ConfigHelper` is a class that provides access to the configuration settings for the application. It reads the configuration from a JSON file and provides methods to access the values.
+`ConfigHelper` is a class that provides access to the configuration settings of the application. It is used to retrieve settings such as the documentation path, generator plugins, and file extensions.
 
-### App
+## File Content
 
-`App` is the main class of the application. It initializes the `DocumentationGenerator` and other components and starts the generation process.
+The file content consists of the following:
 
-## File Structure
+1. Import statements for required modules and classes.
+2. Definition of the `DocumentationGenerator` class.
+3. Implementation of the `make()` method, which generates the documentation files.
 
-The generated documentation files are saved in the `documentation_path` specified in the configuration. The file structure is as follows:
+### Note
 
-- `README.md`: The main documentation file, generated if `readmeRoot` is set to `true` in the configuration.
-- `documentation_path`:
-  - `documents[i].saveToPath`: The folder path for each document.
-    - `fileName + ConfigHelper.config.document_file_extension`: The file name for each document, with the appropriate file extension.
-  - `sitemap.xml`: The sitemap file, generated if `ConfigHelper.config.sitemap.enable` is set to `true`.
-
-## Sitemap Generation
-
-If the `ConfigHelper.config.sitemap.enable` is set to `true`, the `make()` method will generate a sitemap file named `sitemap.xml` in the `documentation_path`. The sitemap file will contain the URLs for all the generated documentation files.
+The `make()` method uses the `fs` module to write the generated documentation to the file system. It also uses the `path` module to manipulate file paths.

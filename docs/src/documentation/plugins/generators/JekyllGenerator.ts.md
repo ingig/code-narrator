@@ -1,18 +1,10 @@
 # JekyllGenerator.ts
 
-This file contains the `JekyllGenerator` class, which is responsible for processing documents and generating the appropriate Jekyll front matter for each document. The class extends the `BaseGenerator` class and overrides the `process` method.
-
-## Table of Contents
-
-- [Usage](#usage)
-- [Methods](#methods)
-  - [process](#process)
-- [Technical Concepts](#technical-concepts)
-  - [Jekyll Front Matter](#jekyll-front-matter)
+This is a TypeScript code file that defines a class called `JekyllGenerator`, which extends the `BaseGenerator` class. The purpose of this class is to process a given `Document` object and generate the appropriate Jekyll front matter for the document. This is useful when generating documentation for a Jekyll-based static site.
 
 ## Usage
 
-To use the `JekyllGenerator` class, you need to import it and create an instance of the class. Then, you can call the `process` method on the instance, passing in a `Document` object.
+To use the `JekyllGenerator` class, you need to import it and create a new instance. Then, call the `process()` method with a `Document` object as its argument.
 
 ```typescript
 import JekyllGenerator from "./JekyllGenerator";
@@ -24,43 +16,34 @@ const document = new Document(/* ... */);
 const processedDocument = generator.process(document);
 ```
 
-## Methods
+## Class Methods
 
-### process
+### process(document: Document)
 
-The `process` method takes a `Document` object as its input and generates the Jekyll front matter for the document. It returns the modified `Document` object with the front matter added to its `documentation` property.
+This method takes a `Document` object as its input and processes it to generate the Jekyll front matter. It returns the modified `Document` object with the updated `documentation` property.
 
 #### Parameters
 
-- `document` (`Document`): The document to be processed.
+- `document`: A `Document` object that needs to be processed.
 
-#### Example
+#### Technical Concepts
 
-```typescript
-const generator = new JekyllGenerator();
-const document = new Document(/* ... */);
+- **Jekyll Front Matter**: Jekyll uses a YAML-based front matter to store metadata about a document. This metadata is used to generate the static site's navigation, permalinks, and other features.
 
-const processedDocument = generator.process(document);
-```
+## Code Explanation
 
-## Technical Concepts
+The `process()` method first extracts various properties from the input `Document` object, such as `sidebar_label`, `sidebar_position`, `parent`, and `has_children`. It then constructs the Jekyll front matter using these properties and appends it to the beginning of the `documentation` property of the `Document` object.
 
-### Jekyll Front Matter
+The method also handles special cases, such as when the document is a `README` file or when it is a folder. In these cases, it sets the appropriate `has_children` and `permalink` properties in the front matter.
 
-Jekyll front matter is a block of YAML code at the beginning of a Markdown file that contains metadata about the file. It is used by Jekyll to generate the site structure and navigation. In this class, the front matter is generated based on the document's properties, such as its `sidebar_label`, `sidebar_position`, and `folderPath`. The generated front matter includes the following properties:
+Finally, the method returns the modified `Document` object with the updated `documentation` property.
 
-- `nav_order`: The position of the document in the sidebar navigation.
-- `title`: The title of the document, which is displayed in the sidebar navigation.
-- `parent`: The path of the parent document, if the document is a child of another document.
-- `has_children`: A boolean indicating whether the document has child documents.
+## Dependencies
 
-Here's an example of the generated front matter:
+This class depends on the following external modules:
 
-```yaml
----
-nav_order: 1
-title: Introduction
-parent: getting-started
-has_children: true
----
-```
+- `BaseGenerator`: The base class for all generator classes.
+- `Document`: A class representing a documentation file.
+- `path`: A built-in Node.js module for handling file paths.
+- `ConfigHelper`: A helper class for accessing the configuration settings.
+- `DocumentationCache`: A cache for storing and retrieving `Document` objects.

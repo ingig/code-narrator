@@ -1,8 +1,8 @@
-# Code Narrator
+# code-narrator
 
 ## Description
 
-Code Narrator is a self-documenting tool that uses OpenAI to generate documentation on code and tests. It serves as a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.
+code-narrator uses OpenAI to generate documentation on code and tests. It is a self-documenting tool and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.
 
 ## Getting Started
 
@@ -20,32 +20,19 @@ npx code-narrator
 
 ## Configuration
 
-Configuration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the settings for your project.
-
-## HowTo Docs
-
-For more detailed instructions, refer to the [HowTo docs](howto/README.md).
-
-## API Information
-
-For information about the API, refer to the [API docs](src/README.md).
+Configuration is optional and will be generated on the first run. You can customize the configuration by editing the `code-narrator.config.ts` file.
 
 ## Reporting Bugs
 
-To report bugs, please visit the [issues page](https://github.com/ingig/code-narrator/issues).
-
-## Repository and Homepage
-
-- Repository: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
-- Homepage: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
+Please report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).
 
 ## Versioning
 
-This project uses [SemVer](http://semver.org/) for versioning.
+The current version of code-narrator is 1.0.6.
 
 ## Authors
 
-- [Author Name](mailto:author@example.com)
+Ingi Gauti Ragnarsson @ingig
 
 ## License
 

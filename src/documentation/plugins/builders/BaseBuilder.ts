@@ -92,30 +92,22 @@ export default abstract class BaseBuilder {
                                                    assistantMessages,
                                                    data, prevDocument
                                                }: GenerateOptions) {
-        let document : Document;
-        if (!prevDocument) {
-            document = await this.generateDocumentation({
-                args,
-                template,
-                name,
-                pathToFile,
-                folderPath,
-                sidebarPosition,
-                assistantMessages,
-                sidebarLabel, saveToPath, data
-            })
-        } else {
-            document= prevDocument;
-            document.data = data;
-            document.sidebar_position = sidebarPosition ?? document.sidebar_position;
-            document.sidebar_label = sidebarLabel ?? document.sidebar_label;
-        }
+
+        let document = await this.generateDocumentation({
+            args,
+            template,
+            name,
+            pathToFile,
+            folderPath,
+            sidebarPosition,
+            assistantMessages,
+            sidebarLabel, saveToPath, data
+        })
+
         DocumentationCache.set(document);
     }
 
     public hasChanged(document?: Document) {
-        return true;
-        /*
         if (!document) return true;
 
         let project_path = process.cwd();
@@ -129,6 +121,5 @@ export default abstract class BaseBuilder {
         let stats = fs.statSync(filePath);
         return (stats.mtime.getTime() >= new Date(document.updated.toString()).getTime());
 
-         */
     }
 }

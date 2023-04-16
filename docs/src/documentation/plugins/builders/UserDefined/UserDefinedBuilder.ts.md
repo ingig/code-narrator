@@ -1,67 +1,71 @@
 # UserDefinedBuilder.ts
 
-This is a TypeScript code file that defines a class named `UserDefinedBuilder` which extends the `BaseBuilder` class. The purpose of this class is to generate and render user-defined documentation based on templates and configurations.
+This is a TypeScript code file that defines a `UserDefinedBuilder` class, which extends the `BaseBuilder` class. The `UserDefinedBuilder` class is responsible for generating documentation based on user-defined templates and configurations.
 
-## Usage
+## Table of Contents
 
-To use the `UserDefinedBuilder` class, you need to import it and create an instance of the class. Then, you can call its methods to generate and render the documentation.
+- [Class Description](#class-description)
+- [Methods](#methods)
+  - [extractPathFromContent](#extractpathfromcontent)
+  - [generate](#generate)
+  - [generateFromBuilder](#generatefrombuilder)
+  - [render](#render)
+  - [hasTemplateChanged](#hastemplatechanged)
 
-```typescript
-import UserDefinedBuilder from "./UserDefinedBuilder";
+## Class Description
 
-const userDefinedBuilder = new UserDefinedBuilder();
-await userDefinedBuilder.generate();
-```
+The `UserDefinedBuilder` class is designed to generate documentation based on user-defined templates and configurations. It provides methods to extract paths from content, generate documentation, and render the final output.
 
 ## Methods
 
-### constructor()
+### extractPathFromContent
 
-The constructor initializes the `UserDefinedBuilder` instance and sets its type to 'UserDefined'.
+```typescript
+public extractPathFromContent(input: string): string | null
+```
 
-### extractPathFromContent(input: string): string | null
+This method takes an input string and returns the extracted path from the content using a regular expression. If no match is found, it returns `null`.
 
-This method takes an input string and extracts the content path using a regular expression. It returns the extracted path or null if no match is found.
+### generate
 
-#### Parameters
+```typescript
+public async generate(): Promise<void>
+```
 
-- `input`: A string containing the content path.
+This asynchronous method generates documentation for each builder in the `config.builders` array. It iterates through the builders and calls the `generateFromBuilder` method for each page in the builder's `pages` array.
 
-### generate(): Promise<void>
+### generateFromBuilder
 
-This asynchronous method generates the user-defined documentation based on the provided configuration and templates. It iterates through the builders in the configuration, checks if the template has changed, and generates the documentation using the `UserDefinedBuilderHelper` class.
+```typescript
+public async generateFromBuilder(builder: IBuilder, saveToPath: string, position: number, data: any): Promise<void>
+```
 
-### render(document: Document): Promise<string>
+This asynchronous method generates documentation for a specific builder. It takes the following parameters:
 
-This asynchronous method takes a `Document` object and returns its documentation as a string.
+- `builder`: An `IBuilder` object containing the builder configuration.
+- `saveToPath`: A string representing the path where the generated documentation should be saved.
+- `position`: A number representing the position of the documentation in the sidebar.
+- `data`: An object containing additional data for the documentation generation.
 
-#### Parameters
+The method checks if the template file exists, and if not, it throws an error. It then checks if the template has changed since the last update and generates the documentation if necessary.
 
-- `document`: A `Document` object containing the documentation to be rendered.
+### render
 
-### hasTemplateChanged(document: Document | undefined, templatePath: string): boolean
+```typescript
+public async render(document: Document): Promise<string>
+```
 
-This method checks if the template has changed since the last update of the document. It returns true if the template has changed or if the document is undefined, and false otherwise.
+This asynchronous method takes a `Document` object and returns the rendered documentation as a string.
 
-#### Parameters
+### hasTemplateChanged
 
-- `document`: A `Document` object or undefined.
+```typescript
+private hasTemplateChanged(document: Document | undefined, templatePath: string): boolean
+```
+
+This private method checks if the template has changed since the last update. It takes the following parameters:
+
+- `document`: A `Document` object or `undefined` if the document does not exist.
 - `templatePath`: A string representing the path to the template file.
 
-## Helper Classes
-
-The `UserDefinedBuilder` class uses the following helper classes:
-
-- `UserDefinedBuilderHelper`: This class is responsible for loading arguments, getting assistant messages, and generating the documentation.
-- `ConfigHelper`: This class helps with managing the configuration settings.
-- `DocumentationCache`: This class is responsible for caching the generated documentation.
-- `FileStructure`: This class helps with managing the file structure of the project.
-- `Helper`: This class contains utility functions.
-
-## Dependencies
-
-The `UserDefinedBuilder` class depends on the following external libraries:
-
-- `path`: A built-in Node.js module for working with file and directory paths.
-- `fs`: A built-in Node.js module for working with the file system.
-- `jsonpath`: A library for working with JSONPath expressions.
+The method returns `true` if the template has changed, and `false` otherwise.
