@@ -38,7 +38,7 @@
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -126,7 +126,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "src"
 		}
@@ -166,7 +166,7 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "src"
 		}
@@ -206,7 +206,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "config"
 		}
@@ -250,7 +250,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "config"
 		}
@@ -294,7 +294,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "config"
 		}
@@ -338,7 +338,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "config"
 		}
@@ -382,7 +382,7 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "config"
 		}
@@ -422,7 +422,7 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -462,7 +462,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -502,7 +502,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -546,7 +546,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -586,7 +586,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -626,7 +626,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -666,7 +666,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -710,7 +710,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -750,7 +750,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -794,7 +794,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -834,7 +834,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -874,7 +874,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -914,7 +914,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -991,7 +991,7 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1031,7 +1031,7 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1071,7 +1071,7 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1111,7 +1111,7 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1151,7 +1151,7 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1191,7 +1191,7 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1231,7 +1231,7 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1271,7 +1271,7 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1311,7 +1311,7 @@
 			}
 		],
 		"id": "__tests__\\logic\\SuggestionBuilderTest.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "logic"
 		}
@@ -1351,7 +1351,7 @@
 			}
 		],
 		"id": "__tests__\\repositories\\OpenAIRepositoryTest.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1391,7 +1391,7 @@
 			}
 		],
 		"id": "__tests__\\utils\\FolderStructureTest.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1431,7 +1431,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1468,7 +1468,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1505,7 +1505,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1542,7 +1542,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1579,7 +1579,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1616,7 +1616,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1653,7 +1653,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1727,7 +1727,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1764,7 +1764,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1801,7 +1801,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1838,7 +1838,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1875,7 +1875,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1912,7 +1912,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1949,7 +1949,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -1986,7 +1986,7 @@
 			}
 		],
 		"id": "__tests__\\logic",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -2023,7 +2023,7 @@
 			}
 		],
 		"id": "__tests__\\repositories",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -2060,7 +2060,7 @@
 			}
 		],
 		"id": "__tests__\\utils",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "README",
@@ -2097,7 +2097,7 @@
 			}
 		],
 		"id": "__tests__",
-		"lastTouch": "2023-04-15T20:18:28.820Z"
+		"lastTouch": "2023-04-16T09:30:03.695Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -2107,7 +2107,7 @@
 		"documentation": "Prerequisites for the code-narrator project:\n\n1. Knowledge of JavaScript and TypeScript.\n2. Familiarity with Node.js and npm (Node Package Manager).\n3. Basic understanding of OpenAI API.\n\nRequired software and tools:\n\n1. Node.js (version 14 or higher) - Download and install from [Node.js official website](https://nodejs.org/).\n2. npm (version 6 or higher) - It comes bundled with Node.js.\n\nTo work with or understand the project, you should have the following dependencies installed:\n\n1. Install the code-narrator package using `npm i code-narrator -D`.\n2. Install other required dependencies by running `npm install` in the project directory.\n\nThe project uses the following main dependencies:\n\n- axios: ^0.26.1\n- dotenv: ^16.0.3\n- fast-glob: ^3.2.12\n- form-data: ^4.0.0\n- fs-extra: ^11.1.1\n- jsonpath: ^1.1.1\n- liquidjs: ^10.7.0\n- openai: ^3.1.0\n- yargs: ^17.7.1\n\nAnd the following development dependencies:\n\n- @babel/preset-typescript: ^7.21.0\n- @jest/globals: ^29.5.0\n- @types/jest: ^29.4.0\n- @types/node: ^18.11.19\n- gulp: ^4.0.2\n- gulp-copy: ^4.0.1\n- gulp-typescript: ^6.0.0-alpha.1\n- jest: ^29.4.2\n- ts-jest: ^29.0.5\n- ts-node: ^10.9.1\n- typescript: ^4.9.5\n\n:::note\nMake sure to have a valid OpenAI API key and set it in the `.env` file as `OPENAI_API_KEY=your_api_key`. Replace `your_api_key` with your actual API key.\n:::",
 		"isFolder": false,
 		"updated": "2023-04-14T16:04:32.711Z",
-		"sidebar_position": 10,
+		"sidebar_position": 2,
 		"sidebar_label": "Prerequisites",
 		"init": false,
 		"postInit": false,
@@ -2138,7 +2138,7 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"has_children": true
 		}
@@ -2151,7 +2151,7 @@
 		"documentation": "# Code Narrator\n\n## Description\n\nCode Narrator is a self-documenting tool that uses OpenAI to generate documentation on code and tests. It serves as a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run the tool with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the settings for your project.\n\n## HowTo Docs\n\nFor more detailed instructions, refer to the [HowTo docs](howto/README.md).\n\n## API Information\n\nFor information about the API, refer to the [API docs](src/README.md).\n\n## Reporting Bugs\n\nTo report bugs, please visit the [issues page](https://github.com/ingig/code-narrator/issues).\n\n## Repository and Homepage\n\n- Repository: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)\n- Homepage: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)\n\n## Versioning\n\nThis project uses [SemVer](http://semver.org/) for versioning.\n\n## Authors\n\n- [Author Name](mailto:author@example.com)\n\n## License\n\nThis project is licensed under the ISC License.",
 		"isFolder": false,
 		"updated": "2023-04-14T16:05:32.752Z",
-		"sidebar_position": 11,
+		"sidebar_position": 1,
 		"sidebar_label": "ReadMe",
 		"init": false,
 		"postInit": false,
@@ -2182,7 +2182,7 @@
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"has_children": true
 		}
@@ -2230,7 +2230,7 @@
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2282,7 +2282,7 @@
 			}
 		],
 		"id": "howto\\howto_use_cli.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2326,7 +2326,7 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2374,7 +2374,7 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2387,8 +2387,8 @@
 		"documentation": "# Overview of Files in the Directory\n\nThis is an overview of the files located in the directory. Each file provides a guide or tutorial on various aspects of using the CLI, editing content, and creating custom builders.\n\n## 1. [How to Create a How-To Guide for the CLI](How_to_Create_a_How-To_Guide_for_the_CLI.md)\n\nThis file provides a step-by-step guide on creating a How-To guide for the CLI, including adding a new entry in the `code-narrator.config.js` file and providing the necessary information.\n\n## 2. [How to Use Code-Narrator CLI](How_to_Use_Code-Narrator_CLI.md)\n\nThis file walks you through the installation and usage of the Code-Narrator CLI tool, which helps you run the main app using npx and allows you to use an optional config file.\n\n## 3. [How to Edit Long Content in Code Narrator](How_to_Edit_Long_Content_in_Code_Narrator.md)\n\nThis guide explains the process of manually editing long content in Code Narrator to improve the generated documentation when the content is too long and unsatisfactory.\n\n## 4. [How to Create a Custom Builder Using the Config File](How_to_Create_a_Custom_Builder_Using_the_Config_File.md)\n\nIn this file, you'll learn how to create a custom builder using the config file in a project that uses the Code Narrator system, as well as examples of using args and the Liquid template engine for template files.",
 		"isFolder": false,
 		"updated": "2023-04-14T16:14:00.522Z",
-		"sidebar_position": 16,
-		"sidebar_label": "README",
+		"sidebar_position": 11,
+		"sidebar_label": "How To",
 		"init": false,
 		"postInit": false,
 		"generator": "UserDefined",
@@ -2418,7 +2418,7 @@
 			}
 		],
 		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"has_children": true
 		}
@@ -2503,7 +2503,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2547,7 +2547,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-15T20:18:28.820Z",
+		"lastTouch": "2023-04-16T09:30:03.695Z",
 		"data": {
 			"parent": "generators"
 		}

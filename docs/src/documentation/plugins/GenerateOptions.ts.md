@@ -3,7 +3,7 @@ nav_order: 0
 title: GenerateOptions.ts
 parent: plugins
 
-permalink: docs/src/documentation/plugins/GenerateOptions.ts.md
+permalink: src/documentation/plugins/GenerateOptions.ts.md
 ---
 
 # GenerateOptions.ts

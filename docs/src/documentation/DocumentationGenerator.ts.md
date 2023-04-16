@@ -3,7 +3,7 @@ nav_order: 3
 title: DocumentationGenerator.ts
 parent: documentation
 
-permalink: docs/src/documentation/DocumentationGenerator.ts.md
+permalink: src/documentation/DocumentationGenerator.ts.md
 ---
 
 # DocumentationGenerator.ts

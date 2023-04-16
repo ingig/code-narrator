@@ -3,7 +3,7 @@ nav_order: 30
 title: src
 
 has_children: true
-permalink: docs/src/index.md
+permalink: src/README.md
 ---
 
 # Code Narrator Documentation

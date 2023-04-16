@@ -3,7 +3,7 @@ nav_order: 0
 title: HowToBuilder.ts
 parent: Howto
 
-permalink: docs/src/documentation/plugins/builders/Howto/HowToBuilder.ts.md
+permalink: src/documentation/plugins/builders/Howto/HowToBuilder.ts.md
 ---
 
 # HowToBuilder.ts

@@ -3,7 +3,7 @@ nav_order: 0
 title: BaseGenerator.ts
 parent: generators
 
-permalink: docs/src/documentation/plugins/generators/BaseGenerator.ts.md
+permalink: src/documentation/plugins/generators/BaseGenerator.ts.md
 ---
 
 # BaseGenerator.ts

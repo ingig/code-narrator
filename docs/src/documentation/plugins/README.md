@@ -3,7 +3,7 @@ nav_order: 30
 title: plugins
 
 has_children: true
-permalink: docs/src/documentation/plugins/index.md
+permalink: src/documentation/plugins/README.md
 ---
 
 # Documentation: Content of the Folder

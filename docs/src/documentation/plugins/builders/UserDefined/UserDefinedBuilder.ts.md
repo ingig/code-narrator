@@ -3,7 +3,7 @@ nav_order: 0
 title: UserDefinedBuilder.ts
 parent: UserDefined
 
-permalink: docs/src/documentation/plugins/builders/UserDefined/UserDefinedBuilder.ts.md
+permalink: src/documentation/plugins/builders/UserDefined/UserDefinedBuilder.ts.md
 ---
 
 # UserDefinedBuilder.ts

@@ -3,7 +3,7 @@ nav_order: 0
 title: SuggestionBuilderTest.ts
 parent: logic
 
-permalink: docs/__tests__/logic/SuggestionBuilderTest.ts.md
+permalink: __tests__/logic/SuggestionBuilderTest.ts.md
 ---
 
 # SuggestionBuilderTest.ts

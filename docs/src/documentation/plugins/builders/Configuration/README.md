@@ -3,7 +3,7 @@ nav_order: 30
 title: Configuration
 
 has_children: true
-permalink: docs/src/documentation/plugins/builders/Configuration/index.md
+permalink: src/documentation/plugins/builders/Configuration/README.md
 ---
 
 # Configuration Folder Documentation

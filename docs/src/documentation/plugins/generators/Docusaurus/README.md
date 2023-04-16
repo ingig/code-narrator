@@ -3,7 +3,7 @@ nav_order: 30
 title: Docusaurus
 
 has_children: true
-permalink: docs/src/documentation/plugins/generators/Docusaurus/index.md
+permalink: src/documentation/plugins/generators/Docusaurus/README.md
 ---
 
 # Docusaurus Generator Documentation

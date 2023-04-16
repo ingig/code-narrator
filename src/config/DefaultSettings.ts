@@ -37,7 +37,7 @@ export default class DefaultSettings {
             ],
             documentation_type: 'md', //What format should be generated, e.g. md, sphinx
             document_file_extension: ".md",
-            rootFileName : 'README.md',
+            rootFileName : 'README',
             cache_file: '.code-narrator/cache.json', //location of the cache file. :::warning '.code-narrator/cache.json' should be committed into git.
             gptModel : 'gpt-4'
         } as ICodeNarratorConfig

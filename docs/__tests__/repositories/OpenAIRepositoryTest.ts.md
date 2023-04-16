@@ -3,7 +3,7 @@ nav_order: 0
 title: OpenAIRepositoryTest.ts
 parent: repositories
 
-permalink: docs/__tests__/repositories/OpenAIRepositoryTest.ts.md
+permalink: __tests__/repositories/OpenAIRepositoryTest.ts.md
 ---
 
 # OpenAIRepositoryTest.ts

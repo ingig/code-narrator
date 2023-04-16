@@ -3,7 +3,7 @@ nav_order: 31
 title: generators
 
 has_children: true
-permalink: docs/src/documentation/plugins/generators/index.md
+permalink: src/documentation/plugins/generators/README.md
 ---
 
 # Documentation: Content of the Folder

@@ -3,7 +3,7 @@ nav_order: 31
 title: Files
 
 has_children: true
-permalink: docs/src/documentation/plugins/builders/Files/index.md
+permalink: src/documentation/plugins/builders/Files/README.md
 ---
 
 # Files and Folders Documentation

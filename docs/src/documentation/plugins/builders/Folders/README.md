@@ -3,7 +3,7 @@ nav_order: 32
 title: Folders
 
 has_children: true
-permalink: docs/src/documentation/plugins/builders/Folders/index.md
+permalink: src/documentation/plugins/builders/Folders/README.md
 ---
 
 # Documentation: FoldersBuilder

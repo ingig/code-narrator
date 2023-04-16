@@ -107,6 +107,8 @@ export default abstract class BaseBuilder {
         } else {
             document= prevDocument;
             document.data = data;
+            document.sidebar_position = sidebarPosition ?? document.sidebar_position;
+            document.sidebar_label = sidebarLabel ?? document.sidebar_label;
         }
         DocumentationCache.set(document);
     }

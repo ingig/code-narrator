@@ -8,7 +8,6 @@ export default class JekyllGenerator extends BaseGenerator {
 
     public process(document: Document) {
 
-        ConfigHelper.config.rootFileName = 'index';
         let sidebar_label = (document.sidebar_label) ? document.sidebar_label : document.name;
         let position = document.sidebar_position ?? 1;
         let parent = '';
@@ -25,7 +24,7 @@ export default class JekyllGenerator extends BaseGenerator {
             if (parentName != '') {
                 parent = `parent: ${parentName}`
             }
-        } else if (document.name == 'README' && document.path != '.') {
+        } else if (document.name == 'README' && document.folderPath != '') {
             has_children = 'has_children: true'
         }
 
@@ -33,10 +32,11 @@ export default class JekyllGenerator extends BaseGenerator {
             has_children = 'has_children: true';
         }
         let permalink = '';
-        if (document.isFolder && document.path != '.') {
-           permalink = `permalink: docs/${document.folderPath.replaceAll('\\', '/')}/index${ConfigHelper.config.document_file_extension}`
-        } else if (document.path != '.') {
-            permalink = `permalink: docs/${document.path.replaceAll('\\', '/')}${ConfigHelper.config.document_file_extension}`
+        if (document.isFolder && document.folderPath != '') {
+            let fileName = `${ConfigHelper.config.rootFileName}${ConfigHelper.config.document_file_extension}`
+            permalink = `permalink: ${document.folderPath.replaceAll('\\', '/')}/${fileName}`
+        } else if (!document.isFolder && document.folderPath != '') {
+            permalink = `permalink: ${document.path.replaceAll('\\', '/')}${ConfigHelper.config.document_file_extension}`
         }
         document.documentation = `---
 nav_order: ${position}

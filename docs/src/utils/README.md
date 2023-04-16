@@ -3,7 +3,7 @@ nav_order: 34
 title: utils
 
 has_children: true
-permalink: docs/src/utils/index.md
+permalink: src/utils/README.md
 ---
 
 # Documentation

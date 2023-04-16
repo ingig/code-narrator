@@ -3,7 +3,7 @@ nav_order: 1
 title: cli.ts
 parent: src
 
-permalink: docs/src/cli.ts.md
+permalink: src/cli.ts.md
 ---
 
 # cli.ts

@@ -122,17 +122,11 @@ const config = {
                 }
             ]
         }
-
-
     ],
     generatorPlugin: [
         JenkyllGenerator
     ],
-    sitemap: {
-        enable: true,
-        url: 'https://ingig.github.io/code-narrator/'
-    },
-    rootFileName: 'index.html'
+    rootFileName: 'README'
 
 };
 

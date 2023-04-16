@@ -13,9 +13,10 @@ export default class DocumentationGenerator {
 
         let config = ConfigHelper.config;
         if (config.readmeRoot) {
-            let document = DocumentationCache.get('README');
-            if (document) {
-                fs.writeFileSync(path.join(config.project_path, 'README.md'), document.documentation);
+            let documents = DocumentationCache.getByFolderPath('')
+            documents = documents.filter(doc => doc.name.toUpperCase() == 'README');
+            if (documents.length > 0) {
+                fs.writeFileSync(path.join(config.project_path, 'README.md'), documents[0].documentation);
             }
         }
         let project_path = process.cwd();

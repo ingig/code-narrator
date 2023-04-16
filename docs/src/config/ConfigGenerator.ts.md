@@ -3,7 +3,7 @@ nav_order: 0
 title: ConfigGenerator.ts
 parent: config
 
-permalink: docs/src/config/ConfigGenerator.ts.md
+permalink: src/config/ConfigGenerator.ts.md
 ---
 
 # ConfigGenerator.ts
