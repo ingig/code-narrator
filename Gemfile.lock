@@ -74,6 +74,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.3)
   just-the-docs (= 0.5.0)
+  jekyll-readme-index
 
 BUNDLED WITH
    2.3.9

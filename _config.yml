@@ -1,5 +1,5 @@
 theme: just-the-docs
 url: https://ingig.github.io/code-narrator/
 plugins:
-  - jekyll-default-layout
   - jekyll-readme-index
+  - jekyll-default-layout
