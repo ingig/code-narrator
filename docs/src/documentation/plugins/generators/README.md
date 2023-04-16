@@ -1,11 +1,3 @@
----
-nav_order: 31
-title: generators
-
-has_children: true
-permalink: src/documentation/plugins/generators/README.md
----
-
 # Documentation: Content of the Folder
 
 This folder contains files and subfolders responsible for generating documentation using the provided JSON content. The main components of this folder are:

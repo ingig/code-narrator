@@ -1,11 +1,3 @@
----
-nav_order: 33
-title: repositories
-
-has_children: true
-permalink: src/repositories/README.md
----
-
 # OpenAI Repository Documentation
 
 This folder contains the source code for the OpenAI Repository, which is responsible for interacting with the OpenAI API. The folder consists of a single TypeScript file that defines a class called `OpenAIRepository`. This class provides methods to query the OpenAI API and handle the responses.

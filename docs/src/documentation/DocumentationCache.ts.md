@@ -1,11 +1,3 @@
----
-nav_order: 2
-title: DocumentationCache.ts
-parent: documentation
-
-permalink: src/documentation/DocumentationCache.ts.md
----
-
 # DocumentationCache.ts
 
 This is a TypeScript code file that provides a class named `DocumentationCache`. The class is responsible for managing a cache of `Document` objects, which represent documentation files. The cache is stored in a JSON file, and the class provides methods for loading, getting, setting, and removing documents from the cache.

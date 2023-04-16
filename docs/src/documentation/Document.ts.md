@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: Document.ts
-parent: documentation
-
-permalink: src/documentation/Document.ts.md
----
-
 # Document.ts
 
 This is a TypeScript code file that defines a `Document` class. The class is used to represent a document with various properties and methods. The file imports necessary modules and utilities to perform its functions.

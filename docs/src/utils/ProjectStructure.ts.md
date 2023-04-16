@@ -1,11 +1,3 @@
----
-nav_order: 4
-title: ProjectStructure.ts
-parent: utils
-
-permalink: src/utils/ProjectStructure.ts.md
----
-
 # ProjectStructure.ts
 
 This is a code file that defines a class called `ProjectStructure`. The class is responsible for managing the structure of a project, including its folders and files. It provides methods to retrieve the folder structure and all the files within the project.

@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: OpenAIRepository.ts
-parent: repositories
-
-permalink: src/repositories/OpenAIRepository.ts.md
----
-
 # OpenAIRepository.ts
 
 This TypeScript file defines a class called `OpenAIRepository` that provides methods to interact with the OpenAI API. The class is responsible for querying the OpenAI API and handling the responses.

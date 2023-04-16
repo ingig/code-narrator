@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: src
-
-has_children: true
-permalink: src/README.md
----
-
 # Code Narrator Documentation
 
 This documentation provides an in-depth explanation of the content of the Code Narrator project. The project is responsible for generating documentation for a project using GPT. The documentation is divided into sections with clear headings and subheadings.

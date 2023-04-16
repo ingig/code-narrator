@@ -1,11 +1,3 @@
----
-nav_order: 3
-title: Helper.ts
-parent: utils
-
-permalink: src/utils/Helper.ts.md
----
-
 # Helper.ts
 
 The `Helper.ts` file is a TypeScript code file that contains a class named `Helper`. This class provides utility methods to perform common operations such as removing file extensions, capitalizing the first letter of a string, and extracting JSON objects from a string.

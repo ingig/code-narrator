@@ -1,11 +1,3 @@
----
-nav_order: 32
-title: utils
-
-has_children: true
-permalink: __tests__/utils/README.md
----
-
 # Documentation: Content of the Folder
 
 This documentation provides an in-depth description of the content of the folder, its purpose in the system, and the files and folders it contains. The folder is divided into sections with clear headings and subheadings for easy navigation.

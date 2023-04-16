@@ -1,11 +1,3 @@
----
-nav_order: 34
-title: utils
-
-has_children: true
-permalink: src/utils/README.md
----
-
 # Documentation
 
 This documentation provides an in-depth overview of the content of the `src/utils` folder. The folder is responsible for handling various utility functions and classes used throughout the system.

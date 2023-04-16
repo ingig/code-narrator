@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: HowToBuilder.ts
-parent: Howto
-
-permalink: src/documentation/plugins/builders/Howto/HowToBuilder.ts.md
----
-
 # HowToBuilder.ts
 
 `HowToBuilder.ts` is a TypeScript code file that provides a class `HowToBuilder` for generating and rendering documentation for "how-to" guides. The class extends the `BaseBuilder` class and is responsible for extracting and formatting "how-to" content from the given files.

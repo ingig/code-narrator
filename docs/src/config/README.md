@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: config
-
-has_children: true
-permalink: src/config/README.md
----
-
 # Code Narrator Documentation
 
 This documentation provides an in-depth explanation of the content of the `src/config` folder in the Code Narrator project. The folder is responsible for managing the configuration of the project, including generating configuration objects, handling environment variables, and setting default values for various settings.

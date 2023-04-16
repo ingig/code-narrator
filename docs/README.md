@@ -1,9 +1,3 @@
----
-nav_order: 1
-title: ReadMe
-
----
-
 # Code Narrator
 
 ## Description

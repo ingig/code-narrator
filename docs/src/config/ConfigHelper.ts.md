@@ -1,11 +1,3 @@
----
-nav_order: 1
-title: ConfigHelper.ts
-parent: config
-
-permalink: src/config/ConfigHelper.ts.md
----
-
 # ConfigHelper.ts
 
 The `ConfigHelper.ts` file is a TypeScript module that provides a helper class for managing the configuration of a Code Narrator project. This class is responsible for loading the project configuration, handling environment variables, and setting default values for various settings.

@@ -1,11 +1,3 @@
----
-nav_order: 2
-title: DefaultSettings.ts
-parent: config
-
-permalink: src/config/DefaultSettings.ts.md
----
-
 # DefaultSettings.ts
 
 This is a TypeScript code file that defines the `DefaultSettings` class. The class is responsible for providing default settings for the Code Narrator application. It includes various configurations, such as file paths, plugin settings, and GPT model settings.

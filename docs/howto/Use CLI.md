@@ -1,11 +1,3 @@
----
-nav_order: 13
-title: Use CLI
-parent: How To
-
-permalink: howto/howto_use_cli.md.md
----
-
 # How to Use Code-Narrator CLI
 
 ## Introduction

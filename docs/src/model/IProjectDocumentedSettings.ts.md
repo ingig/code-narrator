@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: IProjectDocumentedSettings.ts
-parent: model
-
-permalink: src/model/IProjectDocumentedSettings.ts.md
----
-
 # IProjectDocumentedSettings.ts
 
 This is a TypeScript interface file that defines the structure of the `IProjectDocumentedSettings` interface. The interface is used to represent the settings of a project that needs to be documented.

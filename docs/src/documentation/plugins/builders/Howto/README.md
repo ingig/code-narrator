@@ -1,11 +1,3 @@
----
-nav_order: 33
-title: Howto
-
-has_children: true
-permalink: src/documentation/plugins/builders/Howto/README.md
----
-
 # HowToBuilder Documentation
 
 This folder contains the necessary files and classes for generating and rendering documentation for "how-to" guides in the system. The main file in this folder is `HowToBuilder.ts`, which provides a class for extracting and formatting "how-to" content from the given files.

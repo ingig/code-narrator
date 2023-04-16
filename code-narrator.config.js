@@ -123,9 +123,7 @@ const config = {
             ]
         }
     ],
-    generatorPlugin: [
-        JenkyllGenerator
-    ],
+
     rootFileName: 'README'
 
 };

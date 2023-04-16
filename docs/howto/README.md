@@ -1,11 +1,3 @@
----
-nav_order: 11
-title: How To
-
-has_children: true
-permalink: howto/overview_readme.md.md
----
-
 # Overview of Files in the Directory
 
 This is an overview of the files located in the directory. Each file provides a guide or tutorial on various aspects of using the CLI, editing content, and creating custom builders.

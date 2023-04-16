@@ -1,11 +1,3 @@
----
-nav_order: 2
-title: JekyllGenerator.ts
-parent: generators
-
-permalink: src/documentation/plugins/generators/JekyllGenerator.ts.md
----
-
 # JekyllGenerator.ts
 
 This file contains the `JekyllGenerator` class, which is responsible for processing documents and generating the appropriate Jekyll front matter for each document. The class extends the `BaseGenerator` class and overrides the `process` method.

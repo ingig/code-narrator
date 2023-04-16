@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: GenerateOptions.ts
-parent: plugins
-
-permalink: src/documentation/plugins/GenerateOptions.ts.md
----
-
 # GenerateOptions.ts
 
 ## Overview

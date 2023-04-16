@@ -1,11 +1,3 @@
----
-nav_order: 1
-title: JenkyllGenerator.ts
-parent: src\documentation\plugins\generators\Docusaurus
-
-permalink: src/documentation/plugins/generators/Docusaurus/JenkyllGenerator.ts.md
----
-
 # JenkyllGenerator.ts
 
 The `JenkyllGenerator.ts` file is a TypeScript code file that defines a class named `JenkyllGenerator`. This class extends the `BaseGenerator` class and is responsible for processing a given `Document` object to generate a Jekyll-compatible documentation file.

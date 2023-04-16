@@ -1,11 +1,3 @@
----
-nav_order: 1
-title: UserDefinedBuilderHelper.ts
-parent: UserDefined
-
-permalink: src/documentation/plugins/builders/UserDefined/UserDefinedBuilderHelper.ts.md
----
-
 # UserDefinedBuilderHelper.ts
 
 The `UserDefinedBuilderHelper.ts` file is a TypeScript code file that exports a class named `UserDefinedBuilderHelper`. This class provides various utility methods to help with building user-defined content, such as extracting paths, loading arguments, and getting assistant messages.

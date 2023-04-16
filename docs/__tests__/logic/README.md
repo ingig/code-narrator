@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: logic
-
-has_children: true
-permalink: __tests__/logic/README.md
----
-
 # Documentation
 
 This folder contains the necessary files and tests for the system's functionality. The main responsibility of this folder is to ensure the proper functioning of the system.

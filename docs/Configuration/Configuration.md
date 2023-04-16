@@ -1,11 +1,3 @@
----
-nav_order: 3
-title: Configuration
-
-has_children: true
-permalink: ./Configuration/README.md
----
-
 The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It contains various settings and configurations that determine how the application behaves and generates documentation.
 
 The purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs. It includes settings for entry files, CLI files, project names, repository URLs, source paths, documentation paths, test paths, and more.

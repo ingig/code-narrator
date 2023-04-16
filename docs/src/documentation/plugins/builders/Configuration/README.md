@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: Configuration
-
-has_children: true
-permalink: src/documentation/plugins/builders/Configuration/README.md
----
-
 # Configuration Folder Documentation
 
 This folder is responsible for managing the configuration files in the system. It contains a TypeScript file named `ConfigurationBuilder.ts` that defines a class for generating and managing configuration files.

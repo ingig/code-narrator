@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: OpenAIRepositoryTest.ts
-parent: repositories
-
-permalink: __tests__/repositories/OpenAIRepositoryTest.ts.md
----
-
 # OpenAIRepositoryTest.ts
 
 The `OpenAIRepositoryTest.ts` file is a code file that contains test cases for the `OpenAIRepository` class. This class is responsible for interacting with the OpenAI API to query questions and receive answers. The test cases in this file ensure that the `OpenAIRepository` class is functioning correctly.

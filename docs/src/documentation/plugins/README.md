@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: plugins
-
-has_children: true
-permalink: src/documentation/plugins/README.md
----
-
 # Documentation: Content of the Folder
 
 This documentation provides an in-depth overview of the content of the folder and its responsibilities within the system. The folder contains files and subfolders that are crucial for generating and rendering documentation for various project structures.

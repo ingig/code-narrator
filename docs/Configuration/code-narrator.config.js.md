@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: Code-narrator.config.js
-parent: Configuration
-
-permalink: code-narrator.config.js.md
----
-
 Here's a detailed description of the `code-narrator.config.js` file and its purpose in the application:
 
 The `code-narrator.config.js` file is a configuration file for the Code Narrator application. It contains various settings and configurations that are used by the application to generate documentation for your project. The file exports a `config` object with the following properties:

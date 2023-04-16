@@ -27,7 +27,7 @@ export default class DocumentationGenerator {
             let document = documents[i]
             if (!document) continue;
 
-            for (let i = 0; i < plugins.length; i++) {
+            for (let i = 0;plugins && i < plugins.length; i++) {
                 let tmp = new plugins[i].default() as BaseGenerator;
                 tmp.process(document)
             }

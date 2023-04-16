@@ -1,11 +1,3 @@
----
-nav_order: 31
-title: documentation
-
-has_children: true
-permalink: src/documentation/README.md
----
-
 # Documentation: Content of the Folder
 
 This documentation provides an in-depth overview of the content of the folder and its responsibilities within the system. The folder contains files and subfolders that are crucial for generating and rendering documentation for various project structures.

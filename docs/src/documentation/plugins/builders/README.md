@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: builders
-
-has_children: true
-permalink: src/documentation/plugins/builders/README.md
----
-
 ```
 # Documentation: Content of the Folder
 

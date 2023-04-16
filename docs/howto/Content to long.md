@@ -1,11 +1,3 @@
----
-nav_order: 14
-title: Content to long
-parent: How To
-
-permalink: howto/howto_content_to_long.md.md
----
-
 # How to Edit Long Content in Code Narrator
 
 ## Introduction

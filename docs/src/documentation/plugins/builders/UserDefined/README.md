@@ -1,11 +1,3 @@
----
-nav_order: 34
-title: UserDefined
-
-has_children: true
-permalink: src/documentation/plugins/builders/UserDefined/README.md
----
-
 # User-Defined Documentation Builder
 
 This folder contains the necessary files to generate and render user-defined documentation based on templates and configurations. The main components are the `UserDefinedBuilder.ts` and `UserDefinedBuilderHelper.ts` files.

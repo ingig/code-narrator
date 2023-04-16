@@ -1,11 +1,3 @@
----
-nav_order: 32
-title: Folders
-
-has_children: true
-permalink: src/documentation/plugins/builders/Folders/README.md
----
-
 # Documentation: FoldersBuilder
 
 This documentation provides an in-depth overview of the `FoldersBuilder` module, which is responsible for generating documentation for a folder structure in a project. The module is implemented in the `FoldersBuilder.ts` file and extends the `BaseBuilder` class.

@@ -1,9 +1,3 @@
----
-nav_order: 2
-title: Prerequisites
-
----
-
 Prerequisites for the code-narrator project:
 
 1. Knowledge of JavaScript and TypeScript.

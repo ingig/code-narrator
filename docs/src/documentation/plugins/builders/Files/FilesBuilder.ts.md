@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: FilesBuilder.ts
-parent: Files
-
-permalink: src/documentation/plugins/builders/Files/FilesBuilder.ts.md
----
-
 # FilesBuilder.ts
 
 The `FilesBuilder.ts` file is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating and rendering documentation for files in a project structure. It also handles querying folders, cleaning deleted files from the cache, and determining if a file should be documented.

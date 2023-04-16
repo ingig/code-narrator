@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: ConfigGenerator.ts
-parent: config
-
-permalink: src/config/ConfigGenerator.ts.md
----
-
 # ConfigGenerator.ts
 
 This document provides an in-depth explanation of the `ConfigGenerator.ts` file, which is a TypeScript code file. The file contains a class named `ConfigGenerator` that is responsible for generating a configuration object for the Code Narrator project. The configuration object is based on the project's folder structure, project file, and other relevant information.

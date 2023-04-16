@@ -1,11 +1,3 @@
----
-nav_order: 32
-title: model
-
-has_children: true
-permalink: src/model/README.md
----
-
 # Documentation: Content of the Folder
 
 This folder contains files responsible for defining the structure and settings of a project that needs to be documented. The folder is divided into sections with clear headings and subheadings.

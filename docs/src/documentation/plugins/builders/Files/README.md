@@ -1,11 +1,3 @@
----
-nav_order: 31
-title: Files
-
-has_children: true
-permalink: src/documentation/plugins/builders/Files/README.md
----
-
 # Files and Folders Documentation
 
 This documentation provides an in-depth overview of the content of the folder and its responsibilities within the system. The folder contains files and subfolders that are crucial for generating and rendering documentation for various project structures.

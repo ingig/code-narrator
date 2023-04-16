@@ -1,11 +1,3 @@
----
-nav_order: 0
-title: SuggestionBuilderTest.ts
-parent: logic
-
-permalink: __tests__/logic/SuggestionBuilderTest.ts.md
----
-
 # SuggestionBuilderTest.ts
 
 SuggestionBuilderTest.ts is a test file for the `DocumentationBuilder` class, which is responsible for generating a Markdown (.md) file containing the project description, installation instructions, and usage information. The test ensures that the `DocumentationBuilder` class functions as expected.

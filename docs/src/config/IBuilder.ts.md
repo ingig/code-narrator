@@ -1,11 +1,3 @@
----
-nav_order: 3
-title: IBuilder.ts
-parent: config
-
-permalink: src/config/IBuilder.ts.md
----
-
 # IBuilder.ts
 
 This TypeScript file defines the `IBuilder` interface, which is used to represent a builder object in the application. The file also includes the `BuilderType` type definition, and two additional interfaces: `IFile` and `ISitemap`.

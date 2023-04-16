@@ -1,11 +1,3 @@
----
-nav_order: 15
-title: Create your own custom builder
-parent: How To
-
-permalink: howto/howto_create_custom_builder.md.md
----
-
 # How to Create a Custom Builder Using the Config File
 
 ## Introduction

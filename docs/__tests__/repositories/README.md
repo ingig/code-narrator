@@ -1,11 +1,3 @@
----
-nav_order: 31
-title: repositories
-
-has_children: true
-permalink: __tests__/repositories/README.md
----
-
 # Documentation: Content of the Folder
 
 This folder contains files and subfolders responsible for various functionalities in the system. The following sections provide a high-level overview of each file and folder, along with links to their respective documentation.

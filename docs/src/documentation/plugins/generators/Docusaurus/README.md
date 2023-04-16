@@ -1,11 +1,3 @@
----
-nav_order: 30
-title: Docusaurus
-
-has_children: true
-permalink: src/documentation/plugins/generators/Docusaurus/README.md
----
-
 # Docusaurus Generator Documentation
 
 This folder contains the implementation of the Docusaurus generator, which is responsible for processing a `Document` object and generating documentation compatible with Docusaurus.
