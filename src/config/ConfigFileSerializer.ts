@@ -8,10 +8,10 @@ export default class ConfigFileSerializer {
     public async serialize(config : ICodeNarratorConfig) {
 
         const configContent = `
-const ConfigurationBuilder = require("code-narrator/src/documentation/plugins/builders/Configuration/ConfigurationBuilder");
-const FilesBuilder = require("code-narrator/src/documentation/plugins/builders/Files/FilesBuilder");
-const FoldersBuilder = require("code-narrator/src/documentation/plugins/builders/Folders/FoldersBuilder");
-const UserDefinedBuilder = require("code-narrator/src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
+const ConfigurationBuilder = require("code-narrator/dist/src/documentation/plugins/builders/Configuration/ConfigurationBuilder");
+const FilesBuilder = require("code-narrator/dist/src/documentation/plugins/builders/Files/FilesBuilder");
+const FoldersBuilder = require("code-narrator/dist/src/documentation/plugins/builders/Folders/FoldersBuilder");
+const UserDefinedBuilder = require("code-narrator/dist/src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
         
 /**
  * You can find the documentation about code-narrator.config.js at
