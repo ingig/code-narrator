@@ -2,7 +2,7 @@
 
 ## Description
 
-code-narrator uses OpenAI to generate documentation on code and tests. It is a self-documenting tool and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.
+code-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ code-narrator uses OpenAI to generate documentation on code and tests. It is a s
 npm i code-narrator -D
 ```
 
-2. Run the tool with npx:
+2. Run code-narrator with npx:
 
 ```bash
 npx code-narrator
@@ -20,7 +20,7 @@ npx code-narrator
 
 ## Configuration
 
-Configuration is optional and will be generated on the first run. You can customize the configuration by editing the `code-narrator.config.ts` file.
+Configuration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the configuration for your project.
 
 ## Reporting Bugs
 
@@ -28,11 +28,11 @@ Please report any bugs or issues on the [GitHub repository](https://github.com/i
 
 ## Versioning
 
-The current version of code-narrator is 1.0.6.
+Current version: 1.0.6
 
 ## Authors
 
-Ingi Gauti Ragnarsson @ingig
+Ingi Gauti Ragnarsson (@ingig)
 
 ## License
 
