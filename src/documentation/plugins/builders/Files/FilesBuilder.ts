@@ -96,7 +96,7 @@ export default class FilesBuilder extends BaseBuilder {
                 }
             }
             if (!fileExists) {
-                console.warn(`Remove file ${cachedFiles[i].path} from cache`)
+                //console.warn(`Remove file ${cachedFiles[i].path} from cache`)
                 //DocumentationCache.remove(cachedFiles[i]);
             }
 

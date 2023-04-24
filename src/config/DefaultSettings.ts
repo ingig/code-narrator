@@ -26,8 +26,7 @@ export default class DefaultSettings {
 
             //Order of plugins matter, ConfigurationGenerator runs first to get overview of the project.
             builderPlugins: [
-                ConfigurationBuilder, FilesBuilder, FoldersBuilder, UserDefinedBuilder,
-                HowToBuilder
+                ConfigurationBuilder, FilesBuilder, FoldersBuilder, UserDefinedBuilder
             ],
             gptSystemCommands: [
                 'Act as a documentation expert for software',
@@ -37,7 +36,7 @@ export default class DefaultSettings {
             ],
             documentation_type: 'md', //What format should be generated, e.g. md, sphinx
             document_file_extension: ".md",
-            rootFileName : 'README',
+            folderRootFileName : 'README',
             cache_file: '.code-narrator/cache.json', //location of the cache file. :::warning '.code-narrator/cache.json' should be committed into git.
             gptModel : 'gpt-4'
         } as ICodeNarratorConfig
@@ -45,7 +44,7 @@ export default class DefaultSettings {
 
     private static getFilesToExclude() {
         let gitIgnore = FileStructure.getContent(path.join(process.cwd(), '.gitignore')).trim().split('\n');
-        gitIgnore = gitIgnore.map(item => item.trim())
+        gitIgnore = gitIgnore.map(item => item.trim()).filter(item => item !== '')
         let defaults = ['/node_modules', '.env', '/.idea', '/.git',
             '.gitignore', '/.code-narrator', '/dist', '/build', 'package-lock.json']
 

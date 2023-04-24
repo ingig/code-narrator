@@ -1,6 +1,6 @@
 # JekyllGenerator.ts
 
-This is a TypeScript code file that defines a class called `JekyllGenerator`, which extends the `BaseGenerator` class. The purpose of this class is to process a given `Document` object and generate the appropriate Jekyll front matter for the document. This is useful when generating documentation for a Jekyll-based static site.
+This is a TypeScript code file that defines the `JekyllGenerator` class, which extends the `BaseGenerator` class. The purpose of this class is to process a given `Document` object and generate the appropriate Jekyll front matter for it. This class is particularly useful when working with Jekyll-based documentation websites.
 
 ## Usage
 
@@ -16,34 +16,30 @@ const document = new Document(/* ... */);
 const processedDocument = generator.process(document);
 ```
 
-## Class Methods
+## Methods
 
 ### process(document: Document)
 
-This method takes a `Document` object as its input and processes it to generate the Jekyll front matter. It returns the modified `Document` object with the updated `documentation` property.
+This method takes a `Document` object as its input and processes it to generate the Jekyll front matter. It returns the modified `Document` object with the front matter added to its `documentation` property.
 
 #### Parameters
 
-- `document`: A `Document` object that needs to be processed.
+- `document: Document` - The `Document` object to be processed.
 
-#### Technical Concepts
+## Technical Concepts
 
-- **Jekyll Front Matter**: Jekyll uses a YAML-based front matter to store metadata about a document. This metadata is used to generate the static site's navigation, permalinks, and other features.
+### Jekyll Front Matter
 
-## Code Explanation
+Jekyll front matter is a block of YAML code at the beginning of a Markdown file that contains metadata about the file. It is used by Jekyll to generate the static website. In this class, the front matter is generated based on the properties of the `Document` object, such as its `sidebar_label`, `sidebar_position`, `parent`, and `has_children`.
 
-The `process()` method first extracts various properties from the input `Document` object, such as `sidebar_label`, `sidebar_position`, `parent`, and `has_children`. It then constructs the Jekyll front matter using these properties and appends it to the beginning of the `documentation` property of the `Document` object.
+### Document Object
 
-The method also handles special cases, such as when the document is a `README` file or when it is a folder. In these cases, it sets the appropriate `has_children` and `permalink` properties in the front matter.
+The `Document` object is a custom class that represents a documentation file. It contains properties such as `name`, `folderPath`, `data`, and `documentation`. The `JekyllGenerator` class processes these properties to generate the appropriate Jekyll front matter.
 
-Finally, the method returns the modified `Document` object with the updated `documentation` property.
+### DocumentationCache
 
-## Dependencies
+The `DocumentationCache` class is used to store and retrieve `Document` objects based on their folder paths. In the `JekyllGenerator` class, it is used to find the parent document of a given document, if any.
 
-This class depends on the following external modules:
+### ConfigHelper
 
-- `BaseGenerator`: The base class for all generator classes.
-- `Document`: A class representing a documentation file.
-- `path`: A built-in Node.js module for handling file paths.
-- `ConfigHelper`: A helper class for accessing the configuration settings.
-- `DocumentationCache`: A cache for storing and retrieving `Document` objects.
+The `ConfigHelper` class is used to access the configuration settings of the application. In the `JekyllGenerator` class, it is used to get the `folderRootFileName` and `document_file_extension` settings, which are used to generate the `permalink` property in the Jekyll front matter.

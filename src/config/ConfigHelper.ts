@@ -2,6 +2,7 @@ import * as dotnet from "dotenv";
 import ICodeNarratorConfig from "./ICodeNarratorConfig";
 import DefaultSettings from "./DefaultSettings";
 import ConfigGenerator from "./ConfigGenerator";
+import IBuilder from "./IBuilder";
 
 /*
 ref: ICodeNarratorConfig.ts
@@ -19,16 +20,25 @@ export default class ConfigHelper {
     public static async load(projectConfig: Partial<ICodeNarratorConfig> = {}) {
         dotnet.config()
         ConfigHelper.env = process.env;
-        if (!ConfigHelper.env['OPENAI_API_KEY']) {
+        ConfigHelper.OpenAiKey = ConfigHelper.env['OPENAI_API_KEY']
+
+        if (!ConfigHelper.OpenAiKey) {
             console.error('Missing OPENAI_API_KEY in .env file. Make sure to create .env file in your root and include OPENAI_API_KEY=Your_OpenAI_Key')
             throw new Error('Missing OpenAI API key')
         }
-        ConfigHelper.OpenAiKey = ConfigHelper.env['OPENAI_API_KEY']
-        this.config = DefaultSettings.get();
 
-        if (!projectConfig.project_file) {
+        if (!(projectConfig as any).fromFile) {
             projectConfig = await ConfigGenerator.generate(projectConfig);
+            console.log(`
+============ Config generated =====================================
+Config file has been generated in project root, code-narrator.config.js. 
+            
+Please read through it and see if it maps correctly to your project. You can modify it. 
+Next time you will run the CLI it will start generating documentation
+===================================================================`)
+            process.exit(1);
         }
+
         this.config = {
             ...DefaultSettings.get(),
             ...projectConfig,
@@ -47,5 +57,37 @@ export default class ConfigHelper {
         ConfigHelper.CacheFilePath = this.config.cache_file ?? '.code-narrator/cache.json';
     }
 
+    public static getUserDefinedExamples(config : ICodeNarratorConfig) {
+        let readMeBuilder: IBuilder = {
+            name: "README",
+            type: "README",
+            template: "README",
+            sidebarPosition: 1,
+            args:
+                {
+                    entryFileContent: `content(${config.project_file ?? ''})`
+                }
+        }
+        let howToPage : IBuilder = {
+            name : "HowTo Example",
+            type : "howto",
+            template : "howto_create_howto"
+        }
+        let howToBuilder : IBuilder = {
+            name : "HowTo Overview",
+            type : "README",
+            template : 'overview_readme',
+            path : 'howto',
+            files : [
+                {
+                    path: 'howto/*.md'
 
+                }
+            ],
+            pages : [
+                howToPage
+            ]
+        }
+        return [readMeBuilder, howToBuilder]
+    }
 }

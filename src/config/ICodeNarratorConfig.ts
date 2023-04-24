@@ -11,16 +11,17 @@ export default interface ICodeNarratorConfig {
     source_path: string;
     documentation_path: string;
     test_path: string;
-    exclude : string[];
+
     readmeRoot: boolean;
     builderPlugins: any[]
     generatorPlugin: any[]
     gptSystemCommands: string[]
     documentation_type: string
     document_file_extension: string
-    rootFileName : string;
+    folderRootFileName : string;
     cache_file: string;
     gptModel : string;
     builders : IBuilder[]
     include : string[];
+    exclude : string[];
 }

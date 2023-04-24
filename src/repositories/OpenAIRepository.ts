@@ -3,9 +3,15 @@ import { setTimeout } from 'timers/promises';
 import {CreateChatCompletionResponseChoicesInner} from "openai/api";
 import ConfigHelper from "../config/ConfigHelper";
 import OpenAIResponse from "../model/OpenAIResponse";
+import DefaultSettings from "../config/DefaultSettings";
 
 export default class OpenAIRepository {
     openai: OpenAIApi;
+    models = new Map([
+        ['gpt-3.5-turbo', 4096],
+        ['gpt-4', 8192],
+        ['gpt-4-32k', 32768]
+    ]);
     constructor() {
         const configuration = new Configuration({
             apiKey: ConfigHelper.OpenAiKey
@@ -23,9 +29,11 @@ export default class OpenAIRepository {
             await setTimeout(1 * 500);
 
             let config = ConfigHelper.config;
-            if (!model) model = config.gptModel;
-
-
+            //config should only be undefined on first run
+            if (!config) config = DefaultSettings.get();
+            if (!model) {
+                model = config.gptModel;
+            }
             let messageLength = 0;
 
             for (let i=0;config.gptSystemCommands && i<config.gptSystemCommands.length;i++) {
@@ -33,11 +41,11 @@ export default class OpenAIRepository {
                 messages.push({role:'system', content:config.gptSystemCommands[i].replace('{DocumentationType}', ConfigHelper.DocumentationType)})
             }
 
-            let maxTokens = (model.indexOf('gpt-4') != -1) ? 8192 : 4096;
+            let maxTokens = this.models.get(model) ?? 8192
             for (let i=0;i<questions.length;i++){
                 let q = questions[i]
                 if (messageLength + q.length> maxTokens) {
-                    let length = parseInt(((maxTokens - messageLength)/0.80).toString());
+                    let length = parseInt(((maxTokens - messageLength)/1.20).toString());
                     q = q.substring(0, length);
                     console.warn(`Warning - Content to long: I had to trim a file, only using first ${length} character`)
                 }

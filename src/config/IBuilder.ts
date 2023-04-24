@@ -1,19 +1,19 @@
 export default interface IBuilder {
     type: BuilderType
     name: string;
-    title: string;
+    title?: string;
     template: string;
-    args: any;
-    files: IFile[];
-    path : string;
-    sidebarPosition: number;
-    sidebarLabel: string;
-    pages : IBuilder[];
+    args?: any;
+    files?: IFile[];
+    path? : string;
+    sidebarPosition?: number;
+    sidebarLabel?: string;
+    pages? : IBuilder[];
 }
 type BuilderType = 'howto' | 'README' | 'custom';
 
 export interface IFile {
     path: string;
-    JSONPath: string[];
-    extract : string[];
+    JSONPath?: string[];
+    extract? : string[];
 }

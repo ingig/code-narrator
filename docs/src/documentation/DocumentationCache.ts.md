@@ -1,61 +1,87 @@
 # DocumentationCache.ts
 
-This file contains the `DocumentationCache` class, which is responsible for managing the cache of documentation files. It provides methods to load, get, set, and remove documents from the cache, as well as retrieve documents by folder path and get project information.
+This file contains the `DocumentationCache` class, which is responsible for managing the cache of documentation files. The cache is stored in a JSON file, and this class provides methods for loading, getting, setting, and removing documents from the cache.
+
+:::danger Make sure to add the cache file (default is .codenarrator\cache.json) to git, so you don't have to query GPT on each run.
+:::
 
 ## Table of Contents
 
 - [Class: DocumentationCache](#class-documentationcache)
+  - [Static Properties](#static-properties)
   - [Constructor](#constructor)
-  - [Methods](#methods)
-    - [load()](#load)
-    - [getIndex(id: string)](#getindexid-string)
-    - [get(path: string)](#getpath-string)
-    - [remove(document: Document)](#removedocument-document)
-    - [set(document: Document)](#setdocument-document)
-    - [getByFolderPath(path: string)](#getbyfolderpathpath-string)
-    - [getFolderByFolderPath(path: string)](#getfolderbyfolderpathpath-string)
-    - [getProjectInfo()](#getprojectinfo)
+  - [Static Methods](#static-methods)
+    - [load](#load)
+    - [getIndex](#getindex)
+    - [get](#get)
+    - [remove](#remove)
+    - [set](#set)
+    - [getByFolderPath](#getbyfolderpath)
+    - [getFolderByFolderPath](#getfolderbyfolderpath)
+    - [getProjectInfo](#getprojectinfo)
 
 ## Class: DocumentationCache
 
+### Static Properties
+
+- `Documents`: An array of `Document` objects or `null`. This property holds the cached documents.
+
 ### Constructor
 
-The constructor of the `DocumentationCache` class is private, which means that instances of this class cannot be created using the `new` keyword. Instead, the class provides static methods to interact with the cache.
+The constructor is private and initializes the `Documents` property by reading the cache file. If the cache file does not exist, it creates an empty cache file and sets `Documents` to an empty array.
 
-### Methods
+### Static Methods
 
-#### load()
+#### load
 
-This static method initializes the cache by reading the cache file specified in the `ConfigHelper.CacheFilePath`. If the cache file does not exist, it creates a new empty cache file.
+- Description: Initializes a new instance of the `DocumentationCache` class.
+- Parameters: None
+- Returns: None
 
-#### getIndex(id: string)
+#### getIndex
 
-This static method takes an `id` as a parameter and returns the index of the document with the given `id` in the cache. If the document is not found, it returns -1.
+- Description: Returns the index of a document in the `Documents` array based on its ID.
+- Parameters:
+  - `id` (string): The ID of the document to find.
+- Returns: The index of the document in the `Documents` array, or `-1` if not found.
 
-#### get(path: string)
+#### get
 
-This static method takes a `path` as a parameter and returns the `Document` object associated with the given path. If the document is not found in the cache, it returns `undefined`.
+- Description: Retrieves a document from the cache based on its path.
+- Parameters:
+  - `path` (string): The path of the document to retrieve.
+- Returns: The `Document` object if found, or `undefined` if not found.
 
-#### remove(document: Document)
+#### remove
 
-This static method takes a `Document` object as a parameter and removes it from the cache. It also deletes the corresponding file from the file system.
+- Description: Removes a document from the cache and deletes its file.
+- Parameters:
+  - `document` (Document): The `Document` object to remove.
+- Returns: None
 
-#### set(document: Document)
+#### set
 
-This static method takes a `Document` object as a parameter and adds or updates it in the cache. The cache file is then updated with the new content.
+- Description: Adds or updates a document in the cache and writes the cache to the cache file.
+- Parameters:
+  - `document` (Document): The `Document` object to add or update.
+- Returns: None
 
-#### getByFolderPath(path: string)
+#### getByFolderPath
 
-This static method takes a `path` as a parameter and returns an array of `Document` objects that have the given folder path.
+- Description: Retrieves all documents in the cache that have a specific folder path.
+- Parameters:
+  - `path` (string): The folder path to search for.
+- Returns: An array of `Document` objects with the specified folder path.
 
-#### getFolderByFolderPath(path: string)
+#### getFolderByFolderPath
 
-This static method takes a `path` as a parameter and returns the `Document` object representing the folder with the given path. If the folder is not found in the cache, it returns `undefined`.
+- Description: Retrieves a folder document from the cache based on its folder path.
+- Parameters:
+  - `path` (string): The folder path of the folder document to retrieve.
+- Returns: The `Document` object if found, or `undefined` if not found.
 
-#### getProjectInfo()
+#### getProjectInfo
 
-This static method is currently empty and does not perform any action.
-
-:::danger
-Make sure to add the cache file (default is .codenarrator\cache.json) to git, so you don't have to query GPT on each run.
-:::
+- Description: Placeholder method for retrieving project information.
+- Parameters: None
+- Returns: None

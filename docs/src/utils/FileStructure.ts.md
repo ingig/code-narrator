@@ -1,68 +1,86 @@
 # FileStructure.ts
 
-This is a TypeScript code file that defines a `FileStructure` class. The class is used to represent and manipulate file structures in a project. It provides methods to check if a file is a code file and to get the content of a file.
+This is a TypeScript code file that defines a `FileStructure` class. The class is responsible for handling file structures, reading file content, and extracting specific lines from a file.
 
-## Table of Contents
+## Usage
 
-- [Class Definition](#class-definition)
-- [Examples](#examples)
-- [Methods](#methods)
-  - [constructor](#constructor)
-  - [isCodeFile](#iscodefile)
-  - [getContent](#getcontent)
-
-## Class Definition
-
-The `FileStructure` class has the following properties:
-
-- `name`: The name of the file or directory.
-- `path`: The relative path of the file or directory from the project root.
-- `entry`: An object representing the file or directory entry.
-- `depth`: The depth of the file or directory in the file structure.
-
-## Examples
-
-Here are some examples of how to use the `FileStructure` class:
+To use the `FileStructure` class, you need to import it and create a new instance by providing the required parameters.
 
 ```typescript
-// Create a new FileStructure instance
-const fileStructure = new FileStructure('src', { name: 'example.ts' }, 1);
+import FileStructure from './FileStructure';
 
-// Check if a file is a code file
-const isCodeFile = FileStructure.isCodeFile('example.ts'); // true
+const dir = 'path/to/directory';
+const entry = { name: 'example.txt' };
+const depth = 1;
 
-// Get the content of a file
-const content = FileStructure.getContent('src/example.ts');
+const fileStructure = new FileStructure(dir, entry, depth);
 ```
 
-## Methods
+## Class: FileStructure
 
-### constructor
+The `FileStructure` class has the following properties and methods:
 
-The constructor initializes a new `FileStructure` instance with the given `dir`, `entry`, and `depth`.
+### Properties
 
-**Parameters:**
+- `name`: The name of the file.
+- `path`: The relative path of the file.
+- `entry`: An object containing file information.
+- `depth`: The depth of the file in the directory structure.
 
-- `dir`: A string representing the directory path.
-- `entry`: An object representing the file or directory entry.
-- `depth`: A number representing the depth of the file or directory in the file structure.
+### Constructor
 
-### isCodeFile
+The constructor takes three parameters:
 
-This static method checks if the given `fileName` is a TypeScript code file by checking its file extension.
+- `dir: string`: The directory path.
+- `entry: any`: An object containing file information.
+- `depth: number`: The depth of the file in the directory structure.
 
-**Parameters:**
+### Method: getContent
 
-- `fileName`: A string representing the name of the file.
+This static method reads the content of a file and returns it as a string. If the file does not exist, it returns an empty string.
 
-**Returns:** A boolean value indicating whether the file is a TypeScript code file.
+```typescript
+static getContent(path: string): string;
+```
 
-### getContent
+#### Parameters
 
-This static method returns the content of the file at the given `path`. If the file does not exist, it returns an empty string.
+- `path: string`: The path of the file to read.
 
-**Parameters:**
+#### Example
 
-- `path`: A string representing the path of the file.
+```typescript
+const content = FileStructure.getContent('path/to/file.txt');
+console.log(content);
+```
 
-**Returns:** A string containing the content of the file.
+### Method: readFileFromLine
+
+This static method reads a file and returns the content between the specified start and end lines.
+
+```typescript
+static readFileFromLine(filename: string, startLine: number, endLine: number): string;
+```
+
+#### Parameters
+
+- `filename: string`: The path of the file to read.
+- `startLine: number`: The starting line number to read from.
+- `endLine: number`: The ending line number to read to.
+
+#### Example
+
+```typescript
+const content = FileStructure.readFileFromLine('path/to/file.txt', 1, 5);
+console.log(content);
+```
+
+## Technical Concepts
+
+### Path Resolution
+
+The `path` module is used to resolve and manipulate file paths. In this code, the `path.relative` and `path.resolve` methods are used to calculate the relative path of the file.
+
+### File System
+
+The `fs` module is used to interact with the file system. In this code, the `fs.existsSync` and `fs.readFileSync` methods are used to check if a file exists and read its content, respectively.

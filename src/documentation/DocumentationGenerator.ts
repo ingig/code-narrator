@@ -35,7 +35,7 @@ export default class DocumentationGenerator {
             let folderPath = document.folderPath.replace(project_path, '');
             if (folderPath == '.\\' || folderPath == './') folderPath = ''
             let fileName = documents[i].name;
-            if (fileName.toLowerCase() == 'readme') fileName = ConfigHelper.config.rootFileName;
+            if (fileName.toLowerCase() == 'readme') fileName = ConfigHelper.config.folderRootFileName;
 
             let filePath = path.join(config.documentation_path, documents[i].saveToPath, fileName + ConfigHelper.config.document_file_extension);
             if (document.lastTouch < App.StartTime) {

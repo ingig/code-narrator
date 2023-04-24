@@ -16,7 +16,6 @@ export default class DocumentationCache {
             let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();
             DocumentationCache.Documents = JSON.parse(str) as Document[];
         } else {
-            console.log(`dirname:${path.dirname(ConfigHelper.CacheFilePath)}`)
             fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})
             fs.writeFileSync(ConfigHelper.CacheFilePath, "[]");
             DocumentationCache.Documents = [];

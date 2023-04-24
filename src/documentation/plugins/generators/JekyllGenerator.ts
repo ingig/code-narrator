@@ -33,7 +33,7 @@ export default class JekyllGenerator extends BaseGenerator {
         }
         let permalink = '';
         if (document.isFolder && document.folderPath != '') {
-            let fileName = `${ConfigHelper.config.rootFileName}${ConfigHelper.config.document_file_extension}`
+            let fileName = `${ConfigHelper.config.folderRootFileName}${ConfigHelper.config.document_file_extension}`
             permalink = `permalink: ${document.folderPath.replaceAll('\\', '/')}/${fileName}`
         } else if (!document.isFolder && document.folderPath != '') {
             permalink = `permalink: ${document.path.replaceAll('\\', '/')}${ConfigHelper.config.document_file_extension}`

@@ -1,6 +1,6 @@
 # DocumentationBuilder.ts
 
-This is a TypeScript code file that defines a class called `DocumentationBuilder`. The purpose of this class is to generate documentation for a project using various builder plugins. The class imports necessary dependencies and manages the process of building documentation using the specified plugins.
+This is a TypeScript code file that defines a `DocumentationBuilder` class. The class is responsible for generating documentation using various builder plugins. It interacts with the OpenAIRepository and uses the configuration from the ConfigHelper.
 
 ## Table of Contents
 
@@ -9,18 +9,18 @@ This is a TypeScript code file that defines a class called `DocumentationBuilder
 - [Methods](#methods)
   - [constructor](#constructor)
   - [build](#build)
-- [Parameters](#parameters)
+- [Technical Concepts](#technical-concepts)
 
 ## Class Description
 
-The `DocumentationBuilder` class is responsible for generating documentation for a project. It uses the `OpenAIRepository` to interact with the OpenAI API and fetch relevant information. The class also imports `BaseBuilder` as a base class for the builder plugins and uses `ConfigHelper` to access the configuration settings.
+The `DocumentationBuilder` class is responsible for generating documentation using various builder plugins. It initializes an instance of the `OpenAIRepository` class and sets the project path. The main functionality of this class is to build the documentation using the configured builder plugins.
 
 ## Examples
 
 To use the `DocumentationBuilder` class, you can create an instance and call the `build` method:
 
 ```typescript
-import DocumentationBuilder from "./DocumentationBuilder";
+import DocumentationBuilder from './DocumentationBuilder';
 
 const docBuilder = new DocumentationBuilder();
 docBuilder.build();
@@ -30,32 +30,23 @@ docBuilder.build();
 
 ### constructor
 
-The `constructor` method initializes the `DocumentationBuilder` instance. It sets up the `openAIRepository` and `projectPath` properties.
+The constructor initializes the `DocumentationBuilder` class. It creates a new instance of the `OpenAIRepository` class and sets the project path.
 
 ```typescript
-constructor() {
-    this.openAIRepository = new OpenAIRepository();
-    this.projectPath = __dirname;
-}
+constructor()
 ```
 
 ### build
 
-The `build` method is an asynchronous method that iterates through the configured builder plugins and generates documentation using each plugin. It creates an instance of each plugin and calls the `generate` method on it.
+The `build` method is an asynchronous method that generates the documentation using the configured builder plugins. It iterates through the list of plugins, creates an instance of each plugin, and calls the `generate` method on each plugin.
 
 ```typescript
-public async build() {
-    let plugins = ConfigHelper.BuilderPlugins;
-    for (let i=0;i<plugins.length;i++) {
-        let generator = new plugins[i]() as BaseBuilder;
-        await generator.generate();
-    }
-}
+public async build()
 ```
 
-## Parameters
+## Technical Concepts
 
-There are no parameters in the methods of the `DocumentationBuilder` class. However, the class has two properties:
-
-- `openAIRepository`: An instance of the `OpenAIRepository` class, which is used to interact with the OpenAI API.
-- `projectPath`: A string representing the path of the project directory.
+- **OpenAIRepository**: This class is responsible for interacting with the OpenAI API. It is used by the `DocumentationBuilder` to generate documentation using the OpenAI API.
+- **BaseBuilder**: This is an abstract class that serves as a base for all builder plugins. Each builder plugin should extend this class and implement the `generate` method.
+- **ConfigHelper**: This class is responsible for managing the application's configuration. It is used by the `DocumentationBuilder` to get the list of configured builder plugins.
+- **BuilderPlugins**: These are the plugins that extend the `BaseBuilder` class and implement the `generate` method. They are responsible for generating documentation using different methods or APIs.

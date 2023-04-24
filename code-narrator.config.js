@@ -9,14 +9,15 @@ const config = {
         "code-narrator.config.js"
     ],
     readmeRoot: true,
+    folderRootFileName: 'README',
     repository_url: "https://github.com/ingig/code-narrator",
     project_file: "package.json",
     source_path: "src",
     documentation_path: "docs",
     test_path: "__tests__",
+
     include: [
         "code-narrator.config.js",
-        "__tests__/**/**",
         "src/**/*.ts"
     ],
     builders: [
@@ -80,7 +81,8 @@ const config = {
                     name: "How to create HowTo",
                     files: [
                         {
-                            path: "code-narrator.config.js"
+                            path: "code-narrator.config.js",
+                            extract: "builders"
                         }
                     ]
                 },
@@ -120,10 +122,7 @@ const config = {
                 }
             ]
         }
-    ],
-
-    rootFileName: 'README'
-
+    ]
 };
 
 module.exports = config;

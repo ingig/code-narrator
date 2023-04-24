@@ -1,35 +1,27 @@
-# Prerequisites for Code-Narrator
+## Prerequisites for Code-Narrator
 
-Before you start working with the Code-Narrator project, make sure you have the following prerequisites:
+Before you can fork and modify the code of the Code-Narrator project, you need to have the following software, tools, and knowledge:
 
-## Required Software and Tools
+1. **Node.js**: Code-Narrator is built using Node.js, so you need to have it installed on your system. You can download it from the [official Node.js website](https://nodejs.org/).
 
-1. Node.js (version 14 or higher)
-2. npm (version 6 or higher)
-3. TypeScript (version 4.9.5 or higher)
-4. Gulp (version 4.0.2 or higher)
-5. Jest (version 29.4.2 or higher)
+2. **npm**: npm is the package manager for Node.js and is used to manage the project's dependencies. It comes bundled with Node.js, so you don't need to install it separately.
 
-## Required Knowledge
+3. **TypeScript**: The project is written in TypeScript, so you need to have a basic understanding of TypeScript and its syntax. You can learn more about TypeScript from the [official TypeScript website](https://www.typescriptlang.org/).
 
-1. Familiarity with JavaScript and TypeScript
-2. Basic understanding of OpenAI API
-3. Experience with command-line interfaces
+4. **Git**: You need to have Git installed on your system to fork and clone the project repository. You can download Git from the [official Git website](https://git-scm.com/).
 
-## Setup
+5. **Code-Narrator repository**: Fork the [Code-Narrator repository](https://github.com/ingig/code-narrator) on GitHub and clone it to your local machine.
 
-1. Clone the Code-Narrator repository from [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator).
-2. Install the required dependencies by running `npm install` in the project directory.
-3. Create a `.env` file in the project root directory and set the `OPEN_AI` key:
+6. **Set OPENAI_API_KEY in .env file**: In the project's root directory, create a `.env` file and set the `OPENAI_API_KEY` environment variable with your OpenAI API key. Replace `your_api_key` with your actual API key:
 
    ```
-   OPEN_AI=your_openai_api_key
+   OPENAI_API_KEY=your_api_key
    ```
 
-   :::danger
-   Replace `your_openai_api_key` with your actual OpenAI API key. Do not share your API key with others.
-   :::
+7. **Install dependencies**: Navigate to the project's root directory in your terminal and run the following command to install all the required dependencies:
 
-4. Configure the `code-narrator.config.ts` file according to your project requirements.
+   ```
+   npm install
+   ```
 
-Now you are ready to work with the Code-Narrator project.
+After completing these prerequisites, you should be able to work with and modify the Code-Narrator project.

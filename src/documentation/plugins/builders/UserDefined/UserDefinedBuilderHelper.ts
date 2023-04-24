@@ -18,6 +18,8 @@ export default class UserDefinedBuilderHelper {
     }
 
     public extractPathFromContent(input: string): string | null {
+        if (!input) return null;
+
         const regex = /content\(([^)]+)\)/;
         const match = input.match(regex);
 
@@ -44,29 +46,31 @@ export default class UserDefinedBuilderHelper {
         let assistantMessages: string[] = []
         let predefinedQuestions = this.getPredefinedQuestion(build.type);
         if (predefinedQuestions) assistantMessages.push(predefinedQuestions);
-        let files = build.files;
-        for (let i = 0; files && i < files.length; i++) {
+        let files = build.files ?? [];
+        for (let i = 0;i < files.length; i++) {
             let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));
             let extraInfo = '';
             if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {
                 let obj = JSON.parse(content);
-                for (let b = 0; b < files[i].JSONPath.length; b++) {
-                    let result = jsonpath.query(obj, files[i].JSONPath[b]);
+                for (let b = 0; b < files[i].JSONPath!.length; b++) {
+                    let result = jsonpath.query(obj, files[i].JSONPath![b]);
                     for (let c = 0; c < result.length; c++) {
-                        extraInfo += `${files[i].JSONPath[b]}:${JSON.stringify(result[c])}\n`;
+                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\n`;
                     }
                 }
             } else if (files[i].extract) {
-                let extractContent = Array.isArray(files[i].extract) ? files[i].extract.join(', ') : files[i].extract;
-                let question = `Extract following from file content:
+                let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;
+                let question = `Extract following from file content. You MUST return as JSON:
                      ${extractContent} 
                      This is the file:
                      ${content}`
-
                 let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])
                 let jsons = Helper.getJsons(result.answer);
                 if (jsons.length > 0) {
-                    extraInfo = `Content to help: ${JSON.stringify(jsons[0])}`
+                    extraInfo += `Content to help:\n`
+                    for(let b=0;b<jsons.length;b++) {
+                        extraInfo += `${JSON.stringify(jsons[b])}\n`
+                    }
                 }
             } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {
                 if (files[i].path.indexOf('*') != -1) {

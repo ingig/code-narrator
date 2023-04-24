@@ -14,7 +14,12 @@ export default class DocumentationBuilder {
     public async build() {
         let plugins = ConfigHelper.BuilderPlugins;
         for (let i=0;i<plugins.length;i++) {
-            let generator = new plugins[i]() as BaseBuilder;
+            let generator : BaseBuilder;
+            if (plugins[i].default) {
+                generator = new plugins[i].default() as BaseBuilder;
+            } else {
+                generator = new plugins[i]() as BaseBuilder;
+            }
             await generator.generate();
         }
     }

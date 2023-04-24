@@ -30,13 +30,12 @@ export default class CliHelper {
     public async getConfig(argv : any) : Promise<Partial<ICodeNarratorConfig>> {
         let configPath = argv.config as string;
         let userConfig: Partial<ICodeNarratorConfig> = {};
-
         if (fs.existsSync(path.join(process.cwd(), 'code-narrator.config.ts'))) {
-            configPath = '../../code-narrator.config.ts';
+            configPath = path.join(process.cwd(), 'code-narrator.config.ts');
         } else if (fs.existsSync(path.join(process.cwd(), 'code-narrator.config.js'))) {
-            configPath = '../../code-narrator.config.js';
+            configPath = path.join(process.cwd(), 'code-narrator.config.js');
         } else if (fs.existsSync(path.join(process.cwd(), 'code-narrator.json'))) {
-            configPath = 'code-narrator.json';
+            configPath = path.join(process.cwd(), 'code-narrator.json');
         }
 
         if (argv.include) {
@@ -44,6 +43,8 @@ export default class CliHelper {
         }
         if (argv.gpt) {
             userConfig.gptModel = argv.gpt as string;
+        } else {
+            userConfig.gptModel = 'gpt-4'
         }
 
         if (configPath) {
@@ -52,6 +53,7 @@ export default class CliHelper {
             } else if (configPath.endsWith('.json')) {
                 userConfig = JSON.parse((await fs.readFileSync(configPath)).toString());
             }
+            (userConfig as any).fromFile = true;
         }
         return userConfig;
     }
