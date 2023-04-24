@@ -1,19 +1,21 @@
 # Overview of Files in the Directory
 
-This is an overview of the files located in the directory. Each file provides a guide or tutorial on various aspects of using the CLI, editing content, and creating custom builders.
+This is an overview of the files located in the directory. Each file serves a specific purpose and is briefly described below. Click on the filename to access the file.
 
-## 1. [How to Create a How-To Guide for the CLI](How_to_Create_a_How-To_Guide_for_the_CLI.md)
+## [How_to_create_HowTo.md](How_to_create_HowTo.md)
 
-This file provides a step-by-step guide on creating a How-To guide for the CLI, including adding a new entry in the `code-narrator.config.js` file and providing the necessary information.
+**Title:** How to create a HowTo section in the config file
 
-## 2. [How to Use Code-Narrator CLI](How_to_Use_Code-Narrator_CLI.md)
+**Short Description:** This guide will walk you through the process of adding a HowTo section in the config file for a software project. The HowTo section will help developers understand how to use the software and its features effectively.
 
-This file walks you through the installation and usage of the Code-Narrator CLI tool, which helps you run the main app using npx and allows you to use an optional config file.
+## [Content_too_long.md](Content_too_long.md)
 
-## 3. [How to Edit Long Content in Code Narrator](How_to_Edit_Long_Content_in_Code_Narrator.md)
+**Title:** Editing long content in Code Narrator
 
-This guide explains the process of manually editing long content in Code Narrator to improve the generated documentation when the content is too long and unsatisfactory.
+**Short Description:** When using Code Narrator, you may encounter a situation where the content is too long, and the generated documentation is not satisfactory. In such cases, you can manually edit the content to improve the documentation. This guide will walk you through the process of editing long content in Code Narrator using ChatGPT.
 
-## 4. [How to Create a Custom Builder Using the Config File](How_to_Create_a_Custom_Builder_Using_the_Config_File.md)
+## [Create_your_own_custom_builder.md](Create_your_own_custom_builder.md)
 
-In this file, you'll learn how to create a custom builder using the config file in a project that uses the Code Narrator system, as well as examples of using args and the Liquid template engine for template files.
+**Title:** Create your own custom builder
+
+**Short Description:** This guide will walk you through the process of creating a custom builder using the config file in a project that uses the Code Narrator documentation system. We will assume that you have already set up your project and have a `code-narrator.config.js` file in your root folder. The system uses the Liquid template engine for template files, and you must add a template file to the `.code-narrator/gpt_questions` directory.
