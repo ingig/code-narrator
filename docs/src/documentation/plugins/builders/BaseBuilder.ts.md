@@ -1,37 +1,39 @@
 # BaseBuilder.ts
 
-The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract class `BaseBuilder`. This class serves as the base class for Builder plugins, which are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.
+This is a TypeScript code file that defines the `BaseBuilder` class, which serves as the base class for Builder plugins. Builder plugins are used to generate questions for GPT, parse the response, and load it into the `Document` object that is later cached.
 
 ## Class: BaseBuilder
 
-### Constructor
-
-- `protected constructor(generator: string)`: Initializes a new instance of the `BaseBuilder` class with the specified generator.
+The `BaseBuilder` class is an abstract class that provides the basic structure and methods for generating and rendering documentation using GPT.
 
 ### Properties
 
-- `openAIRepository: OpenAIRepository`: An instance of the `OpenAIRepository` class.
-- `generator: string`: The generator used by the builder.
-- `config: ICodeNarratorConfig`: The configuration object for the builder.
+- `openAIRepository`: An instance of the `OpenAIRepository` class.
+- `generator`: A string representing the generator used for the Builder plugin.
+- `config`: An instance of the `ICodeNarratorConfig` interface.
+
+### Constructor
+
+The constructor takes a `generator` string as a parameter and initializes the `openAIRepository`, `generator`, and `config` properties.
 
 ### Abstract Methods
 
-- `generate(): any`: An abstract method that must be implemented by derived classes to generate content.
-- `render(document: Document): Promise<string>`: An abstract method that must be implemented by derived classes to render the content of a `Document` object.
+- `generate()`: An abstract method that must be implemented by derived classes.
+- `render(document: Document)`: An abstract method that takes a `Document` object as a parameter and must be implemented by derived classes.
 
 ### Public Methods
 
-- `getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse>`: Generates a question using the specified template and arguments, and returns the GPT response as an `OpenAIResponse` object.
+- `getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[])`: A method that takes a `name`, `args`, `template`, and optional `assistantMessages` as parameters, and returns a Promise of an `OpenAIResponse`. It generates a question using the Liquid template engine and queries the OpenAIRepository.
 
-- `generateDocumentation(options: GenerateOptions)`: Generates documentation using the specified options and returns a `Document` object.
+- `generateDocumentation(options: GenerateOptions)`: A method that takes a `GenerateOptions` object as a parameter and returns a Promise of a `Document`. It generates the documentation using the provided options and stores the response in a `Document` object.
 
-- `generateDocumentationAndCache(options: GenerateOptions)`: Generates documentation using the specified options, creates a `Document` object, and stores it in the cache.
+- `generateDocumentationAndCache(options: GenerateOptions)`: A method that takes a `GenerateOptions` object as a parameter and generates the documentation using the provided options. It then stores the generated `Document` object in the `DocumentationCache`.
 
-- `hasChanged(document?: Document)`: Checks if the specified document has changed since it was last updated.
+- `hasChanged(document?: Document)`: A method that takes an optional `Document` object as a parameter and returns a boolean indicating whether the document has changed or not. It checks if the file exists, if the documentation type has changed, and if the file's modification time is greater than or equal to the document's updated time.
 
-## Usage Examples
+## Example Usage
 
-To use the `BaseBuilder` class, you need to create a derived class that implements the abstract methods `generate()` and `render()`. Here's an example of a derived class:
+To use the `BaseBuilder` class, you would need to create a derived class that implements the abstract methods `generate()` and `render(document: Document)`.
 
 ```typescript
 import BaseBuilder from "./BaseBuilder";
@@ -50,20 +52,8 @@ class CustomBuilder extends BaseBuilder {
     // Implement the render method
   }
 }
-```
 
-Once you have a derived class, you can use it to generate documentation and cache it:
-
-```typescript
 const customBuilder = new CustomBuilder();
-const options: GenerateOptions = {
-  // Specify the options for generating documentation
-};
-
-customBuilder.generateDocumentationAndCache(options);
 ```
 
-## Technical Concepts
-
-- **Liquid**: Liquid is a template engine used in this code to render templates with the provided data. It is used to generate questions for GPT based on the specified template and arguments.
-- **GPT**: GPT (Generative Pre-trained Transformer) is an AI model used to generate human-like text based on the input provided. In this code, GPT is used to generate documentation content based on the questions generated using Liquid templates.
+In this example, a `CustomBuilder` class is created that extends the `BaseBuilder` class. The `generate()` and `render(document: Document)` methods are implemented according to the specific requirements of the custom builder.

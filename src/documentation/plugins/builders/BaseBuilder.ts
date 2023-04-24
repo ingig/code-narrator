@@ -65,6 +65,9 @@ export default abstract class BaseBuilder {
                                            assistantMessages,
                                            sidebarLabel, saveToPath, data
                                        }: GenerateOptions) {
+        if (!name) {
+            throw new Error(`name is missing when trying to generate ${template} for ${pathToFile}`)
+        }
 
         let response = await this.getAnswer(name, args, template, assistantMessages)
         let document = new Document(name, pathToFile, folderPath, new Date(), sidebarPosition, sidebarLabel)

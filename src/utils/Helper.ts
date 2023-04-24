@@ -11,6 +11,7 @@ export default class Helper {
     }
 
     static upperFirstLetter(name: string) {
+        if (!name) return '';
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
 

@@ -20,7 +20,7 @@ export default class ConfigurationBuilder extends BaseBuilder {
 
     public async generate() {
         if (ConfigHelper.config.config_files?.length == 0) return;
-
+return;
         await this.prepareSummary();
         await this.generateAppConfigFiles();
         await this.generateGeneralConfigFiles();

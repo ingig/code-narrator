@@ -93,6 +93,20 @@ const config = {
                 },
                 {
                     type: "howto",
+                    name:"HowTo run CLI",
+                    template: "howto_run_cli",
+                    args : {
+                        docUrl : "https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md"
+                    },
+                    files : [
+                        {
+                            path:"src/utils/CliHelper.ts",
+                            extract: "what arguments are available"
+                        }
+                    ]
+                },
+                {
+                    type: "howto",
                     template: "howto_create_custom_builder",
                     name: "Create your own custom builder",
                     files: [
