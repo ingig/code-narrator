@@ -38,7 +38,7 @@
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -130,7 +130,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "src"
 		}
@@ -170,7 +170,7 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "src"
 		}
@@ -214,7 +214,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -262,7 +262,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -306,7 +306,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -350,7 +350,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -394,7 +394,7 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -434,7 +434,7 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -478,7 +478,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -522,7 +522,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -566,7 +566,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -610,7 +610,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -654,7 +654,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -698,7 +698,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -746,7 +746,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -790,7 +790,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -838,7 +838,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -882,7 +882,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -926,7 +926,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -966,7 +966,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -1043,7 +1043,7 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1083,7 +1083,7 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1127,7 +1127,7 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1171,7 +1171,7 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1215,7 +1215,7 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1255,7 +1255,7 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1299,7 +1299,7 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1339,7 +1339,7 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1379,7 +1379,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1416,7 +1416,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1453,7 +1453,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1490,7 +1490,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1527,7 +1527,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1564,7 +1564,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1601,7 +1601,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1675,7 +1675,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1712,7 +1712,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1749,7 +1749,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1786,7 +1786,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1823,7 +1823,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1860,7 +1860,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "README",
@@ -1897,7 +1897,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-24T14:12:28.802Z"
+		"lastTouch": "2023-04-24T14:44:55.465Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -1942,7 +1942,7 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"has_children": true
 		}
@@ -1990,7 +1990,7 @@
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"has_children": true
 		}
@@ -2000,9 +2000,9 @@
 		"path": "howto\\howto_create_howto.md",
 		"folderPath": "howto",
 		"fileContent": "",
-		"documentation": "# How to Add a HowTo in the Config File\n\n## Introduction\n\nThis guide will walk you through the process of adding a HowTo section in the config file for a software project. The HowTo section will help developers understand how to use the software and its features effectively.\n\n## Step-by-Step Instructions\n\n1. **Create a Liquid Template**: Developers must create a Liquid template in the `.code-narrator/gpt_questions` directory. This template file is used to ask GPT questions.\n\n2. **Add a HowTo Builder**: In the `code-narrator.config.js` file, add a new builder object for the HowTo section. The builder object should have the following properties:\n\n   - `type`: Set the value to \"README\".\n   - `template`: Set the value to the desired template name, such as \"overview_readme\".\n   - `name`: Set the value to \"How To\".\n   - `path`: Set the value to the desired path, such as \"howto\".\n   - `files`: Add an array of file objects with the desired file paths, such as `{\"path\": \"howto/*.md\"}`.\n   - `pages`: Add an array of page objects with the desired page properties.\n\n3. **Add HowTo Pages**: In the `pages` array, add objects for each HowTo page you want to create. Each object should have the following properties:\n\n   - `type`: Set the value to \"howto\".\n   - `template`: Set the value to the desired template name, such as \"howto_create_howto\".\n   - `name`: Set the value to the desired page name, such as \"How to create HowTo\".\n   - `files`: Add an array of file objects with the desired file paths and extraction properties.\n\nHere's an example of a HowTo builder added to the `code-narrator.config.js` file:\n\n```json\n{\n  \"type\": \"README\",\n  \"template\": \"overview_readme\",\n  \"name\": \"How To\",\n  \"path\": \"howto\",\n  \"files\": [\n    {\n      \"path\": \"howto/*.md\"\n    }\n  ],\n  \"pages\": [\n    {\n      \"type\": \"howto\",\n      \"template\": \"howto_create_howto\",\n      \"name\": \"How to create HowTo\",\n      \"files\": [\n        {\n          \"path\": \"code-narrator.config.js\",\n          \"extract\": \"builders\"\n        }\n      ]\n    },\n    {\n      \"type\": \"howto\",\n      \"template\": \"howto_use_cli\",\n      \"name\": \"Use CLI\",\n      \"files\": [\n        {\n          \"path\": \"src/cli.ts\"\n        },\n        {\n          \"path\": \"package.json\",\n          \"JSONPath\": [\n            \"$.repository\"\n          ]\n        }\n      ]\n    }\n  ]\n}\n```\n\nBy following these steps, you can successfully add a HowTo section in the config file for your software project. This will help developers understand how to use the software and its features effectively.",
+		"documentation": "# How to Add a HowTo in the Config File\n\n## Introduction\n\nThis guide will walk you through the process of adding a HowTo section in the config file for a software project. The HowTo section will help developers understand how to use specific features and functionalities of the software.\n\n## Prerequisites\n\nBefore you begin, make sure you have the following:\n\n1. Access to the project's `code-narrator.config.js` file.\n2. Familiarity with Liquid templates and JSONPath.\n3. A text editor to edit the config file.\n\n## Step-by-Step Instructions\n\n1. **Create a Liquid template file**: Developers must create a Liquid template file in the `.code-narrator/gpt_questions` directory. This template file will be used to ask GPT questions.\n\n2. **Add a HowTo entry in the config file**: Open the `code-narrator.config.js` file in a text editor and add a new entry for the HowTo section. The entry should look like this:\n\n```json\n{\n  \"type\": \"howto\",\n  \"template\": \"howto_create_howto\",\n  \"name\": \"How to create HowTo\",\n  \"files\": [\n    {\n      \"path\": \"code-narrator.config.js\",\n      \"extract\": \"builders\"\n    }\n  ]\n}\n```\n\n3. **Configure the args property**: The `args` property is used to inject properties into the Liquid template. Any property set in `args` can be accessed in the Liquid template. For example:\n\n```json\n{\n  \"type\": \"howto\",\n  \"template\": \"howto_run_cli\",\n  \"name\": \"HowTo run CLI\",\n  \"args\": {\n    \"docUrl\": \"https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md\"\n  },\n  \"files\": [\n    {\n      \"path\": \"src/utils/CliHelper.ts\",\n      \"extract\": \"what arguments are available\"\n    }\n  ]\n}\n```\n\n4. **Use the file property**: The `file` property appends the extracted content of a file to the Liquid template, using JSONPath or the `extract` property that uses LLM to extract content from the file. For example:\n\n```json\n{\n  \"path\": \"package.json\",\n  \"JSONPath\": [\n    \"$.name\",\n    \"$.description\",\n    \"$.version\",\n    \"$.homepage\",\n    \"$.bugs\",\n    \"$.author\",\n    \"$.repository\",\n    \"$.license\"\n  ]\n}\n```\n\n5. **Save the config file**: After adding the HowTo section and configuring the necessary properties, save the `code-narrator.config.js` file.\n\n6. **Review the HowTo section**: Once the config file is saved, the HowTo section should be available in the generated documentation. You can also watch a video demo [here](https://www.youtube.com/watch?v=uJtVCUOTkvw) for more information.\n\nThat's it! You have successfully added a HowTo section in the config file.",
 		"isFolder": false,
-		"updated": "2023-04-16T12:09:13.418Z",
+		"updated": "2023-04-24T14:49:13.126Z",
 		"sidebar_position": 12,
 		"sidebar_label": "How to create HowTo",
 		"init": false,
@@ -2030,7 +2030,7 @@
 			},
 			{
 				"role": "user",
-				"content": "Show how developer would add HowTo in config file,\r\nargs property is used to inject properties into liquid template, any property set in args can be access in liquid template with \r\nfile property appends extracted content of a file to liquid template, using JSONPath or the extract property that uses LLM to extract content from file\r\nDevelopers MUST create a liquid template in .code-narrator/gpt_questions, this template file is used to ask GPT question"
+				"content": "Show how developer would add HowTo in config file,\r\nargs property is used to inject properties into liquid template, any property set in args can be access in liquid template with \r\nfile property appends extracted content of a file to liquid template, using JSONPath or the extract property that uses LLM to extract content from file\r\nDevelopers MUST create a liquid template in .code-narrator/gpt_questions, this template file is used to ask GPT question\r\nYou can see video demo here https://www.youtube.com/watch?v=uJtVCUOTkvw"
 			},
 			{
 				"role": "assistant",
@@ -2038,13 +2038,13 @@
 			},
 			{
 				"role": "assistant",
-				"content": "Content to help: {\"builders\":[{\"name\":\"Prerequisites\",\"template\":\"prerequisites\",\"sidebarPosition\":2,\"args\":{\"entryFileContent\":\"content(./dist/src/cli.js)\",\"configFile\":\"content(code-narrator.config.js)\"},\"files\":[{\"path\":\"package.json\",\"jsonPaths\":[\"$.dependencies\",\"$.devDependencies\",\"$.engine\"]}],\"type\":\"Custom\"},{\"type\":\"README\",\"sidebarPosition\":1,\"template\":\"README\",\"name\":\"ReadMe\",\"args\":{\"entryFileContent\":\"content(./src/cli.ts)\"},\"files\":[{\"path\":\"package.json\",\"JSONPath\":[\"$.name\",\"$.description\",\"$.version\",\"$.homepage\",\"$.bugs\",\"$.author\",\"$.repository\",\"$.license\"]}]},{\"type\":\"README\",\"template\":\"overview_readme\",\"name\":\"How To\",\"path\":\"howto\",\"files\":[{\"path\":\"howto/*.md\"}],\"pages\":[{\"type\":\"howto\",\"template\":\"howto_create_howto\",\"name\":\"How to create HowTo\",\"files\":[{\"path\":\"code-narrator.config.js\",\"extract\":\"builders\"}]},{\"type\":\"howto\",\"template\":\"howto_use_cli\",\"name\":\"Use CLI\",\"files\":[{\"path\":\"src/cli.ts\"},{\"path\":\"package.json\",\"JSONPath\":[\"$.repository\"]}]},{\"type\":\"howto\",\"template\":\"howto_content_to_long\",\"name\":\"Content to long\"},{\"type\":\"howto\",\"template\":\"howto_create_custom_builder\",\"name\":\"Create your own custom builder\",\"files\":[{\"path\":\"code-narrator.config.js\",\"extract\":\"builders\"},{\"path\":\"src/documentation/builders/UserDefinedBuilderHelper.ts\",\"extract\":\"how code parses content(...) and extract:\"}]}]}]}"
+				"content": "Content to help:\n{\"builders\":[{\"name\":\"Prerequisites\",\"template\":\"prerequisites\",\"sidebarPosition\":2,\"args\":{\"entryFileContent\":\"content(./dist/src/cli.js)\",\"configFile\":\"content(code-narrator.config.js)\"},\"files\":[{\"path\":\"package.json\",\"jsonPaths\":[\"$.dependencies\",\"$.devDependencies\",\"$.engine\"]}],\"type\":\"Custom\"},{\"type\":\"README\",\"sidebarPosition\":1,\"template\":\"README\",\"name\":\"ReadMe\",\"args\":{\"entryFileContent\":\"content(./src/cli.ts)\"},\"files\":[{\"path\":\"package.json\",\"JSONPath\":[\"$.name\",\"$.description\",\"$.version\",\"$.homepage\",\"$.bugs\",\"$.author\",\"$.repository\",\"$.license\"]}]},{\"type\":\"README\",\"template\":\"overview_readme\",\"name\":\"README\",\"path\":\"howto\",\"files\":[{\"path\":\"howto/*.md\"}],\"pages\":[{\"type\":\"howto\",\"template\":\"howto_create_howto\",\"name\":\"How to create HowTo\",\"files\":[{\"path\":\"code-narrator.config.js\",\"extract\":\"builders\"}]},{\"type\":\"howto\",\"template\":\"howto_content_to_long\",\"name\":\"Content to long\"},{\"type\":\"howto\",\"name\":\"HowTo run CLI\",\"template\":\"howto_run_cli\",\"args\":{\"docUrl\":\"https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md\"},\"files\":[{\"path\":\"src/utils/CliHelper.ts\",\"extract\":\"what arguments are available\"}]},{\"type\":\"howto\",\"template\":\"howto_create_custom_builder\",\"name\":\"Create your own custom builder\",\"files\":[{\"path\":\"code-narrator.config.js\",\"extract\":\"builders\"},{\"path\":\"src/documentation/builders/UserDefinedBuilderHelper.ts\",\"extract\":\"how code parses content(...) and extract:\"}]}]}]}\n"
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:49:13.127Z",
 		"data": {
-			"parent": "How To"
+			"parent": "README"
 		}
 	},
 	{
@@ -2086,7 +2086,7 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2138,7 +2138,7 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2223,7 +2223,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2267,7 +2267,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2311,7 +2311,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigFileSerializer.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2355,7 +2355,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigQuestion.ts",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2403,7 +2403,7 @@
 			}
 		],
 		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-24T14:12:28.802Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"has_children": true
 		}
@@ -2455,7 +2455,7 @@
 			}
 		],
 		"id": "howto\\howto_run_cli.md",
-		"lastTouch": "2023-04-24T14:14:29.590Z",
+		"lastTouch": "2023-04-24T14:44:55.465Z",
 		"data": {
 			"parent": "README"
 		}
