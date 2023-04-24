@@ -3,10 +3,10 @@
 		"name": "code-narrator.config.js",
 		"path": "code-narrator.config.js",
 		"folderPath": "./",
-		"fileContent": "/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"How To\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    name: \"Use CLI\",\r\n                    files: [\r\n                        {\r\n                            path: \"src/cli.ts\"\r\n                        },\r\n                        {\r\n                            path: \"package.json\",\r\n                            JSONPath: [\"$.repository\"]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;",
-		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator project. It contains various settings and configurations that are required for the proper functioning of the application. Below is a detailed description of each configuration property and their purpose in the application:\n\n1. `entry_file`: The entry point of the application. In this case, it is set to `./dist/src/App.js`.\n\n2. `cli_file`: The command-line interface file for the application. In this case, it is set to `./dist/src/cli.js`.\n\n3. `project_name`: The name of the project, which is \"code-narrator\" in this case.\n\n4. `config_files`: An array of configuration files used by the application. In this case, it includes only \"code-narrator.config.js\".\n\n5. `readmeRoot`: A boolean value that indicates whether the root folder should contain a README file. In this case, it is set to `true`.\n\n6. `folderRootFileName`: The name of the root folder's README file. In this case, it is set to 'README'.\n\n7. `repository_url`: The URL of the project's repository. In this case, it is set to \"https://github.com/ingig/code-narrator\".\n\n8. `project_file`: The project's package.json file. In this case, it is set to \"package.json\".\n\n9. `source_path`: The path to the source code folder. In this case, it is set to \"src\".\n\n10. `documentation_path`: The path to the documentation folder. In this case, it is set to \"docs\".\n\n11. `test_path`: The path to the test folder. In this case, it is set to \"__tests__\".\n\n12. `include`: An array of files and folders to be included in the documentation. In this case, it includes \"code-narrator.config.js\" and all TypeScript files in the \"src\" folder.\n\n13. `builders`: An array of builder objects that define how the documentation should be generated. Each builder object contains properties such as `name`, `template`, `sidebarPosition`, `args`, `files`, `type`, and others.\n\nTo retrieve a specific value from the config file, you can use the following example:\n\n```javascript\nconst config = require('./code-narrator.config.js');\nconsole.log(config.entry_file); // Output: \"./dist/src/App.js\"\n```\n\n:::note\nPlease note that any sensitive information in the configuration file should be replaced with ***** to protect it from unauthorized access.\n:::",
+		"fileContent": "/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;",
+		"documentation": "Here's a detailed description of the `code-narrator.config.js` file and its purpose in the application:\n\nThe `code-narrator.config.js` file is a configuration file for the Code Narrator project. It contains various settings and options that help customize the behavior of the Code Narrator tool. The configuration object `config` is of type `ICodeNarratorConfig` and has the following properties:\n\n- `entry_file`: The entry point file of the application (e.g., `./dist/src/App.js`).\n- `cli_file`: The command-line interface file of the application (e.g., `./dist/src/cli.js`).\n- `project_name`: The name of the project (e.g., `code-narrator`).\n- `config_files`: An array of configuration files for the project (e.g., `[\"code-narrator.config.js\"]`).\n- `readmeRoot`: A boolean value indicating whether the root folder should have a README file.\n- `folderRootFileName`: The name of the root folder's README file (e.g., `README`).\n- `repository_url`: The URL of the project's repository (e.g., `https://github.com/ingig/code-narrator`).\n- `project_file`: The main project file (e.g., `package.json`).\n- `source_path`: The path to the source code folder (e.g., `src`).\n- `documentation_path`: The path to the documentation folder (e.g., `docs`).\n- `test_path`: The path to the test folder (e.g., `__tests__`).\n- `include`: An array of file patterns to include in the documentation (e.g., `[\"code-narrator.config.js\", \"src/**/*.ts\"]`).\n- `builders`: An array of builder objects that define how the documentation should be generated.\n\nEach builder object in the `builders` array has the following properties:\n\n- `name`: The name of the builder.\n- `template`: The template to use for generating the documentation.\n- `sidebarPosition`: The position of the sidebar in the documentation.\n- `args`: An object containing arguments to pass to the builder.\n- `files`: An array of file objects that define which files to include in the documentation.\n- `type`: The type of the builder (e.g., `Custom`, `README`, `howto`).\n\nTo retrieve a value from the config file, you can use the `require` function in Node.js. For example, to get the `entry_file` value, you can do the following:\n\n```javascript\nconst config = require('./code-narrator.config.js');\nconsole.log(config.entry_file); // Output: \"./dist/src/App.js\"\n```\n\n:::note\nPlease note that the actual file paths and URLs in your project may differ from the example provided above.\n:::",
 		"isFolder": false,
-		"updated": "2023-04-24T10:30:17.674Z",
+		"updated": "2023-04-24T12:44:53.262Z",
 		"sidebar_position": 0,
 		"sidebar_label": "Code-narrator.config.js",
 		"init": false,
@@ -34,11 +34,11 @@
 			},
 			{
 				"role": "user",
-				"content": "These are the app-specific config files called code-narrator.config.js.\r\nWhen you use code-narrator in your project, you need set these configurations correctly to match your project.\r\nGive me a detailed description of them, and what their purpose is in the application if you can decide.\r\nGive example on how to retrieve from the config file\r\n###\r\n/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"How To\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    name: \"Use CLI\",\r\n                    files: [\r\n                        {\r\n                            path: \"src/cli.ts\"\r\n                        },\r\n                        {\r\n                            path: \"package.json\",\r\n                            JSONPath: [\"$.repository\"]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\r\n###"
+				"content": "These are the app-specific config files called code-narrator.config.js.\r\nWhen you use code-narrator in your project, you need set these configurations correctly to match your project.\r\nGive me a detailed description of them, and what their purpose is in the application if you can decide.\r\nGive example on how to retrieve from the config file\r\n###\r\n/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\r\n###"
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -48,9 +48,9 @@
 		"path": "Configuration",
 		"folderPath": "./Configuration",
 		"fileContent": "",
-		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, and documentation generation settings.\n\nThe purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs and preferences.\n\nHere's an example of usage for the app-specific configs:\n\n```javascript\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // Other configurations...\n};\n\nmodule.exports = config;\n```\n\nIn this example, the configuration file exports an object with various properties, such as `entry_file`, `cli_file`, `project_name`, and `config_files`. These properties are used by the Code Narrator application to determine the entry point of the application, the location of the CLI file, the name of the project, and the list of configuration files to be used.\n\nAs for the other configuration files, I do not recognize them, so I cannot provide any information about them.",
+		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, source paths, and documentation paths. This configuration file also specifies the builders that are responsible for generating different parts of the documentation.\n\nHere's an example of usage for the app-specific configs:\n\n```javascript\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // Other configurations...\n    builders: [\n        {\n            name: \"Prerequisites\",\n            template: `prerequisites`,\n            sidebarPosition: 2,\n            args: {\n                entryFileContent: 'content(./dist/src/cli.js)',\n                configFile: 'content(code-narrator.config.js)'\n            },\n            files: [\n                {\n                    path: \"package.json\",\n                    jsonPaths: [\n                        \"$.dependencies\",\n                        \"$.devDependencies\",\n                        \"$.engine\"\n                    ]\n                }\n            ],\n            type: 'Custom'\n        },\n        // Other builders...\n    ]\n};\n\nmodule.exports = config;\n```\n\nIn this example, the `config` object contains various settings for the Code Narrator application. The `builders` array contains objects that define different builders for generating documentation. For instance, the \"Prerequisites\" builder generates a section in the documentation with information about the project's dependencies, devDependencies, and engine from the `package.json` file.\n\nAs for the other configuration files, I cannot provide information about them without their content or context.",
 		"isFolder": true,
-		"updated": "2023-04-24T10:31:01.914Z",
+		"updated": "2023-04-24T12:46:03.305Z",
 		"sidebar_position": 3,
 		"sidebar_label": "Configuration",
 		"init": false,
@@ -78,11 +78,11 @@
 			},
 			{
 				"role": "user",
-				"content": "This is (or are) the app-specific config file(s) for code-narrator.\r\nGive me a detailed description, and what their purpose is in the application if you can decide.\r\nGive an example of usage for the app-specific configs\r\n###\r\ncode-narrator.config.js\r\n###\r\n\r\nHere is the content of the app specific config file(s)\r\n###\r\n--- Start code-narrator.config.js ---\n            /**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"How To\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    name: \"Use CLI\",\r\n                    files: [\r\n                        {\r\n                            path: \"src/cli.ts\"\r\n                        },\r\n                        {\r\n                            path: \"package.json\",\r\n                            JSONPath: [\"$.repository\"]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\n            --- End code-narrator.config.js ---\n            \r\n###\r\n\r\nThese are other configuration files, give short general information about each of them, but only if you recognize them.\r\nIf you do not recognize them, then don't mention the config\r\n###\r\n\r\n###\r\n"
+				"content": "This is (or are) the app-specific config file(s) for code-narrator.\r\nGive me a detailed description, and what their purpose is in the application if you can decide.\r\nGive an example of usage for the app-specific configs\r\n###\r\ncode-narrator.config.js\r\n###\r\n\r\nHere is the content of the app specific config file(s)\r\n###\r\n--- Start code-narrator.config.js ---\n            /**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\n            --- End code-narrator.config.js ---\n            \r\n###\r\n\r\nThese are other configuration files, give short general information about each of them, but only if you recognize them.\r\nIf you do not recognize them, then don't mention the config\r\n###\r\n\r\n###\r\n"
 			}
 		],
 		"id": "Configuration",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"appSpecificConfigFiles": [
 				"code-narrator.config.js"
@@ -130,7 +130,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "src"
 		}
@@ -170,7 +170,7 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "src"
 		}
@@ -214,7 +214,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -262,7 +262,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -306,7 +306,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -350,7 +350,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -394,7 +394,7 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -434,7 +434,7 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -478,7 +478,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -487,10 +487,10 @@
 		"name": "DocumentationCache.ts",
 		"path": "src\\documentation\\DocumentationCache.ts",
 		"folderPath": "src\\documentation",
-		"fileContent": "import fs from \"fs\";\r\nimport Document from \"../documentation/Document\";\r\nimport path from \"path\";\r\nimport App from \"../App\";\r\nimport ConfigHelper from \"../config/ConfigHelper\";\r\n\r\n/*\r\n:::danger Make sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\r\n */\r\nexport default class DocumentationCache {\r\n\r\n    static Documents : Document[] | null = null;\r\n\r\n    private constructor() {\r\n        if (fs.existsSync(ConfigHelper.CacheFilePath)) {\r\n            let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();\r\n            DocumentationCache.Documents = JSON.parse(str) as Document[];\r\n        } else {\r\n            fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})\r\n            fs.writeFileSync(ConfigHelper.CacheFilePath, \"[]\");\r\n            DocumentationCache.Documents = [];\r\n        }\r\n    }\r\n\r\n    public static load() {\r\n        new DocumentationCache();\r\n    }\r\n    public static getIndex(id : string) : number {\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].id == id) {\r\n                return i;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n    public static get(path: string) : Document | undefined {\r\n        let id = Document.getId(path);\r\n        let idx = this.getIndex(id);\r\n        if (!DocumentationCache.Documents || idx == -1) return;\r\n\r\n        let doc = DocumentationCache.Documents[idx];\r\n        doc.lastTouch = App.StartTime;\r\n        DocumentationCache.set(doc);\r\n        return doc;\r\n    }\r\n    static remove(document : Document) {\r\n        let idx = DocumentationCache.getIndex(Document.getId(document.path))\r\n        if (idx != -1 && DocumentationCache.Documents) {\r\n            delete DocumentationCache.Documents[idx];\r\n        }\r\n        let docPath = ConfigHelper.config.documentation_path;\r\n        let filePath = path.join(docPath, document.path);\r\n        if (fs.existsSync(filePath)) {\r\n            fs.rmSync(filePath)\r\n        }\r\n\r\n    }\r\n\r\n    static set(document: Document) {\r\n        let idx = this.getIndex(document.id);\r\n        if (idx == -1) {\r\n            DocumentationCache.Documents?.push(document);\r\n        } else {\r\n            DocumentationCache.Documents![idx] = document;\r\n        }\r\n        let content = JSON.stringify(DocumentationCache.Documents, null,'\\t');\r\n\r\n        fs.writeFileSync(ConfigHelper.CacheFilePath, content);\r\n    }\r\n\r\n    static getByFolderPath(path: string) {\r\n        let suggestions : Document[] = [];\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].folderPath == path) {\r\n                suggestions.push(DocumentationCache.Documents[i])\r\n            }\r\n        }\r\n        return suggestions;\r\n    }\r\n\r\n    static getFolderByFolderPath(path: string) {\r\n\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].generator == 'Folders'\r\n                    && DocumentationCache.Documents[i].folderPath == path) {\r\n                return DocumentationCache.Documents[i]\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    static getProjectInfo() {\r\n\r\n    }\r\n}",
-		"documentation": "# DocumentationCache.ts\n\nThis file contains the `DocumentationCache` class, which is responsible for managing the cache of documentation files. The cache is stored in a JSON file, and this class provides methods for loading, getting, setting, and removing documents from the cache.\n\n:::danger Make sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\n:::\n\n## Table of Contents\n\n- [Class: DocumentationCache](#class-documentationcache)\n  - [Static Properties](#static-properties)\n  - [Constructor](#constructor)\n  - [Static Methods](#static-methods)\n    - [load](#load)\n    - [getIndex](#getindex)\n    - [get](#get)\n    - [remove](#remove)\n    - [set](#set)\n    - [getByFolderPath](#getbyfolderpath)\n    - [getFolderByFolderPath](#getfolderbyfolderpath)\n    - [getProjectInfo](#getprojectinfo)\n\n## Class: DocumentationCache\n\n### Static Properties\n\n- `Documents`: An array of `Document` objects or `null`. This property holds the cached documents.\n\n### Constructor\n\nThe constructor is private and initializes the `Documents` property by reading the cache file. If the cache file does not exist, it creates an empty cache file and sets `Documents` to an empty array.\n\n### Static Methods\n\n#### load\n\n- Description: Initializes a new instance of the `DocumentationCache` class.\n- Parameters: None\n- Returns: None\n\n#### getIndex\n\n- Description: Returns the index of a document in the `Documents` array based on its ID.\n- Parameters:\n  - `id` (string): The ID of the document to find.\n- Returns: The index of the document in the `Documents` array, or `-1` if not found.\n\n#### get\n\n- Description: Retrieves a document from the cache based on its path.\n- Parameters:\n  - `path` (string): The path of the document to retrieve.\n- Returns: The `Document` object if found, or `undefined` if not found.\n\n#### remove\n\n- Description: Removes a document from the cache and deletes its file.\n- Parameters:\n  - `document` (Document): The `Document` object to remove.\n- Returns: None\n\n#### set\n\n- Description: Adds or updates a document in the cache and writes the cache to the cache file.\n- Parameters:\n  - `document` (Document): The `Document` object to add or update.\n- Returns: None\n\n#### getByFolderPath\n\n- Description: Retrieves all documents in the cache that have a specific folder path.\n- Parameters:\n  - `path` (string): The folder path to search for.\n- Returns: An array of `Document` objects with the specified folder path.\n\n#### getFolderByFolderPath\n\n- Description: Retrieves a folder document from the cache based on its folder path.\n- Parameters:\n  - `path` (string): The folder path of the folder document to retrieve.\n- Returns: The `Document` object if found, or `undefined` if not found.\n\n#### getProjectInfo\n\n- Description: Placeholder method for retrieving project information.\n- Parameters: None\n- Returns: None",
+		"fileContent": "import fs from \"fs\";\r\nimport Document from \"../documentation/Document\";\r\nimport path from \"path\";\r\nimport App from \"../App\";\r\nimport ConfigHelper from \"../config/ConfigHelper\";\r\n\r\n/*\r\n:::danger Make sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\r\n */\r\nexport default class DocumentationCache {\r\n\r\n    static Documents : Document[] | null = null;\r\n\r\n    private constructor() {\r\n        if (fs.existsSync(ConfigHelper.CacheFilePath)) {\r\n            let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();\r\n            DocumentationCache.Documents = JSON.parse(str) as Document[];\r\n        } else {\r\n            fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})\r\n            fs.writeFileSync(ConfigHelper.CacheFilePath, \"[]\");\r\n            DocumentationCache.Documents = [];\r\n        }\r\n    }\r\n\r\n    public static load() {\r\n        new DocumentationCache();\r\n    }\r\n    public static getIndex(id : string) : number {\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].id == id) {\r\n                return i;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n    public static get(path: string) : Document | undefined {\r\n        let id = Document.getId(path);\r\n        let idx = this.getIndex(id);\r\n        if (!DocumentationCache.Documents || idx == -1) return;\r\n\r\n        let doc = DocumentationCache.Documents[idx];\r\n        doc.lastTouch = App.StartTime;\r\n        DocumentationCache.set(doc);\r\n        return doc;\r\n    }\r\n    static remove(document : Document) {\r\n        let idx = DocumentationCache.getIndex(Document.getId(document.path))\r\n        if (idx != -1 && DocumentationCache.Documents) {\r\n            delete DocumentationCache.Documents[idx];\r\n        }\r\n        let docPath = ConfigHelper.config.documentation_path;\r\n        let filePath = path.join(docPath, document.path);\r\n        if (fs.existsSync(filePath)) {\r\n            fs.rmSync(filePath)\r\n        }\r\n\r\n    }\r\n\r\n    static set(document: Document) {\r\n        let idx = this.getIndex(document.id);\r\n        if (idx == -1) {\r\n            DocumentationCache.Documents?.push(document);\r\n        } else {\r\n            DocumentationCache.Documents![idx] = document;\r\n        }\r\n        let content = JSON.stringify(DocumentationCache.Documents, null,'\\t');\r\n\r\n        fs.writeFileSync(ConfigHelper.CacheFilePath, content);\r\n    }\r\n\r\n    static getByFolderPath(path: string) {\r\n        let suggestions : Document[] = [];\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].folderPath == path) {\r\n                suggestions.push(DocumentationCache.Documents[i])\r\n            }\r\n        }\r\n        return suggestions;\r\n    }\r\n\r\n    static getFolderByFolderPath(path: string) {\r\n\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].generator == 'Folders'\r\n                    && DocumentationCache.Documents[i].folderPath == path) {\r\n                return DocumentationCache.Documents[i]\r\n            }\r\n        }\r\n\r\n    }\r\n}",
+		"documentation": "# DocumentationCache.ts\n\nThis is a TypeScript code file that provides a class named `DocumentationCache`. The class is responsible for managing a cache of `Document` objects, which represent documentation files. The cache is stored in a JSON file, and the class provides methods to load, get, set, remove, and retrieve documents by their folder path.\n\n## Table of Contents\n\n- [Imported Modules](#imported-modules)\n- [Class: DocumentationCache](#class-documentationcache)\n  - [Static Properties](#static-properties)\n  - [Constructor](#constructor)\n  - [Methods](#methods)\n    - [load](#load)\n    - [getIndex](#getindex)\n    - [get](#get)\n    - [remove](#remove)\n    - [set](#set)\n    - [getByFolderPath](#getbyfolderpath)\n    - [getFolderByFolderPath](#getfolderbyfolderpath)\n- [Danger Note](#danger-note)\n\n## Imported Modules\n\nThe following modules are imported in the file:\n\n- `fs`: File system module for reading and writing files.\n- `Document`: A custom class representing a documentation file.\n- `path`: A module for working with file and directory paths.\n- `App`: A custom class representing the application.\n- `ConfigHelper`: A custom class for managing the application's configuration.\n\n## Class: DocumentationCache\n\n### Static Properties\n\n- `Documents`: An array of `Document` objects, representing the cached documentation files. Initialized as `null`.\n\n### Constructor\n\nThe constructor is private and is only called by the `load` method. It reads the cache file from the file system, parses its content, and initializes the `Documents` property. If the cache file does not exist, it creates an empty cache file and initializes `Documents` as an empty array.\n\n### Methods\n\n#### load\n\n- **Description**: A static method that creates a new instance of the `DocumentationCache` class, which in turn initializes the cache by calling the private constructor.\n\n#### getIndex\n\n- **Parameters**:\n  - `id`: A string representing the ID of a document.\n- **Description**: A static method that returns the index of a document in the `Documents` array based on its ID. Returns `-1` if the document is not found.\n\n#### get\n\n- **Parameters**:\n  - `path`: A string representing the path of a document.\n- **Description**: A static method that returns a `Document` object from the cache based on its path. Updates the `lastTouch` property of the document and calls the `set` method to update the cache. Returns `undefined` if the document is not found.\n\n#### remove\n\n- **Parameters**:\n  - `document`: A `Document` object to be removed from the cache.\n- **Description**: A static method that removes a document from the cache and deletes its file from the file system.\n\n#### set\n\n- **Parameters**:\n  - `document`: A `Document` object to be added or updated in the cache.\n- **Description**: A static method that adds or updates a document in the cache. If the document is not found in the cache, it is added; otherwise, it is updated. The cache file is then updated with the new content.\n\n#### getByFolderPath\n\n- **Parameters**:\n  - `path`: A string representing the folder path of documents.\n- **Description**: A static method that returns an array of `Document` objects that have the specified folder path.\n\n#### getFolderByFolderPath\n\n- **Parameters**:\n  - `path`: A string representing the folder path of a document.\n- **Description**: A static method that returns a `Document` object with the specified folder path and a `generator` property set to `'Folders'`. Returns `undefined` if the document is not found.\n\n## Danger Note\n\n:::danger\nMake sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\n:::",
 		"isFolder": false,
-		"updated": "2023-04-24T10:53:32.425Z",
+		"updated": "2023-04-24T12:58:09.949Z",
 		"sidebar_position": 2,
 		"sidebar_label": "DocumentationCache.ts",
 		"init": false,
@@ -518,11 +518,11 @@
 			},
 			{
 				"role": "user",
-				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"DocumentationCache.ts\"\r\nThe file name is: DocumentationCache.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport fs from \"fs\";\r\nimport Document from \"../documentation/Document\";\r\nimport path from \"path\";\r\nimport App from \"../App\";\r\nimport ConfigHelper from \"../config/ConfigHelper\";\r\n\r\n/*\r\n:::danger Make sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\r\n */\r\nexport default class DocumentationCache {\r\n\r\n    static Documents : Document[] | null = null;\r\n\r\n    private constructor() {\r\n        if (fs.existsSync(ConfigHelper.CacheFilePath)) {\r\n            let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();\r\n            DocumentationCache.Documents = JSON.parse(str) as Document[];\r\n        } else {\r\n            fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})\r\n            fs.writeFileSync(ConfigHelper.CacheFilePath, \"[]\");\r\n            DocumentationCache.Documents = [];\r\n        }\r\n    }\r\n\r\n    public static load() {\r\n        new DocumentationCache();\r\n    }\r\n    public static getIndex(id : string) : number {\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].id == id) {\r\n                return i;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n    public static get(path: string) : Document | undefined {\r\n        let id = Document.getId(path);\r\n        let idx = this.getIndex(id);\r\n        if (!DocumentationCache.Documents || idx == -1) return;\r\n\r\n        let doc = DocumentationCache.Documents[idx];\r\n        doc.lastTouch = App.StartTime;\r\n        DocumentationCache.set(doc);\r\n        return doc;\r\n    }\r\n    static remove(document : Document) {\r\n        let idx = DocumentationCache.getIndex(Document.getId(document.path))\r\n        if (idx != -1 && DocumentationCache.Documents) {\r\n            delete DocumentationCache.Documents[idx];\r\n        }\r\n        let docPath = ConfigHelper.config.documentation_path;\r\n        let filePath = path.join(docPath, document.path);\r\n        if (fs.existsSync(filePath)) {\r\n            fs.rmSync(filePath)\r\n        }\r\n\r\n    }\r\n\r\n    static set(document: Document) {\r\n        let idx = this.getIndex(document.id);\r\n        if (idx == -1) {\r\n            DocumentationCache.Documents?.push(document);\r\n        } else {\r\n            DocumentationCache.Documents![idx] = document;\r\n        }\r\n        let content = JSON.stringify(DocumentationCache.Documents, null,'\\t');\r\n\r\n        fs.writeFileSync(ConfigHelper.CacheFilePath, content);\r\n    }\r\n\r\n    static getByFolderPath(path: string) {\r\n        let suggestions : Document[] = [];\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].folderPath == path) {\r\n                suggestions.push(DocumentationCache.Documents[i])\r\n            }\r\n        }\r\n        return suggestions;\r\n    }\r\n\r\n    static getFolderByFolderPath(path: string) {\r\n\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].generator == 'Folders'\r\n                    && DocumentationCache.Documents[i].folderPath == path) {\r\n                return DocumentationCache.Documents[i]\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    static getProjectInfo() {\r\n\r\n    }\r\n}\r\n###\r\n"
+				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"DocumentationCache.ts\"\r\nThe file name is: DocumentationCache.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport fs from \"fs\";\r\nimport Document from \"../documentation/Document\";\r\nimport path from \"path\";\r\nimport App from \"../App\";\r\nimport ConfigHelper from \"../config/ConfigHelper\";\r\n\r\n/*\r\n:::danger Make sure to add the cache file (default is .codenarrator\\cache.json) to git, so you don't have to query GPT on each run.\r\n */\r\nexport default class DocumentationCache {\r\n\r\n    static Documents : Document[] | null = null;\r\n\r\n    private constructor() {\r\n        if (fs.existsSync(ConfigHelper.CacheFilePath)) {\r\n            let str = fs.readFileSync(ConfigHelper.CacheFilePath).toString();\r\n            DocumentationCache.Documents = JSON.parse(str) as Document[];\r\n        } else {\r\n            fs.mkdirSync(path.dirname(ConfigHelper.CacheFilePath), {recursive: true})\r\n            fs.writeFileSync(ConfigHelper.CacheFilePath, \"[]\");\r\n            DocumentationCache.Documents = [];\r\n        }\r\n    }\r\n\r\n    public static load() {\r\n        new DocumentationCache();\r\n    }\r\n    public static getIndex(id : string) : number {\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].id == id) {\r\n                return i;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n    public static get(path: string) : Document | undefined {\r\n        let id = Document.getId(path);\r\n        let idx = this.getIndex(id);\r\n        if (!DocumentationCache.Documents || idx == -1) return;\r\n\r\n        let doc = DocumentationCache.Documents[idx];\r\n        doc.lastTouch = App.StartTime;\r\n        DocumentationCache.set(doc);\r\n        return doc;\r\n    }\r\n    static remove(document : Document) {\r\n        let idx = DocumentationCache.getIndex(Document.getId(document.path))\r\n        if (idx != -1 && DocumentationCache.Documents) {\r\n            delete DocumentationCache.Documents[idx];\r\n        }\r\n        let docPath = ConfigHelper.config.documentation_path;\r\n        let filePath = path.join(docPath, document.path);\r\n        if (fs.existsSync(filePath)) {\r\n            fs.rmSync(filePath)\r\n        }\r\n\r\n    }\r\n\r\n    static set(document: Document) {\r\n        let idx = this.getIndex(document.id);\r\n        if (idx == -1) {\r\n            DocumentationCache.Documents?.push(document);\r\n        } else {\r\n            DocumentationCache.Documents![idx] = document;\r\n        }\r\n        let content = JSON.stringify(DocumentationCache.Documents, null,'\\t');\r\n\r\n        fs.writeFileSync(ConfigHelper.CacheFilePath, content);\r\n    }\r\n\r\n    static getByFolderPath(path: string) {\r\n        let suggestions : Document[] = [];\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].folderPath == path) {\r\n                suggestions.push(DocumentationCache.Documents[i])\r\n            }\r\n        }\r\n        return suggestions;\r\n    }\r\n\r\n    static getFolderByFolderPath(path: string) {\r\n\r\n        for (let i=0; DocumentationCache.Documents && i<DocumentationCache.Documents.length; i++) {\r\n            if (DocumentationCache.Documents[i] && DocumentationCache.Documents[i].generator == 'Folders'\r\n                    && DocumentationCache.Documents[i].folderPath == path) {\r\n                return DocumentationCache.Documents[i]\r\n            }\r\n        }\r\n\r\n    }\r\n}\r\n###\r\n"
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -566,7 +566,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -610,7 +610,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -654,7 +654,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -698,7 +698,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -746,7 +746,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -790,7 +790,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -838,7 +838,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -882,7 +882,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -891,10 +891,10 @@
 		"name": "UserDefinedBuilderHelper.ts",
 		"path": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
 		"folderPath": "src\\documentation\\plugins\\builders\\UserDefined",
-		"fileContent": "import FileStructure from \"../../../../utils/FileStructure\";\r\nimport path from \"path\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport IBuilder from \"../../../../config/IBuilder\";\r\nimport jsonpath from \"jsonpath\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport OpenAIRepository from \"../../../../repositories/OpenAIRepository\";\r\nimport fs from \"fs\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\n\r\nexport default class UserDefinedBuilderHelper {\r\n\r\n    openAIRepository: OpenAIRepository;\r\n\r\n    constructor() {\r\n        this.openAIRepository = new OpenAIRepository();\r\n    }\r\n\r\n    public extractPathFromContent(input: string): string | null {\r\n        if (!input) return null;\r\n\r\n        const regex = /content\\(([^)]+)\\)/;\r\n        const match = input.match(regex);\r\n\r\n        return match ? match[1] : null;\r\n    }\r\n\r\n    public loadArgs(build: IBuilder, project_path: string) {\r\n        if (build.args) {\r\n            let argKeys = Object.getOwnPropertyNames(build.args);\r\n            for (let i = 0; i < argKeys.length; i++) {\r\n                let filePath = this.extractPathFromContent(build.args[argKeys[i]])\r\n                if (filePath) {\r\n                    let content = FileStructure.getContent(path.join(project_path, filePath))\r\n                    if (content == '') {\r\n                        console.warn(`Content is empty for file ${filePath}`)\r\n                    }\r\n                    build.args[argKeys[i]] = content;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public async getAssistantMessages(build: IBuilder) {\r\n        let assistantMessages: string[] = []\r\n        let predefinedQuestions = this.getPredefinedQuestion(build.type);\r\n        if (predefinedQuestions) assistantMessages.push(predefinedQuestions);\r\n        let files = build.files ?? [];\r\n        for (let i = 0;i < files.length; i++) {\r\n            let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));\r\n            let extraInfo = '';\r\n            if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {\r\n                let obj = JSON.parse(content);\r\n                for (let b = 0; b < files[i].JSONPath!.length; b++) {\r\n                    let result = jsonpath.query(obj, files[i].JSONPath![b]);\r\n                    for (let c = 0; c < result.length; c++) {\r\n                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\\n`;\r\n                    }\r\n                }\r\n            } else if (files[i].extract) {\r\n                let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;\r\n                let question = `Extract following from file content. You MUST return as JSON:\r\n                     ${extractContent} \r\n                     This is the file:\r\n                     ${content}`\r\n                let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])\r\n                let jsons = Helper.getJsons(result.answer);\r\n                if (jsons.length > 0) {\r\n                    extraInfo += `Content to help:\\n`\r\n                    for(let b=0;b<jsons.length;b++) {\r\n                        extraInfo += `${JSON.stringify(jsons[b])}\\n`\r\n                    }\r\n                }\r\n            } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {\r\n                if (files[i].path.indexOf('*') != -1) {\r\n                    let dirFiles = this.findFiles(files[i].path);\r\n                    dirFiles.forEach(file => {\r\n                        let overview = this.extractContentBetweenHeaders(file.documentation);\r\n                        extraInfo += `This is first paragraph from file \"${path.basename(files[i].path)}\"\r\n                         ${overview}\r\n                         `\r\n                    })\r\n                } else {\r\n                    let overview = this.extractContentBetweenHeaders(content);\r\n                    extraInfo = `Here is overview for ${files[i].path}\\n${overview}`\r\n                }\r\n            } else {\r\n                extraInfo = `File Content for ${files[i].path}\\n${content}`\r\n            }\r\n            if (extraInfo) {\r\n                assistantMessages.push(extraInfo)\r\n            }\r\n\r\n        }\r\n        return assistantMessages;\r\n    }\r\n\r\n    private getPredefinedQuestion(type: string) {\r\n        if (type == 'howto') {\r\n            return `I want you to create a detailed How To guide from the user input.\r\n            It should have Title, Introduction, Step-by-Step Instructions`\r\n        } else if (type == 'readme') {\r\n            return `I want you to create a detail README file for this project. Here is a description:`\r\n        }\r\n\r\n    }\r\n\r\n\r\n    public extractContentBetweenHeaders(markdown: string): string {\r\n        if (markdown.length < 350) return markdown;\r\n        return markdown.substring(0, 350) + \"...\";\r\n\r\n    }\r\n\r\n    public findFiles(patternString: string) {\r\n       const dir = patternString.split('/')[0];\r\n        return DocumentationCache.getByFolderPath(dir)\r\n    }\r\n\r\n}",
-		"documentation": "# UserDefinedBuilderHelper.ts\n\nThis TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling various tasks related to building user-defined content. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.\n\n## Class: UserDefinedBuilderHelper\n\n### Constructor\n\nThe constructor initializes the `openAIRepository` property with a new instance of the `OpenAIRepository` class.\n\n### Method: extractPathFromContent(input: string): string | null\n\nThis method takes an input string and returns the extracted path from the content if it exists, otherwise, it returns null.\n\n**Parameters:**\n\n- `input`: A string containing the content to extract the path from.\n\n### Method: loadArgs(build: IBuilder, project_path: string)\n\nThis method loads the arguments for a given build and project path.\n\n**Parameters:**\n\n- `build`: An IBuilder object containing the build configuration.\n- `project_path`: A string representing the project path.\n\n### Method: getAssistantMessages(build: IBuilder)\n\nThis method returns an array of assistant messages for a given build.\n\n**Parameters:**\n\n- `build`: An IBuilder object containing the build configuration.\n\n### Method: getPredefinedQuestion(type: string)\n\nThis method returns a predefined question based on the given type.\n\n**Parameters:**\n\n- `type`: A string representing the type of question.\n\n### Method: extractContentBetweenHeaders(markdown: string): string\n\nThis method extracts the content between headers in a markdown string and returns it.\n\n**Parameters:**\n\n- `markdown`: A string containing the markdown content.\n\n### Method: findFiles(patternString: string)\n\nThis method finds files based on a given pattern string and returns an array of matched files.\n\n**Parameters:**\n\n- `patternString`: A string representing the pattern to search for files.\n\n## Usage Examples\n\n```typescript\nimport UserDefinedBuilderHelper from \"./UserDefinedBuilderHelper\";\n\nconst userDefinedBuilderHelper = new UserDefinedBuilderHelper();\n\n// Extract path from content\nconst input = \"content(/path/to/file.txt)\";\nconst extractedPath = userDefinedBuilderHelper.extractPathFromContent(input);\nconsole.log(extractedPath); // Output: \"/path/to/file.txt\"\n\n// Load arguments for a build\nconst build = {\n  args: {\n    key: \"content(/path/to/file.txt)\",\n  },\n};\nconst project_path = \"/project\";\nuserDefinedBuilderHelper.loadArgs(build, project_path);\n\n// Get assistant messages for a build\nconst assistantMessages = await userDefinedBuilderHelper.getAssistantMessages(build);\nconsole.log(assistantMessages);\n\n// Get predefined question for a type\nconst type = \"howto\";\nconst predefinedQuestion = userDefinedBuilderHelper.getPredefinedQuestion(type);\nconsole.log(predefinedQuestion);\n\n// Extract content between headers in a markdown string\nconst markdown = \"# Header\\nThis is some content.\\n## Subheader\";\nconst extractedContent = userDefinedBuilderHelper.extractContentBetweenHeaders(markdown);\nconsole.log(extractedContent);\n\n// Find files based on a pattern string\nconst patternString = \"docs/*.md\";\nconst foundFiles = userDefinedBuilderHelper.findFiles(patternString);\nconsole.log(foundFiles);\n```\n\n## Technical Concepts\n\n- `jsonpath`: A library used to query JSON objects using a path-like syntax.\n- `OpenAIRepository`: A class responsible for interacting with the OpenAI API.\n- `DocumentationCache`: A class responsible for caching documentation files.",
+		"fileContent": "import FileStructure from \"../../../../utils/FileStructure\";\r\nimport path from \"path\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport IBuilder from \"../../../../config/IBuilder\";\r\nimport jsonpath from \"jsonpath\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport OpenAIRepository from \"../../../../repositories/OpenAIRepository\";\r\nimport fs from \"fs\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\n\r\nexport default class UserDefinedBuilderHelper {\r\n\r\n    openAIRepository: OpenAIRepository;\r\n\r\n    constructor() {\r\n        this.openAIRepository = new OpenAIRepository();\r\n    }\r\n\r\n    public extractPathFromContent(input: string): string | null {\r\n        if (!input) return null;\r\n\r\n        const regex = /content\\(([^)]+)\\)/;\r\n        const match = input.match(regex);\r\n\r\n        return match ? match[1] : null;\r\n    }\r\n\r\n    public loadArgs(build: IBuilder, project_path: string) {\r\n        if (build.args) {\r\n            let argKeys = Object.getOwnPropertyNames(build.args);\r\n            for (let i = 0; i < argKeys.length; i++) {\r\n                let filePath = this.extractPathFromContent(build.args[argKeys[i]])\r\n                if (filePath) {\r\n                    let content = FileStructure.getContent(path.join(project_path, filePath))\r\n                    if (content == '') {\r\n                        console.warn(`Content is empty for file ${filePath}`)\r\n                    }\r\n                    build.args[argKeys[i]] = content;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public async getAssistantMessages(build: IBuilder) {\r\n        let assistantMessages: string[] = []\r\n        let predefinedQuestions = this.getPredefinedQuestion(build.type);\r\n        if (predefinedQuestions) assistantMessages.push(predefinedQuestions);\r\n        let files = build.files ?? [];\r\n        for (let i = 0;i < files.length; i++) {\r\n            let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));\r\n            let extraInfo = '';\r\n            if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {\r\n                let obj = JSON.parse(content);\r\n                for (let b = 0; b < files[i].JSONPath!.length; b++) {\r\n                    let result = jsonpath.query(obj, files[i].JSONPath![b]);\r\n                    for (let c = 0; c < result.length; c++) {\r\n                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\\n`;\r\n                    }\r\n                }\r\n            } else if (files[i].extract) {\r\n                let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;\r\n                let question = `Extract following from file content. You MUST return as JSON:\r\n                     ${extractContent} \r\n                     This is the file:\r\n                     ${content}`\r\n                let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])\r\n                let jsons = Helper.getJsons(result.answer);\r\n                if (jsons.length > 0) {\r\n                    extraInfo += `Content to help:\\n`\r\n                    for(let b=0;b<jsons.length;b++) {\r\n                        extraInfo += `${JSON.stringify(jsons[b])}\\n`\r\n                    }\r\n                }\r\n            } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {\r\n                if (files[i].path.indexOf('*') != -1) {\r\n                    let dirFiles = this.findFiles(files[i].path);\r\n                    dirFiles.forEach(file => {\r\n                        if (file.name.toLowerCase() != 'readme') {\r\n                            let overview = this.extractContentBetweenHeaders(file.documentation);\r\n                            extraInfo += `## 1st paragraph of \"${file.name}\" ###\r\n                         ${overview}\r\n                         `\r\n                        }\r\n                    })\r\n                } else {\r\n                    let overview = this.extractContentBetweenHeaders(content);\r\n                    extraInfo = `## 1st paragraph of \"${files[i].path}\" ### \\n${overview}`\r\n                }\r\n            } else {\r\n                extraInfo = `File Content for ${files[i].path}\\n${content}`\r\n            }\r\n            if (extraInfo) {\r\n                assistantMessages.push(extraInfo)\r\n            }\r\n\r\n        }\r\n        return assistantMessages;\r\n    }\r\n\r\n    private getPredefinedQuestion(type: string) {\r\n        if (type == 'howto') {\r\n            return `I want you to create a detailed How To guide from the user input.\r\n            It should have Title, Introduction, Step-by-Step Instructions`\r\n        } else if (type == 'readme') {\r\n            return `I want you to create a detail README file for this project. Here is a description:`\r\n        }\r\n\r\n    }\r\n\r\n\r\n    public extractContentBetweenHeaders(markdown: string): string {\r\n        let regex = new RegExp(/^(?!#).*$/gm)\r\n        let match = markdown.match(regex);\r\n        for (let i=0;match && i < match.length;i++) {\r\n            if (match[i].trim() != '') return match[i];\r\n        }\r\n\r\n        if (markdown.length < 350) return markdown;\r\n        return markdown.substring(0, 350) + \"...\";\r\n\r\n    }\r\n\r\n    public findFiles(patternString: string) {\r\n       const dir = patternString.split('/')[0];\r\n        return DocumentationCache.getByFolderPath(dir)\r\n    }\r\n\r\n}",
+		"documentation": "# UserDefinedBuilderHelper.ts\n\nThis TypeScript file defines the `UserDefinedBuilderHelper` class, which is responsible for handling various tasks related to user-defined builders. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.\n\n## Class: UserDefinedBuilderHelper\n\n### Constructor\n\nThe constructor initializes the `openAIRepository` property with a new instance of the `OpenAIRepository` class.\n\n### Method: extractPathFromContent(input: string): string | null\n\nThis method takes an input string and returns the extracted path from the content if it exists, otherwise, it returns null.\n\n### Method: loadArgs(build: IBuilder, project_path: string)\n\nThis method takes a build object and a project path as arguments. It loads the arguments from the build object and replaces the content of the arguments with the content of the file specified by the file path.\n\n### Method: getAssistantMessages(build: IBuilder): Promise<string[]>\n\nThis method takes a build object as an argument and returns a promise that resolves to an array of assistant messages. It retrieves predefined questions and file content to generate the assistant messages.\n\n### Method: getPredefinedQuestion(type: string): string | undefined\n\nThis method takes a type string as an argument and returns a predefined question based on the type. If the type is 'howto', it returns a question for creating a detailed How To guide. If the type is 'readme', it returns a question for creating a detailed README file.\n\n### Method: extractContentBetweenHeaders(markdown: string): string\n\nThis method takes a markdown string as an argument and returns the content between the headers. If the markdown content is less than 350 characters, it returns the entire content. Otherwise, it returns the first 350 characters followed by an ellipsis.\n\n### Method: findFiles(patternString: string): DocumentationCache[]\n\nThis method takes a pattern string as an argument and returns an array of `DocumentationCache` objects that match the given pattern. It searches for files in the specified directory.\n\n## Usage Examples\n\n```typescript\nimport UserDefinedBuilderHelper from \"./UserDefinedBuilderHelper\";\n\nconst userDefinedBuilderHelper = new UserDefinedBuilderHelper();\n\n// Extract path from content\nconst input = \"content(path/to/file.txt)\";\nconst extractedPath = userDefinedBuilderHelper.extractPathFromContent(input);\nconsole.log(extractedPath); // Output: \"path/to/file.txt\"\n\n// Load arguments\nconst build = {\n  args: {\n    key: \"content(path/to/file.txt)\",\n  },\n};\nconst projectPath = \"/path/to/project\";\nuserDefinedBuilderHelper.loadArgs(build, projectPath);\n\n// Get assistant messages\nconst assistantMessages = await userDefinedBuilderHelper.getAssistantMessages(build);\nconsole.log(assistantMessages);\n```\n\n## Technical Concepts\n\n- `jsonpath`: A library used for querying JSON objects using a JSONPath expression.\n- `OpenAIRepository`: A class responsible for interacting with the OpenAI API.\n- `DocumentationCache`: A class responsible for caching documentation files.",
 		"isFolder": false,
-		"updated": "2023-04-24T10:59:49.334Z",
+		"updated": "2023-04-24T13:19:10.557Z",
 		"sidebar_position": 1,
 		"sidebar_label": "UserDefinedBuilderHelper.ts",
 		"init": false,
@@ -922,11 +922,11 @@
 			},
 			{
 				"role": "user",
-				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"UserDefinedBuilderHelper.ts\"\r\nThe file name is: UserDefinedBuilderHelper.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport path from \"path\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport IBuilder from \"../../../../config/IBuilder\";\r\nimport jsonpath from \"jsonpath\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport OpenAIRepository from \"../../../../repositories/OpenAIRepository\";\r\nimport fs from \"fs\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\n\r\nexport default class UserDefinedBuilderHelper {\r\n\r\n    openAIRepository: OpenAIRepository;\r\n\r\n    constructor() {\r\n        this.openAIRepository = new OpenAIRepository();\r\n    }\r\n\r\n    public extractPathFromContent(input: string): string | null {\r\n        if (!input) return null;\r\n\r\n        const regex = /content\\(([^)]+)\\)/;\r\n        const match = input.match(regex);\r\n\r\n        return match ? match[1] : null;\r\n    }\r\n\r\n    public loadArgs(build: IBuilder, project_path: string) {\r\n        if (build.args) {\r\n            let argKeys = Object.getOwnPropertyNames(build.args);\r\n            for (let i = 0; i < argKeys.length; i++) {\r\n                let filePath = this.extractPathFromContent(build.args[argKeys[i]])\r\n                if (filePath) {\r\n                    let content = FileStructure.getContent(path.join(project_path, filePath))\r\n                    if (content == '') {\r\n                        console.warn(`Content is empty for file ${filePath}`)\r\n                    }\r\n                    build.args[argKeys[i]] = content;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public async getAssistantMessages(build: IBuilder) {\r\n        let assistantMessages: string[] = []\r\n        let predefinedQuestions = this.getPredefinedQuestion(build.type);\r\n        if (predefinedQuestions) assistantMessages.push(predefinedQuestions);\r\n        let files = build.files ?? [];\r\n        for (let i = 0;i < files.length; i++) {\r\n            let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));\r\n            let extraInfo = '';\r\n            if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {\r\n                let obj = JSON.parse(content);\r\n                for (let b = 0; b < files[i].JSONPath!.length; b++) {\r\n                    let result = jsonpath.query(obj, files[i].JSONPath![b]);\r\n                    for (let c = 0; c < result.length; c++) {\r\n                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\\n`;\r\n                    }\r\n                }\r\n            } else if (files[i].extract) {\r\n                let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;\r\n                let question = `Extract following from file content. You MUST return as JSON:\r\n                     ${extractContent} \r\n                     This is the file:\r\n                     ${content}`\r\n                let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])\r\n                let jsons = Helper.getJsons(result.answer);\r\n                if (jsons.length > 0) {\r\n                    extraInfo += `Content to help:\\n`\r\n                    for(let b=0;b<jsons.length;b++) {\r\n                        extraInfo += `${JSON.stringify(jsons[b])}\\n`\r\n                    }\r\n                }\r\n            } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {\r\n                if (files[i].path.indexOf('*') != -1) {\r\n                    let dirFiles = this.findFiles(files[i].path);\r\n                    dirFiles.forEach(file => {\r\n                        let overview = this.extractContentBetweenHeaders(file.documentation);\r\n                        extraInfo += `This is first paragraph from file \"${path.basename(files[i].path)}\"\r\n                         ${overview}\r\n                         `\r\n                    })\r\n                } else {\r\n                    let overview = this.extractContentBetweenHeaders(content);\r\n                    extraInfo = `Here is overview for ${files[i].path}\\n${overview}`\r\n                }\r\n            } else {\r\n                extraInfo = `File Content for ${files[i].path}\\n${content}`\r\n            }\r\n            if (extraInfo) {\r\n                assistantMessages.push(extraInfo)\r\n            }\r\n\r\n        }\r\n        return assistantMessages;\r\n    }\r\n\r\n    private getPredefinedQuestion(type: string) {\r\n        if (type == 'howto') {\r\n            return `I want you to create a detailed How To guide from the user input.\r\n            It should have Title, Introduction, Step-by-Step Instructions`\r\n        } else if (type == 'readme') {\r\n            return `I want you to create a detail README file for this project. Here is a description:`\r\n        }\r\n\r\n    }\r\n\r\n\r\n    public extractContentBetweenHeaders(markdown: string): string {\r\n        if (markdown.length < 350) return markdown;\r\n        return markdown.substring(0, 350) + \"...\";\r\n\r\n    }\r\n\r\n    public findFiles(patternString: string) {\r\n       const dir = patternString.split('/')[0];\r\n        return DocumentationCache.getByFolderPath(dir)\r\n    }\r\n\r\n}\r\n###\r\n"
+				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"UserDefinedBuilderHelper.ts\"\r\nThe file name is: UserDefinedBuilderHelper.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport path from \"path\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport IBuilder from \"../../../../config/IBuilder\";\r\nimport jsonpath from \"jsonpath\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport OpenAIRepository from \"../../../../repositories/OpenAIRepository\";\r\nimport fs from \"fs\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\n\r\nexport default class UserDefinedBuilderHelper {\r\n\r\n    openAIRepository: OpenAIRepository;\r\n\r\n    constructor() {\r\n        this.openAIRepository = new OpenAIRepository();\r\n    }\r\n\r\n    public extractPathFromContent(input: string): string | null {\r\n        if (!input) return null;\r\n\r\n        const regex = /content\\(([^)]+)\\)/;\r\n        const match = input.match(regex);\r\n\r\n        return match ? match[1] : null;\r\n    }\r\n\r\n    public loadArgs(build: IBuilder, project_path: string) {\r\n        if (build.args) {\r\n            let argKeys = Object.getOwnPropertyNames(build.args);\r\n            for (let i = 0; i < argKeys.length; i++) {\r\n                let filePath = this.extractPathFromContent(build.args[argKeys[i]])\r\n                if (filePath) {\r\n                    let content = FileStructure.getContent(path.join(project_path, filePath))\r\n                    if (content == '') {\r\n                        console.warn(`Content is empty for file ${filePath}`)\r\n                    }\r\n                    build.args[argKeys[i]] = content;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public async getAssistantMessages(build: IBuilder) {\r\n        let assistantMessages: string[] = []\r\n        let predefinedQuestions = this.getPredefinedQuestion(build.type);\r\n        if (predefinedQuestions) assistantMessages.push(predefinedQuestions);\r\n        let files = build.files ?? [];\r\n        for (let i = 0;i < files.length; i++) {\r\n            let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));\r\n            let extraInfo = '';\r\n            if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {\r\n                let obj = JSON.parse(content);\r\n                for (let b = 0; b < files[i].JSONPath!.length; b++) {\r\n                    let result = jsonpath.query(obj, files[i].JSONPath![b]);\r\n                    for (let c = 0; c < result.length; c++) {\r\n                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\\n`;\r\n                    }\r\n                }\r\n            } else if (files[i].extract) {\r\n                let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;\r\n                let question = `Extract following from file content. You MUST return as JSON:\r\n                     ${extractContent} \r\n                     This is the file:\r\n                     ${content}`\r\n                let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])\r\n                let jsons = Helper.getJsons(result.answer);\r\n                if (jsons.length > 0) {\r\n                    extraInfo += `Content to help:\\n`\r\n                    for(let b=0;b<jsons.length;b++) {\r\n                        extraInfo += `${JSON.stringify(jsons[b])}\\n`\r\n                    }\r\n                }\r\n            } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {\r\n                if (files[i].path.indexOf('*') != -1) {\r\n                    let dirFiles = this.findFiles(files[i].path);\r\n                    dirFiles.forEach(file => {\r\n                        if (file.name.toLowerCase() != 'readme') {\r\n                            let overview = this.extractContentBetweenHeaders(file.documentation);\r\n                            extraInfo += `## 1st paragraph of \"${file.name}\" ###\r\n                         ${overview}\r\n                         `\r\n                        }\r\n                    })\r\n                } else {\r\n                    let overview = this.extractContentBetweenHeaders(content);\r\n                    extraInfo = `## 1st paragraph of \"${files[i].path}\" ### \\n${overview}`\r\n                }\r\n            } else {\r\n                extraInfo = `File Content for ${files[i].path}\\n${content}`\r\n            }\r\n            if (extraInfo) {\r\n                assistantMessages.push(extraInfo)\r\n            }\r\n\r\n        }\r\n        return assistantMessages;\r\n    }\r\n\r\n    private getPredefinedQuestion(type: string) {\r\n        if (type == 'howto') {\r\n            return `I want you to create a detailed How To guide from the user input.\r\n            It should have Title, Introduction, Step-by-Step Instructions`\r\n        } else if (type == 'readme') {\r\n            return `I want you to create a detail README file for this project. Here is a description:`\r\n        }\r\n\r\n    }\r\n\r\n\r\n    public extractContentBetweenHeaders(markdown: string): string {\r\n        let regex = new RegExp(/^(?!#).*$/gm)\r\n        let match = markdown.match(regex);\r\n        for (let i=0;match && i < match.length;i++) {\r\n            if (match[i].trim() != '') return match[i];\r\n        }\r\n\r\n        if (markdown.length < 350) return markdown;\r\n        return markdown.substring(0, 350) + \"...\";\r\n\r\n    }\r\n\r\n    public findFiles(patternString: string) {\r\n       const dir = patternString.split('/')[0];\r\n        return DocumentationCache.getByFolderPath(dir)\r\n    }\r\n\r\n}\r\n###\r\n"
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -966,7 +966,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -1043,7 +1043,7 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1083,7 +1083,7 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1127,7 +1127,7 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1171,7 +1171,7 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1215,7 +1215,7 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1255,7 +1255,7 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1295,7 +1295,7 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1335,7 +1335,7 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1375,7 +1375,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1412,7 +1412,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1449,7 +1449,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1486,7 +1486,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1523,7 +1523,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1560,7 +1560,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1597,7 +1597,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1671,7 +1671,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1708,7 +1708,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1745,7 +1745,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1782,7 +1782,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1819,7 +1819,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1856,7 +1856,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "README",
@@ -1893,7 +1893,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-24T11:13:15.950Z"
+		"lastTouch": "2023-04-24T13:23:30.750Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -1938,7 +1938,7 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"has_children": true
 		}
@@ -1986,7 +1986,7 @@
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-24T11:13:57.812Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"has_children": true
 		}
@@ -2038,59 +2038,7 @@
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
-		"data": {
-			"parent": "How To"
-		}
-	},
-	{
-		"name": "Use CLI",
-		"path": "howto\\howto_use_cli.md",
-		"folderPath": "howto",
-		"fileContent": "",
-		"documentation": "# How to Use Code-Narrator CLI\n\n## Introduction\n\nCode-Narrator is a CLI tool that helps you run the main app using npx. It allows you to use an optional config file, which Code-Narrator can generate for you if not provided. This guide will walk you through the installation and usage of Code-Narrator.\n\n## Step-by-Step Instructions\n\n1. **Install Code-Narrator**: To install Code-Narrator, open your terminal and run the following command:\n\n```bash\nnpm install code-narrator -D\n```\n\n2. **Run Code-Narrator**: To run Code-Narrator, use the following command in your terminal:\n\n```bash\nnpx code-narrator\n```\n\nYou can also provide optional parameters when running the command.\n\n3. **Understand the CLI**: The `src/cli.ts` file contains the main logic for the CLI. It imports the necessary modules, sets up the command-line arguments, and runs the main app. Here's a brief overview of the file content:\n\n```typescript\n#!/usr/bin/env node\n\nimport App from \"./App\";\nimport ICodeNarratorConfig from \"./config/ICodeNarratorConfig\";\nimport fs from \"fs\";\nimport yargs from \"yargs\";\nimport path from \"path\";\nimport * as process from \"process\";\nimport CliHelper from \"./utils/CliHelper\";\n\n(async () => {\n\n    let cliHelper = new CliHelper()\n    const argv = await cliHelper.getArgv();\n    let userConfig = await cliHelper.getConfig(argv);\n\n    console.log('Starting code-narrator')\n\n    let app = new App();\n    await app.run(userConfig);\n\n})().catch((e: any) => {\n    console.error(e);\n});\n```\n\n4. **Repository**: The Code-Narrator repository can be found on GitHub at the following URL:\n\n[https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)\n\nNow you know how to install and use Code-Narrator CLI. Enjoy using this tool to run the main app with ease!",
-		"isFolder": false,
-		"updated": "2023-04-14T16:07:58.934Z",
-		"sidebar_position": 13,
-		"sidebar_label": "Use CLI",
-		"init": false,
-		"postInit": false,
-		"generator": "UserDefined",
-		"saveToPath": "howto",
-		"documentation_type": "md",
-		"question": "",
-		"requestMessages": [
-			{
-				"role": "system",
-				"content": "If there is :::note, :::info, :::caution, :::tip, :::danger in the text, extract that from its location and format it correctly"
-			},
-			{
-				"role": "system",
-				"content": "Return your answer in md format"
-			},
-			{
-				"role": "system",
-				"content": "If you notice any secret information, replace it with ***** in your response"
-			},
-			{
-				"role": "user",
-				"content": "This is a cli that you can run the main app using npx\r\nconfig file is optional, code-narrator will generate for you\r\ninstall using npm install code-narrator -D\r\nto run use npx code-narrator, with optional parameters\r\n"
-			},
-			{
-				"role": "assistant",
-				"content": "I want you to create a detailed How To guide from the user input.\n            It should have Title, Introduction, Step-by-Step Instructions"
-			},
-			{
-				"role": "assistant",
-				"content": "File Content for src/cli.ts\n#!/usr/bin/env node\r\n\r\nimport App from \"./App\";\r\nimport ICodeNarratorConfig from \"./config/ICodeNarratorConfig\";\r\nimport fs from \"fs\";\r\nimport yargs from \"yargs\";\r\nimport path from \"path\";\r\nimport * as process from \"process\";\r\nimport CliHelper from \"./utils/CliHelper\";\r\n\r\n(async () => {\r\n\r\n    let cliHelper = new CliHelper()\r\n    const argv = await cliHelper.getArgv();\r\n    let userConfig = await cliHelper.getConfig(argv);\r\n\r\n    console.log('Starting code-narrator')\r\n\r\n    let app = new App();\r\n    await app.run(userConfig);\r\n\r\n})().catch((e: any) => {\r\n    console.error(e);\r\n});"
-			},
-			{
-				"role": "assistant",
-				"content": "$.repository:{\"url\":\"https://github.com/ingig/code-narrator\"}\n"
-			}
-		],
-		"id": "howto\\howto_use_cli.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2134,7 +2082,7 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2186,53 +2134,9 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "How To"
-		}
-	},
-	{
-		"name": "README",
-		"path": "howto\\overview_readme.md",
-		"folderPath": "howto",
-		"fileContent": "",
-		"documentation": "# Overview of Files in the Directory\n\nThis is an overview of the files located in the directory. Each file provides a guide or tutorial on various aspects of using the CLI, editing content, and creating custom builders.\n\n## 1. [How to Create a How-To Guide for the CLI](How_to_Create_a_How-To_Guide_for_the_CLI.md)\n\nThis file provides a step-by-step guide on creating a How-To guide for the CLI, including adding a new entry in the `code-narrator.config.js` file and providing the necessary information.\n\n## 2. [How to Use Code-Narrator CLI](How_to_Use_Code-Narrator_CLI.md)\n\nThis file walks you through the installation and usage of the Code-Narrator CLI tool, which helps you run the main app using npx and allows you to use an optional config file.\n\n## 3. [How to Edit Long Content in Code Narrator](How_to_Edit_Long_Content_in_Code_Narrator.md)\n\nThis guide explains the process of manually editing long content in Code Narrator to improve the generated documentation when the content is too long and unsatisfactory.\n\n## 4. [How to Create a Custom Builder Using the Config File](How_to_Create_a_Custom_Builder_Using_the_Config_File.md)\n\nIn this file, you'll learn how to create a custom builder using the config file in a project that uses the Code Narrator system, as well as examples of using args and the Liquid template engine for template files.",
-		"isFolder": false,
-		"updated": "2023-04-14T16:14:00.522Z",
-		"sidebar_position": 11,
-		"sidebar_label": "How To",
-		"init": false,
-		"postInit": false,
-		"generator": "UserDefined",
-		"saveToPath": "howto",
-		"documentation_type": "md",
-		"question": "",
-		"requestMessages": [
-			{
-				"role": "system",
-				"content": "If there is :::note, :::info, :::caution, :::tip, :::danger in the text, extract that from its location and format it correctly"
-			},
-			{
-				"role": "system",
-				"content": "Return your answer in md format"
-			},
-			{
-				"role": "system",
-				"content": "If you notice any secret information, replace it with ***** in your response"
-			},
-			{
-				"role": "user",
-				"content": "Give title and short description that this is an overview file for files located in directory\r\nGive short description of each file that is provided\r\nAdd link to each file, link should be the filename\r\n\r\n"
-			},
-			{
-				"role": "assistant",
-				"content": "This is first paragraph from file \"*.md\"\n                         # How to Create a How-To Guide for the CLI\n\n## Introduction\n\nCreating a How-To guide for the CLI involves adding a new entry in the `code-narrator.config.js` file and providing the necessary information for the guide. This includes the type, template, name, and any relevant files or JSON paths.\n\n## Step-by-Step Instructions\n\n1. Open the `code-narra...\n                         This is first paragraph from file \"*.md\"\n                         # How to Use Code-Narrator CLI\n\n## Introduction\n\nCode-Narrator is a CLI tool that helps you run the main app using npx. It allows you to use an optional config file, which Code-Narrator can generate for you if not provided. This guide will walk you through the installation and usage of Code-Narrator.\n\n## Step-by-Step Instructions\n\n1. **Install Code...\n                         This is first paragraph from file \"*.md\"\n                         # How to Edit Long Content in Code Narrator\n\n## Introduction\n\nWhen using Code Narrator, you may encounter a situation where the content is too long, and the generated documentation is not satisfactory. In such cases, you can manually edit the content to improve the documentation. This guide will walk you through the process of editing long content ...\n                         This is first paragraph from file \"*.md\"\n                         # How to Create a Custom Builder Using the Config File\n\n## Introduction\n\nIn this guide, we will walk you through the process of creating a custom builder using the config file in a project that uses the Code Narrator system. The Code Narrator system uses the Liquid template engine for template files. We will also provide examples of using args and ...\n                         "
-			}
-		],
-		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
-		"data": {
-			"has_children": true
 		}
 	},
 	{
@@ -2315,7 +2219,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2359,7 +2263,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2403,7 +2307,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigFileSerializer.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2447,9 +2351,57 @@
 			}
 		],
 		"id": "src\\config\\ConfigQuestion.ts",
-		"lastTouch": "2023-04-24T11:13:15.950Z",
+		"lastTouch": "2023-04-24T13:23:30.750Z",
 		"data": {
 			"parent": "config"
+		}
+	},
+	{
+		"name": "README",
+		"path": "howto\\overview_readme.md",
+		"folderPath": "howto",
+		"fileContent": "",
+		"documentation": "# Overview of Files in the Directory\n\nThis is an overview of the files located in the directory. Each file serves a specific purpose and is briefly described below. Click on the filename to access the file.\n\n## [How_to_create_HowTo.md](How_to_create_HowTo.md)\n\n**Title:** How to create a HowTo section in the config file\n\n**Short Description:** This guide will walk you through the process of adding a HowTo section in the config file for a software project. The HowTo section will help developers understand how to use the software and its features effectively.\n\n## [Content_too_long.md](Content_too_long.md)\n\n**Title:** Editing long content in Code Narrator\n\n**Short Description:** When using Code Narrator, you may encounter a situation where the content is too long, and the generated documentation is not satisfactory. In such cases, you can manually edit the content to improve the documentation. This guide will walk you through the process of editing long content in Code Narrator using ChatGPT.\n\n## [Create_your_own_custom_builder.md](Create_your_own_custom_builder.md)\n\n**Title:** Create your own custom builder\n\n**Short Description:** This guide will walk you through the process of creating a custom builder using the config file in a project that uses the Code Narrator documentation system. We will assume that you have already set up your project and have a `code-narrator.config.js` file in your root folder. The system uses the Liquid template engine for template files, and you must add a template file to the `.code-narrator/gpt_questions` directory.",
+		"isFolder": false,
+		"updated": "2023-04-24T13:24:45.319Z",
+		"sidebar_position": 11,
+		"sidebar_label": "README",
+		"init": false,
+		"postInit": false,
+		"generator": "UserDefined",
+		"saveToPath": "howto",
+		"documentation_type": "md",
+		"question": "",
+		"requestMessages": [
+			{
+				"role": "system",
+				"content": "Act as a documentation expert for software"
+			},
+			{
+				"role": "system",
+				"content": "If there is :::note, :::info, :::caution, :::tip, :::danger in the text, extract that from its location and format it correctly"
+			},
+			{
+				"role": "system",
+				"content": "Return your answer in md format"
+			},
+			{
+				"role": "system",
+				"content": "If you notice any secret information, replace it with ***** in your response"
+			},
+			{
+				"role": "user",
+				"content": "Give title and short description that this is an overview file for files located in directory\r\nGive title & short description of each file that is provided\r\nAdd link to each file, link is the filename"
+			},
+			{
+				"role": "assistant",
+				"content": "## 1st paragraph of \"How to create HowTo\" ###\n                         This guide will walk you through the process of adding a HowTo section in the config file for a software project. The HowTo section will help developers understand how to use the software and its features effectively.\n                         ## 1st paragraph of \"Content to long\" ###\n                         When using Code Narrator, you may encounter a situation where the content is too long, and the generated documentation is not satisfactory. In such cases, you can manually edit the content to improve the documentation. This guide will walk you through the process of editing long content in Code Narrator using ChatGPT.\n                         ## 1st paragraph of \"Create your own custom builder\" ###\n                         This guide will walk you through the process of creating a custom builder using the config file in a project that uses the Code Narrator documentation system. We will assume that you have already set up your project and have a `code-narrator.config.js` file in your root folder. The system uses the Liquid template engine for template files, and you must add a template file to the `.code-narrator/gpt_questions` directory.\n                         "
+			}
+		],
+		"id": "howto\\overview_readme.md",
+		"lastTouch": "2023-04-24T13:24:45.320Z",
+		"data": {
+			"has_children": true
 		}
 	}
 ]

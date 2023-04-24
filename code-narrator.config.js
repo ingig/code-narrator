@@ -15,7 +15,6 @@ const config = {
     source_path: "src",
     documentation_path: "docs",
     test_path: "__tests__",
-
     include: [
         "code-narrator.config.js",
         "src/**/*.ts"
@@ -66,9 +65,10 @@ const config = {
 
         },
         {
+            //https://github.com/ingig/code-narrator/tree/master/docs/howto
             type: "README",
             template: "overview_readme",
-            name: "How To",
+            name: "README",
             path: "howto",
             files: [{
                 path: "howto/*.md"
@@ -83,20 +83,6 @@ const config = {
                         {
                             path: "code-narrator.config.js",
                             extract: "builders"
-                        }
-                    ]
-                },
-                {
-                    type: "howto",
-                    template: "howto_use_cli",
-                    name: "Use CLI",
-                    files: [
-                        {
-                            path: "src/cli.ts"
-                        },
-                        {
-                            path: "package.json",
-                            JSONPath: ["$.repository"]
                         }
                     ]
                 },
@@ -119,7 +105,7 @@ const config = {
                             extract: 'how code parses content(...) and extract:'
                         }
                     ]
-                }
+                },
             ]
         }
     ]

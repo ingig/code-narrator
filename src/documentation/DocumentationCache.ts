@@ -88,8 +88,4 @@ export default class DocumentationCache {
         }
 
     }
-
-    static getProjectInfo() {
-
-    }
 }

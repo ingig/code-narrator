@@ -1,6 +1,4 @@
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, and documentation generation settings.
-
-The purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs and preferences.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, source paths, and documentation paths. This configuration file also specifies the builders that are responsible for generating different parts of the documentation.
 
 Here's an example of usage for the app-specific configs:
 
@@ -13,11 +11,34 @@ const config = {
         "code-narrator.config.js"
     ],
     // Other configurations...
+    builders: [
+        {
+            name: "Prerequisites",
+            template: `prerequisites`,
+            sidebarPosition: 2,
+            args: {
+                entryFileContent: 'content(./dist/src/cli.js)',
+                configFile: 'content(code-narrator.config.js)'
+            },
+            files: [
+                {
+                    path: "package.json",
+                    jsonPaths: [
+                        "$.dependencies",
+                        "$.devDependencies",
+                        "$.engine"
+                    ]
+                }
+            ],
+            type: 'Custom'
+        },
+        // Other builders...
+    ]
 };
 
 module.exports = config;
 ```
 
-In this example, the configuration file exports an object with various properties, such as `entry_file`, `cli_file`, `project_name`, and `config_files`. These properties are used by the Code Narrator application to determine the entry point of the application, the location of the CLI file, the name of the project, and the list of configuration files to be used.
+In this example, the `config` object contains various settings for the Code Narrator application. The `builders` array contains objects that define different builders for generating documentation. For instance, the "Prerequisites" builder generates a section in the documentation with information about the project's dependencies, devDependencies, and engine from the `package.json` file.
 
-As for the other configuration files, I do not recognize them, so I cannot provide any information about them.
+As for the other configuration files, I cannot provide information about them without their content or context.

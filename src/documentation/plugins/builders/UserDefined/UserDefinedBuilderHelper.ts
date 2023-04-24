@@ -76,14 +76,16 @@ export default class UserDefinedBuilderHelper {
                 if (files[i].path.indexOf('*') != -1) {
                     let dirFiles = this.findFiles(files[i].path);
                     dirFiles.forEach(file => {
-                        let overview = this.extractContentBetweenHeaders(file.documentation);
-                        extraInfo += `This is first paragraph from file "${path.basename(files[i].path)}"
+                        if (file.name.toLowerCase() != 'readme') {
+                            let overview = this.extractContentBetweenHeaders(file.documentation);
+                            extraInfo += `## 1st paragraph of "${file.name}" ###
                          ${overview}
                          `
+                        }
                     })
                 } else {
                     let overview = this.extractContentBetweenHeaders(content);
-                    extraInfo = `Here is overview for ${files[i].path}\n${overview}`
+                    extraInfo = `## 1st paragraph of "${files[i].path}" ### \n${overview}`
                 }
             } else {
                 extraInfo = `File Content for ${files[i].path}\n${content}`
@@ -108,6 +110,12 @@ export default class UserDefinedBuilderHelper {
 
 
     public extractContentBetweenHeaders(markdown: string): string {
+        let regex = new RegExp(/^(?!#).*$/gm)
+        let match = markdown.match(regex);
+        for (let i=0;match && i < match.length;i++) {
+            if (match[i].trim() != '') return match[i];
+        }
+
         if (markdown.length < 350) return markdown;
         return markdown.substring(0, 350) + "...";
 
