@@ -3,10 +3,10 @@
 		"name": "code-narrator.config.js",
 		"path": "code-narrator.config.js",
 		"folderPath": "./",
-		"fileContent": "/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    files: [\r\n                        {\r\n                            path: 'src/utils/CliHelper.ts',\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;",
-		"documentation": "Here is a detailed description of the `code-narrator.config.js` file and its purpose in the application:\n\nThe `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator project. It contains various settings and configurations that are required for the proper functioning of the application. These settings include file paths, project details, and documentation generation options.\n\nBelow is a breakdown of the configuration properties in the `code-narrator.config.js` file:\n\n- `entry_file`: The entry point of the application (e.g., `./dist/src/App.js`).\n- `cli_file`: The path to the CLI file (e.g., `./dist/src/cli.js`).\n- `project_name`: The name of the project (e.g., `code-narrator`).\n- `config_files`: An array of configuration files used by the project (e.g., `[\"code-narrator.config.js\"]`).\n- `readmeRoot`: A boolean value indicating whether the README file should be treated as the root of the documentation.\n- `folderRootFileName`: The name of the root file for each folder in the documentation (e.g., `README`).\n- `repository_url`: The URL of the project's repository (e.g., `https://github.com/ingig/code-narrator`).\n- `project_file`: The path to the project's package.json file (e.g., `package.json`).\n- `source_path`: The path to the source code directory (e.g., `src`).\n- `documentation_path`: The path to the documentation directory (e.g., `docs`).\n- `test_path`: The path to the test directory (e.g., `__tests__`).\n- `include`: An array of file patterns to include in the documentation generation process (e.g., `[\"code-narrator.config.js\", \"src/**/*.ts\"]`).\n- `builders`: An array of builder configurations for generating documentation. Each builder object contains properties such as `name`, `template`, `sidebarPosition`, `args`, `files`, and `type`.\n\nTo retrieve a value from the config file, you can use the following example:\n\n```javascript\nconst config = require('./code-narrator.config.js');\nconsole.log(config.entry_file); // Output: \"./dist/src/App.js\"\n```\n\n:::note\nPlease note that the actual values in the configuration file may vary depending on the specific project setup and requirements.\n:::",
+		"fileContent": "/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    name:\"HowTo run CLI\",\r\n                    template: \"howto_run_cli\",\r\n                    args : {\r\n                        docUrl : \"https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md\"\r\n                    },\r\n                    files : [\r\n                        {\r\n                            path:\"src/utils/CliHelper.ts\",\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;",
+		"documentation": "The `code-narrator.config.js` file is a configuration file for the Code Narrator project. It contains various settings and options that help customize the behavior of the application. Below is a detailed description of each configuration option:\n\n1. `entry_file`: The entry point of the application. In this case, it is set to `./dist/src/App.js`.\n\n2. `cli_file`: The path to the CLI file. In this case, it is set to `./dist/src/cli.js`.\n\n3. `project_name`: The name of the project. In this case, it is set to \"code-narrator\".\n\n4. `config_files`: An array of configuration files used by the project. In this case, it includes only \"code-narrator.config.js\".\n\n5. `readmeRoot`: A boolean value that indicates whether the root folder should contain a README file. In this case, it is set to `true`.\n\n6. `folderRootFileName`: The name of the root folder's README file. In this case, it is set to 'README'.\n\n7. `repository_url`: The URL of the project's repository. In this case, it is set to \"https://github.com/ingig/code-narrator\".\n\n8. `project_file`: The path to the project's package.json file. In this case, it is set to \"package.json\".\n\n9. `source_path`: The path to the source code folder. In this case, it is set to \"src\".\n\n10. `documentation_path`: The path to the documentation folder. In this case, it is set to \"docs\".\n\n11. `test_path`: The path to the test folder. In this case, it is set to \"__tests__\".\n\n12. `include`: An array of files and folders to be included in the documentation. In this case, it includes \"code-narrator.config.js\" and all TypeScript files in the \"src\" folder.\n\n13. `builders`: An array of builder objects that define how the documentation should be generated. Each builder object has the following properties:\n\n    - `name`: The name of the builder.\n    - `template`: The template used by the builder.\n    - `sidebarPosition`: The position of the builder in the sidebar.\n    - `args`: Arguments passed to the builder.\n    - `files`: An array of files used by the builder.\n    - `type`: The type of the builder (e.g., \"Custom\", \"README\", \"howto\").\n\nTo retrieve a value from the config file, you can use the following syntax:\n\n```javascript\nconst config = require('./code-narrator.config.js');\nconsole.log(config.entry_file); // Output: \"./dist/src/App.js\"\n```\n\n:::note\nPlease note that any sensitive information in the config file should be replaced with ***** before sharing it with others.\n:::",
 		"isFolder": false,
-		"updated": "2023-04-24T13:35:13.531Z",
+		"updated": "2023-04-24T15:27:31.434Z",
 		"sidebar_position": 0,
 		"sidebar_label": "Code-narrator.config.js",
 		"init": false,
@@ -34,11 +34,11 @@
 			},
 			{
 				"role": "user",
-				"content": "These are the app-specific config files called code-narrator.config.js.\r\nWhen you use code-narrator in your project, you need set these configurations correctly to match your project.\r\nGive me a detailed description of them, and what their purpose is in the application if you can decide.\r\nGive example on how to retrieve from the config file\r\n###\r\n/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    files: [\r\n                        {\r\n                            path: 'src/utils/CliHelper.ts',\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\r\n###"
+				"content": "These are the app-specific config files called code-narrator.config.js.\r\nWhen you use code-narrator in your project, you need set these configurations correctly to match your project.\r\nGive me a detailed description of them, and what their purpose is in the application if you can decide.\r\nGive example on how to retrieve from the config file\r\n###\r\n/**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    name:\"HowTo run CLI\",\r\n                    template: \"howto_run_cli\",\r\n                    args : {\r\n                        docUrl : \"https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md\"\r\n                    },\r\n                    files : [\r\n                        {\r\n                            path:\"src/utils/CliHelper.ts\",\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\r\n###"
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -48,9 +48,9 @@
 		"path": "Configuration",
 		"folderPath": "./Configuration",
 		"fileContent": "",
-		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, source paths, and documentation paths. This file also specifies the builders that are responsible for generating different parts of the documentation.\n\nHere's an example of usage for the app-specific configs:\n\n```javascript\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // Other configurations...\n    builders: [\n        {\n            name: \"Prerequisites\",\n            template: `prerequisites`,\n            sidebarPosition: 2,\n            args: {\n                entryFileContent: 'content(./dist/src/cli.js)',\n                configFile: 'content(code-narrator.config.js)'\n            },\n            files: [\n                {\n                    path: \"package.json\",\n                    jsonPaths: [\n                        \"$.dependencies\",\n                        \"$.devDependencies\",\n                        \"$.engine\"\n                    ]\n                }\n            ],\n            type: 'Custom'\n        },\n        // Other builders...\n    ]\n};\n```\n\nIn this example, the configuration object `config` contains various settings for the Code Narrator application. The `builders` array contains different builder objects responsible for generating specific parts of the documentation. For instance, the \"Prerequisites\" builder generates a section with prerequisites based on the `prerequisites` template and has a sidebar position of 2.\n\nAs for the other configuration files, there are no additional files mentioned in the provided text.",
+		"documentation": "The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, and documentation generation settings.\n\nThe purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs and project requirements.\n\nHere is an example of usage for the app-specific configs:\n\n```javascript\nconst config = {\n    entry_file: \"./dist/src/App.js\",\n    cli_file: \"./dist/src/cli.js\",\n    project_name: \"code-narrator\",\n    config_files: [\n        \"code-narrator.config.js\"\n    ],\n    // Other configurations...\n};\n\nmodule.exports = config;\n```\n\nIn this example, the configuration file exports an object containing various settings for the Code Narrator application. The `entry_file` and `cli_file` properties specify the entry points for the application and the CLI, respectively. The `project_name` property sets the name of the project, and the `config_files` property lists the configuration files used by the application.\n\nAs for the other configuration files, I do not recognize them, so I cannot provide any information about them.",
 		"isFolder": true,
-		"updated": "2023-04-24T13:36:18.025Z",
+		"updated": "2023-04-24T15:28:21.950Z",
 		"sidebar_position": 3,
 		"sidebar_label": "Configuration",
 		"init": false,
@@ -78,11 +78,11 @@
 			},
 			{
 				"role": "user",
-				"content": "This is (or are) the app-specific config file(s) for code-narrator.\r\nGive me a detailed description, and what their purpose is in the application if you can decide.\r\nGive an example of usage for the app-specific configs\r\n###\r\ncode-narrator.config.js\r\n###\r\n\r\nHere is the content of the app specific config file(s)\r\n###\r\n--- Start code-narrator.config.js ---\n            /**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_use_cli\",\r\n                    files: [\r\n                        {\r\n                            path: 'src/utils/CliHelper.ts',\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\n            --- End code-narrator.config.js ---\n            \r\n###\r\n\r\nThese are other configuration files, give short general information about each of them, but only if you recognize them.\r\nIf you do not recognize them, then don't mention the config\r\n###\r\n\r\n###\r\n"
+				"content": "This is (or are) the app-specific config file(s) for code-narrator.\r\nGive me a detailed description, and what their purpose is in the application if you can decide.\r\nGive an example of usage for the app-specific configs\r\n###\r\ncode-narrator.config.js\r\n###\r\n\r\nHere is the content of the app specific config file(s)\r\n###\r\n--- Start code-narrator.config.js ---\n            /**\r\n * @type {ICodeNarratorConfig}\r\n */\r\nconst config = {\r\n    entry_file: \"./dist/src/App.js\",\r\n    cli_file: \"./dist/src/cli.js\",\r\n    project_name: \"code-narrator\",\r\n    config_files: [\r\n        \"code-narrator.config.js\"\r\n    ],\r\n    readmeRoot: true,\r\n    folderRootFileName: 'README',\r\n    repository_url: \"https://github.com/ingig/code-narrator\",\r\n    project_file: \"package.json\",\r\n    source_path: \"src\",\r\n    documentation_path: \"docs\",\r\n    test_path: \"__tests__\",\r\n    include: [\r\n        \"code-narrator.config.js\",\r\n        \"src/**/*.ts\"\r\n    ],\r\n    builders: [\r\n        {\r\n            name: \"Prerequisites\",\r\n            template: `prerequisites`,\r\n            sidebarPosition: 2,\r\n            args: {\r\n                entryFileContent: 'content(./dist/src/cli.js)',\r\n                configFile: 'content(code-narrator.config.js)'\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    jsonPaths: [\r\n                        \"$.dependencies\",\r\n                        \"$.devDependencies\",\r\n                        \"$.engine\"\r\n                    ]\r\n                }\r\n            ],\r\n            type: 'Custom'\r\n        },\r\n        {\r\n            type: \"README\",\r\n            sidebarPosition: 1,\r\n            template: \"README\",\r\n            name: \"ReadMe\",\r\n            args: {\r\n                entryFileContent: \"content(./src/cli.ts)\"\r\n            },\r\n            files: [\r\n                {\r\n                    path: \"package.json\",\r\n                    JSONPath: [\r\n                        \"$.name\",\r\n                        \"$.description\",\r\n                        \"$.version\",\r\n                        \"$.homepage\",\r\n                        \"$.bugs\",\r\n                        \"$.author\",\r\n                        \"$.repository\", \"$.license\"\r\n                    ]\r\n                }\r\n            ]\r\n\r\n        },\r\n        {\r\n            //https://github.com/ingig/code-narrator/tree/master/docs/howto\r\n            type: \"README\",\r\n            template: \"overview_readme\",\r\n            name: \"README\",\r\n            path: \"howto\",\r\n            files: [{\r\n                path: \"howto/*.md\"\r\n            }\r\n            ],\r\n            pages: [\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_howto\",\r\n                    name: \"How to create HowTo\",\r\n                    files: [\r\n                        {\r\n                            path: \"code-narrator.config.js\",\r\n                            extract: \"builders\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_content_to_long\",\r\n                    name: \"Content to long\",\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    name:\"HowTo run CLI\",\r\n                    template: \"howto_run_cli\",\r\n                    args : {\r\n                        docUrl : \"https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md\"\r\n                    },\r\n                    files : [\r\n                        {\r\n                            path:\"src/utils/CliHelper.ts\",\r\n                            extract: \"what arguments are available\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    type: \"howto\",\r\n                    template: \"howto_create_custom_builder\",\r\n                    name: \"Create your own custom builder\",\r\n                    files: [\r\n                        {\r\n                            path: 'code-narrator.config.js',\r\n                            extract: 'builders' //You can use natural language to extract, e.g. \"first 20 lines\", \"first paragraph\"\r\n                        },\r\n                        {\r\n                            path: 'src/documentation/builders/UserDefinedBuilderHelper.ts',\r\n                            extract: 'how code parses content(...) and extract:'\r\n                        }\r\n                    ]\r\n                },\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nmodule.exports = config;\n            --- End code-narrator.config.js ---\n            \r\n###\r\n\r\nThese are other configuration files, give short general information about each of them, but only if you recognize them.\r\nIf you do not recognize them, then don't mention the config\r\n###\r\n\r\n###\r\n"
 			}
 		],
 		"id": "Configuration",
-		"lastTouch": "2023-04-24T13:57:45.041Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"appSpecificConfigFiles": [
 				"code-narrator.config.js"
@@ -130,7 +130,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "src"
 		}
@@ -170,7 +170,7 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "src"
 		}
@@ -214,7 +214,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -262,7 +262,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -306,7 +306,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -350,7 +350,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -394,7 +394,7 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -434,7 +434,7 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -478,7 +478,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -522,7 +522,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -566,7 +566,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -610,7 +610,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -654,7 +654,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -698,7 +698,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -746,7 +746,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -790,7 +790,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -838,7 +838,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -882,7 +882,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -926,7 +926,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -966,7 +966,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -1043,7 +1043,7 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1083,7 +1083,7 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1127,7 +1127,7 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1171,7 +1171,7 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1215,7 +1215,7 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1255,7 +1255,7 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1299,7 +1299,7 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1339,7 +1339,7 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1379,7 +1379,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1416,7 +1416,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1453,7 +1453,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1490,7 +1490,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1527,7 +1527,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1564,7 +1564,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1601,7 +1601,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1675,7 +1675,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1712,7 +1712,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1749,7 +1749,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1786,7 +1786,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1823,7 +1823,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1860,7 +1860,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "README",
@@ -1897,7 +1897,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-24T14:58:37.175Z"
+		"lastTouch": "2023-04-24T15:45:35.703Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -1942,7 +1942,7 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"has_children": true
 		}
@@ -1951,10 +1951,10 @@
 		"name": "ReadMe",
 		"path": "README.md",
 		"folderPath": "",
-		"fileContent": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nCurrent version: 1.0.6\n\n## Authors\n\nIngi Gauti Ragnarsson (@ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
-		"documentation": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A `code-narrator.config.js` file is created on first run and sets the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nThis project uses [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/ingig/code-narrator/tags).\n\n## Authors\n\n- Ingi Gauti Ragnarsson [@ingig](https://github.com/ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
+		"fileContent": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A `code-narrator.config.js` file is created on first run and sets the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nThis project uses [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/ingig/code-narrator/tags).\n\n## Authors\n\n- Ingi Gauti Ragnarsson [@ingig](https://github.com/ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
+		"documentation": "# Code-Narrator\n\nCode-Narrator is a tool that uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A configuration `code-narrator.config.js` file is created on the first run and sets the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run the tool with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the settings for your project.\n\n## Discussion\n\nJoin the discussion about the project at [https://github.com/ingig/code-narrator/discussions](https://github.com/ingig/code-narrator/discussions).\n\n## Reporting Bugs\n\nReport any bugs or issues at the [repository](https://github.com/ingig/code-narrator) and [homepage](https://github.com/ingig/code-narrator).\n\n## Version\n\n1.0.8\n\n## Authors\n\nIngi Gauti Ragnarsson @ingig\n\n## License\n\nISC",
 		"isFolder": false,
-		"updated": "2023-04-24T14:59:40.818Z",
+		"updated": "2023-04-24T15:29:53.718Z",
 		"sidebar_position": 1,
 		"sidebar_label": "ReadMe",
 		"init": false,
@@ -1982,15 +1982,15 @@
 			},
 			{
 				"role": "user",
-				"content": "Create a \"ReadMe\" guide for the project, named \"code-narrator\".\r\nInclude the following:\r\nTitle, Description,\r\nGetting Started by installing npm package, how to run it with npx\r\nConfiguration is optional and will be generated on first run\r\nReporting bugs, repository and homepage\r\nVersioning\r\nAuthors\r\nLicense\r\n\r\nThis is the entry file:\r\n###\r\n#!/usr/bin/env node\r\n\r\nimport App from \"./App\";\r\nimport ICodeNarratorConfig from \"./config/ICodeNarratorConfig\";\r\nimport fs from \"fs\";\r\nimport yargs from \"yargs\";\r\nimport path from \"path\";\r\nimport * as process from \"process\";\r\nimport CliHelper from \"./utils/CliHelper\";\r\n\r\n(async () => {\r\n\r\n    let cliHelper = new CliHelper()\r\n    const argv = await cliHelper.getArgv();\r\n    let userConfig = await cliHelper.getConfig(argv);\r\n\r\n    console.log('Starting code-narrator')\r\n\r\n    let app = new App();\r\n    await app.run(userConfig);\r\n\r\n})().catch((e: any) => {\r\n    console.error(e);\r\n});\r\n###\r\n"
+				"content": "Create a \"ReadMe\" guide for the project, named \"code-narrator\".\r\nInclude the following:\r\nTitle, Description,\r\nGetting Started by installing npm package, how to run it with npx\r\nConfiguration is optional and will be generated on first run\r\nDiscussion about the project at https://github.com/ingig/code-narrator/discussions\r\nReporting bugs, repository and homepage\r\nVersion\r\nAuthors\r\nLicense\r\n\r\nThis is the entry file:\r\n###\r\n#!/usr/bin/env node\r\n\r\nimport App from \"./App\";\r\nimport ICodeNarratorConfig from \"./config/ICodeNarratorConfig\";\r\nimport fs from \"fs\";\r\nimport yargs from \"yargs\";\r\nimport path from \"path\";\r\nimport * as process from \"process\";\r\nimport CliHelper from \"./utils/CliHelper\";\r\n\r\n(async () => {\r\n\r\n    let cliHelper = new CliHelper()\r\n    const argv = await cliHelper.getArgv();\r\n    let userConfig = await cliHelper.getConfig(argv);\r\n\r\n    console.log('Starting code-narrator')\r\n\r\n    let app = new App();\r\n    await app.run(userConfig);\r\n\r\n})().catch((e: any) => {\r\n    console.error(e);\r\n});\r\n###\r\n"
 			},
 			{
 				"role": "assistant",
-				"content": "$.name:\"code-narrator\"\n$.description:\"Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Configuration code-narrator.config.js file is created on first run and sets the configuration for your project, such as project path, doc, documentation type and more. The package can be install using 'npm i code-narrator -D'\"\n$.version:\"1.0.7\"\n$.homepage:\"https://github.com/ingig/code-narrator\"\n$.bugs:{\"url\":\"https://github.com/ingig/code-narrator/issues\"}\n$.author:\"Ingi Gauti Ragnarsson @ingig\"\n$.repository:{\"url\":\"https://github.com/ingig/code-narrator\"}\n$.license:\"ISC\"\n"
+				"content": "$.name:\"code-narrator\"\n$.description:\"Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Configuration code-narrator.config.js file is created on first run and sets the configuration for your project, such as project path, doc, documentation type and more. The package can be install using 'npm i code-narrator -D'\"\n$.version:\"1.0.8\"\n$.homepage:\"https://github.com/ingig/code-narrator\"\n$.bugs:{\"url\":\"https://github.com/ingig/code-narrator/issues\"}\n$.author:\"Ingi Gauti Ragnarsson @ingig\"\n$.repository:{\"url\":\"https://github.com/ingig/code-narrator\"}\n$.license:\"ISC\"\n"
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-24T14:59:40.819Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"has_children": true
 		}
@@ -2042,7 +2042,7 @@
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "README"
 		}
@@ -2086,7 +2086,7 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2138,7 +2138,7 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2223,7 +2223,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2267,7 +2267,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2311,7 +2311,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigFileSerializer.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2355,7 +2355,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigQuestion.ts",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2403,7 +2403,7 @@
 			}
 		],
 		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"has_children": true
 		}
@@ -2455,7 +2455,7 @@
 			}
 		],
 		"id": "howto\\howto_run_cli.md",
-		"lastTouch": "2023-04-24T14:58:37.175Z",
+		"lastTouch": "2023-04-24T15:45:35.703Z",
 		"data": {
 			"parent": "README"
 		}

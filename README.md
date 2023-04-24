@@ -1,8 +1,6 @@
-# code-narrator
+# Code-Narrator
 
-## Description
-
-code-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A `code-narrator.config.js` file is created on first run and sets the configuration for your project, such as project path, doc, documentation type, and more.
+Code-Narrator is a tool that uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A configuration `code-narrator.config.js` file is created on the first run and sets the configuration for your project, such as project path, doc, documentation type, and more.
 
 ## Getting Started
 
@@ -12,7 +10,7 @@ code-narrator uses OpenAI to generate documentation for your source code, as wel
 npm i code-narrator -D
 ```
 
-2. Run code-narrator with npx:
+2. Run the tool with npx:
 
 ```bash
 npx code-narrator
@@ -20,20 +18,24 @@ npx code-narrator
 
 ## Configuration
 
-Configuration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the configuration for your project.
+Configuration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the settings for your project.
+
+## Discussion
+
+Join the discussion about the project at [https://github.com/ingig/code-narrator/discussions](https://github.com/ingig/code-narrator/discussions).
 
 ## Reporting Bugs
 
-Please report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).
+Report any bugs or issues at the [repository](https://github.com/ingig/code-narrator) and [homepage](https://github.com/ingig/code-narrator).
 
-## Versioning
+## Version
 
-This project uses [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/ingig/code-narrator/tags).
+1.0.8
 
 ## Authors
 
-- Ingi Gauti Ragnarsson [@ingig](https://github.com/ingig)
+Ingi Gauti Ragnarsson @ingig
 
 ## License
 
-This project is licensed under the ISC License.
+ISC
