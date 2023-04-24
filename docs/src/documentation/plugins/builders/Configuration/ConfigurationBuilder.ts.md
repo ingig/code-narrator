@@ -1,100 +1,66 @@
-Configuration/' + this.appSpecificConfigFiles[i],
-                    folderPath: './Configuration',
-                    sidebarPosition: 3,
-                    data: data
-                }
-            )
-        }
-    }
+# ConfigurationBuilder.ts
 
-    private async generateGeneralConfigFiles() {
-        for (let i = 0; i < this.configFiles.length; i++) {
-            let document = DocumentationCache.get(this.configFiles[i])
-            if (!this.hasChanged(document)) {
-                continue;
-            }
-            this.updateSummary = true;
-            let content = FileStructure.getContent(this.configFiles[i])
-            if (content == '') continue;
-
-            let data : any = {
-                parent : 'Configuration'
-            }
-            let args = {configFile: content, fileName: this.configFiles[i]}
-            await super.generateDocumentationAndCache({
-                    args: args,
-                    template: 'general_config',
-                    name: this.configFiles[i],
-                    pathToFile: './Configuration/' + this.configFiles[i],
-                    folderPath: './Configuration',
-                    sidebarPosition: 3,
-                    data: data
-                }
-            )
-        }
-    }
-
-    private appSpecificConfigAndCacheSameSize(document: Document) {
-        return document.data.appSpecificConfigFiles.length == ConfigHelper.config.config_files.length;
-    }
-
-    private hasChanged(document: Document) {
-        return !document || document.hasChanged();
-    }
-}
-###
-
-:::info
-**ConfigurationBuilder.ts**
-:::
-
-## Overview
-
-`ConfigurationBuilder.ts` is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating documentation for configuration files in a project. The class handles both application-specific and general configuration files.
+This is a TypeScript code file that defines the `ConfigurationBuilder` class, which is responsible for generating documentation for configuration files in a software project. The class extends the `BaseBuilder` class and provides methods to generate documentation for both application-specific and general configuration files.
 
 ## Usage
 
-To use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method.
+To use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method. This method will generate documentation for all configuration files specified in the `ConfigHelper` class.
 
 ```typescript
-const configurationBuilder = new ConfigurationBuilder();
-await configurationBuilder.generate();
+import ConfigurationBuilder from './ConfigurationBuilder';
+
+const configBuilder = new ConfigurationBuilder();
+await configBuilder.generate();
 ```
 
-## Methods
+## Class Methods
 
 ### constructor()
 
-The constructor initializes the `ConfigurationBuilder` instance with the 'Configuration' category.
+The constructor initializes the `ConfigurationBuilder` class and sets the default values for the class properties.
 
 ### generate(): Promise<void>
 
-This asynchronous method generates the documentation for the configuration files. It first prepares the summary, then generates the documentation for application-specific and general configuration files, and finally generates the summary.
+This asynchronous method generates the documentation for all configuration files specified in the `ConfigHelper` class. It calls the `prepareSummary()`, `generateAppConfigFiles()`, and `generateGeneralConfigFiles()` methods to generate the documentation.
 
 ### prepareSummary(): Promise<void>
 
-This private asynchronous method prepares the summary of the configuration files. It checks if the configuration files have changed and updates the summary accordingly.
+This private asynchronous method prepares the summary of the configuration files by checking if the documentation cache is up-to-date. If the cache is not up-to-date, it updates the `appSpecificConfigFiles` and `configFiles` properties of the class.
 
 ### generateSummary(): Promise<void>
 
-This private asynchronous method generates the summary of the configuration files. It updates the summary only if there are changes in the configuration files.
+This private asynchronous method generates the summary of the configuration files if the `updateSummary` property is set to `true`. It saves the generated documentation and cache data.
 
 ### haveConfigFilesChanged(): boolean
 
-This private method checks if the configuration files have changed. It returns `true` if there are changes, and `false` otherwise.
+This private method checks if the configuration files have changed since the last documentation generation. It returns `true` if any of the configuration files have changed, otherwise, it returns `false`.
 
 ### generateAppConfigFiles(): Promise<void>
 
-This private asynchronous method generates the documentation for application-specific configuration files.
+This private asynchronous method generates the documentation for application-specific configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.
 
 ### generateGeneralConfigFiles(): Promise<void>
 
-This private asynchronous method generates the documentation for general configuration files.
+This private asynchronous method generates the documentation for general configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.
 
-### appSpecificConfigAndCacheSameSize(document: Document): boolean
+## Properties
 
-This private method checks if the application-specific configuration files and cache have the same size. It returns `true` if they have the same size, and `false` otherwise.
+- `configFiles: string[]`: An array of general configuration file paths.
+- `appSpecificConfigFiles: string[]`: An array of application-specific configuration file paths.
+- `updateSummary: boolean`: A flag indicating whether the summary needs to be updated.
 
-### hasChanged(document: Document): boolean
+## Technical Concepts
 
-This private method checks if a document has changed. It returns `true` if the document has changed, and `false` otherwise.
+- **DocumentationCache**: A utility class that manages the cache of generated documentation.
+- **ConfigHelper**: A utility class that provides access to the configuration settings of the software project.
+- **FolderStructure**: A utility class that provides methods to work with the folder structure of the software project.
+- **FileStructure**: A utility class that provides methods to work with the file structure of the software project.
+- **Helper**: A utility class that provides various helper methods, such as parsing JSON data.
+
+## Sections
+
+- [Usage](#usage)
+- [Class Methods](#class-methods)
+- [Properties](#properties)
+- [Technical Concepts](#technical-concepts)
+- [Sections](#sections)

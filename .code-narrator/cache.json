@@ -38,7 +38,7 @@
 			}
 		],
 		"id": "code-narrator.config.js",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -130,7 +130,7 @@
 			}
 		],
 		"id": "src\\App.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "src"
 		}
@@ -170,7 +170,7 @@
 			}
 		],
 		"id": "src\\cli.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "src"
 		}
@@ -214,7 +214,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigGenerator.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -262,7 +262,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigHelper.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -306,7 +306,7 @@
 			}
 		],
 		"id": "src\\config\\DefaultSettings.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -350,7 +350,7 @@
 			}
 		],
 		"id": "src\\config\\IBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -394,7 +394,7 @@
 			}
 		],
 		"id": "src\\config\\ICodeNarratorConfig.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -434,7 +434,7 @@
 			}
 		],
 		"id": "src\\documentation\\Document.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -478,7 +478,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -522,7 +522,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationCache.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -566,7 +566,7 @@
 			}
 		],
 		"id": "src\\documentation\\DocumentationGenerator.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "documentation"
 		}
@@ -610,7 +610,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\GenerateOptions.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "plugins"
 		}
@@ -654,7 +654,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\BaseBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "builders"
 		}
@@ -663,10 +663,10 @@
 		"name": "ConfigurationBuilder.ts",
 		"path": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
 		"folderPath": "src\\documentation\\plugins\\builders\\Configuration",
-		"fileContent": "import Document from \"../../../Document\";\r\nimport FolderStructure from \"../../../../utils/FolderStructure\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport path from \"path\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\n\r\nexport default class ConfigurationBuilder extends BaseBuilder {\r\n\r\n    configFiles: string[] = []\r\n    appSpecificConfigFiles: string[] = []\r\n    updateSummary = false;\r\n\r\n    constructor() {\r\n        super('Configuration');\r\n    }\r\n\r\n\r\n    public async generate() {\r\n        if (ConfigHelper.config.config_files?.length == 0) return;\r\nreturn;\r\n        await this.prepareSummary();\r\n        await this.generateAppConfigFiles();\r\n        await this.generateGeneralConfigFiles();\r\n        await this.generateSummary();\r\n    }\r\n\r\n    private async prepareSummary() {\r\n        let document = DocumentationCache.get('Configuration');\r\n        if (document) {\r\n\r\n            if (document.data && this.appSpecificConfigAndCacheSameSize(document)) {\r\n                if (document.data.appSpecificConfigFiles) this.appSpecificConfigFiles = document.data.appSpecificConfigFiles;\r\n                if (document.data.configFiles) this.configFiles = document.data.configFiles;\r\n            }\r\n        }\r\n\r\n        if (document && !this.haveConfigFilesChanged()) {\r\n            return;\r\n        }\r\n        this.updateSummary = true;\r\n        let config = ConfigHelper.config;\r\n        let appName = config.project_name;\r\n        let listOfFilesAndFolders = '';\r\n        let project_path = process.cwd();\r\n        let files = FolderStructure.getFiles(project_path, 0);\r\n\r\n        let configPath = path.join(project_path, 'config');\r\n        if (FolderStructure.exists(configPath)) {\r\n            let configFiles = FolderStructure.getFiles(configPath, 0);\r\n            configFiles.forEach(configFile => {\r\n                files.push(configFile);\r\n            })\r\n        }\r\n        files.forEach(file => {\r\n            if (file.path.indexOf('/config') != -1) {\r\n                listOfFilesAndFolders += 'config/' + file.name + '\\n';\r\n            } else {\r\n                listOfFilesAndFolders += file.name + '\\n'\r\n            }\r\n        })\r\n\r\n        let response = await super.getAnswer('Configuration', {\r\n            appName,\r\n            listOfFilesAndFolders\r\n        }, 'what_are_config_files');\r\n        let jsons = Helper.getJsons(response.answer)\r\n        if (jsons.length > 0) {\r\n            let fileResults = jsons[0];\r\n            this.appSpecificConfigFiles = [];\r\n            this.configFiles = [];\r\n\r\n            fileResults.forEach((file: any) => {\r\n                if (file.isAppSpecific) {\r\n                    this.appSpecificConfigFiles.push(file.path);\r\n                } else if (file.isConfig) {\r\n                    this.configFiles.push(file.path)\r\n                }\r\n            })\r\n        }\r\n    }\r\n\r\n    private async generateSummary() {\r\n        if (!this.updateSummary) {\r\n            return;\r\n        }\r\n\r\n        let data: any = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles,\r\n            configFiles: this.configFiles,\r\n            has_children : true\r\n        }\r\n\r\n        let appSpecificConfigContent = '';\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            appSpecificConfigContent += `--- Start ${this.appSpecificConfigFiles[0]} ---\r\n            ${FileStructure.getContent(this.appSpecificConfigFiles[0])}\r\n            --- End ${this.appSpecificConfigFiles[0]} ---\r\n            `\r\n        }\r\n\r\n        let args = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles.join('\\n'),\r\n            appSpecificConfigContent,\r\n            configFiles: this.configFiles.join('\\n')\r\n        }\r\n        await super.generateDocumentationAndCache({\r\n                args: args, name: 'Configuration', saveToPath: './Configuration',\r\n                pathToFile: './Configuration', folderPath: './Configuration',\r\n                sidebarPosition: 3, data: data\r\n            }\r\n        )\r\n    }\r\n\r\n    private haveConfigFilesChanged() {\r\n        let needsUpdate = false;\r\n        if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;\r\n\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.appSpecificConfigFiles.length;\r\n            }\r\n        }\r\n\r\n        for (let i = 0; !needsUpdate && i < this.configFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.configFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.configFiles.length;\r\n            }\r\n        }\r\n        return needsUpdate;\r\n    }\r\n\r\n    private async generateAppConfigFiles() {\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.appSpecificConfigFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.appSpecificConfigFiles[i])\r\n            if (content == '') continue;\r\n\r\n            let data : any = {\r\n                parent : 'Configuration'\r\n            }\r\n            let args = {configFile: content, fileName: this.appSpecificConfigFiles[i]}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'app_config',\r\n                    name: this.appSpecificConfigFiles[i],\r\n                    pathToFile: './' + this.appSpecificConfigFiles[i],\r\n                    folderPath: './',\r\n                    sidebarPosition: i,\r\n                    saveToPath: './Configuration/',\r\n                    data : data,\r\n                prevDocument : document\r\n                }\r\n            )\r\n        }\r\n    }\r\n\r\n    private async generateGeneralConfigFiles() {\r\n        for (let i = 0; i < this.configFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.configFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.configFiles[i])\r\n            let args = {configFile: content}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'general_config',\r\n                    name: this.configFiles[i], pathToFile: './' + this.configFiles[i], folderPath: './', sidebarPosition: i,\r\n                    saveToPath: './Configuration/'\r\n                }\r\n            )\r\n        }\r\n    }\r\n\r\n    public async render(document: Document): Promise<string> {\r\n        return document.documentation;\r\n    }\r\n\r\n\r\n    private appSpecificConfigAndCacheSameSize(document: Document) {\r\n        if (!document.data) return false;\r\n        return (document.data.appSpecificConfigFiles?.length == ConfigHelper.config.config_files.length)\r\n    }\r\n}",
-		"documentation": "Configuration/' + this.appSpecificConfigFiles[i],\n                    folderPath: './Configuration',\n                    sidebarPosition: 3,\n                    data: data\n                }\n            )\n        }\n    }\n\n    private async generateGeneralConfigFiles() {\n        for (let i = 0; i < this.configFiles.length; i++) {\n            let document = DocumentationCache.get(this.configFiles[i])\n            if (!this.hasChanged(document)) {\n                continue;\n            }\n            this.updateSummary = true;\n            let content = FileStructure.getContent(this.configFiles[i])\n            if (content == '') continue;\n\n            let data : any = {\n                parent : 'Configuration'\n            }\n            let args = {configFile: content, fileName: this.configFiles[i]}\n            await super.generateDocumentationAndCache({\n                    args: args,\n                    template: 'general_config',\n                    name: this.configFiles[i],\n                    pathToFile: './Configuration/' + this.configFiles[i],\n                    folderPath: './Configuration',\n                    sidebarPosition: 3,\n                    data: data\n                }\n            )\n        }\n    }\n\n    private appSpecificConfigAndCacheSameSize(document: Document) {\n        return document.data.appSpecificConfigFiles.length == ConfigHelper.config.config_files.length;\n    }\n\n    private hasChanged(document: Document) {\n        return !document || document.hasChanged();\n    }\n}\n###\n\n:::info\n**ConfigurationBuilder.ts**\n:::\n\n## Overview\n\n`ConfigurationBuilder.ts` is a TypeScript class that extends the `BaseBuilder` class. It is responsible for generating documentation for configuration files in a project. The class handles both application-specific and general configuration files.\n\n## Usage\n\nTo use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method.\n\n```typescript\nconst configurationBuilder = new ConfigurationBuilder();\nawait configurationBuilder.generate();\n```\n\n## Methods\n\n### constructor()\n\nThe constructor initializes the `ConfigurationBuilder` instance with the 'Configuration' category.\n\n### generate(): Promise<void>\n\nThis asynchronous method generates the documentation for the configuration files. It first prepares the summary, then generates the documentation for application-specific and general configuration files, and finally generates the summary.\n\n### prepareSummary(): Promise<void>\n\nThis private asynchronous method prepares the summary of the configuration files. It checks if the configuration files have changed and updates the summary accordingly.\n\n### generateSummary(): Promise<void>\n\nThis private asynchronous method generates the summary of the configuration files. It updates the summary only if there are changes in the configuration files.\n\n### haveConfigFilesChanged(): boolean\n\nThis private method checks if the configuration files have changed. It returns `true` if there are changes, and `false` otherwise.\n\n### generateAppConfigFiles(): Promise<void>\n\nThis private asynchronous method generates the documentation for application-specific configuration files.\n\n### generateGeneralConfigFiles(): Promise<void>\n\nThis private asynchronous method generates the documentation for general configuration files.\n\n### appSpecificConfigAndCacheSameSize(document: Document): boolean\n\nThis private method checks if the application-specific configuration files and cache have the same size. It returns `true` if they have the same size, and `false` otherwise.\n\n### hasChanged(document: Document): boolean\n\nThis private method checks if a document has changed. It returns `true` if the document has changed, and `false` otherwise.",
+		"fileContent": "import Document from \"../../../Document\";\r\nimport FolderStructure from \"../../../../utils/FolderStructure\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport path from \"path\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\n\r\nexport default class ConfigurationBuilder extends BaseBuilder {\r\n\r\n    configFiles: string[] = []\r\n    appSpecificConfigFiles: string[] = []\r\n    updateSummary = false;\r\n\r\n    constructor() {\r\n        super('Configuration');\r\n    }\r\n\r\n\r\n    public async generate() {\r\n        if (ConfigHelper.config.config_files?.length == 0) return;\r\n\r\n        await this.prepareSummary();\r\n        await this.generateAppConfigFiles();\r\n        await this.generateGeneralConfigFiles();\r\n        await this.generateSummary();\r\n    }\r\n\r\n    private async prepareSummary() {\r\n        let document = DocumentationCache.get('Configuration');\r\n        if (document) {\r\n\r\n            if (document.data && this.appSpecificConfigAndCacheSameSize(document)) {\r\n                if (document.data.appSpecificConfigFiles) this.appSpecificConfigFiles = document.data.appSpecificConfigFiles;\r\n                if (document.data.configFiles) this.configFiles = document.data.configFiles;\r\n            }\r\n        }\r\n\r\n        if (document && !this.haveConfigFilesChanged()) {\r\n            return;\r\n        }\r\n        this.updateSummary = true;\r\n        let config = ConfigHelper.config;\r\n        let appName = config.project_name;\r\n        let listOfFilesAndFolders = '';\r\n        let project_path = process.cwd();\r\n        let files = FolderStructure.getFiles(project_path, 0);\r\n\r\n        let configPath = path.join(project_path, 'config');\r\n        if (FolderStructure.exists(configPath)) {\r\n            let configFiles = FolderStructure.getFiles(configPath, 0);\r\n            configFiles.forEach(configFile => {\r\n                files.push(configFile);\r\n            })\r\n        }\r\n        files.forEach(file => {\r\n            if (file.path.indexOf('/config') != -1) {\r\n                listOfFilesAndFolders += 'config/' + file.name + '\\n';\r\n            } else {\r\n                listOfFilesAndFolders += file.name + '\\n'\r\n            }\r\n        })\r\n\r\n        let response = await super.getAnswer('Configuration', {\r\n            appName,\r\n            listOfFilesAndFolders\r\n        }, 'what_are_config_files');\r\n        let jsons = Helper.getJsons(response.answer)\r\n        if (jsons.length > 0) {\r\n            let fileResults = jsons[0];\r\n            this.appSpecificConfigFiles = [];\r\n            this.configFiles = [];\r\n\r\n            fileResults.forEach((file: any) => {\r\n                if (file.isAppSpecific) {\r\n                    this.appSpecificConfigFiles.push(file.path);\r\n                } else if (file.isConfig) {\r\n                    this.configFiles.push(file.path)\r\n                }\r\n            })\r\n        }\r\n    }\r\n\r\n    private async generateSummary() {\r\n        if (!this.updateSummary) {\r\n            return;\r\n        }\r\n\r\n        let data: any = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles,\r\n            configFiles: this.configFiles,\r\n            has_children : true\r\n        }\r\n\r\n        let appSpecificConfigContent = '';\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            appSpecificConfigContent += `--- Start ${this.appSpecificConfigFiles[0]} ---\r\n            ${FileStructure.getContent(this.appSpecificConfigFiles[0])}\r\n            --- End ${this.appSpecificConfigFiles[0]} ---\r\n            `\r\n        }\r\n\r\n        let args = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles.join('\\n'),\r\n            appSpecificConfigContent,\r\n            configFiles: this.configFiles.join('\\n')\r\n        }\r\n        await super.generateDocumentationAndCache({\r\n                args: args, name: 'Configuration', saveToPath: './Configuration',\r\n                pathToFile: './Configuration', folderPath: './Configuration',\r\n                sidebarPosition: 3, data: data\r\n            }\r\n        )\r\n    }\r\n\r\n    private haveConfigFilesChanged() {\r\n        let needsUpdate = false;\r\n        if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;\r\n\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.appSpecificConfigFiles.length;\r\n            }\r\n        }\r\n\r\n        for (let i = 0; !needsUpdate && i < this.configFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.configFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.configFiles.length;\r\n            }\r\n        }\r\n        return needsUpdate;\r\n    }\r\n\r\n    private async generateAppConfigFiles() {\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.appSpecificConfigFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.appSpecificConfigFiles[i])\r\n            if (content == '') continue;\r\n\r\n            let data : any = {\r\n                parent : 'Configuration'\r\n            }\r\n            let args = {configFile: content, fileName: this.appSpecificConfigFiles[i]}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'app_config',\r\n                    name: this.appSpecificConfigFiles[i],\r\n                    pathToFile: './' + this.appSpecificConfigFiles[i],\r\n                    folderPath: './',\r\n                    sidebarPosition: i,\r\n                    saveToPath: './Configuration/',\r\n                    data : data,\r\n                prevDocument : document\r\n                }\r\n            )\r\n        }\r\n    }\r\n\r\n    private async generateGeneralConfigFiles() {\r\n        for (let i = 0; i < this.configFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.configFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.configFiles[i])\r\n            let args = {configFile: content}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'general_config',\r\n                    name: this.configFiles[i], pathToFile: './' + this.configFiles[i], folderPath: './', sidebarPosition: i,\r\n                    saveToPath: './Configuration/'\r\n                }\r\n            )\r\n        }\r\n    }\r\n\r\n    public async render(document: Document): Promise<string> {\r\n        return document.documentation;\r\n    }\r\n\r\n\r\n    private appSpecificConfigAndCacheSameSize(document: Document) {\r\n        if (!document.data) return false;\r\n        return (document.data.appSpecificConfigFiles?.length == ConfigHelper.config.config_files.length)\r\n    }\r\n}",
+		"documentation": "# ConfigurationBuilder.ts\n\nThis is a TypeScript code file that defines the `ConfigurationBuilder` class, which is responsible for generating documentation for configuration files in a software project. The class extends the `BaseBuilder` class and provides methods to generate documentation for both application-specific and general configuration files.\n\n## Usage\n\nTo use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method. This method will generate documentation for all configuration files specified in the `ConfigHelper` class.\n\n```typescript\nimport ConfigurationBuilder from './ConfigurationBuilder';\n\nconst configBuilder = new ConfigurationBuilder();\nawait configBuilder.generate();\n```\n\n## Class Methods\n\n### constructor()\n\nThe constructor initializes the `ConfigurationBuilder` class and sets the default values for the class properties.\n\n### generate(): Promise<void>\n\nThis asynchronous method generates the documentation for all configuration files specified in the `ConfigHelper` class. It calls the `prepareSummary()`, `generateAppConfigFiles()`, and `generateGeneralConfigFiles()` methods to generate the documentation.\n\n### prepareSummary(): Promise<void>\n\nThis private asynchronous method prepares the summary of the configuration files by checking if the documentation cache is up-to-date. If the cache is not up-to-date, it updates the `appSpecificConfigFiles` and `configFiles` properties of the class.\n\n### generateSummary(): Promise<void>\n\nThis private asynchronous method generates the summary of the configuration files if the `updateSummary` property is set to `true`. It saves the generated documentation and cache data.\n\n### haveConfigFilesChanged(): boolean\n\nThis private method checks if the configuration files have changed since the last documentation generation. It returns `true` if any of the configuration files have changed, otherwise, it returns `false`.\n\n### generateAppConfigFiles(): Promise<void>\n\nThis private asynchronous method generates the documentation for application-specific configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.\n\n### generateGeneralConfigFiles(): Promise<void>\n\nThis private asynchronous method generates the documentation for general configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.\n\n## Properties\n\n- `configFiles: string[]`: An array of general configuration file paths.\n- `appSpecificConfigFiles: string[]`: An array of application-specific configuration file paths.\n- `updateSummary: boolean`: A flag indicating whether the summary needs to be updated.\n\n## Technical Concepts\n\n- **DocumentationCache**: A utility class that manages the cache of generated documentation.\n- **ConfigHelper**: A utility class that provides access to the configuration settings of the software project.\n- **FolderStructure**: A utility class that provides methods to work with the folder structure of the software project.\n- **FileStructure**: A utility class that provides methods to work with the file structure of the software project.\n- **Helper**: A utility class that provides various helper methods, such as parsing JSON data.\n\n## Sections\n\n- [Usage](#usage)\n- [Class Methods](#class-methods)\n- [Properties](#properties)\n- [Technical Concepts](#technical-concepts)\n- [Sections](#sections)",
 		"isFolder": false,
-		"updated": "2023-04-24T13:47:48.773Z",
+		"updated": "2023-04-24T14:58:14.776Z",
 		"sidebar_position": 0,
 		"sidebar_label": "ConfigurationBuilder.ts",
 		"init": false,
@@ -694,11 +694,11 @@
 			},
 			{
 				"role": "user",
-				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"ConfigurationBuilder.ts\"\r\nThe file name is: ConfigurationBuilder.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport Document from \"../../../Document\";\r\nimport FolderStructure from \"../../../../utils/FolderStructure\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport path from \"path\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\n\r\nexport default class ConfigurationBuilder extends BaseBuilder {\r\n\r\n    configFiles: string[] = []\r\n    appSpecificConfigFiles: string[] = []\r\n    updateSummary = false;\r\n\r\n    constructor() {\r\n        super('Configuration');\r\n    }\r\n\r\n\r\n    public async generate() {\r\n        if (ConfigHelper.config.config_files?.length == 0) return;\r\nreturn;\r\n        await this.prepareSummary();\r\n        await this.generateAppConfigFiles();\r\n        await this.generateGeneralConfigFiles();\r\n        await this.generateSummary();\r\n    }\r\n\r\n    private async prepareSummary() {\r\n        let document = DocumentationCache.get('Configuration');\r\n        if (document) {\r\n\r\n            if (document.data && this.appSpecificConfigAndCacheSameSize(document)) {\r\n                if (document.data.appSpecificConfigFiles) this.appSpecificConfigFiles = document.data.appSpecificConfigFiles;\r\n                if (document.data.configFiles) this.configFiles = document.data.configFiles;\r\n            }\r\n        }\r\n\r\n        if (document && !this.haveConfigFilesChanged()) {\r\n            return;\r\n        }\r\n        this.updateSummary = true;\r\n        let config = ConfigHelper.config;\r\n        let appName = config.project_name;\r\n        let listOfFilesAndFolders = '';\r\n        let project_path = process.cwd();\r\n        let files = FolderStructure.getFiles(project_path, 0);\r\n\r\n        let configPath = path.join(project_path, 'config');\r\n        if (FolderStructure.exists(configPath)) {\r\n            let configFiles = FolderStructure.getFiles(configPath, 0);\r\n            configFiles.forEach(configFile => {\r\n                files.push(configFile);\r\n            })\r\n        }\r\n        files.forEach(file => {\r\n            if (file.path.indexOf('/config') != -1) {\r\n                listOfFilesAndFolders += 'config/' + file.name + '\\n';\r\n            } else {\r\n                listOfFilesAndFolders += file.name + '\\n'\r\n            }\r\n        })\r\n\r\n        let response = await super.getAnswer('Configuration', {\r\n            appName,\r\n            listOfFilesAndFolders\r\n        }, 'what_are_config_files');\r\n        let jsons = Helper.getJsons(response.answer)\r\n        if (jsons.length > 0) {\r\n            let fileResults = jsons[0];\r\n            this.appSpecificConfigFiles = [];\r\n            this.configFiles = [];\r\n\r\n            fileResults.forEach((file: any) => {\r\n                if (file.isAppSpecific) {\r\n                    this.appSpecificConfigFiles.push(file.path);\r\n                } else if (file.isConfig) {\r\n                    this.configFiles.push(file.path)\r\n                }\r\n            })\r\n        }\r\n    }\r\n\r\n    private async generateSummary() {\r\n        if (!this.updateSummary) {\r\n            return;\r\n        }\r\n\r\n        let data: any = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles,\r\n            configFiles: this.configFiles,\r\n            has_children : true\r\n        }\r\n\r\n        let appSpecificConfigContent = '';\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            appSpecificConfigContent += `--- Start ${this.appSpecificConfigFiles[0]} ---\r\n            ${FileStructure.getContent(this.appSpecificConfigFiles[0])}\r\n            --- End ${this.appSpecificConfigFiles[0]} ---\r\n            `\r\n        }\r\n\r\n        let args = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles.join('\\n'),\r\n            appSpecificConfigContent,\r\n            configFiles: this.configFiles.join('\\n')\r\n        }\r\n        await super.generateDocumentationAndCache({\r\n                args: args, name: 'Configuration', saveToPath: './Configuration',\r\n                pathToFile: './Configuration', folderPath: './Configuration',\r\n                sidebarPosition: 3, data: data\r\n            }\r\n        )\r\n    }\r\n\r\n    private haveConfigFilesChanged() {\r\n        let needsUpdate = false;\r\n        if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;\r\n\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.appSpecificConfigFiles.length;\r\n            }\r\n        }\r\n\r\n        for (let i = 0; !needsUpdate && i < this.configFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.configFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.configFiles.length;\r\n            }\r\n        }\r\n        return needsUpdate;\r\n    }\r\n\r\n    private async generateAppConfigFiles() {\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.appSpecificConfigFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.appSpecificConfigFiles[i])\r\n            if (content == '') continue;\r\n\r\n            let data : any = {\r\n                parent : 'Configuration'\r\n            }\r\n            let args = {configFile: content, fileName: this.appSpecificConfigFiles[i]}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'app_config',\r\n                    name: this.appSpecificConfigFiles[i],\r\n                    pathToFile: './"
+				"content": "Act as a documentation expert. Write in-depth documentation about following file.\r\nHeadline of file should be \"ConfigurationBuilder.ts\"\r\nThe file name is: ConfigurationBuilder.ts\r\nIf this is a code file, then\r\n- Write a detailed description of the code that will follow.\r\n- Give multiple examples of how to use this class before listing each method\r\n- Create a description for each method in the code.\r\n- List out the parameters in methods (only if there are any) and describe each parameter.\r\n- Explain technical concepts that are not standard but come apparent in the code. Example of a standard concept is JSON.\r\n- Divide the document into sections with clear headings and subheadings.\r\nIf this is a template file\r\n- List the variables that are used in the template file\r\n- Display the template file\r\nElse\r\n- Write a detailed description of the file content that will follow.\r\n\r\nThis is the content of the file:\r\n###\r\nimport Document from \"../../../Document\";\r\nimport FolderStructure from \"../../../../utils/FolderStructure\";\r\nimport Helper from \"../../../../utils/Helper\";\r\nimport FileStructure from \"../../../../utils/FileStructure\";\r\nimport DocumentationCache from \"../../../DocumentationCache\";\r\nimport BaseBuilder from \"../BaseBuilder\";\r\nimport path from \"path\";\r\nimport ConfigHelper from \"../../../../config/ConfigHelper\";\r\n\r\nexport default class ConfigurationBuilder extends BaseBuilder {\r\n\r\n    configFiles: string[] = []\r\n    appSpecificConfigFiles: string[] = []\r\n    updateSummary = false;\r\n\r\n    constructor() {\r\n        super('Configuration');\r\n    }\r\n\r\n\r\n    public async generate() {\r\n        if (ConfigHelper.config.config_files?.length == 0) return;\r\n\r\n        await this.prepareSummary();\r\n        await this.generateAppConfigFiles();\r\n        await this.generateGeneralConfigFiles();\r\n        await this.generateSummary();\r\n    }\r\n\r\n    private async prepareSummary() {\r\n        let document = DocumentationCache.get('Configuration');\r\n        if (document) {\r\n\r\n            if (document.data && this.appSpecificConfigAndCacheSameSize(document)) {\r\n                if (document.data.appSpecificConfigFiles) this.appSpecificConfigFiles = document.data.appSpecificConfigFiles;\r\n                if (document.data.configFiles) this.configFiles = document.data.configFiles;\r\n            }\r\n        }\r\n\r\n        if (document && !this.haveConfigFilesChanged()) {\r\n            return;\r\n        }\r\n        this.updateSummary = true;\r\n        let config = ConfigHelper.config;\r\n        let appName = config.project_name;\r\n        let listOfFilesAndFolders = '';\r\n        let project_path = process.cwd();\r\n        let files = FolderStructure.getFiles(project_path, 0);\r\n\r\n        let configPath = path.join(project_path, 'config');\r\n        if (FolderStructure.exists(configPath)) {\r\n            let configFiles = FolderStructure.getFiles(configPath, 0);\r\n            configFiles.forEach(configFile => {\r\n                files.push(configFile);\r\n            })\r\n        }\r\n        files.forEach(file => {\r\n            if (file.path.indexOf('/config') != -1) {\r\n                listOfFilesAndFolders += 'config/' + file.name + '\\n';\r\n            } else {\r\n                listOfFilesAndFolders += file.name + '\\n'\r\n            }\r\n        })\r\n\r\n        let response = await super.getAnswer('Configuration', {\r\n            appName,\r\n            listOfFilesAndFolders\r\n        }, 'what_are_config_files');\r\n        let jsons = Helper.getJsons(response.answer)\r\n        if (jsons.length > 0) {\r\n            let fileResults = jsons[0];\r\n            this.appSpecificConfigFiles = [];\r\n            this.configFiles = [];\r\n\r\n            fileResults.forEach((file: any) => {\r\n                if (file.isAppSpecific) {\r\n                    this.appSpecificConfigFiles.push(file.path);\r\n                } else if (file.isConfig) {\r\n                    this.configFiles.push(file.path)\r\n                }\r\n            })\r\n        }\r\n    }\r\n\r\n    private async generateSummary() {\r\n        if (!this.updateSummary) {\r\n            return;\r\n        }\r\n\r\n        let data: any = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles,\r\n            configFiles: this.configFiles,\r\n            has_children : true\r\n        }\r\n\r\n        let appSpecificConfigContent = '';\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            appSpecificConfigContent += `--- Start ${this.appSpecificConfigFiles[0]} ---\r\n            ${FileStructure.getContent(this.appSpecificConfigFiles[0])}\r\n            --- End ${this.appSpecificConfigFiles[0]} ---\r\n            `\r\n        }\r\n\r\n        let args = {\r\n            appSpecificConfigFiles: this.appSpecificConfigFiles.join('\\n'),\r\n            appSpecificConfigContent,\r\n            configFiles: this.configFiles.join('\\n')\r\n        }\r\n        await super.generateDocumentationAndCache({\r\n                args: args, name: 'Configuration', saveToPath: './Configuration',\r\n                pathToFile: './Configuration', folderPath: './Configuration',\r\n                sidebarPosition: 3, data: data\r\n            }\r\n        )\r\n    }\r\n\r\n    private haveConfigFilesChanged() {\r\n        let needsUpdate = false;\r\n        if (this.appSpecificConfigFiles.length != ConfigHelper.config.config_files.length) return true;\r\n\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.appSpecificConfigFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.appSpecificConfigFiles.length;\r\n            }\r\n        }\r\n\r\n        for (let i = 0; !needsUpdate && i < this.configFiles.length; i++) {\r\n            let configDoc = DocumentationCache.get(this.configFiles[i]);\r\n            if (this.hasChanged(configDoc)) {\r\n                needsUpdate = true;\r\n                i = this.configFiles.length;\r\n            }\r\n        }\r\n        return needsUpdate;\r\n    }\r\n\r\n    private async generateAppConfigFiles() {\r\n        for (let i = 0; i < this.appSpecificConfigFiles.length; i++) {\r\n            let document = DocumentationCache.get(this.appSpecificConfigFiles[i])\r\n            if (!this.hasChanged(document)) {\r\n                continue;\r\n            }\r\n            this.updateSummary = true;\r\n            let content = FileStructure.getContent(this.appSpecificConfigFiles[i])\r\n            if (content == '') continue;\r\n\r\n            let data : any = {\r\n                parent : 'Configuration'\r\n            }\r\n            let args = {configFile: content, fileName: this.appSpecificConfigFiles[i]}\r\n            await super.generateDocumentationAndCache({\r\n                    args: args,\r\n                    template: 'app_config',\r\n                    name: this.appSpecificConfigFiles[i],\r\n                    pathToFile: './' + thi"
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration\\ConfigurationBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "Configuration"
 		}
@@ -746,7 +746,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files\\FilesBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "Files"
 		}
@@ -790,7 +790,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders\\FoldersBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "Folders"
 		}
@@ -838,7 +838,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto\\HowToBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "Howto"
 		}
@@ -882,7 +882,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilder.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -926,7 +926,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined\\UserDefinedBuilderHelper.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "UserDefined"
 		}
@@ -966,7 +966,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\BaseGenerator.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -1043,7 +1043,7 @@
 			}
 		],
 		"id": "src\\model\\IProjectDocumentedSettings.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1083,7 +1083,7 @@
 			}
 		],
 		"id": "src\\model\\OpenAIResponse.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "model"
 		}
@@ -1127,7 +1127,7 @@
 			}
 		],
 		"id": "src\\repositories\\OpenAIRepository.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "repositories"
 		}
@@ -1171,7 +1171,7 @@
 			}
 		],
 		"id": "src\\utils\\CliHelper.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1215,7 +1215,7 @@
 			}
 		],
 		"id": "src\\utils\\FileStructure.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1255,7 +1255,7 @@
 			}
 		],
 		"id": "src\\utils\\FolderStructure.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1299,7 +1299,7 @@
 			}
 		],
 		"id": "src\\utils\\Helper.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1339,7 +1339,7 @@
 			}
 		],
 		"id": "src\\utils\\ProjectStructure.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "utils"
 		}
@@ -1379,7 +1379,7 @@
 			}
 		],
 		"id": "src\\config",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1416,7 +1416,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Configuration",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1453,7 +1453,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Files",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1490,7 +1490,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Folders",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1527,7 +1527,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\Howto",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1564,7 +1564,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders\\UserDefined",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1601,7 +1601,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\builders",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1675,7 +1675,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1712,7 +1712,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1749,7 +1749,7 @@
 			}
 		],
 		"id": "src\\documentation",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1786,7 +1786,7 @@
 			}
 		],
 		"id": "src\\model",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1823,7 +1823,7 @@
 			}
 		],
 		"id": "src\\repositories",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1860,7 +1860,7 @@
 			}
 		],
 		"id": "src\\utils",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "README",
@@ -1897,7 +1897,7 @@
 			}
 		],
 		"id": "src",
-		"lastTouch": "2023-04-24T14:44:55.465Z"
+		"lastTouch": "2023-04-24T14:58:37.175Z"
 	},
 	{
 		"name": "Prerequisites",
@@ -1942,7 +1942,7 @@
 			}
 		],
 		"id": "prerequisites.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"has_children": true
 		}
@@ -1951,10 +1951,10 @@
 		"name": "ReadMe",
 		"path": "README.md",
 		"folderPath": "",
-		"fileContent": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation on code and tests. It is a self-documenting tool and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run the tool with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can customize the configuration by editing the `code-narrator.config.ts` file.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nThe current version of code-narrator is 1.0.6.\n\n## Authors\n\nIngi Gauti Ragnarsson @ingig\n\n## License\n\nThis project is licensed under the ISC License.",
-		"documentation": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nCurrent version: 1.0.6\n\n## Authors\n\nIngi Gauti Ragnarsson (@ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
+		"fileContent": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Use the `code-narrator.config.ts` file to set the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.ts` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nCurrent version: 1.0.6\n\n## Authors\n\nIngi Gauti Ragnarsson (@ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
+		"documentation": "# code-narrator\n\n## Description\n\ncode-narrator uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. A `code-narrator.config.js` file is created on first run and sets the configuration for your project, such as project path, doc, documentation type, and more.\n\n## Getting Started\n\n1. Install the npm package:\n\n```bash\nnpm i code-narrator -D\n```\n\n2. Run code-narrator with npx:\n\n```bash\nnpx code-narrator\n```\n\n## Configuration\n\nConfiguration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the configuration for your project.\n\n## Reporting Bugs\n\nPlease report any bugs or issues on the [GitHub repository](https://github.com/ingig/code-narrator/issues).\n\n## Versioning\n\nThis project uses [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/ingig/code-narrator/tags).\n\n## Authors\n\n- Ingi Gauti Ragnarsson [@ingig](https://github.com/ingig)\n\n## License\n\nThis project is licensed under the ISC License.",
 		"isFolder": false,
-		"updated": "2023-04-24T11:13:57.812Z",
+		"updated": "2023-04-24T14:59:40.818Z",
 		"sidebar_position": 1,
 		"sidebar_label": "ReadMe",
 		"init": false,
@@ -1986,11 +1986,11 @@
 			},
 			{
 				"role": "assistant",
-				"content": "$.name:\"code-narrator\"\n$.description:\"Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Use code-narrator.config.ts file to set the configuration for your project, such as project path, doc, documentation type and more. The package can be install using 'npm i code-narrator -D'\"\n$.version:\"1.0.6\"\n$.homepage:\"https://github.com/ingig/code-narrator\"\n$.bugs:{\"url\":\"https://github.com/ingig/code-narrator/issues\"}\n$.author:\"Ingi Gauti Ragnarsson @ingig\"\n$.repository:{\"url\":\"https://github.com/ingig/code-narrator\"}\n$.license:\"ISC\"\n"
+				"content": "$.name:\"code-narrator\"\n$.description:\"Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Configuration code-narrator.config.js file is created on first run and sets the configuration for your project, such as project path, doc, documentation type and more. The package can be install using 'npm i code-narrator -D'\"\n$.version:\"1.0.7\"\n$.homepage:\"https://github.com/ingig/code-narrator\"\n$.bugs:{\"url\":\"https://github.com/ingig/code-narrator/issues\"}\n$.author:\"Ingi Gauti Ragnarsson @ingig\"\n$.repository:{\"url\":\"https://github.com/ingig/code-narrator\"}\n$.license:\"ISC\"\n"
 			}
 		],
 		"id": "README.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:59:40.819Z",
 		"data": {
 			"has_children": true
 		}
@@ -2042,7 +2042,7 @@
 			}
 		],
 		"id": "howto\\howto_create_howto.md",
-		"lastTouch": "2023-04-24T14:49:13.127Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "README"
 		}
@@ -2086,7 +2086,7 @@
 			}
 		],
 		"id": "howto\\howto_content_to_long.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2138,7 +2138,7 @@
 			}
 		],
 		"id": "howto\\howto_create_custom_builder.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "How To"
 		}
@@ -2223,7 +2223,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\DocusaurusGenerator.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2267,7 +2267,7 @@
 			}
 		],
 		"id": "src\\documentation\\plugins\\generators\\JekyllGenerator.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "generators"
 		}
@@ -2311,7 +2311,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigFileSerializer.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2355,7 +2355,7 @@
 			}
 		],
 		"id": "src\\config\\ConfigQuestion.ts",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "config"
 		}
@@ -2403,7 +2403,7 @@
 			}
 		],
 		"id": "howto\\overview_readme.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"has_children": true
 		}
@@ -2455,7 +2455,7 @@
 			}
 		],
 		"id": "howto\\howto_run_cli.md",
-		"lastTouch": "2023-04-24T14:44:55.465Z",
+		"lastTouch": "2023-04-24T14:58:37.175Z",
 		"data": {
 			"parent": "README"
 		}
