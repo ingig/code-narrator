@@ -10,7 +10,7 @@ export default interface IBuilder {
     sidebarLabel?: string;
     pages? : IBuilder[];
 }
-type BuilderType = 'howto' | 'README' | 'custom';
+type BuilderType = 'howto' | 'tutorial' | 'README' | 'custom';
 
 export interface IFile {
     path: string;

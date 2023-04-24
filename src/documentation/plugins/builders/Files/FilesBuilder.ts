@@ -22,9 +22,6 @@ export default class FilesBuilder extends BaseBuilder {
         await this.queryForFolder(folder);
     }
 
-    public async render(document: Document) {
-        return document.documentation;
-    }
 
 
     public async queryForFolder(folder: FolderStructure) {

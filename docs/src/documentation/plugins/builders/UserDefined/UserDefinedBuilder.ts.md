@@ -1,71 +1,59 @@
 # UserDefinedBuilder.ts
 
-This is a TypeScript code file that defines a `UserDefinedBuilder` class, which extends the `BaseBuilder` class. The `UserDefinedBuilder` class is responsible for generating documentation based on user-defined templates and configurations.
+The `UserDefinedBuilder.ts` file is a TypeScript code file that exports a `UserDefinedBuilder` class, which extends the `BaseBuilder` class. This class is responsible for generating documentation based on user-defined templates and configurations.
 
-## Table of Contents
+## Class: UserDefinedBuilder
 
-- [Class Description](#class-description)
-- [Methods](#methods)
-  - [extractPathFromContent](#extractpathfromcontent)
-  - [generate](#generate)
-  - [generateFromBuilder](#generatefrombuilder)
-  - [render](#render)
-  - [hasTemplateChanged](#hastemplatechanged)
+### Constructor
 
-## Class Description
+The constructor initializes the `UserDefinedBuilder` class with the type 'UserDefined'.
 
-The `UserDefinedBuilder` class is designed to generate documentation based on user-defined templates and configurations. It provides methods to extract paths from content, generate documentation, and render the final output.
+### Method: extractPathFromContent(input: string): string | null
 
-## Methods
+This method takes an input string and extracts the content path using a regular expression. It returns the extracted path or null if no match is found.
 
-### extractPathFromContent
+### Method: generate()
 
-```typescript
-public extractPathFromContent(input: string): string | null
-```
+This method generates documentation for each builder in the configuration. It iterates through the builders and their pages, calling the `generateFromBuilder` method for each page and the builder itself.
 
-This method takes an input string and returns the extracted path from the content using a regular expression. If no match is found, it returns `null`.
+### Method: generateFromBuilder(builder: IBuilder, saveToPath: string, position: number, data: any)
 
-### generate
+This method generates documentation for a specific builder. It takes the following parameters:
 
-```typescript
-public async generate(): Promise<void>
-```
+- `builder`: The builder object to generate documentation for.
+- `saveToPath`: The path where the generated documentation should be saved.
+- `position`: The position of the documentation in the sidebar.
+- `data`: Additional data to be passed to the documentation generation process.
 
-This asynchronous method generates documentation for each builder in the `config.builders` array. It iterates through the builders and calls the `generateFromBuilder` method for each page in the builder's `pages` array.
+The method first checks if the template file exists, and if not, throws an error. It then checks if the template has changed since the last documentation generation. If it has, it proceeds to generate the documentation using the `UserDefinedBuilderHelper` class and the `generateDocumentationAndCache` method from the `BaseBuilder` class.
 
-### generateFromBuilder
+### Method: hasTemplateChanged(document: Document | undefined, templatePath: string)
 
-```typescript
-public async generateFromBuilder(builder: IBuilder, saveToPath: string, position: number, data: any): Promise<void>
-```
+This method checks if the template has changed since the last documentation generation. It takes the following parameters:
 
-This asynchronous method generates documentation for a specific builder. It takes the following parameters:
+- `document`: The document object representing the previously generated documentation.
+- `templatePath`: The path to the template file.
 
-- `builder`: An `IBuilder` object containing the builder configuration.
-- `saveToPath`: A string representing the path where the generated documentation should be saved.
-- `position`: A number representing the position of the documentation in the sidebar.
-- `data`: An object containing additional data for the documentation generation.
+The method returns true if the template has changed, and false otherwise.
 
-The method checks if the template file exists, and if not, it throws an error. It then checks if the template has changed since the last update and generates the documentation if necessary.
+## Example Usage
 
-### render
+To use the `UserDefinedBuilder` class, you would first import it and create an instance:
 
 ```typescript
-public async render(document: Document): Promise<string>
+import UserDefinedBuilder from "./UserDefinedBuilder";
+
+const userDefinedBuilder = new UserDefinedBuilder();
 ```
 
-This asynchronous method takes a `Document` object and returns the rendered documentation as a string.
-
-### hasTemplateChanged
+Then, you can call the `generate` method to generate documentation based on the user-defined templates and configurations:
 
 ```typescript
-private hasTemplateChanged(document: Document | undefined, templatePath: string): boolean
+await userDefinedBuilder.generate();
 ```
 
-This private method checks if the template has changed since the last update. It takes the following parameters:
+You can also call the `generateFromBuilder` method to generate documentation for a specific builder:
 
-- `document`: A `Document` object or `undefined` if the document does not exist.
-- `templatePath`: A string representing the path to the template file.
-
-The method returns `true` if the template has changed, and `false` otherwise.
+```typescript
+await userDefinedBuilder.generateFromBuilder(builder, saveToPath, position, data);
+```

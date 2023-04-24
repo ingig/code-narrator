@@ -42,21 +42,24 @@ export default class UserDefinedBuilderHelper {
         }
     }
 
-    public async getAssistantMessages(build: IBuilder) {
+    public async getAssistantMessages(builder: IBuilder) {
         let assistantMessages: string[] = []
-        let predefinedQuestions = this.getPredefinedQuestion(build.type);
+        let predefinedQuestions = this.getPredefinedQuestion(builder.type);
         if (predefinedQuestions) assistantMessages.push(predefinedQuestions);
-        let files = build.files ?? [];
+        let files = builder.files ?? [];
         for (let i = 0;i < files.length; i++) {
             let content = FileStructure.getContent(path.join(process.cwd(), files[i].path));
             let extraInfo = '';
-            if (files[i].JSONPath && files[i].path.indexOf('.json') != -1) {
-                let obj = JSON.parse(content);
-                for (let b = 0; b < files[i].JSONPath!.length; b++) {
-                    let result = jsonpath.query(obj, files[i].JSONPath![b]);
-                    for (let c = 0; c < result.length; c++) {
-                        extraInfo += `${files[i].JSONPath![b]}:${JSON.stringify(result[c])}\n`;
-                    }
+            if (files[i].path.indexOf('.json') != -1) {
+                if (files[i].JSONPath) {
+                    let obj = JSON.parse(content);
+                    files[i].JSONPath?.forEach((path: string) => {
+                        jsonpath.query(obj, path).forEach((result: any) => {
+                            extraInfo += `${path}:${JSON.stringify(result)}\n`;
+                        });
+                    });
+                } else {
+                    extraInfo += `\n### start ${path.basename(files[i].path)} ###\n${content}\n### end file ###\n`
                 }
             } else if (files[i].extract) {
                 let extractContent = Array.isArray(files[i].extract) ? files[i].extract!.join(', ') : files[i].extract;
@@ -73,19 +76,23 @@ export default class UserDefinedBuilderHelper {
                     }
                 }
             } else if (files[i].path.indexOf(ConfigHelper.config.document_file_extension) != -1) {
+                builder.args = builder.args ?? {};
+                builder.args.directoryName = path.dirname(files[i].path);
                 if (files[i].path.indexOf('*') != -1) {
                     let dirFiles = this.findFiles(files[i].path);
                     dirFiles.forEach(file => {
                         if (file.name.toLowerCase() != 'readme') {
                             let overview = this.extractContentBetweenHeaders(file.documentation);
-                            extraInfo += `## 1st paragraph of "${file.name}" ###
-                         ${overview}
+                            extraInfo += `
+### 1st paragraph of "${file.name}" ###
+${overview}
+### file ends ###
                          `
                         }
                     })
                 } else {
                     let overview = this.extractContentBetweenHeaders(content);
-                    extraInfo = `## 1st paragraph of "${files[i].path}" ### \n${overview}`
+                    extraInfo = `### 1st paragraph of "${files[i].path}" ### \n${overview}\n### file ends ###`
                 }
             } else {
                 extraInfo = `File Content for ${files[i].path}\n${content}`
@@ -99,11 +106,15 @@ export default class UserDefinedBuilderHelper {
     }
 
     private getPredefinedQuestion(type: string) {
+        type = type.toLowerCase();
         if (type == 'howto') {
             return `I want you to create a detailed How To guide from the user input.
             It should have Title, Introduction, Step-by-Step Instructions`
         } else if (type == 'readme') {
             return `I want you to create a detail README file for this project. Here is a description:`
+        } else if (type == 'tutorial') {
+            return `I want you to create a detailed Tutorial from the user input.
+            Define the target audience, Set clear learning objectives,Provide a brief introduction,Prerequisites and system requirements,Step-by-step instructions,Include code samples`
         }
 
     }

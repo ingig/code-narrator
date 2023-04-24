@@ -1,66 +1,55 @@
 # ConfigurationBuilder.ts
 
-This is a TypeScript code file that defines the `ConfigurationBuilder` class, which is responsible for generating documentation for configuration files in a software project. The class extends the `BaseBuilder` class and provides methods to generate documentation for both application-specific and general configuration files.
+The `ConfigurationBuilder.ts` file is a TypeScript code file that is responsible for generating configuration documentation for a software project. It imports various utility classes and extends the `BaseBuilder` class to provide specific functionality for generating configuration documentation.
 
-## Usage
+## Table of Contents
 
-To use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method. This method will generate documentation for all configuration files specified in the `ConfigHelper` class.
+- [Class: ConfigurationBuilder](#class-configurationbuilder)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+    - [generate](#generate)
+    - [generateSummary](#generatesummary)
 
-```typescript
-import ConfigurationBuilder from './ConfigurationBuilder';
+## Class: ConfigurationBuilder
 
-const configBuilder = new ConfigurationBuilder();
-await configBuilder.generate();
-```
+The `ConfigurationBuilder` class extends the `BaseBuilder` class and is responsible for generating configuration documentation.
 
-## Class Methods
+### Constructor
 
-### constructor()
+The constructor initializes the `ConfigurationBuilder` class with the following properties:
 
-The constructor initializes the `ConfigurationBuilder` class and sets the default values for the class properties.
+- `configFiles`: An array of configuration file names.
+- `appSpecificConfigFiles`: An array of application-specific configuration file names.
+- `updateSummary`: A boolean flag to indicate whether the summary should be updated.
 
-### generate(): Promise<void>
+### Methods
 
-This asynchronous method generates the documentation for all configuration files specified in the `ConfigHelper` class. It calls the `prepareSummary()`, `generateAppConfigFiles()`, and `generateGeneralConfigFiles()` methods to generate the documentation.
+#### generate
 
-### prepareSummary(): Promise<void>
+The `generate` method is an asynchronous method that generates the configuration documentation. It performs the following steps:
 
-This private asynchronous method prepares the summary of the configuration files by checking if the documentation cache is up-to-date. If the cache is not up-to-date, it updates the `appSpecificConfigFiles` and `configFiles` properties of the class.
+1. If there are no configuration files specified in the `ConfigHelper.config.config_files`, the method returns.
+2. It creates a new instance of the `PrepareSummary` class and calls its `prepareSummary` method.
+3. It creates a new instance of the `GenerateAppConfigFiles` class and calls its `generateAppConfigFiles` method.
+4. It creates a new instance of the `GenerateGeneralConfigFiles` class and calls its `generateGeneralConfigFiles` method.
+5. Finally, it calls the `generateSummary` method.
 
-### generateSummary(): Promise<void>
+#### generateSummary
 
-This private asynchronous method generates the summary of the configuration files if the `updateSummary` property is set to `true`. It saves the generated documentation and cache data.
+The `generateSummary` method is a private asynchronous method that generates the summary for the configuration documentation. It performs the following steps:
 
-### haveConfigFilesChanged(): boolean
+1. If the `updateSummary` flag is set to `false`, the method returns.
+2. It prepares the data object with the following properties:
+   - `appSpecificConfigFiles`: The array of application-specific configuration file names.
+   - `configFiles`: The array of configuration file names.
+   - `has_children`: A boolean flag set to `true`.
+3. It iterates through the `appSpecificConfigFiles` array and generates the content for each file.
+4. It prepares the arguments object with the following properties:
+   - `appSpecificConfigFiles`: A string containing the application-specific configuration file names.
+   - `appSpecificConfigContent`: The content of the application-specific configuration files.
+   - `configFiles`: A string containing the configuration file names.
+5. It calls the `generateDocumentationAndCache` method of the `BaseBuilder` class with the prepared arguments and other required parameters.
 
-This private method checks if the configuration files have changed since the last documentation generation. It returns `true` if any of the configuration files have changed, otherwise, it returns `false`.
-
-### generateAppConfigFiles(): Promise<void>
-
-This private asynchronous method generates the documentation for application-specific configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.
-
-### generateGeneralConfigFiles(): Promise<void>
-
-This private asynchronous method generates the documentation for general configuration files. It checks if the documentation cache is up-to-date and updates the cache if necessary.
-
-## Properties
-
-- `configFiles: string[]`: An array of general configuration file paths.
-- `appSpecificConfigFiles: string[]`: An array of application-specific configuration file paths.
-- `updateSummary: boolean`: A flag indicating whether the summary needs to be updated.
-
-## Technical Concepts
-
-- **DocumentationCache**: A utility class that manages the cache of generated documentation.
-- **ConfigHelper**: A utility class that provides access to the configuration settings of the software project.
-- **FolderStructure**: A utility class that provides methods to work with the folder structure of the software project.
-- **FileStructure**: A utility class that provides methods to work with the file structure of the software project.
-- **Helper**: A utility class that provides various helper methods, such as parsing JSON data.
-
-## Sections
-
-- [Usage](#usage)
-- [Class Methods](#class-methods)
-- [Properties](#properties)
-- [Technical Concepts](#technical-concepts)
-- [Sections](#sections)
+:::info
+The `ConfigurationBuilder.ts` file is a crucial part of the documentation generation process, as it handles the creation of configuration documentation for a software project. By using this class, developers can easily generate and maintain up-to-date configuration documentation for their projects.
+:::

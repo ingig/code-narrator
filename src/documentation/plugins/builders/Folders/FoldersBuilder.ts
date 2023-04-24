@@ -74,9 +74,6 @@ export default class FoldersBuilder extends BaseBuilder {
 
     }
 
-    public async render(document: Document): Promise<string> {
-        return document.documentation;
-    }
 
 
     private getFileSummary(file: FileStructure) {

@@ -27,8 +27,6 @@ export default abstract class BaseBuilder {
 
     abstract generate(): any;
 
-    abstract render(document: Document): Promise<string>;
-
     public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse> {
         const engine = new Liquid({
             extname: '.liquid'

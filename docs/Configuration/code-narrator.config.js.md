@@ -1,39 +1,24 @@
-The `code-narrator.config.js` file is a configuration file for the Code Narrator project. It contains various settings and options that help customize the behavior of the application. Below is a detailed description of each configuration option:
+Here is a detailed description of the `code-narrator.config.js` file and its purpose in the application:
 
-1. `entry_file`: The entry point of the application. In this case, it is set to `./dist/src/App.js`.
+The `code-narrator.config.js` file is a configuration file for the Code Narrator project. It contains various settings and options that are used by the application to generate documentation based on the project's source code and other files. The configuration object is of type `ICodeNarratorConfig`.
 
-2. `cli_file`: The path to the CLI file. In this case, it is set to `./dist/src/cli.js`.
+Below is a brief explanation of each property in the configuration object:
 
-3. `project_name`: The name of the project. In this case, it is set to "code-narrator".
+- `entry_file`: The entry point file for the application (e.g., `./dist/src/App.js`).
+- `cli_file`: The command-line interface file for the application (e.g., `./dist/src/cli.js`).
+- `project_name`: The name of the project (e.g., `code-narrator`).
+- `config_files`: An array of configuration files used by the project (e.g., `["code-narrator.config.js"]`).
+- `readmeRoot`: A boolean value indicating whether the root folder should contain a README file.
+- `folderRootFileName`: The name of the root folder's README file (e.g., `README`).
+- `repository_url`: The URL of the project's repository (e.g., `https://github.com/ingig/code-narrator`).
+- `project_file`: The project's package.json file (e.g., `package.json`).
+- `source_path`: The path to the project's source code (e.g., `src`).
+- `documentation_path`: The path to the project's documentation (e.g., `docs`).
+- `test_path`: The path to the project's test files (e.g., `__tests__`).
+- `include`: An array of file patterns to include in the documentation generation process (e.g., `["code-narrator.config.js", "src/**/*.ts"]`).
+- `builders`: An array of builder objects that define how the documentation should be generated.
 
-4. `config_files`: An array of configuration files used by the project. In this case, it includes only "code-narrator.config.js".
-
-5. `readmeRoot`: A boolean value that indicates whether the root folder should contain a README file. In this case, it is set to `true`.
-
-6. `folderRootFileName`: The name of the root folder's README file. In this case, it is set to 'README'.
-
-7. `repository_url`: The URL of the project's repository. In this case, it is set to "https://github.com/ingig/code-narrator".
-
-8. `project_file`: The path to the project's package.json file. In this case, it is set to "package.json".
-
-9. `source_path`: The path to the source code folder. In this case, it is set to "src".
-
-10. `documentation_path`: The path to the documentation folder. In this case, it is set to "docs".
-
-11. `test_path`: The path to the test folder. In this case, it is set to "__tests__".
-
-12. `include`: An array of files and folders to be included in the documentation. In this case, it includes "code-narrator.config.js" and all TypeScript files in the "src" folder.
-
-13. `builders`: An array of builder objects that define how the documentation should be generated. Each builder object has the following properties:
-
-    - `name`: The name of the builder.
-    - `template`: The template used by the builder.
-    - `sidebarPosition`: The position of the builder in the sidebar.
-    - `args`: Arguments passed to the builder.
-    - `files`: An array of files used by the builder.
-    - `type`: The type of the builder (e.g., "Custom", "README", "howto").
-
-To retrieve a value from the config file, you can use the following syntax:
+To retrieve a value from the config file, you can use the `require` function in Node.js. For example, to get the `entry_file` value, you can do the following:
 
 ```javascript
 const config = require('./code-narrator.config.js');
@@ -41,5 +26,5 @@ console.log(config.entry_file); // Output: "./dist/src/App.js"
 ```
 
 :::note
-Please note that any sensitive information in the config file should be replaced with ***** before sharing it with others.
+Please note that the actual file paths and URLs in the example configuration may not be valid for your specific project. Make sure to adjust them according to your project's structure and requirements.
 :::

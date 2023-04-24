@@ -1,28 +1,28 @@
 # ConfigFileSerializer.ts
 
-This is a TypeScript code file that contains the `ConfigFileSerializer` class. This class is responsible for serializing configuration objects into a JavaScript file and creating necessary directories and files for the Code Narrator documentation system.
+This is a TypeScript code file that contains the `ConfigFileSerializer` class. This class is responsible for serializing configuration objects into a string format and writing them to a file. It also handles the creation of necessary directories and copying of template files.
 
 ## Usage
 
-To use the `ConfigFileSerializer` class, you need to import it and create an instance of the class. Then, you can call the `serialize` method with a configuration object that implements the `ICodeNarratorConfig` interface.
+To use the `ConfigFileSerializer` class, you need to import it and create a new instance. Then, you can call the `serialize` method with a configuration object to generate the configuration file.
 
 ```typescript
 import ConfigFileSerializer from './ConfigFileSerializer';
 import ICodeNarratorConfig from './ICodeNarratorConfig';
 
+const configSerializer = new ConfigFileSerializer();
 const config: ICodeNarratorConfig = {
   // Your configuration object
 };
 
-const serializer = new ConfigFileSerializer();
-serializer.serialize(config);
+configSerializer.serialize(config);
 ```
 
 ## Methods
 
 ### serialize(config: ICodeNarratorConfig): Promise<void>
 
-This method takes a configuration object that implements the `ICodeNarratorConfig` interface and writes it to a JavaScript file named `code-narrator.config.js`. It also creates necessary directories and files for the Code Narrator documentation system.
+This method takes a configuration object of type `ICodeNarratorConfig` and generates a configuration file named `code-narrator.config.js`. It also creates necessary directories and copies template files.
 
 #### Parameters
 
@@ -30,51 +30,34 @@ This method takes a configuration object that implements the `ICodeNarratorConfi
 
 ### generateConfigString(configObject: any, indentLevel?: number): string
 
-This method takes a configuration object and an optional indentation level and returns a formatted string representation of the configuration object.
+This method takes a configuration object and an optional indentation level and returns a formatted configuration string.
 
 #### Parameters
 
-- `configObject`: A configuration object to be serialized.
-- `indentLevel`: An optional number representing the indentation level. Default is 1.
+- `configObject`: The configuration object to be serialized.
+- `indentLevel`: An optional number representing the indentation level (default is 1).
 
 ### getCommentByKey(key: string, indent: string): string
 
-This method takes a key and an indentation string and returns a comment string for the given key if it exists in the `map` property.
+This method takes a key and an indentation string and returns a comment string for the given key.
 
 #### Parameters
 
-- `key`: A string representing the key for which to get the comment.
-- `indent`: A string representing the indentation.
+- `key`: The key for which the comment should be generated.
+- `indent`: The indentation string to be used in the comment.
 
-## Properties
+## Technical Concepts
 
-### map: Map<string, string>
+### ICodeNarratorConfig
 
-A `Map` object that contains key-value pairs for comments to be added to the serialized configuration file. The keys represent the configuration keys, and the values represent the comments to be added.
+This is an interface that defines the structure of the configuration object used in the `ConfigFileSerializer` class. It contains properties such as `config_files`, `repository_url`, `builderPlugins`, `gptSystemCommands`, `readmeRoot`, and `builders`.
 
-## Example
+### Template Files
 
-```typescript
-import ConfigFileSerializer from './ConfigFileSerializer';
-import ICodeNarratorConfig from './ICodeNarratorConfig';
+The `ConfigFileSerializer` class copies the following template files to the `.code-narrator/gpt_questions` directory:
 
-const config: ICodeNarratorConfig = {
-  config_files: ['project_name.json'],
-  repository_url: 'https://github.com/ingig/code-narrator',
-  builderPlugins: [
-    // Your builder plugins
-  ],
-  gptSystemCommands: [
-    // Your GPT system commands
-  ],
-  readmeRoot: true,
-  builders: [
-    // Your user-defined builders
-  ],
-};
+- `README.liquid`
+- `overview_readme.liquid`
+- `howto_create_howto.liquid`
 
-const serializer = new ConfigFileSerializer();
-serializer.serialize(config);
-```
-
-This example demonstrates how to use the `ConfigFileSerializer` class to serialize a configuration object and create necessary directories and files for the Code Narrator documentation system.
+These files are used as templates for generating documentation.

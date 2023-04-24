@@ -1,3 +1,7 @@
+const ConfigurationBuilder = require("./src/documentation/plugins/builders/Configuration/ConfigurationBuilder");
+const FilesBuilder = require("./src/documentation/plugins/builders/Files/FilesBuilder");
+const FoldersBuilder = require("./src/documentation/plugins/builders/Folders/FoldersBuilder");
+const UserDefinedBuilder = require("./src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
 /**
  * @type {ICodeNarratorConfig}
  */
@@ -18,6 +22,13 @@ const config = {
     include: [
         "code-narrator.config.js",
         "src/**/*.ts"
+    ],
+    generatorPlugin : [],
+    builderPlugins: [
+        ConfigurationBuilder,
+        FilesBuilder,
+        FoldersBuilder,
+        UserDefinedBuilder,
     ],
     builders: [
         {
@@ -75,6 +86,7 @@ const config = {
             }
             ],
             pages: [
+
                 {
                     type: "howto",
                     template: "howto_create_howto",
@@ -120,6 +132,43 @@ const config = {
                         }
                     ]
                 },
+            ]
+        },
+        {
+            //https://github.com/ingig/code-narrator/tree/master/docs/howto
+            type: "README",
+            template: "overview_readme",
+            name: "README",
+            path: "tutorial",
+            files: [{
+                path: "tutorial/*.md"
+            }
+            ],
+            pages: [
+                {
+                    type: "tutorial",
+                    template: "tutorial_create_builder_plugin",
+                    name: "Tutorial - Create builder plugin",
+                    files: [
+                        {
+                            path: "src/documentation/plugins/builders/Files/FilesBuilder.ts"
+                        },
+                        {
+                            path: "code-narrator.config.js",
+                            extract: "builderPlugins"
+                        }
+                    ]
+                },
+                {
+                    type: "tutorial",
+                    template: "tutorial_create_generator_plugin",
+                    name: "Tutorial - Create generator plugin",
+                    files: [
+                        {
+                            path: "src/documentation/plugins/generators/JekyllGenerator.ts"
+                        }
+                    ]
+                }
             ]
         }
     ]

@@ -75,10 +75,6 @@ export default class UserDefinedBuilder extends BaseBuilder {
         })
     }
 
-    public async render(document: Document) {
-        return document.documentation;
-    }
-
 
     private hasTemplateChanged(document: Document | undefined, templatePath: string) {
         if (!document) return true;

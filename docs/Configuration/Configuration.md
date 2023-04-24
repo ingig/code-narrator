@@ -1,8 +1,6 @@
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project details, and documentation generation settings.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project name, repository URL, source paths, documentation paths, and more. This file also defines builders, which are responsible for generating different types of documentation based on the provided templates and configurations.
 
-The purpose of this configuration file is to allow users to customize the behavior of the Code Narrator application according to their specific needs and project requirements.
-
-Here is an example of usage for the app-specific configs:
+Here's an example of usage for the app-specific configs:
 
 ```javascript
 const config = {
@@ -12,12 +10,35 @@ const config = {
     config_files: [
         "code-narrator.config.js"
     ],
-    // Other configurations...
+    // ... other configurations ...
+    builders: [
+        {
+            name: "Prerequisites",
+            template: `prerequisites`,
+            sidebarPosition: 2,
+            args: {
+                entryFileContent: 'content(./dist/src/cli.js)',
+                configFile: 'content(code-narrator.config.js)'
+            },
+            files: [
+                {
+                    path: "package.json",
+                    jsonPaths: [
+                        "$.dependencies",
+                        "$.devDependencies",
+                        "$.engine"
+                    ]
+                }
+            ],
+            type: 'Custom'
+        },
+        // ... other builders ...
+    ]
 };
 
 module.exports = config;
 ```
 
-In this example, the configuration file exports an object containing various settings for the Code Narrator application. The `entry_file` and `cli_file` properties specify the entry points for the application and the CLI, respectively. The `project_name` property sets the name of the project, and the `config_files` property lists the configuration files used by the application.
+In this example, the `config` object contains various settings for the Code Narrator application, such as the entry file, CLI file, project name, and configuration files. It also defines a custom builder named "Prerequisites" that uses the `prerequisites` template and has a sidebar position of 2. The builder takes arguments for the entry file content and the configuration file content, and it processes the `package.json` file to extract information about dependencies, devDependencies, and the engine.
 
-As for the other configuration files, I do not recognize them, so I cannot provide any information about them.
+As for the other configuration files, I cannot provide information about them without more context or details.

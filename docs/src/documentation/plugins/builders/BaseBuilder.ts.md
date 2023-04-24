@@ -1,59 +1,82 @@
 # BaseBuilder.ts
 
-This is a TypeScript code file that defines the `BaseBuilder` class, which serves as the base class for Builder plugins. Builder plugins are used to generate questions for GPT, parse the response, and load it into the `Document` object that is later cached.
+This is a TypeScript code file that defines the `BaseBuilder` class, which serves as the base class for Builder plugins. Builder plugins are used to generate questions for GPT, parse the response, and load it into a `Document` object that is later cached.
 
-## Class: BaseBuilder
+## Table of Contents
 
-The `BaseBuilder` class is an abstract class that provides the basic structure and methods for generating and rendering documentation using GPT.
+- [Class Description](#class-description)
+- [Methods](#methods)
+  - [generate](#generate)
+  - [getAnswer](#getanswer)
+  - [generateDocumentation](#generatedocumentation)
+  - [generateDocumentationAndCache](#generatedocumentationandcache)
+  - [hasChanged](#haschanged)
 
-### Properties
+## Class Description
+
+The `BaseBuilder` class is an abstract class that provides the basic structure and methods for Builder plugins. It includes the following properties:
 
 - `openAIRepository`: An instance of the `OpenAIRepository` class.
-- `generator`: A string representing the generator used for the Builder plugin.
+- `generator`: A string representing the generator used by the Builder plugin.
 - `config`: An instance of the `ICodeNarratorConfig` interface.
 
-### Constructor
+## Methods
 
-The constructor takes a `generator` string as a parameter and initializes the `openAIRepository`, `generator`, and `config` properties.
-
-### Abstract Methods
-
-- `generate()`: An abstract method that must be implemented by derived classes.
-- `render(document: Document)`: An abstract method that takes a `Document` object as a parameter and must be implemented by derived classes.
-
-### Public Methods
-
-- `getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[])`: A method that takes a `name`, `args`, `template`, and optional `assistantMessages` as parameters, and returns a Promise of an `OpenAIResponse`. It generates a question using the Liquid template engine and queries the OpenAIRepository.
-
-- `generateDocumentation(options: GenerateOptions)`: A method that takes a `GenerateOptions` object as a parameter and returns a Promise of a `Document`. It generates the documentation using the provided options and stores the response in a `Document` object.
-
-- `generateDocumentationAndCache(options: GenerateOptions)`: A method that takes a `GenerateOptions` object as a parameter and generates the documentation using the provided options. It then stores the generated `Document` object in the `DocumentationCache`.
-
-- `hasChanged(document?: Document)`: A method that takes an optional `Document` object as a parameter and returns a boolean indicating whether the document has changed or not. It checks if the file exists, if the documentation type has changed, and if the file's modification time is greater than or equal to the document's updated time.
-
-## Example Usage
-
-To use the `BaseBuilder` class, you would need to create a derived class that implements the abstract methods `generate()` and `render(document: Document)`.
+### generate
 
 ```typescript
-import BaseBuilder from "./BaseBuilder";
-import Document from "../../Document";
-
-class CustomBuilder extends BaseBuilder {
-  constructor() {
-    super("CustomGenerator");
-  }
-
-  generate() {
-    // Implement the generate method
-  }
-
-  async render(document: Document): Promise<string> {
-    // Implement the render method
-  }
-}
-
-const customBuilder = new CustomBuilder();
+abstract generate(): any;
 ```
 
-In this example, a `CustomBuilder` class is created that extends the `BaseBuilder` class. The `generate()` and `render(document: Document)` methods are implemented according to the specific requirements of the custom builder.
+This is an abstract method that must be implemented by any class that extends `BaseBuilder`. It is responsible for generating the content for the Builder plugin.
+
+### getAnswer
+
+```typescript
+public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse>;
+```
+
+This method takes a `name`, `args`, `template`, and optional `assistantMessages` as input and returns a `Promise` that resolves to an `OpenAIResponse`. It uses the Liquid templating engine to render the template with the provided arguments and queries the OpenAI API with the generated question.
+
+**Parameters:**
+
+- `name`: The name of the entity for which the answer is being requested.
+- `args`: An object containing any additional arguments required for the template.
+- `template`: The name of the template file to be used (default is 'template').
+- `assistantMessages`: An optional array of strings containing any assistant messages to be included in the API request.
+
+### generateDocumentation
+
+```typescript
+public async generateDocumentation(options: GenerateOptions): Promise<Document>;
+```
+
+This method takes a `GenerateOptions` object as input and returns a `Promise` that resolves to a `Document` object. It calls the `getAnswer` method to obtain the answer from the OpenAI API and creates a new `Document` object with the provided information.
+
+**Parameters:**
+
+- `options`: An object containing the options for generating the documentation. See the `GenerateOptions` interface for more details.
+
+### generateDocumentationAndCache
+
+```typescript
+public async generateDocumentationAndCache(options: GenerateOptions): Promise<void>;
+```
+
+This method takes a `GenerateOptions` object as input and returns a `Promise` that resolves to `void`. It calls the `generateDocumentation` method to create a `Document` object and then stores it in the `DocumentationCache`.
+
+**Parameters:**
+
+- `options`: An object containing the options for generating the documentation and caching it. See the `GenerateOptions` interface for more details.
+
+### hasChanged
+
+```typescript
+public hasChanged(document?: Document): boolean;
+```
+
+This method takes an optional `Document` object as input and returns a boolean value indicating whether the document has changed since it was last updated. If the document is not provided or does not exist, the method returns `true`.
+
+**Parameters:**
+
+- `document`: An optional `Document` object to check for changes.

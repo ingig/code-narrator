@@ -29,9 +29,6 @@ export default class HowToBuilder extends BaseBuilder {
         }
     }
 
-    public async render(document: Document): Promise<string> {
-        return document.documentation;
-    }
 
 
     private async makeHowTo(fileStructure: FileStructure, content: string, name : string) {
