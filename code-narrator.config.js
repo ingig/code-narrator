@@ -32,26 +32,6 @@ const config = {
     ],
     builders: [
         {
-            name: "Prerequisites",
-            template: `prerequisites`,
-            sidebarPosition: 2,
-            args: {
-                entryFileContent: 'content(./dist/src/cli.js)',
-                configFile: 'content(code-narrator.config.js)'
-            },
-            files: [
-                {
-                    path: "package.json",
-                    jsonPaths: [
-                        "$.dependencies",
-                        "$.devDependencies",
-                        "$.engine"
-                    ]
-                }
-            ],
-            type: 'Custom'
-        },
-        {
             type: "README",
             sidebarPosition: 1,
             template: "README",
@@ -75,6 +55,36 @@ const config = {
             ]
 
         },
+        {
+            name: "FAQ",
+            template : "faq",
+            sidebarPosition: 2,
+            type: "faq",
+            args : {
+                projectFile : 'content(package.json)'
+            }
+        },
+        {
+            name: "Prerequisites",
+            template: `prerequisites`,
+            sidebarPosition: 3,
+            args: {
+                entryFileContent: 'content(./dist/src/cli.js)',
+                configFile: 'content(code-narrator.config.js)'
+            },
+            files: [
+                {
+                    path: "package.json",
+                    jsonPaths: [
+                        "$.dependencies",
+                        "$.devDependencies",
+                        "$.engine"
+                    ]
+                }
+            ],
+            type: 'Custom'
+        },
+
         {
             //https://github.com/ingig/code-narrator/tree/master/docs/howto
             type: "README",

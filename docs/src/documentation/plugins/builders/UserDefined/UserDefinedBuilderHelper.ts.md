@@ -1,89 +1,71 @@
 # UserDefinedBuilderHelper.ts
 
-This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling various tasks related to building user-defined content. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.
+This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling user-defined builders in a software project. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.
 
-## Usage
+## Table of Contents
 
-To use the `UserDefinedBuilderHelper` class, you need to import it and create a new instance:
+- [Class: UserDefinedBuilderHelper](#class-userdefinedbuilderhelper)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+    - [extractPathFromContent](#extractpathfromcontent)
+    - [loadArgs](#loadargs)
+    - [getAssistantMessages](#getassistantmessages)
+    - [getPredefinedQuestion](#getpredefinedquestion)
+    - [extractContentBetweenHeaders](#extractcontentbetweenheaders)
+    - [findFiles](#findfiles)
 
-```typescript
-import UserDefinedBuilderHelper from "./UserDefinedBuilderHelper";
+## Class: UserDefinedBuilderHelper
 
-const userDefinedBuilderHelper = new UserDefinedBuilderHelper();
-```
-
-## Methods
-
-### constructor()
+### Constructor
 
 The constructor initializes the `openAIRepository` property with a new instance of the `OpenAIRepository` class.
 
-### extractPathFromContent(input: string): string | null
+### Methods
 
-This method takes an input string and returns the extracted path from the content if it exists, otherwise, it returns null.
-
-#### Parameters
-
-- `input`: A string containing the content to extract the path from.
-
-### loadArgs(build: IBuilder, project_path: string)
-
-This method loads the arguments for the given build and project path.
-
-#### Parameters
-
-- `build`: An object implementing the `IBuilder` interface.
-- `project_path`: A string representing the project path.
-
-### getAssistantMessages(builder: IBuilder): Promise<string[]>
-
-This method returns an array of assistant messages for the given builder.
-
-#### Parameters
-
-- `builder`: An object implementing the `IBuilder` interface.
-
-### getPredefinedQuestion(type: string): string | undefined
-
-This method returns a predefined question based on the given type.
-
-#### Parameters
-
-- `type`: A string representing the type of question.
-
-### extractContentBetweenHeaders(markdown: string): string
-
-This method extracts the content between headers in a markdown string.
-
-#### Parameters
-
-- `markdown`: A string containing the markdown content.
-
-### findFiles(patternString: string): DocumentationCache[]
-
-This method finds files based on the given pattern string and returns an array of `DocumentationCache` objects.
-
-#### Parameters
-
-- `patternString`: A string representing the pattern to search for files.
-
-## Example
+#### extractPathFromContent
 
 ```typescript
-import UserDefinedBuilderHelper from "./UserDefinedBuilderHelper";
-
-const userDefinedBuilderHelper = new UserDefinedBuilderHelper();
-
-const input = "content(path/to/file.txt)";
-const extractedPath = userDefinedBuilderHelper.extractPathFromContent(input);
-console.log(extractedPath); // Output: "path/to/file.txt"
+public extractPathFromContent(input: string): string | null
 ```
 
-## Technical Concepts
+This method takes an input string and returns the extracted path from the content using a regular expression. If no path is found, it returns `null`.
 
-- `OpenAIRepository`: A class responsible for interacting with the OpenAI API.
-- `DocumentationCache`: A class responsible for caching documentation files.
-- `IBuilder`: An interface that defines the structure of a builder object.
-- `FileStructure`: A utility class for handling file structures.
-- `ConfigHelper`: A helper class for managing configuration settings.
-- `Helper`: A utility class for various helper functions.
+#### loadArgs
+
+```typescript
+public loadArgs(build: IBuilder, project_path: string): void
+```
+
+This method takes an `IBuilder` object and a project path as parameters. It loads the arguments from the `build.args` property and replaces the content with the actual file content if a file path is found.
+
+#### getAssistantMessages
+
+```typescript
+public async getAssistantMessages(builder: IBuilder): Promise<string[]>
+```
+
+This asynchronous method takes an `IBuilder` object as a parameter and returns an array of assistant messages. It processes the builder's files and extracts relevant information to generate the assistant messages.
+
+#### getPredefinedQuestion
+
+```typescript
+private getPredefinedQuestion(type: string): string | undefined
+```
+
+This private method takes a string representing the builder type and returns a predefined question based on the type. If the type is not recognized, it returns `undefined`.
+
+#### extractContentBetweenHeaders
+
+```typescript
+public extractContentBetweenHeaders(markdown: string): string
+```
+
+This method takes a markdown string as input and returns the content between the headers. If the content is shorter than 350 characters, it returns the entire content. Otherwise, it returns the first 350 characters followed by an ellipsis.
+
+#### findFiles
+
+```typescript
+public findFiles(patternString: string): DocumentationCache[]
+```
+
+This method takes a pattern string as input and returns an array of `DocumentationCache` objects that match the given pattern. It searches for files in the specified directory and returns the matching files.

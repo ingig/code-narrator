@@ -1,7 +1,7 @@
 import FileStructure from "../../../../utils/FileStructure";
 import path from "path";
 import BaseBuilder from "../BaseBuilder";
-import IBuilder from "../../../../config/IBuilder";
+import IBuilder, {BuilderType} from "../../../../config/IBuilder";
 import jsonpath from "jsonpath";
 import ConfigHelper from "../../../../config/ConfigHelper";
 import Helper from "../../../../utils/Helper";
@@ -115,6 +115,8 @@ ${overview}
         } else if (type == 'tutorial') {
             return `I want you to create a detailed Tutorial from the user input.
             Define the target audience, Set clear learning objectives,Provide a brief introduction,Prerequisites and system requirements,Step-by-step instructions,Include code samples`
+        } else if (type == 'faq') {
+            return 'Write a FAQ document from users answers. Do not create questions you cannot answer. DO NOT hallucinate answers.'
         }
 
     }
