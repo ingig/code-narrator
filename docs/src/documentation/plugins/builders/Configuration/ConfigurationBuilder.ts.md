@@ -1,33 +1,31 @@
 # ConfigurationBuilder.ts
 
-The `ConfigurationBuilder.ts` file is a TypeScript code file that defines a `ConfigurationBuilder` class, which is responsible for generating configuration files and summaries for a given application. This class extends the `BaseBuilder` class and utilizes various helper classes and methods to achieve its functionality.
+The `ConfigurationBuilder.ts` file is a TypeScript code file that is responsible for generating configuration documentation, including application-specific and general configuration files. It also prepares and generates a summary of the configuration files.
 
 ## Usage
 
-To use the `ConfigurationBuilder` class, you need to create an instance of the class and call the `generate()` method.
+To use the `ConfigurationBuilder` class, you need to import it and create a new instance:
 
 ```typescript
-import ConfigurationBuilder from './path/to/ConfigurationBuilder';
+import ConfigurationBuilder from "./path/to/ConfigurationBuilder";
 
 const configurationBuilder = new ConfigurationBuilder();
 await configurationBuilder.generate();
 ```
 
-## Class Description
+## Class: ConfigurationBuilder
 
-### ConfigurationBuilder
+The `ConfigurationBuilder` class extends the `BaseBuilder` class and provides methods to generate configuration documentation.
 
-The `ConfigurationBuilder` class is responsible for generating configuration files and summaries for a given application.
+### Properties
 
-#### Properties
-
-- `configFiles: string[]`: An array of configuration file names.
+- `configFiles: string[]`: An array of general configuration file names.
 - `appSpecificConfigFiles: string[]`: An array of application-specific configuration file names.
-- `updateSummary: boolean`: A flag indicating whether the summary should be updated.
+- `updateSummary: boolean`: A flag to indicate whether the summary should be updated or not.
 
-#### Constructor
+### Constructor
 
-The constructor initializes the `ConfigurationBuilder` instance with the given configuration type.
+The constructor initializes the `ConfigurationBuilder` instance with the 'Configuration' type.
 
 ```typescript
 constructor() {
@@ -35,23 +33,40 @@ constructor() {
 }
 ```
 
-#### Methods
+### Method: generate
 
-- `generate(): Promise<void>`: This asynchronous method generates the configuration files and summaries for the application. It uses the `PrepareSummary`, `GenerateAppConfigFiles`, and `GenerateGeneralConfigFiles` helper classes to achieve this.
+This method is responsible for generating the configuration documentation. It checks if there are any configuration files, prepares the summary, generates application-specific and general configuration files, and finally generates the summary.
 
-- `generateSummary(): Promise<void>`: This private asynchronous method generates the summary for the configuration files. It checks if the `updateSummary` flag is set to true before proceeding. It then generates the summary content and calls the `generateDocumentationAndCache()` method from the `BaseBuilder` class.
+```typescript
+public async generate(): Promise<void>
+```
 
-## Helper Classes
+### Method: generateSummary
 
-The `ConfigurationBuilder` class utilizes the following helper classes:
+This private method generates the summary of the configuration files if the `updateSummary` flag is set to `true`. It creates the content for the summary, including the application-specific configuration files and general configuration files.
 
-- `PrepareSummary`: Responsible for preparing the summary of the configuration files.
-- `GenerateAppConfigFiles`: Responsible for generating application-specific configuration files.
-- `GenerateGeneralConfigFiles`: Responsible for generating general configuration files.
+```typescript
+private async generateSummary(): Promise<void>
+```
 
 ## Technical Concepts
 
-- `BaseBuilder`: The `BaseBuilder` class is a base class for various builder classes, providing common functionality for generating documentation and caching.
-- `ConfigHelper`: The `ConfigHelper` class is a utility class for managing and accessing configuration data.
-- `FileStructure`: The `FileStructure` class is a utility class for managing and accessing file structures.
-- `DocumentationCache`: The `DocumentationCache` class is responsible for caching generated documentation.
+### Importing Dependencies
+
+The file imports several dependencies, such as `Document`, `FolderStructure`, `Helper`, `FileStructure`, `DocumentationCache`, `BaseBuilder`, `path`, `ConfigHelper`, `GenerateAppConfigFiles`, `PrepareSummary`, and `GenerateGeneralConfigFiles`. These dependencies are used throughout the class to perform various tasks related to generating configuration documentation.
+
+### Generating Configuration Documentation
+
+The `ConfigurationBuilder` class generates configuration documentation by preparing a summary, generating application-specific configuration files, and generating general configuration files. It then generates the summary of the configuration files if the `updateSummary` flag is set to `true`.
+
+## Sections
+
+- [Usage](#usage)
+- [Class: ConfigurationBuilder](#class-configurationbuilder)
+  - [Properties](#properties)
+  - [Constructor](#constructor)
+  - [Method: generate](#method-generate)
+  - [Method: generateSummary](#method-generatesummary)
+- [Technical Concepts](#technical-concepts)
+  - [Importing Dependencies](#importing-dependencies)
+  - [Generating Configuration Documentation](#generating-configuration-documentation)
