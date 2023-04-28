@@ -23,7 +23,7 @@ export default class ConfigurationBuilder extends BaseBuilder {
 
     public async generate() {
         if (ConfigHelper.config.config_files?.length == 0) return;
-        return;
+
         let prepareSummary = new PrepareSummary(this);
         await prepareSummary.prepareSummary();
 

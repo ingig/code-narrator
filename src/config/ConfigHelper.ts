@@ -34,6 +34,8 @@ export default class ConfigHelper {
 Config file has been generated in project root, code-narrator.config.js. 
             
 Please read through it and see if it maps correctly to your project. You can modify it. 
+The important properties to look at are "source_path", "include" and "config_files" if you have some app specific config files.
+
 Next time you will run the CLI it will start generating documentation
 ===================================================================`)
             process.exit(1);

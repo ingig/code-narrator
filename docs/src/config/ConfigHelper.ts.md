@@ -12,18 +12,18 @@ The `ConfigHelper.ts` file is a TypeScript module that provides a helper class f
 
 ## Class: ConfigHelper
 
-The `ConfigHelper` class is the main class in this module, and it contains several static properties and methods for managing the configuration of a Code Narrator project.
+The `ConfigHelper` class is the main class in this module, and it provides several static properties and methods for working with project configurations.
 
 ### Static Properties
 
-- `env`: An object containing the environment variables loaded from the `.env` file.
-- `OpenAiKey`: A string representing the OpenAI API key.
-- `DocumentingProject`: An object representing the project being documented.
-- `BuilderPlugins`: An array of builder plugins.
-- `DocumentationType`: A string representing the documentation type (default: 'md').
-- `DocumentExtension`: A string representing the document file extension (default: '.md').
-- `CacheFilePath`: A string representing the cache file path (default: '.code-narrator/cache.json').
-- `config`: An instance of the `ICodeNarratorConfig` interface representing the project configuration.
+- `env`: Stores the environment variables from the `.env` file.
+- `OpenAiKey`: Stores the OpenAI API key.
+- `DocumentingProject`: Stores the path to the project's documentation.
+- `BuilderPlugins`: Stores an array of builder plugins.
+- `DocumentationType`: Stores the type of documentation (default is 'md').
+- `DocumentExtension`: Stores the file extension for documentation files (default is '.md').
+- `CacheFilePath`: Stores the path to the cache file (default is '.code-narrator/cache.json').
+- `config`: Stores the `ICodeNarratorConfig` object.
 
 ### Static Methods
 
@@ -33,9 +33,13 @@ The `ConfigHelper` class is the main class in this module, and it contains sever
 public static async load(projectConfig: Partial<ICodeNarratorConfig> = {}): Promise<void>
 ```
 
-The `load` method is responsible for loading the project configuration. It takes an optional `projectConfig` parameter, which is a partial instance of the `ICodeNarratorConfig` interface. If the `projectConfig` parameter is not provided, the method will generate a new configuration using the `ConfigGenerator` class.
+The `load` method is responsible for loading the project configuration. It takes an optional `projectConfig` parameter, which is a partial `ICodeNarratorConfig` object. This method performs the following tasks:
 
-This method also checks for the presence of the `OPENAI_API_KEY` environment variable and throws an error if it is not found.
+1. Loads environment variables from the `.env` file.
+2. Sets the `OpenAiKey` property.
+3. Generates a new project configuration if the `fromFile` property is not set in the `projectConfig` object.
+4. Merges the default settings with the provided `projectConfig` object.
+5. Sets the `DocumentingProject`, `BuilderPlugins`, `DocumentExtension`, `DocumentationType`, and `CacheFilePath` properties based on the merged configuration.
 
 #### getUserDefinedExamples
 
@@ -43,20 +47,24 @@ This method also checks for the presence of the `OPENAI_API_KEY` environment var
 public static getUserDefinedExamples(config: ICodeNarratorConfig): IBuilder[]
 ```
 
-The `getUserDefinedExamples` method returns an array of `IBuilder` instances representing user-defined examples for the project. It takes a `config` parameter, which is an instance of the `ICodeNarratorConfig` interface.
+The `getUserDefinedExamples` method returns an array of `IBuilder` objects that represent user-defined examples. It takes a `config` parameter, which is an `ICodeNarratorConfig` object. This method creates and returns an array containing two `IBuilder` objects:
 
-This method creates two example builders: a `README` builder and a `HowTo Overview` builder. The `README` builder is configured to generate a README file using the `entryFileContent` argument, while the `HowTo Overview` builder is configured to generate an overview page with a `howto` template.
+1. `readMeBuilder`: Represents the README file.
+2. `howToBuilder`: Represents the HowTo Overview page, which includes a HowTo Example page.
 
-Example usage:
+These `IBuilder` objects can be used to generate documentation for the project based on the provided configuration.
+
+## Usage
+
+To use the `ConfigHelper` class, you can import it and call its static methods as needed. For example, to load a project configuration and get user-defined examples, you can do the following:
 
 ```typescript
-import ConfigHelper from './ConfigHelper';
+import ConfigHelper from "./ConfigHelper";
 
 (async () => {
   await ConfigHelper.load();
   const userDefinedExamples = ConfigHelper.getUserDefinedExamples(ConfigHelper.config);
-  console.log(userDefinedExamples);
 })();
 ```
 
-This will output an array of `IBuilder` instances representing the user-defined examples for the project.
+This will load the project configuration and generate user-defined examples based on the loaded configuration.
