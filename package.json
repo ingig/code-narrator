@@ -1,6 +1,6 @@
 {
   "name": "code-narrator",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Configuration code-narrator.config.js file is created on first run and sets the configuration for your project, such as project path, doc, documentation type and more. The package can be install using 'npm i code-narrator -D'. code-narrator is language & framework neutral",
   "keywords": [
     "documentation",

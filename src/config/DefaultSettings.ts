@@ -8,7 +8,7 @@ import path from "path";
 import HowToBuilder from "../documentation/plugins/builders/Howto/HowToBuilder";
 
 export default class DefaultSettings {
-
+    static gptModel = 'gpt-4';
     public static get() {
 
         return {
@@ -38,7 +38,7 @@ export default class DefaultSettings {
             document_file_extension: ".md",
             folderRootFileName : 'README',
             cache_file: '.code-narrator/cache.json', //location of the cache file. :::warning '.code-narrator/cache.json' should be committed into git.
-            gptModel : 'gpt-4'
+            gptModel : this.gptModel
         } as ICodeNarratorConfig
     }
 

@@ -1,10 +1,10 @@
 # OpenAIRepository.ts
 
-This TypeScript file defines the `OpenAIRepository` class, which is responsible for interacting with the OpenAI API to query GPT models. The class provides methods for querying single or multiple questions and handles error scenarios, retries, and message length limitations.
+This is a TypeScript code file that defines the `OpenAIRepository` class. The class is responsible for interacting with the OpenAI API to perform chat-based completions using various GPT models. It handles querying the API, managing the configuration, and processing the responses.
 
 ## Usage
 
-To use the `OpenAIRepository` class, first import it and create an instance:
+To use the `OpenAIRepository` class, you need to import it and create an instance:
 
 ```typescript
 import OpenAIRepository from './OpenAIRepository';
@@ -12,57 +12,50 @@ import OpenAIRepository from './OpenAIRepository';
 const openAIRepo = new OpenAIRepository();
 ```
 
-Then, you can use the `query` and `queryQuestions` methods to interact with the GPT models:
+Then, you can call the `query` or `queryQuestions` methods to interact with the OpenAI API:
 
 ```typescript
-// Query a single question
 const response = await openAIRepo.query('What is the capital of France?');
 console.log(response.answer);
-
-// Query multiple questions
-const responses = await openAIRepo.queryQuestions([
-  'What is the capital of France?',
-  'What is the capital of Germany?'
-]);
-console.log(responses.answer);
 ```
 
-## Methods
+## Class Methods
 
 ### constructor()
 
-The constructor initializes the `OpenAIRepository` instance by setting up the OpenAI API configuration using the API key from `ConfigHelper`.
+The constructor initializes the `OpenAIRepository` instance by setting up the OpenAI API configuration and creating an instance of the `OpenAIApi` class.
 
 ### async query(text: string): Promise<OpenAIResponse>
 
-This method takes a single question as a string and returns a Promise that resolves to an `OpenAIResponse` object. It internally calls the `queryQuestions` method with an array containing the single question.
+This method takes a single question as a string and returns a Promise that resolves to an `OpenAIResponse` object. It internally calls the `queryQuestions` method with the provided question.
 
 ### async queryQuestions(questions: string[], errorCount = 0, model?: string, assistantMessages?: string[]): Promise<OpenAIResponse>
 
-This method takes an array of questions, an optional error count, an optional model name, and an optional array of assistant messages. It returns a Promise that resolves to an `OpenAIResponse` object.
+This method takes an array of questions, an optional error count, an optional model name, and an optional array of assistant messages. It returns a Promise that resolves to an `OpenAIResponse` object. The method handles querying the OpenAI API, managing the configuration, and processing the responses.
 
-The method handles message length limitations, retries on specific error statuses, and constructs the request messages for the OpenAI API. It also trims the questions if the total message length exceeds the model's token limit.
+#### Parameters
 
-## Properties
-
-### openai: OpenAIApi
-
-An instance of the `OpenAIApi` class, which is used to interact with the OpenAI API.
-
-### models: Map<string, number>
-
-A map of supported GPT models and their respective token limits.
+- `questions`: An array of strings containing the questions to be asked.
+- `errorCount`: (Optional) A number representing the current error count. Default is 0.
+- `model`: (Optional) A string representing the GPT model to be used. If not provided, the default model from the configuration will be used.
+- `assistantMessages`: (Optional) An array of strings containing previous assistant messages.
 
 ## Error Handling
 
-The `queryQuestions` method handles various error scenarios, such as exceeding the API quota, retrying on specific error statuses (429, 500, 503), and trimming questions if the total message length exceeds the model's token limit. If an error occurs, the method returns an `OpenAIResponse` object with an empty answer and the request messages.
+The `queryQuestions` method handles various error scenarios, such as exceeding the quota, using a non-existent model, or encountering API errors. It retries the query up to 3 times in case of specific error statuses (429, 500, 503).
 
-## Technical Concepts
+## Example
 
-- `OpenAIResponse`: A custom object that represents the response from the OpenAI API. It contains the answer and the request messages.
-- `ChatCompletionRequestMessage`: A type from the `openai` package that represents a message in the chat completion request.
-- `CreateCompletionResponseChoicesInner`: A type from the `openai` package that represents a choice in the chat completion response.
-- `Configuration`: A type from the `openai` package that represents the API configuration.
-- `OpenAIApi`: A class from the `openai` package that provides methods for interacting with the OpenAI API.
-- `ConfigHelper`: A helper class for managing the application's configuration.
-- `DefaultSettings`: A class that provides default settings for the application.
+```typescript
+import OpenAIRepository from './OpenAIRepository';
+
+const openAIRepo = new OpenAIRepository();
+const questions = ['What is the capital of France?', 'What is the largest mammal?'];
+
+(async () => {
+  const response = await openAIRepo.queryQuestions(questions);
+  console.log(response.answer);
+})();
+```
+
+This example demonstrates how to use the `OpenAIRepository` class to query multiple questions at once.

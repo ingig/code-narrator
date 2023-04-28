@@ -39,6 +39,10 @@ export default class FileStructure {
             console.warn(`path:${path} not found, returning empty string`)
             return '';
         }
+
+        let stat = fs.statSync(path);
+        if (stat.isDirectory()) return '';
+
         return fs.readFileSync(path).toString();
     }
 

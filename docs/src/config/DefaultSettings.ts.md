@@ -1,6 +1,6 @@
 # DefaultSettings.ts
 
-This is a TypeScript code file that contains the `DefaultSettings` class. The class is responsible for providing default settings for the Code Narrator application. It includes various configurations, such as file paths, builder plugins, GPT system commands, and documentation settings.
+This is a TypeScript code file that defines the `DefaultSettings` class. This class is responsible for providing default settings for the Code Narrator application. The settings include configuration files, project paths, builder plugins, GPT system commands, and other related configurations.
 
 ## Usage
 
@@ -14,9 +14,23 @@ const settings = DefaultSettings.get();
 
 ## Methods
 
-### get()
+### get(): ICodeNarratorConfig
 
-This method returns an object containing the default settings for the Code Narrator application. The settings include:
+This method returns an object containing the default settings for the Code Narrator application. The returned object implements the `ICodeNarratorConfig` interface.
+
+### getFilesToExclude(): string[]
+
+This private static method returns an array of file and folder paths that should be excluded from the Code Narrator application. It combines the default exclusions with the ones specified in the `.gitignore` file.
+
+## Properties
+
+### gptModel: string
+
+This static property holds the GPT model name, which is set to `'gpt-4'`.
+
+## Configuration Object
+
+The configuration object returned by the `get()` method contains the following properties:
 
 - `config_files`: An array of configuration file names.
 - `project_file`: The main project file name.
@@ -26,46 +40,31 @@ This method returns an object containing the default settings for the Code Narra
 - `source_path`: The source code path.
 - `documentation_path`: The documentation output path.
 - `test_path`: The test code path.
-- `exclude`: An array of file and folder paths to exclude from documentation generation.
-- `readmeRoot`: A boolean indicating whether to generate a README file at the root of the documentation folder.
-- `repository_url`: The URL of the project's repository.
-- `builderPlugins`: An array of builder plugins to use for documentation generation.
-- `gptSystemCommands`: An array of GPT system commands for the documentation expert.
-- `documentation_type`: The output format for the generated documentation (e.g., 'md' for Markdown).
+- `exclude`: An array of file and folder paths to exclude.
+- `readmeRoot`: A boolean indicating whether to generate a root README file.
+- `repository_url`: The URL of the repository.
+- `builderPlugins`: An array of builder plugin classes.
+- `gptSystemCommands`: An array of GPT system commands.
+- `documentation_type`: The output documentation format (e.g., `'md'` for Markdown).
 - `document_file_extension`: The file extension for the generated documentation files.
-- `folderRootFileName`: The file name for the root file in each documentation folder.
-- `cache_file`: The path to the cache file.
-- `gptModel`: The GPT model to use for documentation generation.
+- `folderRootFileName`: The file name for the root file in each folder.
+- `cache_file`: The cache file location.
+- `gptModel`: The GPT model name.
 
-### getFilesToExclude()
-
-This private method returns an array of file and folder paths to exclude from documentation generation. It combines the contents of the `.gitignore` file with a set of default exclusions.
+:::note
+The `cache_file` property has a warning comment: `'code-narrator/cache.json' should be committed into git`.
+:::
 
 ## Technical Concepts
 
 ### ICodeNarratorConfig
 
-The `ICodeNarratorConfig` interface is used to define the shape of the configuration object returned by the `get()` method. It includes all the properties listed in the `get()` method description.
-
-### FileStructure
-
-The `FileStructure` utility is used to read the contents of the `.gitignore` file and manipulate file paths.
+This is an interface that defines the shape of the configuration object for the Code Narrator application. It includes properties for paths, file names, plugins, and other settings.
 
 ### Builder Plugins
 
-The `builderPlugins` array contains a list of builder classes that are responsible for generating different parts of the documentation. These builders include:
+The `builderPlugins` array contains classes that are responsible for generating documentation for different aspects of the project. The order of the plugins matters, as the `ConfigurationBuilder` runs first to get an overview of the project. The other plugins include `FilesBuilder`, `FoldersBuilder`, and `UserDefinedBuilder`.
 
-- `ConfigurationBuilder`: Generates documentation for the project's configuration.
-- `FilesBuilder`: Generates documentation for individual files in the project.
-- `FoldersBuilder`: Generates documentation for folders in the project.
-- `UserDefinedBuilder`: Generates user-defined documentation.
+### GPT System Commands
 
-## Notes and Warnings
-
-- The `cache_file` setting should be committed to the project's Git repository. This is indicated by the following comment in the code:
-
-  :::warning
-  '.code-narrator/cache.json' should be committed into git.
-  :::
-
-- The order of the `builderPlugins` array matters, as the `ConfigurationBuilder` must run first to provide an overview of the project.
+The `gptSystemCommands` array contains commands that are used to interact with the GPT model for generating documentation. These commands include instructions for formatting and handling sensitive information.

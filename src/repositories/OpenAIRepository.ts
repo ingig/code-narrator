@@ -82,8 +82,16 @@ export default class OpenAIRepository {
 
             return response;
         } catch (e : any) {
-            if (e?.response?.data?.error && e.response.data.error.message.indexOf('You exceeded your current quota') != -1) {
-                throw new Error(e.response.data.error.message);
+            let message = e.response?.data?.error?.message ?? '';
+            if (message.indexOf('You exceeded your current quota') != -1) {
+                throw new Error(message);
+            }
+
+            if (message.indexOf('The model') != -1 && message.indexOf('does not exist') != -1) {
+                console.warn(`You don't have access to ${DefaultSettings.gptModel}, downgrading to gtp-3.5-turbo`)
+                let model = 'gpt-3.5-turbo';
+                DefaultSettings.gptModel = model;
+                return this.queryQuestions(questions, errorCount, model, assistantMessages);
             }
 
             if (e && this.retryStatuses.includes(e.response?.status) && errorCount < 3) {
@@ -92,11 +100,11 @@ export default class OpenAIRepository {
                 return this.queryQuestions(questions, ++errorCount, model);
             }
 
-            console.error('OpenAI error:', e.response?.data?.error?.message)
+            console.error('OpenAI error:', message)
             console.error('Error doing OpenAI query:', questions);
-            //console.error(e);
+
             return  {answer:'', requestMessages: messages} as OpenAIResponse;
-            //throw e;
+
         }
     }
 
