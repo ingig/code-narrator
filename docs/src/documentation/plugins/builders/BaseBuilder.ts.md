@@ -8,22 +8,32 @@ The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract cla
 
 - `protected constructor(generator: string)`: Initializes a new instance of the `BaseBuilder` class with the specified generator.
 
-### Properties
-
-- `aiService: IGenericAIService`: An instance of the AI service used for querying GPT.
-- `generator: string`: The generator used for generating questions.
-- `config: ICodeNarratorConfig`: The configuration object for the Code Narrator.
-
 ### Methods
 
-- `public async generateUsingPlugin()`: Calls the `generate()` method to generate questions using the plugin.
-- `abstract generate(): Promise<any>`: An abstract method that must be implemented by derived classes to generate questions.
-- `public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<GenericAIResponse>`: Renders the question using the specified template and arguments, queries the AI service, and returns the response.
-- `public async generateDocumentation(options: GenerateOptions)`: Generates documentation using the specified options and returns a `Document` object.
-- `public async generateDocumentationAndCache(options: GenerateOptions)`: Generates documentation using the specified options, caches the document, and generates the documentation file.
-- `public hasChanged(document?: Document)`: Checks if the document has changed since the last update.
+- `public async generateUsingPlugin()`: Calls the `generate()` method to generate content using the plugin.
 
-## Usage
+- `abstract generate(): Promise<any>`: An abstract method that must be implemented by derived classes to generate content.
+
+- `public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<GenericAIResponse>`: Generates a question using the specified template and arguments, sends it to the AI service, and returns the response.
+
+  - `name`: The name of the file or entity to generate a question for.
+  - `args`: An optional object containing additional arguments for the question.
+  - `template`: An optional string specifying the template to use for generating the question (default is 'template').
+  - `assistantMessages`: An optional array of strings containing assistant messages.
+
+- `public async generateDocumentation(options: GenerateOptions)`: Generates documentation for the specified file or entity using the given options and returns a `Document` object.
+
+  - `options`: An object containing options for generating documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, and `data`.
+
+- `public async generateDocumentationAndCache(options: GenerateOptions)`: Generates documentation for the specified file or entity using the given options, creates a `Document` object, and stores it in the cache.
+
+  - `options`: An object containing options for generating documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, `data`, and `prevDocument`.
+
+- `public hasChanged(document?: Document)`: Checks if the specified document has changed since it was last updated.
+
+  - `document`: An optional `Document` object to check for changes.
+
+## Example Usage
 
 To use the `BaseBuilder` class, you need to create a derived class that implements the `generate()` method. Here's an example:
 
@@ -36,7 +46,7 @@ class CustomBuilder extends BaseBuilder {
   }
 
   async generate() {
-    // Implement your custom logic for generating questions here
+    // Implement your custom generation logic here
   }
 }
 
@@ -44,28 +54,4 @@ const customBuilder = new CustomBuilder();
 customBuilder.generateUsingPlugin();
 ```
 
-In the derived class, you can use the `getAnswer()` method to query the AI service and the `generateDocumentation()` and `generateDocumentationAndCache()` methods to generate and cache the documentation.
-
-```typescript
-async generate() {
-  const name = "example";
-  const args = { projectName: "MyProject" };
-  const template = "custom_template";
-  const response = await this.getAnswer(name, args, template);
-
-  const options: GenerateOptions = {
-    args,
-    template,
-    name,
-    pathToFile: "path/to/file",
-    folderPath: "path/to/folder",
-    sidebarPosition: 1,
-    sidebarLabel: "Example",
-  };
-
-  const document = await this.generateDocumentation(options);
-  await this.generateDocumentationAndCache(options);
-}
-```
-
-Remember to handle any non-standard technical concepts that may appear in the code, such as custom configuration objects or unique AI service implementations.
+In this example, we create a `CustomBuilder` class that extends the `BaseBuilder` class and implements the `generate()` method. We then create an instance of the `CustomBuilder` class and call the `generateUsingPlugin()` method to generate content using our custom logic.

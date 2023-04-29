@@ -1,20 +1,23 @@
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project name, repository URL, source and documentation paths, and more. This file also includes settings for builder plugins and generator plugins, which are used to customize the documentation generation process.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It contains various settings and configurations that determine how the application behaves and generates documentation.
 
-Here's an example of usage for the app-specific configs:
+The purpose of this configuration file is to provide a centralized location for managing the settings and configurations of the Code Narrator application. It allows developers to easily customize the behavior of the application to suit their specific needs.
 
-```markdown
-- Entry file: `./dist/src/App.js`
-- CLI file: `./dist/src/cli.js`
-- Project name: `code-narrator`
-- Config files: `["code-narrator.config.js"]`
-- Repository URL: `https://github.com/ingig/code-narrator`
-- Source path: `src`
-- Documentation path: `docs`
-- Test path: `__tests__`
-- Include: `["code-narrator.config.js", "src/**/*.ts"]`
-- Builder plugins: `[ConfigurationBuilder, FilesBuilder, FoldersBuilder, UserDefinedBuilder]`
+Here is an example of usage for the app-specific configs:
+
+```javascript
+const config = {
+    entry_file: "./dist/src/App.js",
+    cli_file: "./dist/src/cli.js",
+    project_name: "code-narrator",
+    config_files: [
+        "code-narrator.config.js"
+    ],
+    // ... other configurations
+};
+
+module.exports = config;
 ```
 
-The configuration file also defines various builders, which are used to generate different sections of the documentation, such as README, FAQ, Prerequisites, HowTo, and Tutorials.
+In this example, the `config` object contains various settings such as the entry file, CLI file, project name, and an array of configuration files. These settings are then exported as a module, allowing other parts of the application to access and use them.
 
-Regarding other configuration files, there are no other files mentioned in the provided content.
+Regarding other configuration files, there are no additional files mentioned in the provided content.

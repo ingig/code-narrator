@@ -5,8 +5,9 @@ import ConfigGenerator from "./ConfigGenerator";
 import IBuilder from "./IBuilder";
 import OpenAIService from "../services/OpenAIService";
 
+
 /*
-ref: ICodeNarratorConfig.ts
+ref: src/config/ICodeNarratorConfig.ts
  */
 export default class ConfigHelper {
     static env: any;

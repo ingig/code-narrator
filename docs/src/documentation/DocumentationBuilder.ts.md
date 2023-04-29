@@ -1,6 +1,6 @@
 # DocumentationBuilder.ts
 
-This is a TypeScript code file that defines the `DocumentationBuilder` class. The class is responsible for building documentation using various plugins. It imports necessary modules and services, and then iterates through the configured plugins to generate documentation.
+This is a TypeScript code file that defines the `DocumentationBuilder` class. The class is responsible for generating documentation using various plugins. It imports necessary modules and services, and then iterates through the configured plugins to generate the documentation.
 
 ## Table of Contents
 
@@ -13,43 +13,56 @@ This is a TypeScript code file that defines the `DocumentationBuilder` class. Th
 
 ## Class Description
 
-The `DocumentationBuilder` class is responsible for building documentation using various plugins. It imports necessary modules and services, and then iterates through the configured plugins to generate documentation.
+The `DocumentationBuilder` class is responsible for generating documentation using various plugins. It has two properties: `aiService`, which is an instance of `IGenericAIService`, and `projectPath`, which is a string representing the project's directory path.
 
 ## Examples
 
-To use the `DocumentationBuilder` class, you can create an instance and call the `build` method:
+Here's an example of how to use the `DocumentationBuilder` class:
 
 ```typescript
-const documentationBuilder = new DocumentationBuilder();
-await documentationBuilder.build();
+import DocumentationBuilder from './DocumentationBuilder';
+
+const docBuilder = new DocumentationBuilder();
+docBuilder.build();
 ```
 
 ## Methods
 
 ### constructor
 
-The constructor initializes the `DocumentationBuilder` instance. It sets the `aiService` and `projectPath` properties.
+The constructor initializes the `aiService` and `projectPath` properties. It sets the `aiService` property to the configured AI service and sets the `projectPath` property to the current directory.
 
 ```typescript
-constructor()
+constructor() {
+    this.aiService = ConfigHelper.config.aiService;
+    this.projectPath = __dirname;
+}
 ```
 
 ### build
 
-The `build` method is an asynchronous method that iterates through the configured plugins and generates documentation using each plugin. It checks if the plugin has a default export, and if not, it uses the plugin directly. It also checks if the user has defined any custom configuration and skips the plugin if it's not a user-defined generator.
+The `build` method is an asynchronous method that iterates through the configured plugins and generates the documentation using each plugin. It checks if the plugin has a default generator, and if not, it uses the plugin's generator. It also checks if the generator is user-defined and skips it if it's not.
 
 ```typescript
-public async build()
+public async build() {
+    let plugins = ConfigHelper.BuilderPlugins;
+    for (let i = 0; i < plugins.length; i++) {
+        let generator: BaseBuilder;
+        if (plugins[i].default) {
+            generator = new plugins[i].default() as BaseBuilder;
+        } else {
+            generator = new plugins[i]() as BaseBuilder;
+        }
+        let userDefined = (ConfigHelper.config as any)?.userDefined;
+        if (userDefined && generator.generator != 'UserDefined') {
+            continue;
+        }
+
+        await generator.generateUsingPlugin();
+    }
+}
 ```
 
 ## Parameters
 
-- `aiService`: An instance of `IGenericAIService`, which is the AI service used for generating documentation.
-- `projectPath`: A string representing the project path where the documentation will be generated.
-
-## Technical Concepts
-
-- `IGenericAIService`: An interface that defines the structure of an AI service used for generating documentation.
-- `BaseBuilder`: A base class for creating documentation builder plugins.
-- `ConfigHelper`: A helper class for managing configuration settings.
-- `__dirname`: A global variable in Node.js that contains the directory path of the current module.
+There are no parameters in the `DocumentationBuilder` class methods.

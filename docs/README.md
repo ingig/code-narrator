@@ -2,7 +2,7 @@
 
 ## Description
 
-[code-narrator](https://github.com/ingig/code-narrator) uses OpenAI to generate documentation for your source code, as well create HowTo, FAQ, Tutorial, and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Configuration `code-narrator.config.js` file is created on the first run and sets the configuration for your project, such as project path, doc, documentation type, and more. The package can be installed using `npm i code-narrator -D`. code-narrator is code language, linguistic & framework neutral. It keeps your documentation always up to date.
+[code-narrator](https://github.com/ingig/code-narrator) uses OpenAI to generate documentation for your source code, as well as create HowTo, FAQ, Tutorial, and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Configuration `code-narrator.config.js` file is created on the first run and sets the configuration for your project, such as project path, doc, documentation type, and more. The package can be installed using `npm i code-narrator -D`. code-narrator is code language, linguistic & framework neutral. It keeps your documentation always up to date.
 
 ## Getting Started
 
@@ -18,9 +18,15 @@ npm i code-narrator -D
 npx code-narrator
 ```
 
+A `code-narrator.config.js` file will be generated on the first run.
+
 ## Usage
 
-After installing and running code-narrator, a configuration file `code-narrator.config.js` will be generated. Modify this file to set the configuration for your project, such as project path, doc, documentation type, and more.
+To run code-narrator, simply use the following command:
+
+```bash
+npx code-narrator
+```
 
 ## Repository
 
@@ -39,11 +45,11 @@ If you encounter any issues or have suggestions, please report them [here](https
 
 ## Authors
 
-- Ingi Gauti Ragnarsson @ingig
+Ingi Gauti Ragnarsson @ingig
 
 ## Version
 
-1.0.11
+1.0.12
 
 ## License
 

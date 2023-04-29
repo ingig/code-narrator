@@ -1,8 +1,8 @@
-# How to Install and Use Code-Narrator
+# How to Use Code-Narrator
 
 ## Introduction
 
-Code-Narrator is a powerful tool that helps you generate documentation for your software projects. This guide will walk you through the process of installing Code-Narrator, running it for the first time, and configuring it to suit your needs.
+Code-Narrator is a powerful tool for generating documentation for your software projects. This guide will walk you through the process of installing, configuring, and running Code-Narrator to generate documentation for your project.
 
 ## Step-by-Step Instructions
 
@@ -10,7 +10,7 @@ Code-Narrator is a powerful tool that helps you generate documentation for your 
 
 To install Code-Narrator, run the following command in your terminal:
 
-```
+```bash
 npm install code-narrator -D
 ```
 
@@ -18,30 +18,29 @@ npm install code-narrator -D
 
 To run Code-Narrator, execute the following command:
 
-```
+```bash
 npx code-narrator
 ```
 
-### Step 3: Review the Configuration
+### Step 3: Configure Code-Narrator
 
-Upon running Code-Narrator for the first time, a configuration file will be created. Make sure to review and modify the configuration before generating documentation. You can find the documentation for the configuration file at the following link:
+On the first run, Code-Narrator will create a configuration file. Make sure to read and edit the configuration file before generating documentation. You can find the documentation for the configuration file at [Code-Narrator Configuration](https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md).
 
-[Code-Narrator Configuration Documentation](https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md)
+### Step 4: Use Arguments to Customize the Run
 
-### Step 4: Customize the Configuration (Optional)
+You can use the following arguments when running Code-Narrator to customize the documentation process:
 
-You can customize the configuration by providing specific arguments when running Code-Narrator. Here are some available arguments:
-
-- `-c` or `--config`: Path to the configuration file (JSON or JavaScript)
-- `-i` or `--include`: Only include specific files or folders in the documentation process
-- `-g` or `--gpt`: GPT model. Default is `gpt-4`. If you do not have access, the next best option is `gpt-3.5-turbo`, but it is not as good.
+- `--config` or `-c`: Path to the configuration file (JSON or JavaScript)
+- `--include` or `-i`: Only include specific files or folders in the documentation process
+- `--gpt` or `-g`: GPT model (default is `gpt-4`, if you do not have access, the next best option is `gpt-3.5-turbo`)
+- `--userDefined` or `-u`: Runs only update on userDefined builder from config matching template name
 
 For example, to run Code-Narrator with a custom configuration file and include only specific files or folders, use the following command:
 
-```
-npx code-narrator -c path/to/config.js -i file1.js folder1
+```bash
+npx code-narrator -c path/to/your/config.js -i path/to/include/folder
 ```
 
 ## Conclusion
 
-By following these steps, you should now have a working installation of Code-Narrator and be able to generate documentation for your software projects. Remember to review and customize the configuration file to ensure the best results for your specific needs.
+By following these steps, you can successfully install, configure, and run Code-Narrator to generate documentation for your software projects. Make sure to review the configuration file and use the available arguments to customize the documentation process as needed.
