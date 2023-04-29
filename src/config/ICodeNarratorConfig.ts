@@ -1,4 +1,5 @@
 import IBuilder from "./IBuilder";
+import IGenericAIService from "../services/IGenericAIService";
 
 export default interface ICodeNarratorConfig {
     project_name : string;
@@ -24,4 +25,5 @@ export default interface ICodeNarratorConfig {
     builders : IBuilder[]
     include : string[];
     exclude : string[];
+    aiService : any;
 }

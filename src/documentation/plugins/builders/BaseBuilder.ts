@@ -1,4 +1,4 @@
-import OpenAIRepository from "../../../repositories/OpenAIRepository";
+import IGenericAIService from "../../../services/OpenAIService";
 import Document from "../../Document";
 import DocumentationCache from "../../DocumentationCache";
 import {Liquid} from "liquidjs";
@@ -8,7 +8,7 @@ import {GenerateOptions} from "../GenerateOptions";
 import ConfigHelper from "../../../config/ConfigHelper";
 import ICodeNarratorConfig from "../../../config/ICodeNarratorConfig";
 import * as process from "process";
-import OpenAIResponse from "../../../model/OpenAIResponse";
+import GenericAIResponse from "../../../model/GenericAIResponse";
 import DocumentationGenerator from "../../DocumentationGenerator";
 
 /*
@@ -16,19 +16,22 @@ This is the Base class for Builder plugins. Builder plugins are used to generate
 and then parse the response and loading it into the document object that is later cached.
  */
 export default abstract class BaseBuilder {
-    openAIRepository: OpenAIRepository;
+    aiService: IGenericAIService;
     generator: string;
     config: ICodeNarratorConfig;
 
     protected constructor(generator: string) {
-        this.openAIRepository = new OpenAIRepository();
+        this.aiService = ConfigHelper.config.aiService;
         this.generator = generator;
         this.config = ConfigHelper.config;
     }
 
-    abstract generate(): any;
+    public async generateUsingPlugin() {
+        await this.generate();
+    }
+    abstract generate(): Promise<any>;
 
-    public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse> {
+    public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<GenericAIResponse> {
         const engine = new Liquid({
             extname: '.liquid'
         });
@@ -49,7 +52,7 @@ export default abstract class BaseBuilder {
         let question = await engine.renderFile(template_path, args)
 
         console.log(`${new Date().toLocaleTimeString()} - Asking about ${name} using template ${template} for builder ${this.generator}`)
-        let response = await this.openAIRepository.queryQuestions([question!], 0, ConfigHelper.config.gptModel, assistantMessages);
+        let response = await this.aiService.query([question!], assistantMessages);
         console.log(`${new Date().toLocaleTimeString()} - Received answer for ${name}`)
         return response;
     }

@@ -22,6 +22,10 @@ export default class CliHelper {
                 type: 'string',
                 description: `GPT model. Default is gpt-4, if you do not have access, next best is gpt-3.5-turbo, but it isn't not so good`,
                 alias: 'gpt'
+            }).option('u', {
+                type:'string',
+                description: 'Runs only update on userDefined builder from config matching template name',
+                alias: 'userDefined'
             })
             .help()
             .alias('help', 'h').argv;
@@ -38,14 +42,7 @@ export default class CliHelper {
             configPath = path.join(process.cwd(), 'code-narrator.json');
         }
 
-        if (argv.include) {
-            userConfig.include = argv.include as string[];
-        }
-        if (argv.gpt) {
-            userConfig.gptModel = argv.gpt as string;
-        } else {
-            userConfig.gptModel = 'gpt-4'
-        }
+
 
         if (configPath) {
             if (configPath.endsWith('.js') || configPath.endsWith('.ts')) {
@@ -55,6 +52,19 @@ export default class CliHelper {
             }
             (userConfig as any).fromFile = true;
         }
+        if (argv.include) {
+            userConfig.include = argv.include as string[];
+        }
+        if (argv.gpt) {
+            userConfig.gptModel = argv.gpt as string;
+        } else {
+            userConfig.gptModel = 'gpt-4'
+        }
+        if (argv.userDefined) {
+            (userConfig as any).userDefined = argv.userDefined;
+        }
+
+
         return userConfig;
     }
 }

@@ -1,0 +1,7 @@
+tutorial to connect to own custom LLM to code-narrator instead of OpenAI to generate documentation
+IGenericAIService is the interface needed to be implemented, GenericAIResponse is the return object. They are both in code-narrator package
+Give user information how to build its own service called MyLLMService
+Show code example what needs to be implemented.
+Use a simple fetch() as example to that sends parameters and returns GenericAIResponse. ::info This is generic example and may not fit your implementation to your LLM service.
+Service can be located in any directory of users choice
+Show how to add service as class name to code-narrator.config.js by adding property aiService to const config = { } and it needs to be imported

@@ -1,11 +1,11 @@
-import {ChatCompletionRequestMessage, Configuration, CreateCompletionResponseChoicesInner, OpenAIApi} from 'openai';
-import { setTimeout } from 'timers/promises';
-import {CreateChatCompletionResponseChoicesInner} from "openai/api";
+import {ChatCompletionRequestMessage, Configuration, OpenAIApi} from 'openai';
+import {setTimeout} from 'timers/promises';
 import ConfigHelper from "../config/ConfigHelper";
-import OpenAIResponse from "../model/OpenAIResponse";
+import GenericAIResponse from "../model/GenericAIResponse";
 import DefaultSettings from "../config/DefaultSettings";
+import IGenericAIService from "./IGenericAIService";
 
-export default class OpenAIRepository {
+export default class OpenAIService implements IGenericAIService {
     openai: OpenAIApi;
     models = new Map([
         ['gpt-3.5-turbo', 4096],
@@ -19,11 +19,18 @@ export default class OpenAIRepository {
         this.openai = new OpenAIApi(configuration);
     }
 
-
-    public async query(text : string) : Promise<OpenAIResponse> {
-        return this.queryQuestions([text]);
+    public async query(questions : string[], assistantMessages? : string[]): Promise<GenericAIResponse>  {
+        let config = ConfigHelper.config;
+        //config should only be undefined on first run
+        if (!config) config = DefaultSettings.get();
+        let model = '';
+        if (!model) {
+            model = config.gptModel;
+        }
+        return this.queryQuestions(questions, 0, model, assistantMessages)
     }
-    public async queryQuestions(questions : string[], errorCount = 0, model? : string, assistantMessages? : string[]): Promise<OpenAIResponse> {
+
+    private async queryQuestions(questions : string[], errorCount = 0, model : string, assistantMessages? : string[]): Promise<GenericAIResponse> {
         let messages : ChatCompletionRequestMessage[] = []
         try {
             await setTimeout(1 * 500);
@@ -31,9 +38,7 @@ export default class OpenAIRepository {
             let config = ConfigHelper.config;
             //config should only be undefined on first run
             if (!config) config = DefaultSettings.get();
-            if (!model) {
-                model = config.gptModel;
-            }
+
             let messageLength = 0;
 
             for (let i=0;config.gptSystemCommands && i<config.gptSystemCommands.length;i++) {
@@ -60,7 +65,7 @@ export default class OpenAIRepository {
             maxTokens = maxTokens - messageLength;
             if (maxTokens < 0) {
                 console.error(`Message is to long (${messageLength}). Will not query gpt`)
-                return {answer:'', requestMessages:messages} as OpenAIResponse;
+                return {answer:'', requestMessages:messages} as GenericAIResponse;
             }
             const completion = await this.openai.createChatCompletion({
                 model: model,
@@ -75,7 +80,7 @@ export default class OpenAIRepository {
             if (completion.data.choices.length == 0) {
                 throw new Error(`Did not get answer. ChatGPT is down. Run again. `)
             }
-            let response : OpenAIResponse = {
+            let response : GenericAIResponse = {
                 answer : completion.data.choices[0].message!.content,
                 requestMessages : messages
             }
@@ -103,7 +108,7 @@ export default class OpenAIRepository {
             console.error('OpenAI error:', message)
             console.error('Error doing OpenAI query:', questions);
 
-            return  {answer:'', requestMessages: messages} as OpenAIResponse;
+            return  {answer:'', requestMessages: messages} as GenericAIResponse;
 
         }
     }

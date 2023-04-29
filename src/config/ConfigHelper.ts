@@ -3,6 +3,7 @@ import ICodeNarratorConfig from "./ICodeNarratorConfig";
 import DefaultSettings from "./DefaultSettings";
 import ConfigGenerator from "./ConfigGenerator";
 import IBuilder from "./IBuilder";
+import OpenAIService from "../services/OpenAIService";
 
 /*
 ref: ICodeNarratorConfig.ts
@@ -55,7 +56,11 @@ Next time you will run the CLI it will start generating documentation
         ConfigHelper.DocumentExtension = this.config.document_file_extension ?? '.md';
         ConfigHelper.DocumentationType = this.config.documentation_type ?? 'md'
         if (ConfigHelper.DocumentExtension.indexOf('.') != 0) ConfigHelper.DocumentExtension = '.' + ConfigHelper.DocumentExtension;
-
+        if (projectConfig.aiService) {
+            this.config.aiService = new projectConfig.aiService()
+        } else {
+            this.config.aiService = new OpenAIService();
+        }
         ConfigHelper.CacheFilePath = this.config.cache_file ?? '.code-narrator/cache.json';
     }
 

@@ -1,26 +1,33 @@
-import OpenAIRepository from "../repositories/OpenAIRepository";
+import OpenAIService from "../services/OpenAIService";
 import BaseBuilder from "./plugins/builders/BaseBuilder";
 import App from "../App";
 import ConfigHelper from "../config/ConfigHelper";
+import IGenericAIService from "../services/IGenericAIService";
 
 export default class DocumentationBuilder {
-    openAIRepository: OpenAIRepository;
-    projectPath : string;
+    aiService: IGenericAIService;
+    projectPath: string;
+
     constructor() {
-        this.openAIRepository = new OpenAIRepository();
+        this.aiService = ConfigHelper.config.aiService;
         this.projectPath = __dirname;
     }
 
     public async build() {
         let plugins = ConfigHelper.BuilderPlugins;
-        for (let i=0;i<plugins.length;i++) {
-            let generator : BaseBuilder;
+        for (let i = 0; i < plugins.length; i++) {
+            let generator: BaseBuilder;
             if (plugins[i].default) {
                 generator = new plugins[i].default() as BaseBuilder;
             } else {
                 generator = new plugins[i]() as BaseBuilder;
             }
-            await generator.generate();
+            let userDefined = (ConfigHelper.config as any)?.userDefined;
+            if (userDefined && generator.generator != 'UserDefined') {
+                continue;
+            }
+
+            await generator.generateUsingPlugin();
         }
     }
 
