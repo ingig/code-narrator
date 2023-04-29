@@ -1,4 +1,4 @@
-import OpenAIRepository from "../../src/repositories/OpenAIRepository";
+import OpenAIService from "../../src/services/OpenAIService";
 import {OpenAIApi} from "openai";
 import {describe, expect} from '@jest/globals';
 
@@ -14,8 +14,8 @@ describe('Test OpenAIRepository', () => {
                     }} as any
             })
 
-        let openAIRepository = new OpenAIRepository();
-        let answers = await openAIRepository.queryQuestions(questions)
+        let openAIRepository = new OpenAIService();
+        let answers = await openAIRepository.query(questions)
 
         expect(spyOpenAIApi).toBeCalledTimes(1);
     })

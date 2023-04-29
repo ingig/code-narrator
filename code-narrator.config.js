@@ -175,6 +175,19 @@ const config = {
                             path: "src/documentation/plugins/generators/JekyllGenerator.ts"
                         }
                     ]
+                },
+                {
+                    type: "tutorial",
+                    template: "tutorial_custom_llm",
+                    name: "Tutorial - Use Custom LLM service",
+                    files: [
+                        {
+                            path: "src/services/IGenericAIService.ts"
+                        },
+                        {
+                            path: "src/model/GenericAIResponse.ts"
+                        }
+                    ]
                 }
             ]
         }

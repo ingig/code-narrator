@@ -1,73 +1,80 @@
 # CliHelper.ts
 
-The `CliHelper.ts` file is a TypeScript module that provides a class `CliHelper` to handle command line arguments and configuration for the Code Narrator application. This class is responsible for parsing command line arguments, loading configuration files, and returning the configuration object.
+This is a TypeScript code file that contains the `CliHelper` class. The `CliHelper` class is responsible for handling command-line arguments and configuration for the Code Narrator application. It uses the `yargs` library to parse command-line arguments and provides methods to retrieve the configuration object.
 
 ## Usage
 
-To use the `CliHelper` class, you need to import it and create an instance of the class. Then, you can call the `getArgv()` and `getConfig(argv: any)` methods to retrieve the command line arguments and configuration object, respectively.
+To use the `CliHelper` class, you need to import it and create an instance:
 
 ```typescript
 import CliHelper from './CliHelper';
 
 const cliHelper = new CliHelper();
-const argv = await cliHelper.getArgv();
-const config = await cliHelper.getConfig(argv);
 ```
 
 ## Methods
 
 ### getArgv()
 
-This method returns a Promise that resolves to an object containing the parsed command line arguments. It uses the `yargs` library to define and parse the command line options.
+This method returns a Promise that resolves to an object containing the parsed command-line arguments.
+
+```typescript
+const argv = await cliHelper.getArgv();
+```
 
 #### Options
 
-- `-c, --config`: Path to the configuration file (JSON or JavaScript). Optional.
-- `-i, --include`: An array of specific files or folders to include in the documentation process. Optional.
-- `-g, --gpt`: GPT model. Default is `gpt-4`. If you do not have access, the next best option is `gpt-3.5-turbo`, but it is not as good. Optional.
+- `-c, --config`: Path to configuration file (JSON or JavaScript). Optional.
+- `-i, --include`: Array of specific files or folders to include in the documentation process. Optional.
+- `-g, --gpt`: GPT model. Default is `gpt-4`. If you do not have access, the next best is `gpt-3.5-turbo`, but it is not as good. Optional.
+- `-u, --userDefined`: Runs only update on userDefined builder from config matching template name. Optional.
+- `--help, -h`: Show help information.
 
-### getConfig(argv: any)
+### getConfig(argv: any): Promise<Partial<ICodeNarratorConfig>>
 
-This method takes the parsed command line arguments object (`argv`) as input and returns a Promise that resolves to a `Partial<ICodeNarratorConfig>` object containing the user configuration.
+This method takes the parsed command-line arguments object and returns a Promise that resolves to a partial `ICodeNarratorConfig` object containing the configuration.
+
+```typescript
+const config = await cliHelper.getConfig(argv);
+```
 
 #### Parameters
 
-- `argv`: The parsed command line arguments object.
+- `argv`: The parsed command-line arguments object.
 
-#### Configuration Loading
+## Technical Concepts
 
-The method first checks for the existence of a configuration file in the current working directory. It looks for the following files in order:
+### yargs
 
-1. `code-narrator.config.ts`
-2. `code-narrator.config.js`
-3. `code-narrator.json`
+`yargs` is a popular library for parsing command-line arguments in Node.js applications. It provides a fluent API for defining options, aliases, and descriptions, making it easy to create self-documenting command-line interfaces.
 
-If a configuration file is found, it is loaded and merged with the command line arguments. If no configuration file is found, the method uses the command line arguments as the configuration.
+### ICodeNarratorConfig
 
-#### Configuration Object
+`ICodeNarratorConfig` is an interface that defines the shape of the configuration object used by the Code Narrator application. It includes properties for specifying the GPT model, included files or folders, and user-defined templates.
 
-The configuration object returned by this method has the following properties:
+### fs and path
 
-- `include`: An array of specific files or folders to include in the documentation process. Optional.
-- `gptModel`: The GPT model to use. Default is `gpt-4`. Optional.
-- `fromFile`: A boolean indicating whether the configuration was loaded from a file. This property is only present if a configuration file was found and loaded.
+`fs` and `path` are built-in Node.js modules for working with the file system and file paths, respectively. In this code file, they are used to check for the existence of configuration files and to read their contents.
 
-## Example Configuration File
+### process.cwd()
 
-Here's an example of a `code-narrator.config.js` file:
+`process.cwd()` is a built-in Node.js function that returns the current working directory of the process. It is used in this code file to resolve the paths of configuration files relative to the current working directory.
 
-```javascript
-module.exports = {
-  include: ['src', 'lib'],
-  gptModel: 'gpt-3.5-turbo',
-};
-```
+## Example
 
-And an example of a `code-narrator.json` file:
+```typescript
+import CliHelper from './CliHelper';
 
-```json
-{
-  "include": ["src", "lib"],
-  "gptModel": "gpt-3.5-turbo"
+async function main() {
+  const cliHelper = new CliHelper();
+  const argv = await cliHelper.getArgv();
+  const config = await cliHelper.getConfig(argv);
+
+  console.log('Parsed command-line arguments:', argv);
+  console.log('Configuration object:', config);
 }
+
+main();
 ```
+
+This example demonstrates how to use the `CliHelper` class to parse command-line arguments and retrieve the configuration object.

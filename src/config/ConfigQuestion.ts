@@ -1,14 +1,16 @@
 import FolderStructure from "../utils/FolderStructure";
 import process from "process";
-import OpenAIRepository from "../repositories/OpenAIRepository";
+import OpenAIService from "../services/OpenAIService";
 import Helper from "../utils/Helper";
 import FileStructure from "../utils/FileStructure";
 import ICodeNarratorConfig from "./ICodeNarratorConfig";
+import ConfigHelper from "./ConfigHelper";
+import IGenericAIService from "../services/IGenericAIService";
 
 export default class ConfigQuestion {
-    openAiRepository : OpenAIRepository;
+    aiService : IGenericAIService;
     constructor() {
-        this.openAiRepository = new OpenAIRepository();
+        this.aiService = ConfigHelper.config.aiService;
     }
     public async getProjectSetup() {
         let foldersAndFiles = FolderStructure.getFoldersAndFiles(process.cwd()).join('\n');
@@ -28,7 +30,7 @@ export default class ConfigQuestion {
         ###
         `
 
-        let response = await this.openAiRepository.queryQuestions([question]);
+        let response = await this.aiService.query([question]);
         let jsons = Helper.getJsons(response.answer);
         if (jsons.length == 0) {
             throw new Error('Could not determine the project. You should set the config when calling ConfigHelper.load')
@@ -65,7 +67,7 @@ DO NOT makeup value for JSON property, set the value as empty if you cannot dete
         repository_url : string
         }
         `
-        let projectDetailAnswer = await this.openAiRepository.queryQuestions([projectDetailQuestion]);
+        let projectDetailAnswer = await this.aiService.query([projectDetailQuestion]);
 
         let jsons = Helper.getJsons(projectDetailAnswer.answer);
         if (jsons.length == 0) {

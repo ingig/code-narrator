@@ -6,6 +6,8 @@ import ICodeNarratorConfig from "./ICodeNarratorConfig";
 import FileStructure from "../utils/FileStructure";
 import path from "path";
 import HowToBuilder from "../documentation/plugins/builders/Howto/HowToBuilder";
+import OpenAIService from "../services/OpenAIService";
+import IGenericAIService from "../services/IGenericAIService";
 
 export default class DefaultSettings {
     static gptModel = 'gpt-4';
@@ -38,7 +40,8 @@ export default class DefaultSettings {
             document_file_extension: ".md",
             folderRootFileName : 'README',
             cache_file: '.code-narrator/cache.json', //location of the cache file. :::warning '.code-narrator/cache.json' should be committed into git.
-            gptModel : this.gptModel
+            gptModel : this.gptModel,
+            aiService : OpenAIService as unknown as IGenericAIService
         } as ICodeNarratorConfig
     }
 

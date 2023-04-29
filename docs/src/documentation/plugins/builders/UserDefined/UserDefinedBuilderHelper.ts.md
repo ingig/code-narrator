@@ -1,6 +1,6 @@
 # UserDefinedBuilderHelper.ts
 
-This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling user-defined builders in a software project. It provides methods to extract paths from content, load arguments, get assistant messages, and more.
+This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling various tasks related to user-defined builders in a software project. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.
 
 ## Table of Contents
 
@@ -18,54 +18,78 @@ This TypeScript file contains the `UserDefinedBuilderHelper` class, which is res
 
 ### Constructor
 
-The constructor initializes the `openAIRepository` property with a new instance of the `OpenAIRepository` class.
+The constructor initializes the `aiService` property with the AI service configured in the `ConfigHelper`.
+
+```typescript
+constructor() {
+    this.aiService = ConfigHelper.config.aiService;
+}
+```
 
 ### Methods
 
 #### extractPathFromContent
 
+This method takes an input string and extracts the path from the content using a regular expression.
+
 ```typescript
 public extractPathFromContent(input: string): string | null
 ```
 
-This method takes an input string and returns the extracted path from the content if it exists, otherwise, it returns null.
-
 #### loadArgs
 
-```typescript
-public loadArgs(build: IBuilder, project_path: string): void
-```
+This method loads the arguments for a given builder and project path. It iterates through the argument keys and extracts the file path from the content. If the file path is found, it reads the content of the file and assigns it to the corresponding argument key.
 
-This method takes a `build` object of type `IBuilder` and a `project_path` string. It loads the arguments for the build object by iterating through the argument keys and extracting the file path from the content.
+```typescript
+public loadArgs(build: IBuilder, project_path: string)
+```
 
 #### getAssistantMessages
 
-```typescript
-public async getAssistantMessages(builder: IBuilder): Promise<string[]>
-```
+This method retrieves assistant messages for a given builder. It first gets the predefined questions for the builder type and then iterates through the files associated with the builder. It extracts the content and additional information from the files and appends them to the assistant messages.
 
-This asynchronous method takes a `builder` object of type `IBuilder` and returns an array of assistant messages. It retrieves predefined questions based on the builder type and processes the files associated with the builder.
+```typescript
+public async getAssistantMessages(builder: IBuilder)
+```
 
 #### getPredefinedQuestion
 
+This method returns a predefined question based on the input builder type. The supported types are 'howto', 'readme', 'tutorial', and 'faq'.
+
 ```typescript
-private getPredefinedQuestion(type: string): string | undefined
+private getPredefinedQuestion(type: string)
 ```
 
-This private method takes a `type` string and returns a predefined question based on the type. It supports 'howto', 'readme', 'tutorial', and 'faq' types.
-
 #### extractContentBetweenHeaders
+
+This method extracts the content between headers in a markdown string. It returns the first non-empty line or a substring of the markdown if the length is less than 350 characters.
 
 ```typescript
 public extractContentBetweenHeaders(markdown: string): string
 ```
 
-This method takes a `markdown` string and returns the content between headers. It uses a regular expression to match the content and returns the first non-empty match. If the markdown length is less than 350 characters, it returns the entire markdown; otherwise, it returns the first 350 characters followed by an ellipsis.
-
 #### findFiles
 
+This method finds files based on a given pattern string. It uses the `DocumentationCache` to get the files by folder path.
+
 ```typescript
-public findFiles(patternString: string): DocumentationCache[]
+public findFiles(patternString: string)
 ```
 
-This method takes a `patternString` and returns an array of `DocumentationCache` objects. It finds files based on the provided pattern string by splitting the string and getting the folder path.
+## Usage
+
+To use the `UserDefinedBuilderHelper` class, first import it and create a new instance:
+
+```typescript
+import UserDefinedBuilderHelper from "./UserDefinedBuilderHelper";
+
+const helper = new UserDefinedBuilderHelper();
+```
+
+Then, you can call the available methods on the instance:
+
+```typescript
+const extractedPath = helper.extractPathFromContent("content(/path/to/file.txt)");
+helper.loadArgs(builder, project_path);
+const assistantMessages = await helper.getAssistantMessages(builder);
+```

@@ -5,16 +5,16 @@ import IBuilder, {BuilderType} from "../../../../config/IBuilder";
 import jsonpath from "jsonpath";
 import ConfigHelper from "../../../../config/ConfigHelper";
 import Helper from "../../../../utils/Helper";
-import OpenAIRepository from "../../../../repositories/OpenAIRepository";
+import IGenericeAIService from "../../../../services/OpenAIService";
 import fs from "fs";
 import DocumentationCache from "../../../DocumentationCache";
 
 export default class UserDefinedBuilderHelper {
 
-    openAIRepository: OpenAIRepository;
+    aiService: IGenericeAIService;
 
     constructor() {
-        this.openAIRepository = new OpenAIRepository();
+        this.aiService = ConfigHelper.config.aiService;
     }
 
     public extractPathFromContent(input: string): string | null {
@@ -67,7 +67,7 @@ export default class UserDefinedBuilderHelper {
                      ${extractContent} 
                      This is the file:
                      ${content}`
-                let result = await this.openAIRepository.queryQuestions([question], 0, ConfigHelper.config.gptModel, ['Return JSON format'])
+                let result = await this.aiService.query([question], ['Return JSON format'])
                 let jsons = Helper.getJsons(result.answer);
                 if (jsons.length > 0) {
                     extraInfo += `Content to help:\n`
