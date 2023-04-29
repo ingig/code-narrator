@@ -36,9 +36,6 @@ const config = {
             sidebarPosition: 1,
             template: "README",
             name: "ReadMe",
-            args: {
-                entryFileContent: "content(./src/cli.ts)"
-            },
             files: [
                 {
                     path: "package.json",

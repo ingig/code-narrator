@@ -1,10 +1,10 @@
 # DocumentationGenerator.ts
 
-This TypeScript file contains the `DocumentationGenerator` class, which is responsible for generating documentation files based on the contents of the `DocumentationCache`. The generator uses various plugins to process the documentation and writes the output to the specified file paths.
+This is a TypeScript code file that defines the `DocumentationGenerator` class. The class is responsible for generating documentation files based on the provided documents and configuration. It also supports the use of generator plugins to customize the documentation generation process.
 
 ## Usage
 
-To use the `DocumentationGenerator` class, you need to create an instance of the class and call the `make()` method. The method will generate documentation files based on the documents stored in the `DocumentationCache`.
+To use the `DocumentationGenerator` class, you need to import it and create an instance. You can then call the `make()` method to generate the documentation files.
 
 ```typescript
 import DocumentationGenerator from "./DocumentationGenerator";
@@ -13,41 +13,57 @@ const generator = new DocumentationGenerator();
 generator.make();
 ```
 
-## Class: DocumentationGenerator
+You can also pass a `Document` object to the `make()` method to generate documentation for a specific document.
 
-### Method: make()
+```typescript
+import DocumentationGenerator from "./DocumentationGenerator";
+import Document from "./Document";
 
-This method generates documentation files based on the documents stored in the `DocumentationCache`. It processes the documents using the configured generator plugins and writes the output to the specified file paths.
+const document = new Document(/* ... */);
+const generator = new DocumentationGenerator();
+generator.make(document);
+```
+
+## Methods
+
+### make(document?: Document)
+
+This method generates the documentation files based on the provided documents and configuration. If a `Document` object is provided, it will generate documentation only for that document. Otherwise, it will generate documentation for all documents in the `DocumentationCache`.
 
 #### Parameters
 
-None.
-
-#### Example
-
-```typescript
-const generator = new DocumentationGenerator();
-generator.make();
-```
+- `document` (optional): A `Document` object for which the documentation should be generated. If not provided, the method will generate documentation for all documents in the `DocumentationCache`.
 
 ## Technical Concepts
 
-### DocumentationCache
+### Generator Plugins
 
-The `DocumentationCache` is a class that stores the documents to be processed by the `DocumentationGenerator`. It provides methods to add, remove, and retrieve documents based on their folder paths.
+The `DocumentationGenerator` class supports the use of generator plugins to customize the documentation generation process. These plugins should be instances of the `BaseGenerator` class or its subclasses. They should be specified in the configuration object under the `generatorPlugin` property.
 
-### BaseGenerator
+For example, to use a custom generator plugin, you can update your configuration object like this:
 
-The `BaseGenerator` is an abstract class that serves as a base for generator plugins. These plugins are responsible for processing the documents and modifying their content before they are written to the output files.
+```javascript
+const config = {
+  // ...
+  generatorPlugin: [
+    CustomGeneratorPlugin,
+  ],
+};
+```
 
-### ConfigHelper
+The `CustomGeneratorPlugin` should be a subclass of `BaseGenerator` and implement the `process(document: Document)` method. This method will be called for each document during the documentation generation process.
 
-The `ConfigHelper` is a class that provides access to the configuration settings of the application. It is used by the `DocumentationGenerator` to retrieve the settings related to the documentation generation process, such as the output folder, file extension, and generator plugins.
+```typescript
+import BaseGenerator from "./plugins/generators/BaseGenerator";
+import Document from "./Document";
 
-### App
+class CustomGeneratorPlugin extends BaseGenerator {
+  process(document: Document) {
+    // Custom processing logic
+  }
+}
+```
 
-The `App` class represents the main application instance. It is used by the `DocumentationGenerator` to determine the start time of the application, which is used to check if a document has been modified since the application started.
+### Configuration
 
-## Template Variables
-
-None. This is a TypeScript code file, not a template file.
+The `DocumentationGenerator` class relies on a configuration object to determine various settings for the documentation generation process. This configuration object should be an instance of the `ConfigHelper` class and should include properties like `readmeRoot`, `project_path`, `documentation_path`, `folderRootFileName`, and `document_file_extension`.

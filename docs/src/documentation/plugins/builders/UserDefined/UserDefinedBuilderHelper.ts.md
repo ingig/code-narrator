@@ -1,6 +1,6 @@
 # UserDefinedBuilderHelper.ts
 
-This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling user-defined builders in a software project. The class provides methods for extracting paths from content, loading arguments, getting assistant messages, and more.
+This TypeScript file contains the `UserDefinedBuilderHelper` class, which is responsible for handling user-defined builders in a software project. It provides methods to extract paths from content, load arguments, get assistant messages, and more.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ The constructor initializes the `openAIRepository` property with a new instance 
 public extractPathFromContent(input: string): string | null
 ```
 
-This method takes an input string and returns the extracted path from the content using a regular expression. If no path is found, it returns `null`.
+This method takes an input string and returns the extracted path from the content if it exists, otherwise, it returns null.
 
 #### loadArgs
 
@@ -36,7 +36,7 @@ This method takes an input string and returns the extracted path from the conten
 public loadArgs(build: IBuilder, project_path: string): void
 ```
 
-This method takes an `IBuilder` object and a project path as parameters. It loads the arguments from the `build.args` property and replaces the content with the actual file content if a file path is found.
+This method takes a `build` object of type `IBuilder` and a `project_path` string. It loads the arguments for the build object by iterating through the argument keys and extracting the file path from the content.
 
 #### getAssistantMessages
 
@@ -44,7 +44,7 @@ This method takes an `IBuilder` object and a project path as parameters. It load
 public async getAssistantMessages(builder: IBuilder): Promise<string[]>
 ```
 
-This asynchronous method takes an `IBuilder` object as a parameter and returns an array of assistant messages. It processes the builder's files and extracts relevant information to generate the assistant messages.
+This asynchronous method takes a `builder` object of type `IBuilder` and returns an array of assistant messages. It retrieves predefined questions based on the builder type and processes the files associated with the builder.
 
 #### getPredefinedQuestion
 
@@ -52,7 +52,7 @@ This asynchronous method takes an `IBuilder` object as a parameter and returns a
 private getPredefinedQuestion(type: string): string | undefined
 ```
 
-This private method takes a string representing the builder type and returns a predefined question based on the type. If the type is not recognized, it returns `undefined`.
+This private method takes a `type` string and returns a predefined question based on the type. It supports 'howto', 'readme', 'tutorial', and 'faq' types.
 
 #### extractContentBetweenHeaders
 
@@ -60,7 +60,7 @@ This private method takes a string representing the builder type and returns a p
 public extractContentBetweenHeaders(markdown: string): string
 ```
 
-This method takes a markdown string as input and returns the content between the headers. If the content is shorter than 350 characters, it returns the entire content. Otherwise, it returns the first 350 characters followed by an ellipsis.
+This method takes a `markdown` string and returns the content between headers. It uses a regular expression to match the content and returns the first non-empty match. If the markdown length is less than 350 characters, it returns the entire markdown; otherwise, it returns the first 350 characters followed by an ellipsis.
 
 #### findFiles
 
@@ -68,4 +68,4 @@ This method takes a markdown string as input and returns the content between the
 public findFiles(patternString: string): DocumentationCache[]
 ```
 
-This method takes a pattern string as input and returns an array of `DocumentationCache` objects that match the given pattern. It searches for files in the specified directory and returns the matching files.
+This method takes a `patternString` and returns an array of `DocumentationCache` objects. It finds files based on the provided pattern string by splitting the string and getting the folder path.

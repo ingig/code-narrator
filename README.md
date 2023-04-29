@@ -1,49 +1,49 @@
 # code-narrator
 
-Uses OpenAI to generate documentation for your source code, as well as easy HowTo guides and other custom pages. Code-narrator documents it self and should be a validation of the documentation working, similar to a compiler compiling it self. Configuration `code-narrator.config.js` file is created on first run and sets the configuration for your project, such as project path, doc, documentation type and more. The package can be installed using `npm i code-narrator -D`. code-narrator is language & framework neutral.
+## Description
 
-## Version
-
-1.0.9
+[code-narrator](https://github.com/ingig/code-narrator) uses OpenAI to generate documentation for your source code, as well create HowTo, FAQ, Tutorial, and other custom pages. Code-narrator documents itself and should be a validation of the documentation working, similar to a compiler compiling itself. Configuration `code-narrator.config.js` file is created on the first run and sets the configuration for your project, such as project path, doc, documentation type, and more. The package can be installed using `npm i code-narrator -D`. code-narrator is code language, linguistic & framework neutral. It keeps your documentation always up to date.
 
 ## Getting Started
 
-1. Install the npm package:
+1. Install the package:
 
 ```bash
 npm i code-narrator -D
 ```
 
-2. Run the code-narrator using npx:
+2. Run code-narrator:
 
 ```bash
 npx code-narrator
 ```
 
-## Configuration
+## Usage
 
-Configuration is optional and will be generated on the first run. You can modify the `code-narrator.config.js` file to customize the configuration for your project.
+After installing and running code-narrator, a configuration file `code-narrator.config.js` will be generated. Modify this file to set the configuration for your project, such as project path, doc, documentation type, and more.
+
+## Repository
+
+[https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
 
 ## Documentation
 
-For more information, visit the [documentation](https://github.com/ingig/code-narrator/tree/master/docs).
+- [Documentation](https://github.com/ingig/code-narrator/tree/master/docs)
+- [FAQ](https://github.com/ingig/code-narrator/tree/master/docs/FAQ.md)
+- [How-to guides](https://github.com/ingig/code-narrator/tree/master/docs/howto)
+- [Tutorials](https://github.com/ingig/code-narrator/tree/master/docs/tutorial)
 
-## Discussion
+## Report Issues
 
-Join the discussion about the project at [GitHub Discussions](https://github.com/ingig/code-narrator/discussions).
-
-## Reporting Bugs
-
-Report any bugs or issues at the [GitHub Issues](https://github.com/ingig/code-narrator/issues) page.
-
-## Repository and Homepage
-
-- Repository: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
-- Homepage: [https://github.com/ingig/code-narrator](https://github.com/ingig/code-narrator)
+If you encounter any issues or have suggestions, please report them [here](https://github.com/ingig/code-narrator/issues).
 
 ## Authors
 
 - Ingi Gauti Ragnarsson @ingig
+
+## Version
+
+1.0.11
 
 ## License
 

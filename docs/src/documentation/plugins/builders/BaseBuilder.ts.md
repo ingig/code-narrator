@@ -4,7 +4,7 @@ This is a TypeScript code file that defines the `BaseBuilder` class, which serve
 
 ## Table of Contents
 
-- [Class Description](#class-description)
+- [Class Definition](#class-definition)
 - [Methods](#methods)
   - [generate](#generate)
   - [getAnswer](#getanswer)
@@ -12,13 +12,15 @@ This is a TypeScript code file that defines the `BaseBuilder` class, which serve
   - [generateDocumentationAndCache](#generatedocumentationandcache)
   - [hasChanged](#haschanged)
 
-## Class Description
+## Class Definition
 
-The `BaseBuilder` class is an abstract class that provides the basic structure and methods for Builder plugins. It includes the following properties:
+The `BaseBuilder` class is defined as an abstract class with the following properties:
 
 - `openAIRepository`: An instance of the `OpenAIRepository` class.
 - `generator`: A string representing the generator used by the Builder plugin.
 - `config`: An instance of the `ICodeNarratorConfig` interface.
+
+The constructor takes a single parameter, `generator`, which is a string representing the generator used by the Builder plugin.
 
 ## Methods
 
@@ -28,7 +30,7 @@ The `BaseBuilder` class is an abstract class that provides the basic structure a
 abstract generate(): any;
 ```
 
-This is an abstract method that must be implemented by any class that extends `BaseBuilder`. It is responsible for generating the content for the Builder plugin.
+This is an abstract method that must be implemented by derived classes. It is responsible for generating the content based on the specific Builder plugin.
 
 ### getAnswer
 
@@ -36,14 +38,14 @@ This is an abstract method that must be implemented by any class that extends `B
 public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<OpenAIResponse>;
 ```
 
-This method takes a `name`, `args`, `template`, and optional `assistantMessages` as input and returns a `Promise` that resolves to an `OpenAIResponse`. It uses the Liquid templating engine to render the template with the provided arguments and queries the OpenAI API with the generated question.
+This method takes the following parameters:
 
-**Parameters:**
+- `name`: A string representing the name of the file or method being documented.
+- `args`: An optional object containing additional arguments for the question generation.
+- `template`: An optional string representing the template file to use for generating the question. Defaults to `'template'`.
+- `assistantMessages`: An optional array of strings containing previous messages from the assistant.
 
-- `name`: The name of the entity for which the answer is being requested.
-- `args`: An object containing any additional arguments required for the template.
-- `template`: The name of the template file to be used (default is 'template').
-- `assistantMessages`: An optional array of strings containing any assistant messages to be included in the API request.
+The method returns a `Promise` that resolves to an `OpenAIResponse` object containing the GPT-generated answer.
 
 ### generateDocumentation
 
@@ -51,11 +53,18 @@ This method takes a `name`, `args`, `template`, and optional `assistantMessages`
 public async generateDocumentation(options: GenerateOptions): Promise<Document>;
 ```
 
-This method takes a `GenerateOptions` object as input and returns a `Promise` that resolves to a `Document` object. It calls the `getAnswer` method to obtain the answer from the OpenAI API and creates a new `Document` object with the provided information.
+This method takes a `GenerateOptions` object as its parameter and returns a `Promise` that resolves to a `Document` object. The `GenerateOptions` object contains the following properties:
 
-**Parameters:**
-
-- `options`: An object containing the options for generating the documentation. See the `GenerateOptions` interface for more details.
+- `args`: An optional object containing additional arguments for the question generation.
+- `template`: An optional string representing the template file to use for generating the question.
+- `name`: The name of the file or method being documented.
+- `pathToFile`: The path to the file being documented.
+- `folderPath`: The path to the folder containing the file being documented.
+- `sidebarPosition`: The position of the file in the sidebar.
+- `assistantMessages`: An optional array of strings containing previous messages from the assistant.
+- `sidebarLabel`: The label for the file in the sidebar.
+- `saveToPath`: The path where the generated documentation should be saved.
+- `data`: Any additional data to be included in the `Document` object.
 
 ### generateDocumentationAndCache
 
@@ -63,11 +72,7 @@ This method takes a `GenerateOptions` object as input and returns a `Promise` th
 public async generateDocumentationAndCache(options: GenerateOptions): Promise<void>;
 ```
 
-This method takes a `GenerateOptions` object as input and returns a `Promise` that resolves to `void`. It calls the `generateDocumentation` method to create a `Document` object and then stores it in the `DocumentationCache`.
-
-**Parameters:**
-
-- `options`: An object containing the options for generating the documentation and caching it. See the `GenerateOptions` interface for more details.
+This method takes a `GenerateOptions` object as its parameter and returns a `Promise` that resolves to `void`. It generates the documentation using the `generateDocumentation` method, caches the resulting `Document` object using the `DocumentationCache`, and generates the actual documentation file using the `DocumentationGenerator`.
 
 ### hasChanged
 
@@ -75,8 +80,4 @@ This method takes a `GenerateOptions` object as input and returns a `Promise` th
 public hasChanged(document?: Document): boolean;
 ```
 
-This method takes an optional `Document` object as input and returns a boolean value indicating whether the document has changed since it was last updated. If the document is not provided or does not exist, the method returns `true`.
-
-**Parameters:**
-
-- `document`: An optional `Document` object to check for changes.
+This method takes an optional `Document` object as its parameter and returns a boolean value. It checks if the given document has changed since it was last updated. If the document is not provided or if the document's `documentation_type` property does not match the current `DocumentationType`, the method returns `true`. If the file does not exist, the method removes the document from the `DocumentationCache` and returns `false`. Otherwise, it compares the file's modification time with the document's `updated` property and returns `true` if the file has been modified since the document was last updated.

@@ -3,6 +3,7 @@ import Document from "../documentation/Document";
 import path from "path";
 import App from "../App";
 import ConfigHelper from "../config/ConfigHelper";
+import DocumentationGenerator from "./DocumentationGenerator";
 
 /*
 :::danger Make sure to add the cache file (default is .codenarrator\cache.json) to git, so you don't have to query GPT on each run.

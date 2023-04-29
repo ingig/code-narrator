@@ -9,6 +9,7 @@ import ConfigHelper from "../../../config/ConfigHelper";
 import ICodeNarratorConfig from "../../../config/ICodeNarratorConfig";
 import * as process from "process";
 import OpenAIResponse from "../../../model/OpenAIResponse";
+import DocumentationGenerator from "../../DocumentationGenerator";
 
 /*
 This is the Base class for Builder plugins. Builder plugins are used to generate questions for GPT
@@ -47,9 +48,9 @@ export default abstract class BaseBuilder {
         }
         let question = await engine.renderFile(template_path, args)
 
-        console.log(`Asking about ${name} using template ${template} for builder ${this.generator}`)
+        console.log(`${new Date().toLocaleTimeString()} - Asking about ${name} using template ${template} for builder ${this.generator}`)
         let response = await this.openAIRepository.queryQuestions([question!], 0, ConfigHelper.config.gptModel, assistantMessages);
-        console.log(`Received answer for ${name}`)
+        console.log(`${new Date().toLocaleTimeString()} - Received answer for ${name}`)
         return response;
     }
 
@@ -106,6 +107,9 @@ export default abstract class BaseBuilder {
         })
 
         DocumentationCache.set(document);
+
+        let documentGenerator = new DocumentationGenerator();
+        documentGenerator.make(document);
     }
 
     public hasChanged(document?: Document) {

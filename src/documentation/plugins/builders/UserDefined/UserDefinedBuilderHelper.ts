@@ -111,7 +111,8 @@ ${overview}
             return `I want you to create a detailed How To guide from the user input.
             It should have Title, Introduction, Step-by-Step Instructions`
         } else if (type == 'readme') {
-            return `I want you to create a detail README file for this project. Here is a description:`
+            return `I want you to create a detailed README file for the project ${ConfigHelper.config.project_name}. 
+            Include the sections Title, Description with link to homepage (add paragraphs), Getting started, Usage, Repository link, Documentation, Report Issues, Authors, Version, License. If you do not have data for section then DO NOT create that section.`
         } else if (type == 'tutorial') {
             return `I want you to create a detailed Tutorial from the user input.
             Define the target audience, Set clear learning objectives,Provide a brief introduction,Prerequisites and system requirements,Step-by-step instructions,Include code samples`

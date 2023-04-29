@@ -4,15 +4,21 @@ import path from "path";
 import BaseGenerator from "./plugins/generators/BaseGenerator";
 import ConfigHelper from "../config/ConfigHelper";
 import App from "../App";
+import Document from "./Document";
 
 export default class DocumentationGenerator {
 
-    public make() {
-        let documents = DocumentationCache.Documents;
+    public make(document? : Document) {
+        let documents : Document[] | null = [];
+        if (document) {
+            documents.push(document);
+        } else {
+            documents = DocumentationCache.Documents;
+        }
         if (!documents) return;
 
         let config = ConfigHelper.config;
-        if (config.readmeRoot) {
+        if (config.readmeRoot && !document) {
             let documents = DocumentationCache.getByFolderPath('')
             documents = documents.filter(doc => doc.name.toUpperCase() == 'README');
             if (documents.length > 0) {
