@@ -1,7 +1,7 @@
-const ConfigurationBuilder = require("./dist/src/documentation/plugins/builders/Configuration/ConfigurationBuilder");
-const FilesBuilder = require("./dist/src/documentation/plugins/builders/Files/FilesBuilder");
-const FoldersBuilder = require("./dist/src/documentation/plugins/builders/Folders/FoldersBuilder");
-const UserDefinedBuilder = require("./dist/src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
+const ConfigurationBuilder = require("./src/documentation/plugins/builders/Configuration/ConfigurationBuilder");
+const FilesBuilder = require("./src/documentation/plugins/builders/Files/FilesBuilder");
+const FoldersBuilder = require("./src/documentation/plugins/builders/Folders/FoldersBuilder");
+const UserDefinedBuilder = require("./src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
 /**
  * @type {ICodeNarratorConfig}
  */
