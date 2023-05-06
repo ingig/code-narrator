@@ -42,8 +42,6 @@ export default class CliHelper {
             configPath = path.join(process.cwd(), 'code-narrator.json');
         }
 
-
-
         if (configPath) {
             if (configPath.endsWith('.js') || configPath.endsWith('.ts')) {
                 userConfig = await import(configPath);
@@ -55,11 +53,11 @@ export default class CliHelper {
         if (argv.include) {
             userConfig.include = argv.include as string[];
         }
+
         if (argv.gpt) {
             userConfig.gptModel = argv.gpt as string;
-        } else {
-            userConfig.gptModel = 'gpt-4'
         }
+
         if (argv.userDefined) {
             (userConfig as any).userDefined = argv.userDefined;
         }

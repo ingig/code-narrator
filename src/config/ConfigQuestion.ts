@@ -9,8 +9,8 @@ import IGenericAIService from "../services/IGenericAIService";
 
 export default class ConfigQuestion {
     aiService : IGenericAIService;
-    constructor() {
-        this.aiService = ConfigHelper.config.aiService;
+    constructor(config : ICodeNarratorConfig) {
+        this.aiService = config.aiService;
     }
     public async getProjectSetup() {
         let foldersAndFiles = FolderStructure.getFoldersAndFiles(process.cwd()).join('\n');

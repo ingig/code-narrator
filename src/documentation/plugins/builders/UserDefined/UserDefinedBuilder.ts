@@ -54,7 +54,7 @@ export default class UserDefinedBuilder extends BaseBuilder {
             docId = docId + ConfigHelper.config.document_file_extension
             document = DocumentationCache.get(docId)
         }
-        if (!this.hasTemplateChanged(document, templatePath)) return;
+        if (!this.hasTemplateChanged(document, builder, templatePath)) return;
 
         let helper = new UserDefinedBuilderHelper();
         helper.loadArgs(builder, project_path)
@@ -76,11 +76,32 @@ export default class UserDefinedBuilder extends BaseBuilder {
     }
 
 
-    private hasTemplateChanged(document: Document | undefined, templatePath: string) {
+    private hasTemplateChanged(document: Document | undefined, builder : IBuilder, templatePath: string) {
         if (!document) return true;
 
-        let stats = fs.statSync(templatePath + '.liquid');
-        return (stats.mtime.getTime() >= new Date(document.updated.toString()).getTime());
+        let filePaths = this.getAffectedFilePaths(builder) ?? [];
+        filePaths.push(templatePath + '.liquid');
+        for (let i=0;i<filePaths.length;i++) {
+            let stats = fs.statSync(templatePath + '.liquid');
+            if (stats.mtime.getTime() >= new Date(document.updated.toString()).getTime()) return true;
+        }
+        return false;
+
+    }
+
+    private getAffectedFilePaths(builder: IBuilder) {
+
+        let filePaths = []
+        if (builder.args) {
+            let argKeys = Object.getOwnPropertyNames(builder.args);
+            for (let i = 0; i < argKeys.length; i++) {
+                filePaths.push(this.extractPathFromContent(builder.args[argKeys[i]]));
+            }
+        }
+        for (let i = 0;builder.files && i < builder.files.length; i++) {
+            filePaths.push(path.join(process.cwd(), builder.files[i].path));
+        }
+        return filePaths;
 
     }
 }

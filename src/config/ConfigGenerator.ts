@@ -12,7 +12,7 @@ export default class ConfigGenerator {
             ...DefaultSettings.get(),
             ...projectConfig,
         };
-        let configQuestion = new ConfigQuestion();
+        let configQuestion = new ConfigQuestion(config);
         let result = await configQuestion.getProjectSetup();
         config.gptModel = DefaultSettings.gptModel;
         config.project_file = result.project_file ?? config.project_file;

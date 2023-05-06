@@ -1,67 +1,54 @@
 # ConfigHelper.ts
 
-The `ConfigHelper.ts` file is a TypeScript module that provides a helper class for managing the configuration of a Code Narrator project. This class is responsible for loading and generating project configurations, as well as handling environment variables and default settings.
-
-## Table of Contents
-
-- [Class: ConfigHelper](#class-confighelper)
-  - [Static Properties](#static-properties)
-  - [Methods](#methods)
-    - [load](#load)
-    - [getUserDefinedExamples](#getuserdefinedexamples)
+The `ConfigHelper.ts` file is a TypeScript module that provides a helper class for managing the configuration of a Code Narrator project. It imports necessary dependencies, defines the `ConfigHelper` class, and exports it as the default export.
 
 ## Class: ConfigHelper
 
-The `ConfigHelper` class is the main class in this module, and it contains several static properties and methods.
+The `ConfigHelper` class is responsible for loading and managing the configuration of a Code Narrator project. It provides methods to load the configuration, generate default settings, and retrieve user-defined examples.
 
-### Static Properties
+### Properties
 
 - `env`: Stores the environment variables.
 - `OpenAiKey`: Stores the OpenAI API key.
-- `DocumentingProject`: Stores the path to the project being documented.
-- `BuilderPlugins`: An array of builder plugins.
-- `DocumentationType`: The type of documentation being generated (default is 'md').
-- `DocumentExtension`: The file extension for the documentation files (default is '.md').
-- `CacheFilePath`: The path to the cache file (default is '.code-narrator/cache.json').
-- `config`: An instance of the `ICodeNarratorConfig` interface.
+- `DocumentingProject`: Stores the documentation path.
+- `BuilderPlugins`: Stores an array of builder plugins.
+- `DocumentationType`: Stores the documentation type (default is 'md').
+- `DocumentExtension`: Stores the document file extension (default is '.md').
+- `CacheFilePath`: Stores the cache file path.
 
-### Methods
+### Method: load(projectConfig)
 
-#### load
+This method is responsible for loading the project configuration. It takes an optional `projectConfig` parameter, which is a partial `ICodeNarratorConfig` object. The method performs the following tasks:
 
-```typescript
-public static async load(projectConfig: Partial<ICodeNarratorConfig> = {}): Promise<void>
-```
-
-The `load` method is responsible for loading the project configuration. It takes an optional `projectConfig` parameter, which is a partial instance of the `ICodeNarratorConfig` interface. This method performs the following tasks:
-
-1. Loads environment variables using the `dotenv` package.
-2. Sets the `OpenAiKey` property from the `OPENAI_API_KEY` environment variable.
-3. Generates a new project configuration using the `ConfigGenerator` class if the `fromFile` property is not set in the `projectConfig` parameter.
+1. Loads environment variables using `dotenv`.
+2. Sets the `OpenAiKey` property.
+3. Generates a configuration file if it doesn't exist.
 4. Merges the default settings with the provided `projectConfig`.
-5. Initializes the `aiService` property with an instance of the `OpenAIService` class or a custom AI service class if provided in the `projectConfig` parameter.
-6. Sets the `CacheFilePath` property based on the `cache_file` property in the configuration.
+5. Sets the `DocumentingProject`, `BuilderPlugins`, `DocumentExtension`, and `DocumentationType` properties.
+6. Initializes the AI service.
 
-#### getUserDefinedExamples
+### Method: getUserDefinedExamples(config)
 
-```typescript
-public static getUserDefinedExamples(config: ICodeNarratorConfig): IBuilder[]
-```
+This method returns an array of user-defined examples. It takes a `config` parameter, which is an `ICodeNarratorConfig` object. The method creates two example builders: `readMeBuilder` and `howToBuilder`, and returns them in an array.
 
-The `getUserDefinedExamples` method returns an array of `IBuilder` instances representing user-defined examples. It takes a `config` parameter, which is an instance of the `ICodeNarratorConfig` interface. This method creates two example builders: a `README` builder and a `HowTo Overview` builder. The `README` builder generates a README file with the content from the project's entry file, while the `HowTo Overview` builder generates an overview page with a list of how-to guides.
+## Usage
 
-## Usage Examples
-
-To use the `ConfigHelper` class, you can import it and call its methods as shown below:
+To use the `ConfigHelper` class, you need to import it and call its `load` method with the appropriate configuration object. The class will then manage the configuration for your Code Narrator project.
 
 ```typescript
 import ConfigHelper from "./ConfigHelper";
 
-// Load the project configuration
-await ConfigHelper.load();
+// Load the configuration
+await ConfigHelper.load(projectConfig);
 
 // Get user-defined examples
-const examples = ConfigHelper.getUserDefinedExamples(ConfigHelper.config);
+const examples = ConfigHelper.getUserDefinedExamples(config);
 ```
 
-Make sure to replace any sensitive information, such as API keys, with placeholders (e.g., `*****`) when sharing code examples or documentation.
+## Note
+
+Make sure to include your OpenAI API key in the `.env` file as `OPENAI_API_KEY=Your_OpenAI_Key`. If the key is missing, an error will be thrown.
+
+## Caution
+
+The `ConfigHelper` class assumes that the project configuration file is named `code-narrator.config.js`. If your project uses a different name, you may need to modify the class accordingly.

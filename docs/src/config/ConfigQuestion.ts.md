@@ -1,78 +1,72 @@
 # ConfigQuestion.ts
 
-This is a TypeScript code file that defines the `ConfigQuestion` class. The class is responsible for obtaining project setup and project details using AI services. It uses various utility classes and interfaces to achieve this functionality.
+This is a TypeScript code file that defines the `ConfigQuestion` class. The class is responsible for extracting project setup and project details from the given folder structure and project file. It uses an AI service to process the information and return the required data in JSON format.
 
-## Usage
+## Table of Contents
 
-To use the `ConfigQuestion` class, you need to import it and create an instance of the class. Then, you can call its methods to get the project setup and project details.
+- [Class: ConfigQuestion](#class-configquestion)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+    - [getProjectSetup](#getprojectsetup)
+    - [getProjectDetails](#getprojectdetails)
 
-```typescript
-import ConfigQuestion from "./ConfigQuestion";
+## Class: ConfigQuestion
 
-const configQuestion = new ConfigQuestion();
-const projectSetup = await configQuestion.getProjectSetup();
-const projectDetails = await configQuestion.getProjectDetails(config);
-```
-
-## Class Description
+The `ConfigQuestion` class is responsible for extracting project setup and project details from the given folder structure and project file.
 
 ### Constructor
 
-The constructor initializes the `aiService` property with the AI service configured in `ConfigHelper`.
+The constructor takes a single parameter:
 
-```typescript
-constructor() {
-    this.aiService = ConfigHelper.config.aiService;
-}
-```
+- `config: ICodeNarratorConfig` - The configuration object that contains the AI service to be used.
 
 ### Methods
 
-#### getProjectSetup()
+#### getProjectSetup
 
-This method returns a JSON object containing the project file, source path, documentation path, and test path. It uses the AI service to analyze the folder and file structure of the project.
+This method is responsible for extracting the project setup information from the folder and file structure.
 
-```typescript
-public async getProjectSetup(): Promise<{
-    project_file: string;
-    source_path: string;
-    documentation_path: string;
-    test_path: string;
-}>
-```
+**Parameters**: None
 
-#### getProjectDetails(config: ICodeNarratorConfig)
+**Returns**: A JSON object containing the project setup information.
 
-This method takes an `ICodeNarratorConfig` object as a parameter and returns a JSON object containing the project name, entry file, CLI file, repository URL, and an array of app-specific config files. It uses the AI service to analyze the project file and folder structure.
+**Example**:
 
 ```typescript
-public async getProjectDetails(config: ICodeNarratorConfig): Promise<{
-    project_name: string;
-    entry_file: string;
-    cli_file: string;
-    config_files: string[];
-    repository_url: string;
-}>
+const configQuestion = new ConfigQuestion(config);
+const projectSetup = await configQuestion.getProjectSetup();
 ```
 
-### Parameters
+#### getProjectDetails
 
-- `config`: An object implementing the `ICodeNarratorConfig` interface. It contains the configuration details for the Code Narrator.
+This method is responsible for extracting the project details from the given project file and folder structure.
 
-## Technical Concepts
+**Parameters**:
 
-### AI Service
+- `config: ICodeNarratorConfig` - The configuration object that contains the project file.
 
-The AI service used in this class is an instance of `IGenericAIService`. It is responsible for querying the AI model to get answers to specific questions related to the project setup and details.
+**Returns**: A JSON object containing the project details.
 
-### FolderStructure and FileStructure
+**Example**:
 
-`FolderStructure` and `FileStructure` are utility classes that help in obtaining the folder and file structure of the project. They are used to provide the AI service with the necessary information to analyze the project.
+```typescript
+const configQuestion = new ConfigQuestion(config);
+const projectDetails = await configQuestion.getProjectDetails(config);
+```
 
-### Helper
+## Usage
 
-The `Helper` class is a utility class that provides helper functions, such as extracting JSON objects from the AI service's response.
+To use the `ConfigQuestion` class, you need to import it and create an instance with the required configuration object. Then, you can call the `getProjectSetup` and `getProjectDetails` methods to extract the necessary information.
 
-### ConfigHelper
+```typescript
+import ConfigQuestion from "./ConfigQuestion";
+import ICodeNarratorConfig from "./ICodeNarratorConfig";
 
-`ConfigHelper` is a utility class that helps in loading and managing the configuration for the Code Narrator. It is used to obtain the AI service instance configured for the project.
+const config: ICodeNarratorConfig = {
+  // ... your configuration object
+};
+
+const configQuestion = new ConfigQuestion(config);
+const projectSetup = await configQuestion.getProjectSetup();
+const projectDetails = await configQuestion.getProjectDetails(config);
+```
