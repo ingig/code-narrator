@@ -16,6 +16,8 @@ export default class UserDefinedBuilder extends BaseBuilder {
     }
 
     public extractPathFromContent(input: string): string | null {
+		if (!input) return null;
+
         const regex = /content\(([^)]+)\)/;
         const match = input.match(regex);
 

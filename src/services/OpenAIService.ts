@@ -81,7 +81,7 @@ export default class OpenAIService implements IGenericAIService {
                 throw new Error(`Did not get answer. ChatGPT is down. Run again. `)
             }
             let response : GenericAIResponse = {
-                answer : completion.data.choices[0].message!.content,
+                answer : completion.data.choices[0].message!.content ?? '',
                 requestMessages : messages
             }
 
