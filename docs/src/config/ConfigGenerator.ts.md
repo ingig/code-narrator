@@ -1,6 +1,6 @@
 # ConfigGenerator.ts
 
-This is a TypeScript code file that contains the `ConfigGenerator` class. The class is responsible for generating a project configuration object based on user input and default settings. It also serializes the configuration object to a file.
+This is a TypeScript code file that contains the `ConfigGenerator` class. The class is responsible for generating a configuration object for the Code Narrator project based on user input and default settings. It also handles the serialization of the configuration object to a file.
 
 ## Usage
 
@@ -11,45 +11,51 @@ import ConfigGenerator from "./ConfigGenerator";
 
 (async () => {
     const projectConfig = {
-        // Your custom configuration properties
+        project_name: "My Project",
+        source_path: "./src",
     };
+
     const config = await ConfigGenerator.generate(projectConfig);
 })();
 ```
 
 ## Class: ConfigGenerator
 
-### Method: generate(projectConfig: Partial<ICodeNarratorConfig> = {}): Promise<Partial<ICodeNarratorConfig>>
+### Method: generate
 
-This method generates a project configuration object based on the provided `projectConfig` object and default settings. It also serializes the configuration object to a file.
+This method generates a configuration object for the Code Narrator project based on user input and default settings. It returns a Promise that resolves to the generated configuration object.
 
 #### Parameters
 
-- `projectConfig`: A partial `ICodeNarratorConfig` object that contains custom configuration properties. This parameter is optional and defaults to an empty object.
+- `projectConfig` (Optional): A partial `ICodeNarratorConfig` object that can be used to override default settings.
 
 #### Returns
 
-A `Promise` that resolves to a partial `ICodeNarratorConfig` object containing the generated configuration.
+A Promise that resolves to a `Partial<ICodeNarratorConfig>` object.
 
-### Method: getDocPath(config: ICodeNarratorConfig, json: any): string
+### Method: getDocPath (private)
 
-This private method returns the documentation path based on the provided `config` object and `json` object.
+This private method is used to determine the documentation path based on the provided configuration object and user input.
 
 #### Parameters
 
-- `config`: An `ICodeNarratorConfig` object that contains the current configuration properties.
-- `json`: An object that contains the user input.
+- `config`: An `ICodeNarratorConfig` object containing the current configuration.
+- `json`: A JSON object containing user input.
 
 #### Returns
 
 A string representing the documentation path.
 
-## Dependencies
+## Additional Classes and Interfaces
 
-The `ConfigGenerator` class depends on the following classes and interfaces:
+The file also imports and uses the following classes and interfaces:
 
-- `ICodeNarratorConfig`: An interface that defines the structure of a project configuration object.
-- `DefaultSettings`: A class that provides default configuration settings.
-- `ConfigQuestion`: A class that handles user input for configuration properties.
-- `ConfigHelper`: A class that provides helper methods for working with configuration objects.
-- `ConfigFileSerializer`: A class that serializes a configuration object to a file.
+- `ICodeNarratorConfig`: An interface that defines the structure of the configuration object.
+- `DefaultSettings`: A class that provides default settings for the configuration object.
+- `ConfigQuestion`: A class that handles user input for the configuration object.
+- `ConfigHelper`: A class that provides helper methods for working with the configuration object.
+- `ConfigFileSerializer`: A class that handles the serialization of the configuration object to a file.
+
+## Security Note
+
+If you notice any secret information in the code, replace it with ***** in your response.

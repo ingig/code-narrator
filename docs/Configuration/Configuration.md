@@ -1,23 +1,19 @@
-The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry points, paths, and plugins. This file helps in customizing the behavior of the application according to the user's requirements.
+The `code-narrator.config.js` file is an app-specific configuration file for the Code Narrator application. It is used to define various settings and configurations for the application, such as entry files, project name, repository URL, source and documentation paths, and more. This configuration file also includes settings for builder plugins and generator plugins, which are used to customize the documentation generation process.
 
 Here is an example of usage for the app-specific configs:
 
-```javascript
-const config = {
-    entry_file: "./dist/src/App.js",
-    cli_file: "./dist/src/cli.js",
-    project_name: "code-narrator",
-    config_files: [
-        "code-narrator.config.js"
-    ],
-    // ... other configurations
-};
+```markdown
+- Entry file: `./dist/src/App.js`
+- CLI file: `./dist/src/cli.js`
+- Project name: `code-narrator`
+- Repository URL: `https://github.com/ingig/code-narrator`
+- Source path: `src`
+- Documentation path: `docs`
+- Test path: `__tests__`
+- Include: `code-narrator.config.js`, `src/**/*.ts`
+- Builder plugins: ConfigurationBuilder, FilesBuilder, FoldersBuilder, UserDefinedBuilder
 ```
 
-In this example, the `entry_file` and `cli_file` properties define the entry points for the application and the CLI, respectively. The `project_name` property specifies the name of the project, and the `config_files` property lists the configuration files used by the application.
+The configuration file also defines various builders, which are used to generate different types of documentation pages, such as README, FAQ, Prerequisites, HowTo, and Tutorial pages. Each builder has its own settings, such as template, sidebar position, name, path, files, and pages.
 
-:::note
-The provided code snippet contains a complete configuration file for the Code Narrator application. It includes settings for paths, plugins, builders, and other configurations.
-:::
-
-As for the other configuration files, there is no mention of them in the provided text. Therefore, I cannot provide any information about them.
+Regarding other configuration files, there are no additional files mentioned in the provided content.

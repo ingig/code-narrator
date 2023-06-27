@@ -16,26 +16,26 @@ The `BaseBuilder.ts` file is a TypeScript code file that defines an abstract cla
 
 - `public async getAnswer(name: string, args: any = {}, template = 'template', assistantMessages?: string[]): Promise<GenericAIResponse>`: Generates a question using the specified template and arguments, sends it to the AI service, and returns the response.
 
-  - `name`: The name of the file or entity to generate a question for.
+  - `name`: The name of the file or entity for which the question is being generated.
   - `args`: An optional object containing additional arguments for the question.
-  - `template`: An optional string specifying the template to use for generating the question (default is 'template').
-  - `assistantMessages`: An optional array of strings containing assistant messages.
+  - `template`: The name of the template file to use for generating the question (default is 'template').
+  - `assistantMessages`: An optional array of assistant messages to include in the AI service query.
 
-- `public async generateDocumentation(options: GenerateOptions)`: Generates documentation for the specified file or entity using the given options and returns a `Document` object.
+- `public async generateDocumentation(options: GenerateOptions)`: Generates documentation for the specified file or entity using the provided options and returns a `Document` object.
 
-  - `options`: An object containing options for generating documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, and `data`.
+  - `options`: An object containing options for generating the documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, and `data`.
 
-- `public async generateDocumentationAndCache(options: GenerateOptions)`: Generates documentation for the specified file or entity using the given options, creates a `Document` object, and stores it in the cache.
+- `public async generateDocumentationAndCache(options: GenerateOptions)`: Generates documentation for the specified file or entity using the provided options, creates a `Document` object, and stores it in the cache.
 
-  - `options`: An object containing options for generating documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, `data`, and `prevDocument`.
+  - `options`: An object containing options for generating the documentation, such as `args`, `template`, `name`, `pathToFile`, `folderPath`, `sidebarPosition`, `assistantMessages`, `sidebarLabel`, `saveToPath`, `data`, and `prevDocument`.
 
 - `public hasChanged(document?: Document)`: Checks if the specified document has changed since it was last updated.
 
-  - `document`: An optional `Document` object to check for changes.
+  - `document`: The `Document` object to check for changes.
 
 ## Example Usage
 
-To use the `BaseBuilder` class, you need to create a derived class that implements the `generate()` method. Here's an example:
+To use the `BaseBuilder` class, you would need to create a derived class that implements the `generate()` method. Here's an example:
 
 ```typescript
 import BaseBuilder from "./BaseBuilder";
