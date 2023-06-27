@@ -12,7 +12,7 @@ const ConfigurationBuilder = require("code-narrator/dist/src/documentation/plugi
 const FilesBuilder = require("code-narrator/dist/src/documentation/plugins/builders/Files/FilesBuilder");
 const FoldersBuilder = require("code-narrator/dist/src/documentation/plugins/builders/Folders/FoldersBuilder");
 const UserDefinedBuilder = require("code-narrator/dist/src/documentation/plugins/builders/UserDefined/UserDefinedBuilder");
-        
+
 /**
  * You can find the documentation about code-narrator.config.js at
  * https://github.com/ingig/code-narrator/blob/master/docs/Configuration/code-narrator.config.js.md
@@ -39,9 +39,10 @@ module.exports = config;
     }
 
 
-    public generateConfigString(configObject : any, indentLevel = 1) {
+	public generateConfigString(configObject: ICodeNarratorConfig, indentLevel = 1) {
         let indent = '  '.repeat(indentLevel);
         let configString = '';
+		configObject.aiService = undefined;
 
         for (const [key, value] of Object.entries(configObject)) {
             if (typeof value === 'object' && !Array.isArray(value)) {
