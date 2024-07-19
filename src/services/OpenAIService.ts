@@ -10,7 +10,8 @@ export default class OpenAIService implements IGenericAIService {
     models = new Map([
         ['gpt-3.5-turbo', 4096],
         ['gpt-4', 8192],
-        ['gpt-4-32k', 32768]
+        ['gpt-4-32k', 32768],
+        ['gpt-4o-mini', 16384],
     ]);
     constructor() {
         const configuration = new Configuration({
