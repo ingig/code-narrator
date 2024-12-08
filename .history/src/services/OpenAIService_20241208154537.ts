@@ -12,7 +12,7 @@ interface ModelConfig {
 }
 
 export default class OpenAICompatibleService implements IGenericAIService {
-    private openai!: OpenAIApi; // Add the ! operator to tell TypeScript this will be initialized
+    private openai: OpenAIApi;
     private modelConfigs: Map<string, ModelConfig> = new Map([
         ['openai', {
             endpoint: 'https://api.openai.com/v1',
@@ -38,6 +38,9 @@ export default class OpenAICompatibleService implements IGenericAIService {
             models: new Map([
                 ['llama2-70b-4096', 4096],
                 ['mixtral-8x7b-32768', 32768],
+                ['llama-13b', 131072],
+                ['meta-groq-gpt-167b-256k', 262144],
+                ['meta-groq-gpt-178b-256k', 262144]
             ])
         }]
     ]);
@@ -46,7 +49,7 @@ export default class OpenAICompatibleService implements IGenericAIService {
     
     constructor(provider: string = 'openai') {
         this.currentProvider = provider;
-        this.initializeClient(); // This will initialize this.openai
+        this.initializeClient();
     }
 
     private initializeClient() {
