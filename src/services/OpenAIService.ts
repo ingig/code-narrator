@@ -1,118 +1,187 @@
-import {ChatCompletionRequestMessage, Configuration, OpenAIApi} from 'openai';
-import {setTimeout} from 'timers/promises';
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
+import { setTimeout } from 'timers/promises';
 import ConfigHelper from "../config/ConfigHelper";
 import GenericAIResponse from "../model/GenericAIResponse";
 import DefaultSettings from "../config/DefaultSettings";
 import IGenericAIService from "./IGenericAIService";
 
-export default class OpenAIService implements IGenericAIService {
-    openai: OpenAIApi;
-    models = new Map([
-        ['gpt-3.5-turbo', 4096],
-        ['gpt-4', 8192],
-        ['gpt-4-32k', 32768],
-        ['gpt-4o-mini', 16384],
+interface ModelConfig {
+    endpoint: string;
+    apiKey: string;
+    models: Map<string, number>;
+}
+
+export default class OpenAICompatibleService implements IGenericAIService {
+    private openai!: OpenAIApi; // Add the ! operator to tell TypeScript this will be initialized
+    private modelConfigs: Map<string, ModelConfig> = new Map([
+        ['openai', {
+            endpoint: 'https://api.openai.com/v1',
+            apiKey: ConfigHelper.OpenAiKey,
+            models: new Map([
+                ['gpt-3.5-turbo', 4096],
+                ['gpt-4', 8192],
+                ['gpt-4-32k', 32768],
+            ])
+        }],
+        ['mistral', {
+            endpoint: 'https://api.mistral.ai/v1',
+            apiKey: ConfigHelper.MistralApiKey,
+            models: new Map([
+                ['mistral-tiny', 4096],
+                ['mistral-small', 8192],
+                ['mistral-medium', 32768],
+            ])
+        }],
+        ['groq', {
+            endpoint: 'https://api.groq.com/v1',
+            apiKey: ConfigHelper.GroqApiKey,
+            models: new Map([
+                ['llama2-70b-4096', 4096],
+                ['mixtral-8x7b-32768', 32768],
+            ])
+        }]
     ]);
-    constructor() {
+
+    private currentProvider: string;
+    
+    constructor(provider: string = 'openai') {
+        this.currentProvider = provider;
+        this.initializeClient(); // This will initialize this.openai
+    }
+
+    private initializeClient() {
+        const config = this.modelConfigs.get(this.currentProvider);
+        if (!config) {
+            throw new Error(`Provider ${this.currentProvider} not supported`);
+        }
+
         const configuration = new Configuration({
-            apiKey: ConfigHelper.OpenAiKey
+            apiKey: config.apiKey,
+            basePath: config.endpoint
         });
         this.openai = new OpenAIApi(configuration);
     }
 
-    public async query(questions : string[], assistantMessages? : string[]): Promise<GenericAIResponse>  {
+    public async query(questions: string[], assistantMessages?: string[]): Promise<GenericAIResponse> {
         let config = ConfigHelper.config;
-        //config should only be undefined on first run
         if (!config) config = DefaultSettings.get();
-        let model = '';
-        if (!model) {
-            model = config.gptModel;
+        let model = config.gptModel;
+
+        // Auto-select appropriate model if current one isn't available
+        const providerConfig = this.modelConfigs.get(this.currentProvider);
+        if (!providerConfig?.models.has(model)) {
+            model = Array.from(providerConfig?.models.keys() ?? [])[0];
+            console.warn(`Model ${config.gptModel} not available for ${this.currentProvider}, using ${model}`);
         }
-        return this.queryQuestions(questions, 0, model, assistantMessages)
+
+        return this.queryQuestions(questions, 0, model, assistantMessages);
     }
 
-    private async queryQuestions(questions : string[], errorCount = 0, model : string, assistantMessages? : string[]): Promise<GenericAIResponse> {
-        let messages : ChatCompletionRequestMessage[] = []
+    private async queryQuestions(questions: string[], errorCount = 0, model: string, assistantMessages?: string[]): Promise<GenericAIResponse> {
+        let messages: ChatCompletionRequestMessage[] = [];
+        const providerConfig = this.modelConfigs.get(this.currentProvider);
+        
         try {
-            await setTimeout(1 * 500);
+            await setTimeout(500);
 
             let config = ConfigHelper.config;
-            //config should only be undefined on first run
             if (!config) config = DefaultSettings.get();
 
             let messageLength = 0;
 
-            for (let i=0;config.gptSystemCommands && i<config.gptSystemCommands.length;i++) {
-                messageLength += config.gptSystemCommands[i][i].length;
-                messages.push({role:'system', content:config.gptSystemCommands[i].replace('{DocumentationType}', ConfigHelper.DocumentationType)})
+            // Add system messages
+            for (let i = 0; config.gptSystemCommands && i < config.gptSystemCommands.length; i++) {
+                messageLength += config.gptSystemCommands[i].length;
+                messages.push({
+                    role: 'system',
+                    content: config.gptSystemCommands[i].replace('{DocumentationType}', ConfigHelper.DocumentationType)
+                });
             }
 
-            let maxTokens = this.models.get(model) ?? 8192
-            for (let i=0;i<questions.length;i++){
-                let q = questions[i]
-                if (messageLength + q.length> maxTokens) {
-                    let length = parseInt(((maxTokens - messageLength)/1.20).toString());
-                    q = q.substring(0, length);
-                    console.warn(`Warning - Content to long: I had to trim a file, only using first ${length} character`)
+            // Calculate max tokens based on provider and model
+            const maxTokens = providerConfig?.models.get(model) ?? 4096;
+
+            // Add user messages
+            for (let question of questions) {
+                if (messageLength + question.length > maxTokens) {
+                    const length = Math.floor((maxTokens - messageLength) / 1.2);
+                    question = question.substring(0, length);
+                    console.warn(`Warning - Content too long: trimmed to ${length} characters`);
                 }
-                messages.push({role:'user', content:q})
-                messageLength += q.length;
-            }
-            for (let i=0;assistantMessages && i<assistantMessages.length;i++) {
-                messageLength += assistantMessages[i].length;
-                messages.push({role:'assistant', content: assistantMessages[i]});
+                messages.push({ role: 'user', content: question });
+                messageLength += question.length;
             }
 
-            maxTokens = maxTokens - messageLength;
-            if (maxTokens < 0) {
-                console.error(`Message is to long (${messageLength}). Will not query gpt`)
-                return {answer:'', requestMessages:messages} as GenericAIResponse;
+            // Add assistant messages
+            if (assistantMessages) {
+                for (const msg of assistantMessages) {
+                    messageLength += msg.length;
+                    messages.push({ role: 'assistant', content: msg });
+                }
             }
+
+            const remainingTokens = maxTokens - messageLength;
+            if (remainingTokens < 0) {
+                console.error(`Message is too long (${messageLength}). Will not query API`);
+                return { answer: '', requestMessages: messages } as GenericAIResponse;
+            }
+
             const completion = await this.openai.createChatCompletion({
                 model: model,
-                messages : messages,
+                messages: messages,
                 temperature: 0.1,
-                max_tokens: parseInt(maxTokens.toString()),
+                max_tokens: remainingTokens,
                 top_p: 1,
                 frequency_penalty: 0,
                 presence_penalty: 0
-
             });
-            if (completion.data.choices.length == 0) {
-                throw new Error(`Did not get answer. ChatGPT is down. Run again. `)
-            }
-            let response : GenericAIResponse = {
-                answer : completion.data.choices[0].message!.content ?? '',
-                requestMessages : messages
+
+            if (!completion.data.choices.length) {
+                throw new Error(`Did not get answer. API is down. Run again.`);
             }
 
-            return response;
-        } catch (e : any) {
-            let message = e.response?.data?.error?.message ?? '';
-            if (message.indexOf('You exceeded your current quota') != -1) {
+            return {
+                answer: completion.data.choices[0].message?.content ?? '',
+                requestMessages: messages
+            };
+
+        } catch (e: any) {
+            const message = e.response?.data?.error?.message ?? '';
+            
+            // Handle quota exceeded
+            if (message.includes('exceeded your current quota')) {
                 throw new Error(message);
             }
 
-            if (message.indexOf('The model') != -1 && message.indexOf('does not exist') != -1) {
-                console.warn(`You don't have access to ${DefaultSettings.gptModel}, downgrading to gtp-3.5-turbo`)
-                let model = 'gpt-3.5-turbo';
-                DefaultSettings.gptModel = model;
-                return this.queryQuestions(questions, errorCount, model, assistantMessages);
+            // Handle model availability
+            if (message.includes('does not exist')) {
+                console.warn(`Model ${model} not available, trying alternative model`);
+                const alternativeModel = Array.from(providerConfig?.models.keys() ?? [])[0];
+                return this.queryQuestions(questions, errorCount, alternativeModel, assistantMessages);
             }
 
-            if (e && this.retryStatuses.includes(e.response?.status) && errorCount < 3) {
-                console.log('Sleep 3 sec')
-                await setTimeout(3 * 1000);
-                return this.queryQuestions(questions, ++errorCount, model);
+            // Handle retries
+            if (e?.response?.status && this.retryStatuses.includes(e.response.status) && errorCount < 3) {
+                console.log('Sleep 3 sec');
+                await setTimeout(3000);
+                return this.queryQuestions(questions, ++errorCount, model, assistantMessages);
             }
 
-            console.error('OpenAI error:', message)
-            console.error('Error doing OpenAI query:', questions);
+            console.error(`${this.currentProvider} API error:`, message);
+            console.error('Error doing API query:', questions);
 
-            return  {answer:'', requestMessages: messages} as GenericAIResponse;
-
+            return { answer: '', requestMessages: messages } as GenericAIResponse;
         }
     }
 
-    retryStatuses = [429, 500, 503]
+    private retryStatuses = [429, 500, 503];
+
+    // Method to switch providers at runtime
+    public switchProvider(provider: string) {
+        if (!this.modelConfigs.has(provider)) {
+            throw new Error(`Provider ${provider} not supported`);
+        }
+        this.currentProvider = provider;
+        this.initializeClient();
+    }
 }
